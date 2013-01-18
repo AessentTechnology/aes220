@@ -1,0 +1,24 @@
+-myuxi
+-Y
+-v 0x0200
+-w 0x3c00
+-b HOME = 0x0000
+-b XSEG = 0x3c00
+-b PSEG = 0x3c00
+-b ISEG = 0x0000
+-b BSEG = 0x0000
+-b DSCR_AREA=0x3e00
+-b INT2JT=0x3f00
+-k ../../../device/lib
+-k /usr/bin/../share/sdcc/lib/small
+-k /usr/share/sdcc/lib/small
+-l fx2.lib
+-l mcs51
+-l libsdcc
+-l libint
+-l liblong
+-l libfloat
+aes220_progFpga.rel
+dscr.rel
+
+-e

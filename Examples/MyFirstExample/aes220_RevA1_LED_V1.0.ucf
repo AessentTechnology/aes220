@@ -1,0 +1,9 @@
+# aes220_RevA1_LED_V1.0.ucf
+# Net       Ball        
+NET LED_out(1)  LOC= P13 |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   
+NET LED_out(2)  LOC= N11 |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   
+NET LED_out(3)  LOC= N12 |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   
+NET LED_out(4)  LOC= P11 |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   
+
+NET SW_in(1)   LOC= D6  |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   
+NET SW_in(2)   LOC= E6  |IOSTANDARD = LVCMOS33 |DRIVE = 12;   #   

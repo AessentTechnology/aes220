@@ -1,0 +1,33 @@
+# aes220_RevA1_FX2_Interface_V1.0.ucf
+# Generic template
+# Uncomment as required (comment = #)
+
+#CONFIG ENABLE_SUSPEND = "FILTERED"; # Enables the suspend feature
+
+NET "FX2_CLKOUT_in" TNM_NET = "FX2_CLKOUT_in";
+TIMESPEC "TS_CLK" = PERIOD "FX2_CLKOUT_in" 20 ns HIGH 50 %;
+
+#   Net        Ball       Drive
+
+NET FX2_CLKOUT_in LOC= T9  | IOSTANDARD = LVCMOS33;  #
+
+NET SOFT_RESET_in LOC= T5  | IOSTANDARD = LVCMOS33;  #  
+
+#NET FX2_GPIO(0)   LOC= P10 | IOSTANDARD = LVCMOS33 | PULLUP;
+#NET FX2_GPIO(1)   LOC= R11 | IOSTANDARD = LVCMOS33;   #   
+#NET FX2_GPIO(2)   LOC= T12 | IOSTANDARD = LVCMOS33;   #   
+#NET FX2_GPIO(3)   LOC= R14 | IOSTANDARD = LVCMOS33;   #   
+#NET FX2_GPIO(4)   LOC= T6  | IOSTANDARD = LVCMOS33;   #  
+
+# Use FX2_3V3_ON to tell the FX2 that an external 3.3V is provided to
+# the board by setting it to 1. Otherwise leave it commented out.
+#NET FX2_3V3_ON_out   LOC= N8  | IOSTANDARD = LVCMOS33;   #  
+
+#NET FX2_SCL   LOC= P8 | IOSTANDARD = LVCMOS33;  # 
+#NET FX2_SDA   LOC= T4 | IOSTANDARD = LVCMOS33;  # 
+
+#NET FX2_IOD(0)   LOC= A2  | IOSTANDARD = LVCMOS33;   # PROG_B PIN
+#NET FX2_IOD(1)   LOC= T15 | IOSTANDARD = LVCMOS33;   # DONE PIN  
+#NET FX2_IOD(4)   LOC= T11 | IOSTANDARD = LVCMOS33;   # AWAKE
+#NET FX2_IOD(7)   LOC= R16 | IOSTANDARD = LVCMOS33;   # SUSPEND PIN
+

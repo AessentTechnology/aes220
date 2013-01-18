@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/home/sebastien/Workspace/vhdl/MyFirstExample/testbench_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="std_logic_arith" />
+            <top_module name="std_logic_unsigned" />
+            <top_module name="testbench" />
+            <top_module name="textio" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="2" />
+   <wvobject fp_name="/testbench/ports" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ports[7:0]</obj_property>
+      <obj_property name="ObjectShortName">ports[7:0]</obj_property>
+      <wvobject fp_name="/testbench/ports[7]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">ports[7]</obj_property>
+         <obj_property name="label">RESET</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[6]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">ports[6]</obj_property>
+         <obj_property name="label">CLOCK</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[5]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">ports[5]</obj_property>
+         <obj_property name="label">SW2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[4]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">ports[4]</obj_property>
+         <obj_property name="label">SW1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[3]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">ports[3]</obj_property>
+         <obj_property name="label">LED4</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[2]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">ports[2]</obj_property>
+         <obj_property name="label">LED3</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">ports[1]</obj_property>
+         <obj_property name="label">LED2</obj_property>
+      </wvobject>
+      <wvobject fp_name="/testbench/ports[0]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">ports[0]</obj_property>
+         <obj_property name="label">LED1</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/testbench/vector_size_c" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">vector_size_c</obj_property>
+      <obj_property name="ObjectShortName">vector_size_c</obj_property>
+   </wvobject>
+</wave_config>

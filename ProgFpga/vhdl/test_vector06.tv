@@ -1,0 +1,146 @@
+#---------------------------------------------------------------------------
+# File name: test_vector06.tv
+#---------------------------------------------------------------------------
+# Author: Sebastien Saury, Aessent Technology Ltd
+#-----------------------------------------------------------------------------
+# DESCRIPTION
+#
+# test vector file for:
+# VHDL test bench for aes220_SpiProgramming_tb3.vhd
+#
+#-------------------------------------------------------------------------------
+#
+# 0      means force 0
+# 1      means force 1
+# z or Z means force high impedance
+# l or L means expected 0
+# h or H means expected 1
+# x or X means do not care
+#
+#------------------------------------------------------------------------------
+#CHANGES
+#
+#
+#------------------------------------------------------------------------------
+#--
+#--    time    CLKOUT  SHFTON	CLKTST	SHFTOUT	SHFTIN	CS_B	LOAD_B	PORTB       PORTA       LED
+#--							        
+	25	0	X	 X	X	X	X       X	XXXX XXXX   XXXX XXXX   XXXX
+	50	1	X	 X	X	X	1       0       XXXX XXXX   XXXX XXXX   XXXX
+	75	0	X	 X	X	X	1       0       1101 0111   XXXX XXXX   XXXX
+	100	1	L	 H      X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	125	0	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	150	1	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	175	0	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	200	1	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	225	0	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	250	1	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	275	0	L	 H	X	X	0       0       1101 0111   XXXX XXXX   XXXX
+	300	1	L	 H	X	X	0       1       1101 0111   XXXX XXXX   XXXX
+	325	0	H        H	X	X	0       1       1101 0111   XXXX XXXX   XXXX
+	350	1	H	 L	H	X	0       1       1101 0111   XXXX XXXX   XXXX
+	375	0	H	 H	H	X	0       1       1101 0111   XXXX XXXX   XXXX
+	400     1	H	 L      H       X	0       1       1101 0111   XXXX XXXX   XXXX
+	425     0	H        H      H       X       0       1      	1101 0111   XXXX XXXX   XXXX
+	450     1	H        L      L	X	0       1       1101 0111   XXXX XXXX   XXXX
+	475     0	H        H      L	X	0       1       ZZZZ ZZZZ   XXXX XXXX   XXXX
+	500     1	H        L      H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	525     0	H        H      H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	550     1	H        L      L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	575	0	H        H	L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	600	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	625	0	H        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	650	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	675	0	H        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	700	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	725	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	750	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	775	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	800	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	825	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	850	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	875	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	900	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	925	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	950	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	975	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1000	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1025	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1050	1	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1075	0	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1100	1	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1125	0	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1150	1	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1175	0	L        H	H	X	0       0       XXXX XXXX   XXXX XXXX   XXXX
+	1200	1	L        H	H	X	0       0       0110 1011   XXXX XXXX   XXXX
+	1225	0	L        H	H	X	0       0       0110 1011   XXXX XXXX   XXXX
+	1250	1	L        H	H	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1275	0	H        H	H	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1300	1	H        L	L	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1325	0	H        H	L	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1350	1	H        L	H	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1375	0	H        H	H	X	0       1       0110 1011   XXXX XXXX   XXXX
+	1400	1	H        L	H	X	0       1       ZZZZ ZZZZ   XXXX XXXX   XXXX
+	1425	0	H        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1450	1	H        L	L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1475	0	H        H	L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1500	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1525	0	H        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1550	1	H        L	L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1575	0	H        H	L	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1600	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1625	0	H        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1650	1	H        L	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1675	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1700	1	L        H	H	X	0       1       XXXX XXXX   HLLH HHLL   XXXX
+	1725	0	L        H	H	X	0       1       XXXX XXXX   HLLH HHLL   XXXX
+	1750	1	L        H	H	X	0       1       XXXX XXXX   HLLH HHLL   XXXX
+	1775	0	L        H	H	X	0       1       XXXX XXXX   HLLH HHLL   XXXX
+	1800	1	L        H	H	X	0       1       XXXX XXXX   HLLH HHLL   XXXX
+	1825	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1850	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1875	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1900	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1925	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1950	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	1975	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2000	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2025	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2050	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2075	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2100	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2125	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2150	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2175	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2200	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2225	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2250	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2275	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2300	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2325	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2350	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2375	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2400	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2425	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2450	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2475	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2500	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2525	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2550	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2575	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2600	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2625	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2650	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2675	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2700	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2725	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2750	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2775	0	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2800	1	L        H	H	X	0       1       XXXX XXXX   XXXX XXXX   XXXX
+	2825	0	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2850	1	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2875	0	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2900	1	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2925	0	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2950	1	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX
+	2975	0	L        H	H	X	1       1       XXXX XXXX   XXXX XXXX   XXXX

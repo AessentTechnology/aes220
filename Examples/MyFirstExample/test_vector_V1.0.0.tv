@@ -1,0 +1,69 @@
+#---------------------------------------------------------------------------
+# File name: test_vector_V1.0.0.tv
+#---------------------------------------------------------------------------
+# Author: Sebastien Saury, Aessent Technology Ltd
+#-----------------------------------------------------------------------------
+# DESCRIPTION
+#
+# test vector file for:
+# VHDL test bench for aes220_MyFirstExampleTestBench-1.vhd
+# Time below is in ns as defined in the testbench file.
+#
+#-------------------------------------------------------------------------------
+#
+# 0      means force 0
+# 1      means force 1
+# z or Z means force high impedance
+# l or L means expected 0
+# h or H means expected 1
+# x or X means do not care
+#			   
+#------------------------------------------------------------------------------
+#CHANGES		     
+#			     
+#			     
+#------------------------------------------------------------------------------
+#			     
+#       time RST CLKOUT SW LED
+#			     
+	25   1   0      XX XXXX
+	50   1   1      00 XXXX
+	75   1   0      00 HHHL
+	100  1   1      00 HHHL
+	125  0   0      00 HHHL
+	150  0   1      00 HHHL
+	175  0   0      00 HHHL
+	200  0   1      00 HHHL
+	225  0   0      00 HHLH
+	250  0   1      00 HHLH
+	275  0   0      00 HHLH
+	300  0   1      00 HHLH
+	325  0   0      00 LHHH
+	350  0   1      00 LHHH
+	375  0   0      00 LHHH
+	400  0   1      00 LHHH
+	425  0   0      00 HLHH
+	450  0   1      00 HLHH
+       	475  0   0      00 HLHH
+	500  0   1      00 HLHH
+	525  0   0      00 HHHL
+	550  0   1      00 HHHL
+	575  0   0      01 HHHL
+	600  0   1      01 HHHL
+	625  0   0      01 HHLH
+	650  0   1      01 HHLH
+	675  0   0      01 HHLH
+       	700  0   1      01 HHLH
+	725  0   0      01 HHHL
+	750  0   1      01 HHHL
+	775  0   0      01 HHHL
+	800  0   1      01 HHHL
+	825  0   0      01 HLHH
+	850  0   1      01 HLHH
+	875  0   0      01 HLHH
+	900  0   1      01 HLHH
+	925  0   0      01 LHHH
+	950  0   1      01 LHHH
+	975  0   0      01 LHHH
+			     
+			    

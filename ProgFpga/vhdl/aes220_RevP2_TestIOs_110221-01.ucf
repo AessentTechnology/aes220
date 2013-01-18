@@ -1,0 +1,5 @@
+#      Net             Ball 
+NET    SHFTOUT      LOC= A9  |IOSTANDARD = LVCMOS33;   #  BankF 1
+NET    SHFTIN       LOC= B6  |IOSTANDARD = LVCMOS33;   #  BankF 3
+NET    SHFTON       LOC= C5  |IOSTANDARD = LVCMOS33;   #  BankF 5
+NET    CLKTST       LOC= B4  |IOSTANDARD = LVCMOS33;   #  BankF 7

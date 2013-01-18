@@ -1,0 +1,137 @@
+ASxxxx Assembler V01.70 + NoICE + SDCC mods + Flat24 Feb-1999  (Intel 8051), page 1.
+
+
+
+                              1 ; Copyright (C) 2010 Ubixum, Inc. 
+                              2 ;
+                              3 ; This library is free software; you can redistribute it and/or
+                              4 ; modify it under the terms of the GNU Lesser General Public
+                              5 ; License as published by the Free Software Foundation; either
+                              6 ; version 2.1 of the License, or (at your option) any later version.
+                              7 ; 
+                              8 ; This library is distributed in the hope that it will be useful,
+                              9 ; but WITHOUT ANY WARRANTY; without even the implied warranty of
+                             10 ; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+                             11 ; Lesser General Public License for more details.
+                             12 ; 
+                             13 ; You should have received a copy of the GNU Lesser General Public
+                             14 ; License along with this library; if not, write to the Free Software
+                             15 ; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+                             16 
+                             17 .module INT2AV ; jump table for usb auto vector
+                             18 
+                             19 .globl _INT2JT ; defined as global so this assembly gets included in project 
+                             20 
+                             21 .area INT2AV (ABS,OVR)
+   0043                      22 .org    0x43 ; this is where USBINT ( interrupt 8 ) jumps to
+                    0045     23 _INT2AV = #. + 2 ; two bytes for ljmp (auto set by INT2IVEC)
+   0043 02 00 00             24     ljmp _INT2JT
+                             25 
+                             26 ; INT2 Jump Table
+                             27 
+                             28 .area INT2JT ( CODE )
+                             29 ;.org    0x1A00 ; needs to be on a page boundary
+                             30 
+   0000                      31 _INT2JT:
+   0000 02 00 00             32     ljmp _sudav_isr
+   0003 00                   33     .db 0
+   0004 02 00 00             34     ljmp _sof_isr
+   0007 00                   35     .db 0
+   0008 02 00 00             36     ljmp _sutok_isr
+   000B 00                   37     .db 0
+   000C 02 00 00             38     ljmp _suspend_isr
+   000F 00                   39     .db 0
+   0010 02 00 00             40     ljmp _usbreset_isr
+   0013 00                   41     .db 0
+   0014 02 00 00             42     ljmp _hispeed_isr
+   0017 00                   43     .db 0
+   0018 02 00 00             44     ljmp _ep0ack_isr
+   001B 00                   45     .db 0
+   001C 02 00 00             46     ljmp _spare_isr
+   001F 00                   47     .db 0
+   0020 02 00 00             48     ljmp _ep0in_isr
+   0023 00                   49     .db 0
+   0024 02 00 00             50     ljmp _ep0out_isr
+   0027 00                   51     .db 0
+   0028 02 00 00             52     ljmp _ep1in_isr
+   002B 00                   53     .db 0
+   002C 02 00 00             54     ljmp _ep1out_isr
+   002F 00                   55     .db 0
+   0030 02 00 00             56     ljmp _ep2_isr
+ASxxxx Assembler V01.70 + NoICE + SDCC mods + Flat24 Feb-1999  (Intel 8051), page 2.
+
+
+
+   0033 00                   57     .db 0
+   0034 02 00 00             58     ljmp _ep4_isr
+   0037 00                   59     .db 0
+   0038 02 00 00             60     ljmp _ep6_isr
+   003B 00                   61     .db 0
+   003C 02 00 00             62     ljmp _ep8_isr
+   003F 00                   63     .db 0
+   0040 02 00 00             64     ljmp _ibn_isr
+   0043 00                   65     .db 0
+   0044 02 00 00             66     ljmp _spare_isr
+   0047 00                   67     .db 0
+   0048 02 00 00             68     ljmp _ep0ping_isr
+   004B 00                   69     .db 0
+   004C 02 00 00             70     ljmp _ep1ping_isr
+   004F 00                   71     .db 0
+   0050 02 00 00             72     ljmp _ep2ping_isr
+   0053 00                   73     .db 0
+   0054 02 00 00             74     ljmp _ep4ping_isr
+   0057 00                   75     .db 0
+   0058 02 00 00             76     ljmp _ep6ping_isr
+   005B 00                   77     .db 0
+   005C 02 00 00             78     ljmp _ep8ping_isr
+   005F 00                   79     .db 0
+   0060 02 00 00             80     ljmp _errlimit_isr
+   0063 00                   81     .db 0
+   0064 02 00 00             82     ljmp _spare_isr
+   0067 00                   83     .db 0
+   0068 02 00 00             84     ljmp _spare_isr
+   006B 00                   85     .db 0
+   006C 02 00 00             86     ljmp _spare_isr
+   006F 00                   87     .db 0
+   0070 02 00 00             88     ljmp _ep2isoerr_isr
+   0073 00                   89     .db 0
+   0074 02 00 00             90     ljmp _ep4isoerr_isr
+   0077 00                   91     .db 0
+   0078 02 00 00             92     ljmp _ep6isoerr_isr
+   007B 00                   93     .db 0
+   007C 02 00 00             94     ljmp _ep8isoerr_isr
+   007F 00                   95     .db 0
+                             96 ; INT4JT
+   0080 02 00 00             97     ljmp _ep2pf_isr
+   0083 00                   98     .db 0
+   0084 02 00 00             99     ljmp _ep4pf_isr
+   0087 00                  100     .db 0
+   0088 02 00 00            101     ljmp _ep6pf_isr
+   008B 00                  102     .db 0
+   008C 02 00 00            103     ljmp _ep8pf_isr
+   008F 00                  104     .db 0
+   0090 02 00 00            105     ljmp _ep2ef_isr
+   0093 00                  106     .db 0
+   0094 02 00 00            107     ljmp _ep4ef_isr
+   0097 00                  108     .db 0
+   0098 02 00 00            109     ljmp _ep6ef_isr
+   009B 00                  110     .db 0
+   009C 02 00 00            111     ljmp _ep8ef_isr
+   009F 00                  112     .db 0
+ASxxxx Assembler V01.70 + NoICE + SDCC mods + Flat24 Feb-1999  (Intel 8051), page 3.
+
+
+
+   00A0 02 00 00            113     ljmp _ep2ff_isr
+   00A3 00                  114     .db 0
+   00A4 02 00 00            115     ljmp _ep4ff_isr
+   00A7 00                  116     .db 0
+   00A8 02 00 00            117     ljmp _ep6ff_isr
+   00AB 00                  118     .db 0
+   00AC 02 00 00            119     ljmp _ep8ff_isr
+   00AF 00                  120     .db 0
+   00B0 02 00 00            121     ljmp _gpifdone_isr
+   00B3 00                  122     .db 0
+   00B4 02 00 00            123     ljmp _gpifwf_isr
+   00B7 00                  124     .db 0
+                            125     

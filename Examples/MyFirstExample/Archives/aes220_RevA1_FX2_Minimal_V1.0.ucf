@@ -1,0 +1,15 @@
+# aes220_RevA1_Minimal_V1.0.ucf
+# Generic template
+# Uncomment as required (comment = #)
+
+#CONFIG ENABLE_SUSPEND = "FILTERED"; # Enables the suspend feature
+
+NET "FX2_CLKOUT_in" TNM_NET = "FX2_CLKOUT_in";
+TIMESPEC "TS_CLK" = PERIOD "FX2_CLKOUT_in" 20 ns HIGH 50 %;
+
+#   Net        Ball       Drive
+
+NET SOFT_RESET_in LOC= T5  | IOSTANDARD = LVCMOS33;  #  
+
+NET FX2_CLKOUT_in  LOC= T9  | IOSTANDARD = LVCMOS33;   #  
+
