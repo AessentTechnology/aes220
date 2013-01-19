@@ -1,0 +1,84 @@
+# aes220_RevA1_Banks_V1.0.0.ucf
+# Generic template
+# Comment/Uncomment as required (comment = #)
+
+#      Net          Ball      Drive
+
+NET    BANKA_io(0)     LOC= K3 | IOSTANDARD = LVCMOS33;   # LHCLK6 #
+NET    BANKA_io(1)     LOC= K1 | IOSTANDARD = LVCMOS33;   # LHCLK7 #
+NET    BANKA_io(2)     LOC= R1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(3)     LOC= P2 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(4)     LOC= N2 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(5)     LOC= P1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(6)     LOC= N3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(7)     LOC= M4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(8)     LOC= M3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(9)     LOC= L4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(10)    LOC= K4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKA_io(11)    LOC= L3 | IOSTANDARD = LVCMOS33;   				 #
+ 						       
+NET    BANKB_io(0)     LOC= H3 | IOSTANDARD = LVCMOS33;   # LHCLK2 #
+NET    BANKB_io(1)     LOC= J3 | IOSTANDARD = LVCMOS33;   # LHCLK3 #
+NET    BANKB_io(2)     LOC= M1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(3)     LOC= N1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(4)     LOC= L1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(5)     LOC= L2 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(6)     LOC= J2 | IOSTANDARD = LVCMOS33;   # LHCLK4 #
+NET    BANKB_io(7)     LOC= J1 | IOSTANDARD = LVCMOS33;   # LHCLK5 #
+NET    BANKB_io(8)     LOC= G3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(9)     LOC= H4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(10)    LOC= F1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKB_io(11)    LOC= G1 | IOSTANDARD = LVCMOS33;   				 #
+ 						       
+NET    BANKC_io(0)     LOC= G2 | IOSTANDARD = LVCMOS33;   # LHCLK0 #
+NET    BANKC_io(1)     LOC= H1 | IOSTANDARD = LVCMOS33;   # LHCLK1 #
+NET    BANKC_io(2)     LOC= F3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(3)     LOC= G4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(4)     LOC= E3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(5)     LOC= E2 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(6)     LOC= D4 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(7)     LOC= D3 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(8)     LOC= D1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(9)     LOC= E1 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(10)    LOC= C2 | IOSTANDARD = LVCMOS33;   				 #
+NET    BANKC_io(11)    LOC= C1 | IOSTANDARD = LVCMOS33;   				 #
+ 
+NET    BANKD_io(0)     LOC= D13 | IOSTANDARD = LVCMOS33;           #
+NET    BANKD_io(1)     LOC= C13 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(2)     LOC= C12 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(3)     LOC= D11 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(4)     LOC= B15 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(5)     LOC= B14 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(6)     LOC= A14 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(7)     LOC= A13 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(8)     LOC= D10 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(9)     LOC= E10 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKD_io(10)    LOC= C10 | IOSTANDARD = LVCMOS33;  # GCLK4	 #
+NET    BANKD_io(11)    LOC= D9  | IOSTANDARD = LVCMOS33;  # GCLK5	 #
+
+NET    BANKE_io(0)     LOC= B12 | IOSTANDARD = LVCMOS33;           #
+NET    BANKE_io(1)     LOC= A12 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(2)     LOC= C11 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(3)     LOC= A11 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(4)     LOC= B10 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(5)     LOC= A10 | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(6)     LOC= A7  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(7)     LOC= C7  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(8)     LOC= D7  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(9)     LOC= C6  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKE_io(10)    LOC= A8  | IOSTANDARD = LVCMOS33;  # GCLK10 #
+NET    BANKE_io(11)    LOC= B8  | IOSTANDARD = LVCMOS33;  # GCLK11 #
+
+NET    BANKF_io(0)     LOC= C9  | IOSTANDARD = LVCMOS33;           #
+NET    BANKF_io(1)     LOC= A9  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(2)     LOC= A6  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(3)     LOC= B6  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(4)     LOC= A5  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(5)     LOC= C5  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(6)     LOC= A4  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(7)     LOC= B4  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(8)     LOC= A3  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(9)     LOC= B3  | IOSTANDARD = LVCMOS33;  				 #
+NET    BANKF_io(10)    LOC= C8  | IOSTANDARD = LVCMOS33;  # GCLK8	 #
+NET    BANKF_io(11)    LOC= D8  | IOSTANDARD = LVCMOS33;  # GCLK9	 #
+
