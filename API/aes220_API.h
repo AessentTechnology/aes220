@@ -311,7 +311,7 @@ extern "C" {
 
      Returns 0 on success.
   */
-  int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t *boardInfo);
+  int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t * boardInfo);
 
   /* Function:  int aes220_Get_Firmware_Info(aes220_handle *aes220_ptr, const uint8_t *firmwareInfo)
      Reads the software version written into the code.
@@ -326,7 +326,80 @@ extern "C" {
 
      Returns 0 on success.
   */
-  int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t* firmwareInfo_ptr);
+  int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t * firmwareInfo_ptr);
+
+  /* Function:  int aes220_Program_MC_RAM(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
+     Programs the micro-controller RAM with the given file.
+
+     Parameters:
+
+     aes220_ptr: a handle to the USB device
+
+     file_ptr: pointer to the file to be downloaded in the micro-controller's RAM 
+
+     Returns:
+
+     Returns 0 on success.
+  */
+  int aes220_Program_MC_RAM(aes220_handle* aes220_ptr, const char * file_ptr);
+
+  /* Function:  int aes220_Program_MC_EEPROM(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
+     Programs the micro-controller EEPROM with the given file.
+
+     Parameters:
+
+     aes220_ptr: a handle to the USB device
+
+     file_ptr: pointer to the file to be downloaded in the micro-controller's EEPROM
+
+     Returns:
+
+     Returns 0 on success.
+  */
+  int aes220_Program_MC_EEPROM(aes220_handle* aes220_ptr, const char * file_ptr);
+
+  /* Function:  int aes220_Configure_FPGA(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
+     Configure the FPGA with the given file.
+
+     Parameters:
+
+     aes220_ptr: a handle to the USB device
+
+     file_ptr: pointer to the FPGA configuration file
+
+     Returns:
+
+     Returns 0 on success.
+  */
+  int aes220_Configure_FPGA(aes220_handle* aes220_ptr, const char * file_ptr);
+
+  /* Function:  int aes220_Program_FPGA(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
+     Program the FPGA flash with the given file.
+
+     Parameters:
+
+     aes220_ptr: a handle to the USB device
+
+     file_ptr: pointer to the FPGA configuration file
+
+     Returns:
+
+     Returns 0 on success.
+  */
+  int aes220_Program_FPGA(aes220_handle* aes220_ptr, const char * file_ptr);
+
+  /* Function:  int aes220_Erase_FPGA(aes220_handle *aes220_ptr)
+     Erase the FPGA with the given file.
+
+     Parameters:
+
+     aes220_ptr: a handle to the USB device
+
+     Returns:
+
+     Returns 0 on success.
+  */
+  int aes220_Erase_FPGA(aes220_handle* aes220_ptr);
 
   /*************************************************************************************************
 Development functions. Do not include in release version of library

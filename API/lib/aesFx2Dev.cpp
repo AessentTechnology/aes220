@@ -106,62 +106,60 @@ int aesFx2Dev::writeRAM(size_t addr,const unsigned char *data,
   return(rv);
 }
 
-int aesFx2Dev::programIHexLine(const char *buf,
-	const char *path,int line)
-{
-	const char *s=buf;
-	if(*s!=':')
-	  {  cerr << path << ": " << line << ": format violation (1)" << endl;
-		return(1);  }
-	++s;
+int aesFx2Dev::programIHexLine(const char *buf,	const char *path,int line) {
+  const char *s=buf;
+  if(*s!=':')
+    {  cerr << path << ": " << line << ": format violation (1)" << endl;
+      return(1);  }
+  ++s;
 
-	unsigned int nbytes=0,addr=0,type=0;
-	if(sscanf(s,"%02x%04x%02x",&nbytes,&addr,&type)!=3)
-	{  fprintf(stderr,"%s:%d: format violation (2)\n",path,line);
-		return(1);  }
-	s+=8;
+  unsigned int nbytes=0,addr=0,type=0;
+  if(sscanf(s,"%02x%04x%02x",&nbytes,&addr,&type)!=3)
+    {  fprintf(stderr,"%s:%d: format violation (2)\n",path,line);
+      return(1);  }
+  s+=8;
 
-	if(type==0)
+  if(type==0)
+    {
+      //printf("  Writing nbytes=%d at addr=0x%04x\n",nbytes,addr);
+      assert(nbytes>=0 && nbytes<256);
+      unsigned char data[nbytes];
+      unsigned char cksum=nbytes+addr+(addr>>8)+type;
+      for(unsigned int i=0; i<nbytes; i++)
 	{
-		//printf("  Writing nbytes=%d at addr=0x%04x\n",nbytes,addr);
-		assert(nbytes>=0 && nbytes<256);
-		unsigned char data[nbytes];
-		unsigned char cksum=nbytes+addr+(addr>>8)+type;
-		for(unsigned int i=0; i<nbytes; i++)
-		{
-			unsigned int d=0;
-			if(sscanf(s,"%02x",&d)!=1)
-			{  fprintf(stderr,"%s:%d: format violation (3)\n",
-				   path,line);
-				return(1);  }
-			s+=2;
-			data[i]=d;
-			cksum+=d;
-		}
-		unsigned int file_cksum=0;
-		if(sscanf(s,"%02x",&file_cksum)!=1)
-		{  fprintf(stderr,"%s:%d: format violation (4)\n",path,line);
-			return(1);  }
-		if((cksum+file_cksum)&0xff)
-		{  fprintf(stderr,"%s:%d: checksum mismatch (%u/%u)\n",
-			path,line,cksum,file_cksum);  return(1);  }
-		if(writeRAM(addr,data,nbytes)>0)
-		  {
-		    return(0);
-		  } // was 1 originally?
+	  unsigned int d=0;
+	  if(sscanf(s,"%02x",&d)!=1)
+	    {  fprintf(stderr,"%s:%d: format violation (3)\n",
+		       path,line);
+	      return(1);  }
+	  s+=2;
+	  data[i]=d;
+	  cksum+=d;
 	}
-	else if(type==1)
+      unsigned int file_cksum=0;
+      if(sscanf(s,"%02x",&file_cksum)!=1)
+	{  fprintf(stderr,"%s:%d: format violation (4)\n",path,line);
+	  return(1);  }
+      if((cksum+file_cksum)&0xff)
+	{  fprintf(stderr,"%s:%d: checksum mismatch (%u/%u)\n",
+		   path,line,cksum,file_cksum);  return(1);  }
+      if(writeRAM(addr,data,nbytes)>0)
 	{
-		// EOF marker. Oh well, trust it.
-		return(-1);
-	}
-	else
-	{
-		fprintf(stderr,"%s:%d: Unknown entry type %d\n",path,line,type);
-		return(1);
-	}
+	  return(0);
+	} // was 1 originally?
+    }
+  else if(type==1)
+    {
+      // EOF marker. Oh well, trust it.
+      return(-1);
+    }
+  else
+    {
+      fprintf(stderr,"%s:%d: Unknown entry type %d\n",path,line,type);
+      return(1);
+    }
 
-	return(0);
+  return(0);
 }
 
 int aesFx2Dev::programIHexFile(const char *path)

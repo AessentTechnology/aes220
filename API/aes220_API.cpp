@@ -151,17 +151,52 @@ DLLEXPORT int aes220_Set_Board_Info(aes220_handle* aes220_ptr, const uint8_t *bo
   return rv;
 }
 
-DLLEXPORT int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t *boardInfo)
+DLLEXPORT int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t * boardInfo)
 {
   int rv = 99;
   rv = aes220_ptr->get_Board_Info(boardInfo);
   return rv;
 }
 
-DLLEXPORT int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t* firmwareInfo_ptr)
+DLLEXPORT int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t * firmwareInfo_ptr)
 {
   int rv = 99;
   rv = aes220_ptr->get_Firmware_Info(firmwareInfo_ptr);
+  return rv;
+}
+
+DLLEXPORT int aes220_Program_MC_RAM(aes220_handle* aes220_ptr, const char * file_ptr)
+{
+  int rv = 99;
+  rv = aes220_ptr->program_MC_RAM(file_ptr);
+  return rv;
+}
+
+DLLEXPORT int aes220_Program_MC_EEPROM(aes220_handle* aes220_ptr, const char * file_ptr)
+{
+  int rv = 99;
+  rv = aes220_ptr->program_MC_EEPROM(file_ptr);
+  return rv;
+}
+
+DLLEXPORT int aes220_Configure_FPGA(aes220_handle* aes220_ptr, const char * file_ptr)
+{
+  int rv = 99;
+  rv = aes220_ptr->configure_FPGA(file_ptr);
+  return rv;
+}
+
+DLLEXPORT int aes220_Program_FPGA(aes220_handle* aes220_ptr, const char * file_ptr)
+{
+  int rv = 99;
+  rv = aes220_ptr->program_FPGA(file_ptr);
+  return rv;
+}
+
+DLLEXPORT int aes220_Erase_FPGA(aes220_handle* aes220_ptr)
+{
+  int rv = 99;
+  rv = aes220_ptr->erase_FPGA();
   return rv;
 }
 
