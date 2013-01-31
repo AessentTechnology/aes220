@@ -196,7 +196,7 @@ DLLEXPORT int aes220_Program_FPGA(aes220_handle* aes220_ptr, const char * file_p
 DLLEXPORT int aes220_Erase_FPGA(aes220_handle* aes220_ptr)
 {
   int rv = 99;
-  rv = aes220_ptr->erase_FPGA();
+  rv = aes220_ptr->erase_FPGA_Flash();
   return rv;
 }
 

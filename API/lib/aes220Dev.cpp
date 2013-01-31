@@ -37,6 +37,7 @@ Post release
 1.4.1: Change log function, now a separate class, added automatic recognition
        of board model (aes220a or b) when selecting SPI programming binary for
        configuring the FPGA prior to communicating with its flash
+1.x.x: 
 
 ===============================================================================
 NOTES
@@ -527,7 +528,7 @@ int aes220Dev::program_FPGA(const string fFile)
 	return PROG_ERROR;
       }
       log.add("Writing page: ", payloadCount, NOISE_VBS);
-      rv = write_FPGA_Page(dataRead, flashAddress);
+      rv = write_FPGA_Flash_Page(dataRead, flashAddress);
       if (rv) {
 	log.add("Failed writing page. Error: ", rv, ERROR_VBS);
 	transferOver = true;
@@ -602,46 +603,35 @@ int aes220Dev::program_FPGA(const string fFile)
 }
 
 
-// erase_FPGA
+// erase_FPGA_Flash
 /*****************************************************************************/
 // For the time being erases the fpga spi flash first page
-int aes220Dev::erase_FPGA()
-{
+int aes220Dev::erase_FPGA_Flash() {
   int rv = 99;
-  //rv = aes220Dev::erase_FPGA_First_Page();
+  uint8_t pgAddress[2] = {0, 0};
+  rv = erase_FPGA_Flash_Page(pgAddress, 0);
   return rv;
 }
 
-// erase_FPGA_First_Page
+// erase_Fpga_Flash_Page
 /*****************************************************************************/
-// Erases the fpga spi flash first page
-int aes220Dev::erase_FPGA_First_Page()
-{
+// Programs the fpga spi flash
+int aes220Dev::erase_FPGA_Flash_Page(uint8_t * pgAddress, uint16_t nbOfPages) {
+
   int rv = 99;
-  uint8_t commandByte[64];
-  uint8_t orgMC_Mode;
-  uint8_t *orgMC_Mode_ptr = &orgMC_Mode;
-  uint8_t MC_Mode;
-  uint8_t *MC_Mode_ptr = &MC_Mode;
-  uint16_t bs = 0;
+  uint8_t ctrlByte;
+
+  // First configure the FPGA with the flash SPI interface
   const string aes220a_fpgaSpiFile = "aes220a_progFpga_ent.bin";
   const string aes220b_fpgaSpiFile = "aes220b_progFpga_ent.bin";
   string fpgaSpiFile;
-  uint16_t value;
-  uint16_t index;
-
-
-  // Writes to the application log window
-  log.add("Starting FPGA first page erasing process", NOTE_VBS);
- 
+  uint8_t orgMC_Mode;
+  uint8_t MC_Mode;
   // Record the mode the micro-controller is in
-  read_MC_Mode(orgMC_Mode_ptr);
-  // ..change the mode to port mode
+  read_MC_Mode(&orgMC_Mode);
+  // Change the mode to port mode
   MC_Mode = PORT_MODE;
-  set_MC_Mode(MC_Mode_ptr);
-
-
-  // First configure the FPGA with the flash SPI interface
+  set_MC_Mode(&MC_Mode);
   // Configure the FPGA to write to the Flash with the file that relates to the module model
   uint8_t boardInfo[8];
   uint8_t model = 'z';
@@ -662,57 +652,47 @@ int aes220Dev::erase_FPGA_First_Page()
   rv = configure_FPGA(fpgaSpiFile);
   if (rv != 0) return FPGA_CONF_ERROR;
 
-  // Set the micro-controller to map the SPI pins of the fpga
-  commandByte[0] = FLASH_F;
-  bs = 1;
-  log.add("Sending command byte...", NOTE_VBS);
-  rv = do_usb_command(EP0_WRITE, VC_UC_CMD, 0, 0, commandByte, bs, TIME_OUT);
-  if (rv != bs) {
-    log.add("Vendor command failure (sending uC command byte). Error: ", rv, 
-								 ERROR_VBS);
-    return VND_COMM_ERROR;
-  }
-  else {
-    log.add("...sent", NOTE_VBS);
+  int pageCount = 0;
+  uint8_t dummyByte = 0x55;
+
+  // Send start of programming byte using Vendor Command
+  rv = set_FPGA_Flash_Programming_Mode();
+  log.add("Setting the micro-controller to FPGA flash programming mode...", NOTE_VBS);
+
+  while (pageCount <= nbOfPages) {
+    log.add("Erasing page: ", pageCount, NOISE_VBS);
+    rv = send_FPGA_Flash_Command(PAGE_ERASE, *pgAddress, *(pgAddress+1), dummyByte, NULL, 0);
+    if (rv) {
+      log.add("Failed erasing page. Error: ", rv, ERROR_VBS);
+      return BULK_TX_ERROR;
+    }
+    else {
+      log.add("Page erased", NOISE_VBS);
+      pageCount++;
+    }
   }
 
-  // Send the erase page command
-  log.add("Sending command byte...", NOTE_VBS);
-  value = PAGE_ERASE;
-  index = 0;
-  commandByte[0] = 0;    // Page address
-  commandByte[1] = 0;    // Page address
-  commandByte[2] = 0x55; // Dummy byte
-  bs = 3;
+  log.add("... Done.", NOTE_VBS);
+  log.add("Number of pages erased: ", pageCount, NOTE_VBS);
 
-  rv = do_usb_command(EP0_WRITE, VC_FLASHCMD, value, index, commandByte, bs, TIME_OUT);
-  if (rv != bs) {
-    log.add("Vendor command failure (sending flash erase command byte). Error: ", rv, 
-								 ERROR_VBS);
-    return VND_COMM_ERROR;
-  }
-  else {
-    log.add("...sent", NOTE_VBS);
+  log.add("Resetting fpga ", NOTE_VBS);
+  ctrlByte = RESET_F;
+  rv = bulkTransfer(&ctrlByte, 1, EP2, TIME_OUT);
+  if (rv) {
+    log.add("Could not reset FPGA! Error: ", rv, ERROR_VBS);
+    return rv;
   }
 
-  log.add("Reading the result...", NOTE_VBS);
-  rv = do_usb_command(EP0_READ, VC_FLASHCMD, value, index, commandByte, bs, TIME_OUT);
-  if (rv != bs) {
-    log.add("Vendor command failure (read flash results). Error: ", rv, 
-								 ERROR_VBS);
-    return VND_COMM_ERROR;
-  }
-  else {
-    log.add("...sent", NOTE_VBS);
-    log.add("Flash returned: ", commandByte[2], NOISE_VBS);
-  }
+  log.add("Restoring micro-controller previous state", NOTE_VBS);
+  set_MC_Mode(&orgMC_Mode);
+
   return rv;
 }
 
-// write_FPGA_Page
+// write_FPGA_Flash_Page
 /*****************************************************************************/
 // Writes one fpga spi flash page (256bytes)
-int aes220Dev::write_FPGA_Page(unsigned char *pgContents, 
+int aes220Dev::write_FPGA_Flash_Page(unsigned char *pgContents, 
 			       unsigned char *pgAddress)
 {
   int rv = 99;
@@ -730,7 +710,7 @@ int aes220Dev::write_FPGA_Page(unsigned char *pgContents,
   unsigned char frameOut[PAGE_SIZE + 5];
   int payloadSize = PAGE_SIZE;
 
-  ctrlByte = WRITE_PAGE;
+  ctrlByte = WRITE_CMD;
   cmdByte = PPTB1;
 
   // Create a frame by concatenating the control byte, cmds, address and the
@@ -753,8 +733,7 @@ int aes220Dev::write_FPGA_Page(unsigned char *pgContents,
     int count = 0;
     while (rv == -7) {
       count ++;
-      log.add("Time out error while sending data, retry number: ", 
-									 count , NOTE_VBS);
+      log.add("Time out error while sending data, retry number: ", count , NOTE_VBS);
       // If too many attempts give up
       if (count == TIME_OUT_RETRY) return BULK_TX_ERROR;
       // otherwise try again
@@ -783,6 +762,88 @@ int aes220Dev::write_FPGA_Page(unsigned char *pgContents,
   return rv;
 }
 
+// send_FPGA_Flash_Command
+/*****************************************************************************/
+// Sends a command to the FPGA flash via its spi interface
+// See the Xilinx document UG333 for the different commands available
+int aes220Dev::send_FPGA_Flash_Command(uint8_t cmdByte, uint8_t byte2, uint8_t byte3, 
+				       uint8_t byte4, uint8_t * data, uint16_t dataSize)
+{
+  int rv = 99;
+  int headerSize = 5;
+  uint8_t ctrlByte;
+
+  // Writes to the application log window
+  log.add("Starting send FPGA flash command", NOISE_VBS);
+
+  uint8_t * frameOut = new uint8_t[dataSize];
+  switch (cmdByte) {
+  case FAST_READ | RND_READ | BUF1RD | BUF2RD :
+    ctrlByte = READ_CMD;
+    break; 
+  default:  
+    ctrlByte = WRITE_CMD;
+    break;
+  }
+
+  // Create a frame by concatenating the control byte, cmds, address and the
+  // read data
+  frameOut[0] = ctrlByte;
+  frameOut[1] = cmdByte;
+  frameOut[2] = byte2;
+  frameOut[3] = byte3;
+  frameOut[4] = byte4;
+  if (ctrlByte == WRITE_CMD) {
+    for (int i = 0; i < dataSize; i++) {
+      frameOut[i+headerSize] = *data++;
+    }
+  }
+  // Check the flash status
+  rv = wait_For_Flash();
+  if (rv == FLASH_ERROR) return FLASH_ERROR;
+  // and send the frame out via the USB interface
+  if (ctrlByte == WRITE_CMD) {rv = bulkTransfer(frameOut, dataSize+headerSize, EP2, TIME_OUT);}
+  else {rv = bulkTransfer(frameOut, headerSize, EP2, TIME_OUT);}
+  if (rv == -7) { // if the command times out try again
+    int count = 0;
+    while (rv == -7) {
+      count ++;
+      log.add("Time out error while sending data, retry number: ", count , NOTE_VBS);
+      // If too many attempts give up
+      if (count == TIME_OUT_RETRY) return BULK_TX_ERROR;
+      // otherwise try again
+      rv = bulkTransfer(frameOut, headerSize, EP2, TIME_OUT);
+    }
+  }
+  // Read the data back if it is a read command
+  // This part has not been tested yet!!!
+  if (ctrlByte == READ_CMD) {
+    rv = bulkTransfer(data, dataSize, EP6, TIME_OUT);
+    if (rv == -7) { // if the command times out try again
+      int count = 0;
+      while (rv == -7) {
+	count ++;
+	log.add("Time out error while sending data, retry number: ", count , NOTE_VBS);
+	// If too many attempts give up
+	if (count == TIME_OUT_RETRY) return BULK_TX_ERROR;
+	// otherwise try again
+	rv = bulkTransfer(frameOut, dataSize, EP6, TIME_OUT);
+      }
+    }
+  }  // Wait for the command to be executed (30 to 40ms)
+  msleep(40);
+
+  // Check the flash status
+  rv = wait_For_Flash();
+  if (rv == FLASH_ERROR) return FLASH_ERROR;
+
+  if (!rv) {
+    log.add("Command completed.", NOISE_VBS);
+  }
+  delete frameOut;
+  return rv;
+}
+
 // readFpgaPage
 /*****************************************************************************/
 // Reads one fpga spi flash page (256bytes)
@@ -800,7 +861,7 @@ int aes220Dev::read_FPGA_Page(unsigned char *pgContents,
   unsigned char frameOut[PAGE_SIZE + 5];
   int payloadSize = PAGE_SIZE;
 
-  ctrlByte = READ_PAGE;
+  ctrlByte = READ_CMD;
   cmdByte = FAST_READ;
 
   // Create a command frame by concatenating the control byte, cmds, address
@@ -1381,7 +1442,7 @@ int aes220Dev::get_Firmware_Info(const uint8_t* firmwareInfo_ptr)
 // write_FPGA_PageII
 /*****************************************************************************/
 // Writes one fpga spi flash page (256bytes)
-int aes220Dev::write_FPGA_PageII(uint8_t buffer, uint8_t *pgAddress, uint8_t *pgContents)
+int aes220Dev::write_FPGA_Flash_PageII(uint8_t buffer, uint8_t *pgAddress, uint8_t *pgContents)
 {
   int rv = 99;
   const uint8_t MAX_PAYLOAD = MAX_EP0_DATA - 4;

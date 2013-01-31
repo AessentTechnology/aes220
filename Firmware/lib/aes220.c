@@ -287,7 +287,7 @@ BYTE progFpga()
 	SYNCDELAY();
 	EP6BCL=1;
 	break; // end of case STATUS_CHECK
-      case WRITE_PAGE:
+      case WRITE_CMD:
 	CS_B = 0;
 	for (i=1;i<bytes;++i) {
 	  LOAD_B = 0;
@@ -295,8 +295,8 @@ BYTE progFpga()
 	  LOAD_B = 1;
 	}
 	CS_B = 1;
-	break; // end of case WRITE_PAGE
-      case READ_PAGE:
+	break; // end of case WRITE_CMD
+      case READ_CMD:
 	CS_B = 0;
 	for (i=1;i<bytes;++i) {
 	  LOAD_B = 0;
@@ -314,7 +314,7 @@ BYTE progFpga()
 	EP6BCH=MSB(PAGE_SIZE);
 	SYNCDELAY();
 	EP6BCL=LSB(PAGE_SIZE);
-	break; // end of case READ_PAGE
+	break; // end of case READ_CMD
       case RESET_F:
 	if (startFpga()) {
 	  fpgaStatus = PROG_DONE;

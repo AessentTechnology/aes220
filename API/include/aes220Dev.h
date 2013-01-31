@@ -149,8 +149,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 // Memory transaction commmands
 #define STATUS_CHECK       0x60
-#define WRITE_PAGE         0X61
-#define READ_PAGE          0x62
+#define WRITE_CMD          0X61
+#define READ_CMD           0x62
 
 // Miscellaneous commands
 #define SLEEP_F      0x01
@@ -165,12 +165,23 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define CLEAR_SOFT_RESET  0x10
 
 // Spi Flash commands (dictated by SPI_ACCESS)
+// Reading commmands
 #define FAST_READ    0x0B
+#define RND_READ     0x03
+#define PGTBUF1      0x53
+#define PGTBUF2      0x55
+#define BUF1RD       0xD4
+#define BUF2RD       0xD6
+// Writing commands
 #define PAGE_ERASE   0x81
 #define PPTB1        0x82
-#define BUF1WR       0x84
 #define PPTB2        0x85
+#define BUF1WR       0x84
 #define BUF2WR       0x87
+#define BUF1TOPGWE   0x83
+#define BUF1TOPGWOE  0x88
+#define BUF2TOPGWE   0x86
+#define BUF2TOPGWOE  0x89
 
 // Other SPI Flash commands
 #define BUF1         0x01
@@ -321,21 +332,22 @@ class aes220Dev: private aesFx2Dev
      subsequently boot from the flash (under the control of the micro-controller).
   */
 
-  int erase_FPGA_First_Page();
-  /* Function: int erase_FPGA_First_Page()
-     Erases the first page in the FPGA Flash memory.
+  int erase_FPGA_Flash_Page(uint8_t * pgAddress, uint16_t nbOfPages);
+  /* Function: int erase_FPGA_Flash_Page()
+     Erases the addressed page in the FPGA Flash memory as well as the following ones indicated by the number of pages.
 
      Parameters:
 
-     None
+     pgAddress: an array of two bytes containing the page address of the first page to be erased
+     nbOfPages: a word containing the number of pages to be deleted after the addressed page.
 
      Returns:
 
      Returns 0 on success.
   */
 
-  int erase_FPGA();
-  /* Function: int erase_FPGA()
+  int erase_FPGA_Flash();
+  /* Function: int erase_FPGA_Flash()
      Erases the configuration file present in the FPGA Flash memory.
 
      Parameters:
@@ -390,17 +402,17 @@ class aes220Dev: private aesFx2Dev
      Returns 0 on success.
   */
 
-	int read_MC_EEPROM(uint16_t startAddress, const uint8_t *data, uint16_t length);
-	int readI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength);
-	int writeI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength);
-	int combinedI2C(uint8_t deviceAddress,
-									uint8_t *dataToWrite, uint16_t dataToWriteLength,
-									uint8_t *dataToRead, uint16_t dataToReadLength);
-	int turn3p3vOn();
-	int turn3p3vOff();
+  int read_MC_EEPROM(uint16_t startAddress, const uint8_t *data, uint16_t length);
+  int readI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength);
+  int writeI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength);
+  int combinedI2C(uint8_t deviceAddress,
+		  uint8_t *dataToWrite, uint16_t dataToWriteLength,
+		  uint8_t *dataToRead, uint16_t dataToReadLength);
+  int turn3p3vOn();
+  int turn3p3vOff();
 
-	int set_Board_Info(const uint8_t *boardInfo);
-	int get_Board_Info(const uint8_t *boardInfo);
+  int set_Board_Info(const uint8_t *boardInfo);
+  int get_Board_Info(const uint8_t *boardInfo);
   int get_Firmware_Info(const uint8_t* firmwareInfo_ptr);
  
   int set_UPP(uint8_t pinsDir);
@@ -412,16 +424,19 @@ class aes220Dev: private aesFx2Dev
   int set_MC_Mode(uint8_t *uCMode);
   int read_MC_Mode(uint8_t *uCMode);
   int read_FIFO_Regs(unsigned char *regs_ptr);
-  int write_FPGA_Page(unsigned char *pgContents, unsigned char *pgAddress);
-  int write_FPGA_PageII(uint8_t buffer, uint8_t *pgAddress, uint8_t *pgContents);
+  int send_FPGA_Flash_Command(uint8_t cmdByte, uint8_t byte2, uint8_t byte3, 
+			      uint8_t byte4, uint8_t * data, uint16_t dataSize);
+
+  int write_FPGA_Flash_Page(unsigned char *pgContents, unsigned char *pgAddress);
+  int write_FPGA_Flash_PageII(uint8_t buffer, uint8_t *pgAddress, uint8_t *pgContents);
   int read_FPGA_Page(unsigned char *pgContents, unsigned char *pgAddress);
   int set_FPGA_Flash_Programming_Mode();
-	// For manufacturing test, to be removed from here and do not include in release version
-	int writeBlockRAM(unsigned short addr, unsigned char *bts_ptr, 
-										 unsigned short bufSize);
-	int readBlockRAM(unsigned short addr, unsigned char *btr_ptr,
-										unsigned short bufSize);
-	int testSDRAM();
+  // For manufacturing test, to be removed from here and do not include in release version
+  int writeBlockRAM(unsigned short addr, unsigned char *bts_ptr, 
+		    unsigned short bufSize);
+  int readBlockRAM(unsigned short addr, unsigned char *btr_ptr,
+		   unsigned short bufSize);
+  int testSDRAM();
 
 
  private:

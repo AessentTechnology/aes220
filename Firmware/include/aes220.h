@@ -194,8 +194,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 // Spi Flash commmands and definitions
 #define STATUS_CHECK 0x60
-#define WRITE_PAGE   0x61
-#define READ_PAGE    0x62
+#define WRITE_CMD    0x61
+#define READ_CMD     0x62
 #define PAGE_SIZE     264
 
 #define MAX_EP0_DATA  64
