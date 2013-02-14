@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------
--- File name: aes220_Package_V1.2.0.vhd
+-- File name: aes220_Package_V1.2.vhd
 ----------------------------------------------------------------------------------------------------
 -- Authors: Sebastien Saury, Aessent Technology Ltd
 ----------------------------------------------------------------------------------------------------
@@ -13,10 +13,15 @@
 --
 -- V1.0.0 Original package
 -- V1.2.0 Using entities from library version 1.2.0 (pause input added to pipes)
--- 
+-- V1.2   Removed the patch level as strictly speaking the package doesn't
+--        invoke the library file directly.
+--        As long as the entities pinout do not change the package will be
+--        valid. If the entities pinout change then the minor rev number will
+--        change too (to 1.3)
+--
 ----------------------------------------------------------------------------------------------------
 --
--- Copyright (C) 2012 Sebastien Saury, Aessent Technology Ltd
+-- Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -40,7 +45,7 @@ use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 use ieee.numeric_std.all;
 
-package aes220_Package_V1_2_0 is
+package aes220_Package_V1_2 is
 
   -- types declaration
   subtype byte is std_logic_vector(7 downto 0);
@@ -91,6 +96,6 @@ package aes220_Package_V1_2_0 is
       );
   end component;
 
-end aes220_Package_V1_2_0;
+end aes220_Package_V1_2;
 
 
