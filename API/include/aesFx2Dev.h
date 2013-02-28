@@ -15,7 +15,7 @@ NOTES
 
 ===============================================================================
 
-Copyrights (C) 2011 aessent Technology Ltd
+Copyrights (C) 2011-2013 Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public

@@ -23,6 +23,9 @@
 
 #include "fx2types.h"
 
+#define PSU_ADDR 0x60
+#define EEP_ADDR 0x51
+
 /**
  * i2c_write and i2c_read set this to FALSE at the beginning of a 
  * transaction.  If for some reason, the read/write is taking too

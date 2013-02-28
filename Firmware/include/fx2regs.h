@@ -563,13 +563,19 @@ sfr at 0xF8 EIP; // EIP Bit Values differ from Reg320
 #define bmEP4EMPTY   bmBIT2
 #define bmEP2FULL    bmBIT1
 #define bmEP2EMPTY   bmBIT0
-/* Endpoint Config (EP[24]CFG) */
-#define bmBUF       (bmBIT0|bmBIT1)
 /* Endpoint Config (EP[2468]CFG) */
-#define bmSIZE      bmBIT3
-#define bmTYPE      (bmBIT4|bmBIT5)
-#define bmDIR       bmBIT6
 #define bmVALID     bmBIT7
+#define bmDIR       bmBIT6
+#define bmDIRIN     bmBIT6
+#define bmTYPE      (bmBIT5|bmBIT4)
+#define bmTYPE1     bmBIT5
+#define bmTYPE0     bmBIT4
+#define bmSIZE      bmBIT3
+/* Endpoint Config (EP[24]CFG) */
+#define bmBUF       (bmBIT1|bmBIT0)
+#define bmBUF1      bmBIT1
+#define bmBUF0      bmBIT0
+
 /* SETUP Data Pointer Auto Mode (SUDPTRCTL) */
 #define bmSDPAUTO    bmBIT0
 /* Endpoint Data Toggle Control (TOGCTL) */
@@ -613,6 +619,14 @@ sfr at 0xF8 EIP; // EIP Bit Values differ from Reg320
 #define bmAUTOIN     bmBIT3
 #define bmZEROLENIN  bmBIT2
 #define bmWORDWIDE   bmBIT0
+
+/* Slave FIFO Interface Pins Polarity */
+#define bmPKTEND    bmBIT5
+#define bmSLOE      bmBIT4
+#define bmSLRD      bmBIT3
+#define bmSLWR      bmBIT2
+#define bmEF        bmBIT1
+#define bmFF        bmBIT0
 
 /* Chip Revision Control Bits (REVCTL) - used to ebable/disable revision specidic
    features */ 

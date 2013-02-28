@@ -1,22 +1,23 @@
-/******************************************************************************
+/***************************************************************************************************
 File name: aes220_Firmware.c
-===============================================================================
+====================================================================================================
 DESCRIPTION
 
 Base program handling pipe communication, fpga configuration, fpga flash 
 programming and other utilities
 
-===============================================================================
+====================================================================================================
 CHANGES
 
 V1.4.0: First release
 V1.4.1: Increased delay in startFpga() (aes220.c) to 200ms or aes220b uC hangs
+V1.4.2: Getting rid of "magic numbers" and using defined bit names (see fx2regs.h)
 
-===============================================================================
+====================================================================================================
 NOTES
 
 
-===============================================================================
+====================================================================================================
 PINOUT
   ____________________________________________________________________________
  |                                                                            |
@@ -72,25 +73,10 @@ PINOUT
  |                                                                aes220      |
  |____________________________________________________________________________|
 
-===============================================================================
+====================================================================================================
 
-                              _______
-OE    PD6:    XX_____________|
-                        _____________
-RWB   PD2:    XXXXXX___|
-                      ____       ____
-BUS   D[0:7]: XXZZXXX<____>ZZZZZ<____>
+Copyrights (C) 2011-2013 Aessent Technology Ltd
 
-               ^disable fpga bus output
-                  ^set FX2 bus to output
-                   ^set write B signal (writing to mem)
-                    ^write data on the bus
-                       ^set read signal (read from mem)
-                           ^set FX2 bus to input
-                             ^enable fpga output
-                                 ^read data from bus
-
-===============================================================================
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
 License as published by the Free Software Foundation; either
@@ -104,9 +90,9 @@ Lesser General Public License for more details.
 You should have received a copy of the GNU Lesser General Public
 License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-===============================================================================
+====================================================================================================
 
-******************************************************************************/
+***************************************************************************************************/
 
 
 #include <stdio.h>
@@ -156,7 +142,7 @@ BYTE xdata prevMode = WAIT_MODE;
 
 //BYTE rcvdCmd = 0;
 
-BYTE code codeVersion[3] = {1, 4, 1}; // Software version 1.4.1
+BYTE code codeVersion[3] = {1, 4, 2}; // Software version 1.4.2
 
 BYTE xdata TURN3V3OFF[] = {0x10, 0x71};
 
@@ -177,14 +163,14 @@ void main()
   // Set ports in port mode otherwise they will remain in slave FIFO 
   // mode after a CPU reset (like after downloading the program into
   // RAM if previously in slave FIFO mode).
-  //IFCONFIG = 0b11100000; // intern. clk, 48MHz, provided to FPGA, not
-  IFCONFIG = 0b11000000; // intern. clk, 48MHz, not provided to FPGA, not
-  SYNCDELAY();           // inverted, port mode
+  //IFCONFIG = (bmIFCLKSRC | bm3048MHZ | bmIFCLKOE); // intern. clk, 48MHz, provided to FPGA, not
+  IFCONFIG = (bmIFCLKSRC | bm3048MHZ); // intern. clk, 48MHz, not provided to FPGA, not
+  SYNCDELAY();                         // inverted, port mode
 
   // Initialise the ports directions
   OEA = 0x00;
   OEB = 0x00;
-  OED = 0x81; // Set PD0/7 as outputs (SUSPEND_F, PROG_B)
+  OED = (bmBIT7 | bmBIT0); // Set PD0/7 as outputs (SUSPEND_F, PROG_B)
   LED6 = LED_ON;   // Blue LED ON
   //LED6 = LED_OFF;   // Blue LED OFF
   PROG_B = 0; // FPGA held in reset (hard)
@@ -197,13 +183,13 @@ void main()
   // Check for the presence of an external 3.3V 
   // By default the device will leave the 3.3V ON unless it is told by the FPGA to turn it OFF
   // via the CHK3V3 signal (FPGA setting it to 1).
-  OEB |= 0x01;
-  OEA = 0x01;
+  OEB |= bmBIT0;
+  OEA = bmBIT0;
 
   if (readBoardStatusRegister() == 0x00) { 
     LED6 = LED_OFF;   // Blue LED OFF
     // Turn 3.3V off
-    startWriteI2C(0x60, 2, TURN3V3OFF);
+    startWriteI2C(PSU_ADDR, 2, TURN3V3OFF);
     stopWriteI2C();
   }
 
@@ -212,9 +198,9 @@ void main()
   // Configuring USB domain side of FIFO
   // Note: the following endpoints configurations need to match what is set
   // in dscr.a51 file
-  EP2CFG = 0xA2; // 10101010, valid, OUT, bulk, 512 bytes, double buffered
+  EP2CFG = (bmVALID | bmTYPE1 | bmBUF1); // valid, OUT, bulk, 512 bytes, double buffered
   SYNCDELAY();
-  EP6CFG = 0xE0; // 11101010, valid, IN, bulk, 512 bytes, quad buffered
+  EP6CFG = (bmVALID | bmDIR | bmTYPE1); // valid, IN, bulk, 512 bytes, quad buffered
   SYNCDELAY();
 
   EP1INCFG &= ~bmVALID;
@@ -274,7 +260,7 @@ void main()
       break; // end of case PORT_MODE
 
     case WAIT_MODE:
-      OEB |= 0x01;
+      OEB |= bmBIT0;
       LED6 = LED_ON;
       assertSoftReset(); 
       NOP;
@@ -345,7 +331,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      // can't read more than 64 bytes at a time
 	      BYTE cur_read = len > 64 ? 64 : len; 
 	      while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
-	      eeprom_read(0x51, addr, cur_read, EP0BUF);
+	      eeprom_read(EEP_ADDR, addr, cur_read, EP0BUF);
 	      EP0BCH=0;
 	      SYNCDELAY();
 	      EP0BCL=cur_read;
@@ -360,7 +346,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      EP0BCL = 0; // allow pc transfer in
 	      while(EP0CS & bmEPBUSY); // wait
 	      cur_write=EP0BCL;
-	      if (!writeEeprom(0x51, addr, cur_write, EP0BUF)) return FALSE;
+	      if (!writeEeprom(EEP_ADDR, addr, cur_write, EP0BUF)) return FALSE;
 	      addr += cur_write;
 	      len -= cur_write;
 	    }
@@ -665,8 +651,6 @@ BOOL handle_vendorcommand(BYTE cmd)
 	    { 
 	      EP0BCL = 0; // allow pc transfer in
 	      while(EP0CS & bmEPBUSY); // wait
-	      //setMode(PORT_MODE);
-	      //setupFpgaProg();
 	      execFlashCmd(addr, len);
 	      return TRUE;
 	    }

@@ -1,7 +1,7 @@
                               1 ;--------------------------------------------------------
                               2 ; File Created by SDCC : free open source ANSI-C Compiler
                               3 ; Version 2.9.0 #5416 (Feb  3 2010) (UNIX)
-                              4 ; This file was generated Thu Jan 10 22:15:16 2013
+                              4 ; This file was generated Thu Feb 28 13:14:40 2013
                               5 ;--------------------------------------------------------
                               6 	.module aes220
                               7 	.optsdcc -mmcs51 --model-small
@@ -1274,7 +1274,7 @@
    01D4 F0                 1274 	movx	@dptr,a
                            1275 ;	aes220.c:289: break; // end of case STATUS_CHECK
    01D5 02s02r6E           1276 	ljmp	00110$
-                           1277 ;	aes220.c:290: case WRITE_PAGE:
+                           1277 ;	aes220.c:290: case WRITE_CMD:
    01D8                    1278 00104$:
                            1279 ;	aes220.c:291: CS_B = 0;
    01D8 C2 B3              1280 	clr	_PD3
@@ -1307,8 +1307,8 @@
    01FC                    1307 00119$:
                            1308 ;	aes220.c:297: CS_B = 1;
    01FC D2 B3              1309 	setb	_PD3
-                           1310 ;	aes220.c:298: break; // end of case WRITE_PAGE
-                           1311 ;	aes220.c:299: case READ_PAGE:
+                           1310 ;	aes220.c:298: break; // end of case WRITE_CMD
+                           1311 ;	aes220.c:299: case READ_CMD:
    01FE 80 6E              1312 	sjmp	00110$
    0200                    1313 00105$:
                            1314 ;	aes220.c:300: CS_B = 0;
@@ -1384,7 +1384,7 @@
    0255 90 E6 99           1384 	mov	dptr,#_EP6BCL
    0258 74 08              1385 	mov	a,#0x08
    025A F0                 1386 	movx	@dptr,a
-                           1387 ;	aes220.c:317: break; // end of case READ_PAGE
+                           1387 ;	aes220.c:317: break; // end of case READ_CMD
                            1388 ;	aes220.c:318: case RESET_F:
    025B 80 11              1389 	sjmp	00110$
    025D                    1390 00106$:

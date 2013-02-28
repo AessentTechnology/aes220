@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 2.9.0 #5416 (Feb  3 2010) (UNIX)
-; This file was generated Thu Jan 10 22:15:16 2013
+; This file was generated Thu Feb 28 13:14:40 2013
 ;--------------------------------------------------------
 	.module aes220
 	.optsdcc -mmcs51 --model-small
@@ -1274,7 +1274,7 @@ _progFpga:
 	movx	@dptr,a
 ;	aes220.c:289: break; // end of case STATUS_CHECK
 	ljmp	00110$
-;	aes220.c:290: case WRITE_PAGE:
+;	aes220.c:290: case WRITE_CMD:
 00104$:
 ;	aes220.c:291: CS_B = 0;
 	clr	_PD3
@@ -1307,8 +1307,8 @@ _progFpga:
 00119$:
 ;	aes220.c:297: CS_B = 1;
 	setb	_PD3
-;	aes220.c:298: break; // end of case WRITE_PAGE
-;	aes220.c:299: case READ_PAGE:
+;	aes220.c:298: break; // end of case WRITE_CMD
+;	aes220.c:299: case READ_CMD:
 	sjmp	00110$
 00105$:
 ;	aes220.c:300: CS_B = 0;
@@ -1384,7 +1384,7 @@ _progFpga:
 	mov	dptr,#_EP6BCL
 	mov	a,#0x08
 	movx	@dptr,a
-;	aes220.c:317: break; // end of case READ_PAGE
+;	aes220.c:317: break; // end of case READ_CMD
 ;	aes220.c:318: case RESET_F:
 	sjmp	00110$
 00106$:

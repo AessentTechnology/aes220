@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 2.9.0 #5416 (Feb  3 2010) (UNIX)
-; This file was generated Thu Jan 10 22:15:17 2013
+; This file was generated Thu Feb 28 13:18:13 2013
 ;--------------------------------------------------------
 	.module aes220_Firmware
 	.optsdcc -mmcs51 --model-small
@@ -999,7 +999,7 @@ __sdcc_program_startup:
 ;------------------------------------------------------------
 ;dummy                     Allocated to registers 
 ;------------------------------------------------------------
-;	aes220_Firmware.c:163: void main() 
+;	aes220_Firmware.c:149: void main() 
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
@@ -1012,13 +1012,13 @@ _main:
 	ar7 = 0x07
 	ar0 = 0x00
 	ar1 = 0x01
-;	aes220_Firmware.c:165: REVCTL=0x00; // not using advanced endpoint controls
+;	aes220_Firmware.c:151: REVCTL=0x00; // not using advanced endpoint controls
 	mov	dptr,#_REVCTL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:167: on=0; 
+;	aes220_Firmware.c:153: on=0; 
 	clr	_on
-;	aes220_Firmware.c:168: lcount=0;
+;	aes220_Firmware.c:154: lcount=0;
 	mov	dptr,#_lcount
 	clr	a
 	movx	@dptr,a
@@ -1028,17 +1028,17 @@ _main:
 	movx	@dptr,a
 	inc	dptr
 	movx	@dptr,a
-;	aes220_Firmware.c:169: got_sud=FALSE;
+;	aes220_Firmware.c:155: got_sud=FALSE;
 	clr	_got_sud
-;	aes220_Firmware.c:170: icount=0;
+;	aes220_Firmware.c:156: icount=0;
 	mov	_icount,#0x00
-;	aes220_Firmware.c:171: gotbuf=FALSE;
+;	aes220_Firmware.c:157: gotbuf=FALSE;
 	clr	_gotbuf
-;	aes220_Firmware.c:172: bytes=0;
+;	aes220_Firmware.c:158: bytes=0;
 	clr	a
 	mov	_bytes,a
 	mov	(_bytes + 1),a
-;	aes220_Firmware.c:174: SETCPUFREQ(CLK_48M);
+;	aes220_Firmware.c:160: SETCPUFREQ(CLK_48M);
 	mov	dptr,#_CPUCS
 	movx	a,@dptr
 	mov	r2,a
@@ -1049,49 +1049,49 @@ _main:
 	mov	a,#0x10
 	orl	a,b
 	movx	@dptr,a
-;	aes220_Firmware.c:175: SETIF48MHZ();
+;	aes220_Firmware.c:161: SETIF48MHZ();
 	mov	dptr,#_IFCONFIG
 	movx	a,@dptr
 	mov	r2,a
 	orl	a,#0x40
 	movx	@dptr,a
-;	aes220_Firmware.c:181: IFCONFIG = 0b11000000; // intern. clk, 48MHz, not provided to FPGA, not
+;	aes220_Firmware.c:167: IFCONFIG = (bmIFCLKSRC | bm3048MHZ); // intern. clk, 48MHz, not provided to FPGA, not
 	mov	dptr,#_IFCONFIG
 	mov	a,#0xC0
 	movx	@dptr,a
-;	aes220_Firmware.c:182: SYNCDELAY();           // inverted, port mode
+;	aes220_Firmware.c:168: SYNCDELAY();                         // inverted, port mode
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:185: OEA = 0x00;
+;	aes220_Firmware.c:171: OEA = 0x00;
 	mov	_OEA,#0x00
-;	aes220_Firmware.c:186: OEB = 0x00;
+;	aes220_Firmware.c:172: OEB = 0x00;
 	mov	_OEB,#0x00
-;	aes220_Firmware.c:187: OED = 0x81; // Set PD0/7 as outputs (SUSPEND_F, PROG_B)
+;	aes220_Firmware.c:173: OED = (bmBIT7 | bmBIT0); // Set PD0/7 as outputs (SUSPEND_F, PROG_B)
 	mov	_OED,#0x81
-;	aes220_Firmware.c:188: LED6 = LED_ON;   // Blue LED ON
+;	aes220_Firmware.c:174: LED6 = LED_ON;   // Blue LED ON
 	clr	_PB0
-;	aes220_Firmware.c:190: PROG_B = 0; // FPGA held in reset (hard)
+;	aes220_Firmware.c:176: PROG_B = 0; // FPGA held in reset (hard)
 	clr	_PD0
-;	aes220_Firmware.c:191: SUSPEND_F = 0; // Maintain fpga suspend pin low to prevent it going in suspend mode
+;	aes220_Firmware.c:177: SUSPEND_F = 0; // Maintain fpga suspend pin low to prevent it going in suspend mode
 	clr	_PD7
-;	aes220_Firmware.c:195: fpgaProgrammed = startFpga(); 
+;	aes220_Firmware.c:181: fpgaProgrammed = startFpga(); 
 	lcall	_startFpga
 	mov	a,dpl
 	mov	dptr,#_fpgaProgrammed
 	movx	@dptr,a
-;	aes220_Firmware.c:200: OEB |= 0x01;
+;	aes220_Firmware.c:186: OEB |= bmBIT0;
 	orl	_OEB,#0x01
-;	aes220_Firmware.c:201: OEA = 0x01;
+;	aes220_Firmware.c:187: OEA = bmBIT0;
 	mov	_OEA,#0x01
-;	aes220_Firmware.c:203: if (readBoardStatusRegister() == 0x00) { 
+;	aes220_Firmware.c:189: if (readBoardStatusRegister() == 0x00) { 
 	lcall	_readBoardStatusRegister
 	mov	a,dpl
 	jnz	00102$
-;	aes220_Firmware.c:204: LED6 = LED_OFF;   // Blue LED OFF
+;	aes220_Firmware.c:190: LED6 = LED_OFF;   // Blue LED OFF
 	setb	_PB0
-;	aes220_Firmware.c:206: startWriteI2C(0x60, 2, TURN3V3OFF);
+;	aes220_Firmware.c:192: startWriteI2C(PSU_ADDR, 2, TURN3V3OFF);
 	mov	_startWriteI2C_PARM_3,#_TURN3V3OFF
 	mov	(_startWriteI2C_PARM_3 + 1),#(_TURN3V3OFF >> 8)
 	mov	(_startWriteI2C_PARM_3 + 2),#0x00
@@ -1100,107 +1100,107 @@ _main:
 	mov	(_startWriteI2C_PARM_2 + 1),a
 	mov	dpl,#0x60
 	lcall	_startWriteI2C
-;	aes220_Firmware.c:207: stopWriteI2C();
+;	aes220_Firmware.c:193: stopWriteI2C();
 	lcall	_stopWriteI2C
 00102$:
-;	aes220_Firmware.c:210: assertSoftReset(); // Maintain the FPGA in soft reset so FPGA state machine is not enabled
+;	aes220_Firmware.c:196: assertSoftReset(); // Maintain the FPGA in soft reset so FPGA state machine is not enabled
 	lcall	_assertSoftReset
-;	aes220_Firmware.c:215: EP2CFG = 0xA2; // 10101010, valid, OUT, bulk, 512 bytes, double buffered
+;	aes220_Firmware.c:201: EP2CFG = (bmVALID | bmTYPE1 | bmBUF1); // valid, OUT, bulk, 512 bytes, double buffered
 	mov	dptr,#_EP2CFG
 	mov	a,#0xA2
 	movx	@dptr,a
-;	aes220_Firmware.c:216: SYNCDELAY();
+;	aes220_Firmware.c:202: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:217: EP6CFG = 0xE0; // 11101010, valid, IN, bulk, 512 bytes, quad buffered
+;	aes220_Firmware.c:203: EP6CFG = (bmVALID | bmDIR | bmTYPE1); // valid, IN, bulk, 512 bytes, quad buffered
 	mov	dptr,#_EP6CFG
 	mov	a,#0xE0
 	movx	@dptr,a
-;	aes220_Firmware.c:218: SYNCDELAY();
+;	aes220_Firmware.c:204: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:220: EP1INCFG &= ~bmVALID;
+;	aes220_Firmware.c:206: EP1INCFG &= ~bmVALID;
 	mov	dptr,#_EP1INCFG
 	movx	a,@dptr
 	mov	r2,a
 	anl	a,#0x7F
 	movx	@dptr,a
-;	aes220_Firmware.c:221: SYNCDELAY();
+;	aes220_Firmware.c:207: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:222: EP1OUTCFG &= ~bmVALID;
+;	aes220_Firmware.c:208: EP1OUTCFG &= ~bmVALID;
 	mov	dptr,#_EP1OUTCFG
 	movx	a,@dptr
 	mov	r2,a
 	anl	a,#0x7F
 	movx	@dptr,a
-;	aes220_Firmware.c:223: SYNCDELAY();
+;	aes220_Firmware.c:209: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:224: EP4CFG &= ~bmVALID;
+;	aes220_Firmware.c:210: EP4CFG &= ~bmVALID;
 	mov	dptr,#_EP4CFG
 	movx	a,@dptr
 	mov	r2,a
 	anl	a,#0x7F
 	movx	@dptr,a
-;	aes220_Firmware.c:225: SYNCDELAY();
+;	aes220_Firmware.c:211: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:226: EP8CFG &= ~bmVALID;
+;	aes220_Firmware.c:212: EP8CFG &= ~bmVALID;
 	mov	dptr,#_EP8CFG
 	movx	a,@dptr
 	mov	r2,a
 	anl	a,#0x7F
 	movx	@dptr,a
-;	aes220_Firmware.c:227: SYNCDELAY();
+;	aes220_Firmware.c:213: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:230: USE_USB_INTS();
+;	aes220_Firmware.c:216: USE_USB_INTS();
 	mov	a,_INT2JT
 	setb	_EUSB
 	mov	dptr,#_INTSETUP
 	movx	a,@dptr
 	orl	a,#0x08
 	movx	@dptr,a
-;	aes220_Firmware.c:231: ENABLE_SUDAV();
+;	aes220_Firmware.c:217: ENABLE_SUDAV();
 	mov	dptr,#_USBIE
 	movx	a,@dptr
 	orl	a,#0x01
 	movx	@dptr,a
-;	aes220_Firmware.c:232: ENABLE_SOF();
+;	aes220_Firmware.c:218: ENABLE_SOF();
 	mov	dptr,#_USBIE
 	movx	a,@dptr
 	orl	a,#0x02
 	movx	@dptr,a
-;	aes220_Firmware.c:233: ENABLE_HISPEED();
+;	aes220_Firmware.c:219: ENABLE_HISPEED();
 	mov	dptr,#_USBIE
 	movx	a,@dptr
 	orl	a,#0x20
 	movx	@dptr,a
-;	aes220_Firmware.c:234: ENABLE_USBRESET();
+;	aes220_Firmware.c:220: ENABLE_USBRESET();
 	mov	dptr,#_USBIE
 	movx	a,@dptr
 	orl	a,#0x10
 	movx	@dptr,a
-;	aes220_Firmware.c:237: SUSPEND = 10; 
+;	aes220_Firmware.c:223: SUSPEND = 10; 
 	mov	dptr,#_SUSPEND
 	mov	a,#0x0A
 	movx	@dptr,a
-;	aes220_Firmware.c:239: EA=1; // global interrupt enable
+;	aes220_Firmware.c:225: EA=1; // global interrupt enable
 	setb	_EA
-;	aes220_Firmware.c:242: RENUMERATE();
+;	aes220_Firmware.c:228: RENUMERATE();
 	mov	dptr,#_USBCS
 	movx	a,@dptr
 	mov	r2,a
@@ -1217,20 +1217,20 @@ _main:
 	anl	a,#0xF7
 	movx	@dptr,a
 00104$:
-;	aes220_Firmware.c:245: uCMode = PORT_MODE;
+;	aes220_Firmware.c:231: uCMode = PORT_MODE;
 	mov	dptr,#_uCMode
 	mov	a,#0xA2
 	movx	@dptr,a
-;	aes220_Firmware.c:247: while(TRUE) {
+;	aes220_Firmware.c:233: while(TRUE) {
 00129$:
-;	aes220_Firmware.c:248: if ( got_sud ) {
+;	aes220_Firmware.c:234: if ( got_sud ) {
 	jnb	_got_sud,00106$
-;	aes220_Firmware.c:249: handle_setupdata();
+;	aes220_Firmware.c:235: handle_setupdata();
 	lcall	_handle_setupdata
-;	aes220_Firmware.c:250: got_sud=FALSE;
+;	aes220_Firmware.c:236: got_sud=FALSE;
 	clr	_got_sud
 00106$:
-;	aes220_Firmware.c:252: switch(uCMode) {
+;	aes220_Firmware.c:238: switch(uCMode) {
 	mov	dptr,#_uCMode
 	movx	a,@dptr
 	mov	r2,a
@@ -1249,10 +1249,10 @@ _main:
 	cjne	r2,#0xA8,00155$
 	ljmp	00122$
 00155$:
-;	aes220_Firmware.c:254: case SLAVE_FIFO_MODE: 
+;	aes220_Firmware.c:240: case SLAVE_FIFO_MODE: 
 	sjmp	00129$
 00107$:
-;	aes220_Firmware.c:255: if (uCMode != prevMode) { // Newly entering the mode
+;	aes220_Firmware.c:241: if (uCMode != prevMode) { // Newly entering the mode
 	mov	dptr,#_prevMode
 	movx	a,@dptr
 	mov	r3,a
@@ -1260,26 +1260,26 @@ _main:
 	cjne	a,ar3,00156$
 	sjmp	00109$
 00156$:
-;	aes220_Firmware.c:256: prevMode = uCMode;
+;	aes220_Firmware.c:242: prevMode = uCMode;
 	mov	dptr,#_prevMode
 	mov	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:257: assertSoftReset();
+;	aes220_Firmware.c:243: assertSoftReset();
 	lcall	_assertSoftReset
-;	aes220_Firmware.c:258: setMode(uCMode);
+;	aes220_Firmware.c:244: setMode(uCMode);
 	mov	dptr,#_uCMode
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_setMode
-;	aes220_Firmware.c:259: clearSoftReset();
+;	aes220_Firmware.c:245: clearSoftReset();
 	lcall	_clearSoftReset
 00109$:
-;	aes220_Firmware.c:261: if ( !(EP2FIFOFLGS & bmEP2EMPTY) ) {
+;	aes220_Firmware.c:247: if ( !(EP2FIFOFLGS & bmEP2EMPTY) ) {
 	mov	dptr,#_EP2FIFOFLGS
 	movx	a,@dptr
 	mov	r3,a
 	jb	acc.0,00129$
-;	aes220_Firmware.c:262: EP2BCH = EP2FIFOBCH; SYNCDELAY();
+;	aes220_Firmware.c:248: EP2BCH = EP2FIFOBCH; SYNCDELAY();
 	mov	dptr,#_EP2FIFOBCH
 	movx	a,@dptr
 	mov	r3,a
@@ -1289,7 +1289,7 @@ _main:
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:263: EP2BCL = EP2FIFOBCL; SYNCDELAY();
+;	aes220_Firmware.c:249: EP2BCL = EP2FIFOBCL; SYNCDELAY();
 	mov	dptr,#_EP2FIFOBCL
 	movx	a,@dptr
 	mov	r3,a
@@ -1299,11 +1299,11 @@ _main:
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:265: break; // end of case SLAVE_FIFO_MODE
-;	aes220_Firmware.c:267: case PORT_MODE:
+;	aes220_Firmware.c:251: break; // end of case SLAVE_FIFO_MODE
+;	aes220_Firmware.c:253: case PORT_MODE:
 	sjmp	00129$
 00112$:
-;	aes220_Firmware.c:268: if (uCMode != prevMode) { // Newly entering the mode
+;	aes220_Firmware.c:254: if (uCMode != prevMode) { // Newly entering the mode
 	mov	dptr,#_prevMode
 	movx	a,@dptr
 	mov	r3,a
@@ -1311,51 +1311,51 @@ _main:
 	cjne	a,ar3,00158$
 	sjmp	00129$
 00158$:
-;	aes220_Firmware.c:269: prevMode = uCMode;
+;	aes220_Firmware.c:255: prevMode = uCMode;
 	mov	dptr,#_prevMode
 	mov	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:270: assertSoftReset();
+;	aes220_Firmware.c:256: assertSoftReset();
 	lcall	_assertSoftReset
-;	aes220_Firmware.c:271: setMode(uCMode);
+;	aes220_Firmware.c:257: setMode(uCMode);
 	mov	dptr,#_uCMode
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_setMode
-;	aes220_Firmware.c:272: clearSoftReset();
+;	aes220_Firmware.c:258: clearSoftReset();
 	lcall	_clearSoftReset
-;	aes220_Firmware.c:274: break; // end of case PORT_MODE
+;	aes220_Firmware.c:260: break; // end of case PORT_MODE
 	ljmp	00129$
-;	aes220_Firmware.c:276: case WAIT_MODE:
+;	aes220_Firmware.c:262: case WAIT_MODE:
 00115$:
-;	aes220_Firmware.c:277: OEB |= 0x01;
+;	aes220_Firmware.c:263: OEB |= bmBIT0;
 	orl	_OEB,#0x01
-;	aes220_Firmware.c:278: LED6 = LED_ON;
+;	aes220_Firmware.c:264: LED6 = LED_ON;
 	clr	_PB0
-;	aes220_Firmware.c:279: assertSoftReset(); 
+;	aes220_Firmware.c:265: assertSoftReset(); 
 	lcall	_assertSoftReset
-;	aes220_Firmware.c:280: NOP;
+;	aes220_Firmware.c:266: NOP;
 	 nop 
-;	aes220_Firmware.c:281: NOP;
+;	aes220_Firmware.c:267: NOP;
 	 nop 
-;	aes220_Firmware.c:282: clearSoftReset();
+;	aes220_Firmware.c:268: clearSoftReset();
 	lcall	_clearSoftReset
-;	aes220_Firmware.c:283: break; // end of case WAIT_MODE
+;	aes220_Firmware.c:269: break; // end of case WAIT_MODE
 	ljmp	00129$
-;	aes220_Firmware.c:285: case CONF_F_MODE: 
+;	aes220_Firmware.c:271: case CONF_F_MODE: 
 00116$:
-;	aes220_Firmware.c:286: if (prevMode != PORT_MODE) {
+;	aes220_Firmware.c:272: if (prevMode != PORT_MODE) {
 	mov	dptr,#_prevMode
 	movx	a,@dptr
 	mov	r2,a
 	cjne	r2,#0xA2,00159$
 	sjmp	00118$
 00159$:
-;	aes220_Firmware.c:287: setMode(PORT_MODE);
+;	aes220_Firmware.c:273: setMode(PORT_MODE);
 	mov	dpl,#0xA2
 	lcall	_setMode
 00118$:
-;	aes220_Firmware.c:289: fpgaStatus = configureFpga(fpgaFileLen);
+;	aes220_Firmware.c:275: fpgaStatus = configureFpga(fpgaFileLen);
 	mov	dptr,#_fpgaFileLen
 	movx	a,@dptr
 	mov	r2,a
@@ -1375,62 +1375,62 @@ _main:
 	mov	dptr,#_fpgaStatus
 	mov	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:290: if (fpgaStatus == PROG_DONE) {
+;	aes220_Firmware.c:276: if (fpgaStatus == PROG_DONE) {
 	cjne	r2,#0xAB,00120$
-;	aes220_Firmware.c:291: fpgaProgrammed = TRUE;
+;	aes220_Firmware.c:277: fpgaProgrammed = TRUE;
 	mov	dptr,#_fpgaProgrammed
 	mov	a,#0x01
 	movx	@dptr,a
 	sjmp	00121$
 00120$:
-;	aes220_Firmware.c:294: fpgaProgrammed = FALSE;
+;	aes220_Firmware.c:280: fpgaProgrammed = FALSE;
 	mov	dptr,#_fpgaProgrammed
 	clr	a
 	movx	@dptr,a
 00121$:
-;	aes220_Firmware.c:296: uCMode = WAIT_MODE; // Exit the configuration mode and wait for a new one
+;	aes220_Firmware.c:282: uCMode = WAIT_MODE; // Exit the configuration mode and wait for a new one
 	mov	dptr,#_uCMode
 	mov	a,#0xA1
 	movx	@dptr,a
-;	aes220_Firmware.c:297: prevMode = CONF_F_MODE; // Reset previous mode
+;	aes220_Firmware.c:283: prevMode = CONF_F_MODE; // Reset previous mode
 	mov	dptr,#_prevMode
 	mov	a,#0xA7
 	movx	@dptr,a
-;	aes220_Firmware.c:298: break; // end of case CONF_F_MODE
+;	aes220_Firmware.c:284: break; // end of case CONF_F_MODE
 	ljmp	00129$
-;	aes220_Firmware.c:300: case PROG_F_MODE: 
+;	aes220_Firmware.c:286: case PROG_F_MODE: 
 00122$:
-;	aes220_Firmware.c:302: setMode(PORT_MODE);
+;	aes220_Firmware.c:288: setMode(PORT_MODE);
 	mov	dpl,#0xA2
 	lcall	_setMode
-;	aes220_Firmware.c:304: progFpga();
+;	aes220_Firmware.c:290: progFpga();
 	lcall	_progFpga
-;	aes220_Firmware.c:305: if (fpgaStatus == PROG_DONE) {
+;	aes220_Firmware.c:291: if (fpgaStatus == PROG_DONE) {
 	mov	dptr,#_fpgaStatus
 	movx	a,@dptr
 	mov	r2,a
 	cjne	r2,#0xAB,00124$
-;	aes220_Firmware.c:306: fpgaProgrammed = TRUE;
+;	aes220_Firmware.c:292: fpgaProgrammed = TRUE;
 	mov	dptr,#_fpgaProgrammed
 	mov	a,#0x01
 	movx	@dptr,a
 	sjmp	00125$
 00124$:
-;	aes220_Firmware.c:308: else fpgaProgrammed = FALSE;
+;	aes220_Firmware.c:294: else fpgaProgrammed = FALSE;
 	mov	dptr,#_fpgaProgrammed
 	clr	a
 	movx	@dptr,a
 00125$:
-;	aes220_Firmware.c:309: uCMode = WAIT_MODE; // Exit the program mode and wait for a new one
+;	aes220_Firmware.c:295: uCMode = WAIT_MODE; // Exit the program mode and wait for a new one
 	mov	dptr,#_uCMode
 	mov	a,#0xA1
 	movx	@dptr,a
-;	aes220_Firmware.c:310: prevMode = PROG_F_MODE; // Reset previous mode
+;	aes220_Firmware.c:296: prevMode = PROG_F_MODE; // Reset previous mode
 	mov	dptr,#_prevMode
 	mov	a,#0xA8
 	movx	@dptr,a
-;	aes220_Firmware.c:311: break; // end of case PROG_F_MODE
-;	aes220_Firmware.c:315: } // end of switch(ucMODE)
+;	aes220_Firmware.c:297: break; // end of case PROG_F_MODE
+;	aes220_Firmware.c:301: } // end of switch(ucMODE)
 	ljmp	00129$
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'handle_vendorcommand'
@@ -1449,13 +1449,13 @@ _main:
 ;curWrite                  Allocated to registers r2 
 ;sloc0                     Allocated with name '_handle_vendorcommand_sloc0_1_0'
 ;------------------------------------------------------------
-;	aes220_Firmware.c:319: BOOL handle_vendorcommand(BYTE cmd)  
+;	aes220_Firmware.c:305: BOOL handle_vendorcommand(BYTE cmd)  
 ;	-----------------------------------------
 ;	 function handle_vendorcommand
 ;	-----------------------------------------
 _handle_vendorcommand:
 	mov	_handle_vendorcommand_cmd_1_1,dpl
-;	aes220_Firmware.c:321: WORD addr=SETUP_VALUE(),len=SETUP_LENGTH(), index=SETUP_INDEX();
+;	aes220_Firmware.c:307: WORD addr=SETUP_VALUE(),len=SETUP_LENGTH(), index=SETUP_INDEX();
 	mov	dptr,#(_SETUPDAT + 0x0003)
 	movx	a,@dptr
 	mov	r4,a
@@ -1492,7 +1492,7 @@ _handle_vendorcommand:
 	orl	ar3,a
 	mov	a,r7
 	orl	ar4,a
-;	aes220_Firmware.c:322: switch ( cmd ) 
+;	aes220_Firmware.c:308: switch ( cmd ) 
 	mov	a,#0xB0
 	cjne	a,_handle_vendorcommand_cmd_1_1,00332$
 	sjmp	00101$
@@ -1530,41 +1530,41 @@ _handle_vendorcommand:
 	ljmp	00232$
 00340$:
 	ljmp	00243$
-;	aes220_Firmware.c:325: case VC_EPSTAT:
+;	aes220_Firmware.c:311: case VC_EPSTAT:
 00101$:
-;	aes220_Firmware.c:327: xdata BYTE* pep= ep_addr(SETUPDAT[2]);
+;	aes220_Firmware.c:313: xdata BYTE* pep= ep_addr(SETUPDAT[2]);
 	mov	dptr,#(_SETUPDAT + 0x0002)
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_ep_addr
 	mov	r6,dpl
 	mov	r7,dph
-;	aes220_Firmware.c:328: if (pep) {
+;	aes220_Firmware.c:314: if (pep) {
 	mov	a,r6
 	orl	a,r7
 	jnz	00341$
 	ljmp	00244$
 00341$:
-;	aes220_Firmware.c:329: EP0BUF[0] = *pep;
+;	aes220_Firmware.c:315: EP0BUF[0] = *pep;
 	mov	dpl,r6
 	mov	dph,r7
 	movx	a,@dptr
 	mov	dptr,#_EP0BUF
 	movx	@dptr,a
-;	aes220_Firmware.c:330: EP0BCH=0;
+;	aes220_Firmware.c:316: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:331: EP0BCL=1;
+;	aes220_Firmware.c:317: EP0BCL=1;
 	mov	dptr,#_EP0BCL
 	mov	a,#0x01
 	movx	@dptr,a
-;	aes220_Firmware.c:332: return TRUE;
+;	aes220_Firmware.c:318: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:337: case VC_EEPROM:
+;	aes220_Firmware.c:323: case VC_EEPROM:
 00104$:
-;	aes220_Firmware.c:340: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:326: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r6,a
@@ -1576,14 +1576,14 @@ _handle_vendorcommand:
 00343$:
 	ljmp	00121$
 00344$:
-;	aes220_Firmware.c:344: while (len) { // still have bytes to read
+;	aes220_Firmware.c:330: while (len) { // still have bytes to read
 00109$:
 	mov	a,_handle_vendorcommand_len_1_1
 	orl	a,(_handle_vendorcommand_len_1_1 + 1)
 	jnz	00345$
 	ljmp	00122$
 00345$:
-;	aes220_Firmware.c:346: BYTE cur_read = len > 64 ? 64 : len; 
+;	aes220_Firmware.c:332: BYTE cur_read = len > 64 ? 64 : len; 
 	clr	c
 	mov	a,#0x40
 	subb	a,_handle_vendorcommand_len_1_1
@@ -1597,13 +1597,13 @@ _handle_vendorcommand:
 	mov	r6,_handle_vendorcommand_len_1_1
 	mov	r7,(_handle_vendorcommand_len_1_1 + 1)
 00248$:
-;	aes220_Firmware.c:347: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:333: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00106$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r7,a
 	jb	acc.1,00106$
-;	aes220_Firmware.c:348: eeprom_read(0x51, addr, cur_read, EP0BUF);
+;	aes220_Firmware.c:334: eeprom_read(EEP_ADDR, addr, cur_read, EP0BUF);
 	mov	_eeprom_read_PARM_3,r6
 	mov	(_eeprom_read_PARM_3 + 1),#0x00
 	mov	_eeprom_read_PARM_4,#_EP0BUF
@@ -1615,20 +1615,20 @@ _handle_vendorcommand:
 	push	ar6
 	lcall	_eeprom_read
 	pop	ar6
-;	aes220_Firmware.c:349: EP0BCH=0;
+;	aes220_Firmware.c:335: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:350: SYNCDELAY();
+;	aes220_Firmware.c:336: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:351: EP0BCL=cur_read;
+;	aes220_Firmware.c:337: EP0BCL=cur_read;
 	mov	dptr,#_EP0BCL
 	mov	a,r6
 	movx	@dptr,a
-;	aes220_Firmware.c:352: len -= cur_read;
+;	aes220_Firmware.c:338: len -= cur_read;
 	mov	r7,#0x00
 	mov	a,_handle_vendorcommand_len_1_1
 	clr	c
@@ -1637,34 +1637,34 @@ _handle_vendorcommand:
 	mov	a,(_handle_vendorcommand_len_1_1 + 1)
 	subb	a,r7
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
-;	aes220_Firmware.c:353: addr += cur_read;
+;	aes220_Firmware.c:339: addr += cur_read;
 	mov	a,r6
 	add	a,_handle_vendorcommand_addr_1_1
 	mov	_handle_vendorcommand_addr_1_1,a
 	mov	a,r7
 	addc	a,(_handle_vendorcommand_addr_1_1 + 1)
 	mov	(_handle_vendorcommand_addr_1_1 + 1),a
-;	aes220_Firmware.c:358: while (len) {
+;	aes220_Firmware.c:344: while (len) {
 	sjmp	00109$
 00118$:
 	mov	a,_handle_vendorcommand_len_1_1
 	orl	a,(_handle_vendorcommand_len_1_1 + 1)
 	jz	00122$
-;	aes220_Firmware.c:360: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:346: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:361: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:347: while(EP0CS & bmEPBUSY); // wait
 00113$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r6,a
 	jb	acc.1,00113$
-;	aes220_Firmware.c:362: cur_write=EP0BCL;
+;	aes220_Firmware.c:348: cur_write=EP0BCL;
 	mov	dptr,#_EP0BCL
 	movx	a,@dptr
 	mov	r6,a
-;	aes220_Firmware.c:363: if (!writeEeprom(0x51, addr, cur_write, EP0BUF)) return FALSE;
+;	aes220_Firmware.c:349: if (!writeEeprom(EEP_ADDR, addr, cur_write, EP0BUF)) return FALSE;
 	mov	_writeEeprom_PARM_3,r6
 	mov	(_writeEeprom_PARM_3 + 1),#0x00
 	mov	_writeEeprom_PARM_4,#_EP0BUF
@@ -1681,7 +1681,7 @@ _handle_vendorcommand:
 	mov	dpl,a
 	ret
 00117$:
-;	aes220_Firmware.c:364: addr += cur_write;
+;	aes220_Firmware.c:350: addr += cur_write;
 	mov	r7,#0x00
 	mov	a,r6
 	add	a,_handle_vendorcommand_addr_1_1
@@ -1689,7 +1689,7 @@ _handle_vendorcommand:
 	mov	a,r7
 	addc	a,(_handle_vendorcommand_addr_1_1 + 1)
 	mov	(_handle_vendorcommand_addr_1_1 + 1),a
-;	aes220_Firmware.c:365: len -= cur_write;
+;	aes220_Firmware.c:351: len -= cur_write;
 	mov	a,_handle_vendorcommand_len_1_1
 	clr	c
 	subb	a,r6
@@ -1697,24 +1697,24 @@ _handle_vendorcommand:
 	mov	a,(_handle_vendorcommand_len_1_1 + 1)
 	subb	a,r7
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
-;	aes220_Firmware.c:369: default:
+;	aes220_Firmware.c:355: default:
 	sjmp	00118$
 00121$:
-;	aes220_Firmware.c:370: return FALSE; // bad type
+;	aes220_Firmware.c:356: return FALSE; // bad type
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:372: }
+;	aes220_Firmware.c:358: }
 00122$:
-;	aes220_Firmware.c:373: return TRUE;
+;	aes220_Firmware.c:359: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:377: case VC_I2C:
+;	aes220_Firmware.c:363: case VC_I2C:
 00123$:
-;	aes220_Firmware.c:381: BYTE regAddr[1] = {0x10};
+;	aes220_Firmware.c:367: BYTE regAddr[1] = {0x10};
 	mov	_handle_vendorcommand_regAddr_3_9,#0x10
-;	aes220_Firmware.c:383: devAddr = (BYTE)addr;
+;	aes220_Firmware.c:369: devAddr = (BYTE)addr;
 	mov	r6,_handle_vendorcommand_addr_1_1
-;	aes220_Firmware.c:386: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:372: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r7,a
@@ -1726,20 +1726,20 @@ _handle_vendorcommand:
 00352$:
 	ljmp	00160$
 00353$:
-;	aes220_Firmware.c:390: if (len <= MAX_EP0_DATA) { // Short I2C transfer
+;	aes220_Firmware.c:376: if (len <= MAX_EP0_DATA) { // Short I2C transfer
 	clr	c
 	mov	a,#0x40
 	subb	a,_handle_vendorcommand_len_1_1
 	clr	a
 	subb	a,(_handle_vendorcommand_len_1_1 + 1)
 	jc	00128$
-;	aes220_Firmware.c:391: while (EP0CS&bmEPBUSY); // Can't do this until EP0 is ready
+;	aes220_Firmware.c:377: while (EP0CS&bmEPBUSY); // Can't do this until EP0 is ready
 00125$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r7,a
 	jb	acc.1,00125$
-;	aes220_Firmware.c:392: startReadI2C((BYTE)addr, len, EP0BUF);
+;	aes220_Firmware.c:378: startReadI2C((BYTE)addr, len, EP0BUF);
 	mov	_startReadI2C_PARM_3,#_EP0BUF
 	mov	(_startReadI2C_PARM_3 + 1),#(_EP0BUF >> 8)
 	mov	(_startReadI2C_PARM_3 + 2),#0x00
@@ -1747,34 +1747,34 @@ _handle_vendorcommand:
 	mov	(_startReadI2C_PARM_2 + 1),(_handle_vendorcommand_len_1_1 + 1)
 	mov	dpl,r6
 	lcall	_startReadI2C
-;	aes220_Firmware.c:393: stopReadI2C(len, EP0BUF);
+;	aes220_Firmware.c:379: stopReadI2C(len, EP0BUF);
 	mov	_stopReadI2C_PARM_2,#_EP0BUF
 	mov	(_stopReadI2C_PARM_2 + 1),#(_EP0BUF >> 8)
 	mov	(_stopReadI2C_PARM_2 + 2),#0x00
 	mov	dpl,_handle_vendorcommand_len_1_1
 	mov	dph,(_handle_vendorcommand_len_1_1 + 1)
 	lcall	_stopReadI2C
-;	aes220_Firmware.c:394: EP0BCH=0;
+;	aes220_Firmware.c:380: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:395: SYNCDELAY();
+;	aes220_Firmware.c:381: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:396: EP0BCL=len;
+;	aes220_Firmware.c:382: EP0BCL=len;
 	mov	dptr,#_EP0BCL
 	mov	a,_handle_vendorcommand_len_1_1
 	movx	@dptr,a
 	ljmp	00142$
-;	aes220_Firmware.c:399: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:385: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00128$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r7,a
 	jb	acc.1,00128$
-;	aes220_Firmware.c:400: startReadI2C((BYTE)addr, MAX_EP0_DATA, EP0BUF);
+;	aes220_Firmware.c:386: startReadI2C((BYTE)addr, MAX_EP0_DATA, EP0BUF);
 	mov	_startReadI2C_PARM_3,#_EP0BUF
 	mov	(_startReadI2C_PARM_3 + 1),#(_EP0BUF >> 8)
 	mov	(_startReadI2C_PARM_3 + 2),#0x00
@@ -1783,19 +1783,19 @@ _handle_vendorcommand:
 	mov	(_startReadI2C_PARM_2 + 1),a
 	mov	dpl,r6
 	lcall	_startReadI2C
-;	aes220_Firmware.c:401: len -= MAX_EP0_DATA;
+;	aes220_Firmware.c:387: len -= MAX_EP0_DATA;
 	mov	a,_handle_vendorcommand_len_1_1
 	add	a,#0xc0
 	mov	_handle_vendorcommand_len_1_1,a
 	mov	a,(_handle_vendorcommand_len_1_1 + 1)
 	addc	a,#0xff
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
-;	aes220_Firmware.c:402: while (len) {
+;	aes220_Firmware.c:388: while (len) {
 00137$:
 	mov	a,_handle_vendorcommand_len_1_1
 	orl	a,(_handle_vendorcommand_len_1_1 + 1)
 	jz	00142$
-;	aes220_Firmware.c:403: BYTE curRead = len > MAX_EP0_DATA ? MAX_EP0_DATA : len;
+;	aes220_Firmware.c:389: BYTE curRead = len > MAX_EP0_DATA ? MAX_EP0_DATA : len;
 	clr	c
 	mov	a,#0x40
 	subb	a,_handle_vendorcommand_len_1_1
@@ -1809,20 +1809,20 @@ _handle_vendorcommand:
 	mov	r7,_handle_vendorcommand_len_1_1
 	mov	r2,(_handle_vendorcommand_len_1_1 + 1)
 00250$:
-;	aes220_Firmware.c:404: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:390: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00131$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00131$
-;	aes220_Firmware.c:405: if (len <= MAX_EP0_DATA) {
+;	aes220_Firmware.c:391: if (len <= MAX_EP0_DATA) {
 	clr	c
 	mov	a,#0x40
 	subb	a,_handle_vendorcommand_len_1_1
 	clr	a
 	subb	a,(_handle_vendorcommand_len_1_1 + 1)
 	jc	00135$
-;	aes220_Firmware.c:406: stopReadI2C(len, EP0BUF);
+;	aes220_Firmware.c:392: stopReadI2C(len, EP0BUF);
 	mov	_stopReadI2C_PARM_2,#_EP0BUF
 	mov	(_stopReadI2C_PARM_2 + 1),#(_EP0BUF >> 8)
 	mov	(_stopReadI2C_PARM_2 + 2),#0x00
@@ -1833,7 +1833,7 @@ _handle_vendorcommand:
 	pop	ar7
 	sjmp	00136$
 00135$:
-;	aes220_Firmware.c:409: readI2C(curRead, EP0BUF);
+;	aes220_Firmware.c:395: readI2C(curRead, EP0BUF);
 	mov	ar2,r7
 	mov	r5,#0x00
 	mov	_readI2C_PARM_2,#_EP0BUF
@@ -1845,20 +1845,20 @@ _handle_vendorcommand:
 	lcall	_readI2C
 	pop	ar7
 00136$:
-;	aes220_Firmware.c:411: EP0BCH=0;
+;	aes220_Firmware.c:397: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:412: SYNCDELAY();
+;	aes220_Firmware.c:398: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:413: EP0BCL=curRead;
+;	aes220_Firmware.c:399: EP0BCL=curRead;
 	mov	dptr,#_EP0BCL
 	mov	a,r7
 	movx	@dptr,a
-;	aes220_Firmware.c:414: len -= curRead;
+;	aes220_Firmware.c:400: len -= curRead;
 	mov	r2,#0x00
 	mov	a,_handle_vendorcommand_len_1_1
 	clr	c
@@ -1869,26 +1869,26 @@ _handle_vendorcommand:
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
 	sjmp	00137$
 00142$:
-;	aes220_Firmware.c:417: return rv;
+;	aes220_Firmware.c:403: return rv;
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:420: case 0x40:  { // write I2C request
+;	aes220_Firmware.c:406: case 0x40:  { // write I2C request
 00143$:
-;	aes220_Firmware.c:422: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:408: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:423: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:409: while(EP0CS & bmEPBUSY); // wait
 00144$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00144$
-;	aes220_Firmware.c:424: curWrite = EP0BCL;
+;	aes220_Firmware.c:410: curWrite = EP0BCL;
 	mov	dptr,#_EP0BCL
 	movx	a,@dptr
 	mov	r2,a
-;	aes220_Firmware.c:425: rv = startWriteI2C((BYTE)addr, curWrite, EP0BUF);
+;	aes220_Firmware.c:411: rv = startWriteI2C((BYTE)addr, curWrite, EP0BUF);
 	mov	_startWriteI2C_PARM_2,r2
 	mov	(_startWriteI2C_PARM_2 + 1),#0x00
 	mov	_startWriteI2C_PARM_3,#_EP0BUF
@@ -1903,20 +1903,20 @@ _handle_vendorcommand:
 	pop	ar4
 	pop	ar3
 	pop	ar2
-;	aes220_Firmware.c:426: if (len <= MAX_EP0_DATA) { // Short I2C transfer
+;	aes220_Firmware.c:412: if (len <= MAX_EP0_DATA) { // Short I2C transfer
 	clr	c
 	mov	a,#0x40
 	subb	a,_handle_vendorcommand_len_1_1
 	clr	a
 	subb	a,(_handle_vendorcommand_len_1_1 + 1)
 	jc	00158$
-;	aes220_Firmware.c:427: if (rv == TRUE) rv = stopWriteI2C();
+;	aes220_Firmware.c:413: if (rv == TRUE) rv = stopWriteI2C();
 	cjne	r5,#0x01,00159$
 	lcall	_stopWriteI2C
 	mov	r5,dpl
 	sjmp	00159$
 00158$:
-;	aes220_Firmware.c:430: len -= curWrite;
+;	aes220_Firmware.c:416: len -= curWrite;
 	mov	ar6,r2
 	mov	r7,#0x00
 	mov	a,_handle_vendorcommand_len_1_1
@@ -1926,25 +1926,25 @@ _handle_vendorcommand:
 	mov	a,(_handle_vendorcommand_len_1_1 + 1)
 	subb	a,r7
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
-;	aes220_Firmware.c:431: while(len) {
+;	aes220_Firmware.c:417: while(len) {
 00152$:
 	mov	a,_handle_vendorcommand_len_1_1
 	orl	a,(_handle_vendorcommand_len_1_1 + 1)
 	jz	00154$
-;	aes220_Firmware.c:432: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:418: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:433: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:419: while(EP0CS & bmEPBUSY); // wait
 00149$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r6,a
 	jb	acc.1,00149$
-;	aes220_Firmware.c:434: curWrite = EP0BCL;
+;	aes220_Firmware.c:420: curWrite = EP0BCL;
 	mov	dptr,#_EP0BCL
 	movx	a,@dptr
-;	aes220_Firmware.c:435: rv = writeI2C(curWrite, EP0BUF);
+;	aes220_Firmware.c:421: rv = writeI2C(curWrite, EP0BUF);
 	mov	r2,a
 	mov	r6,a
 	mov	r7,#0x00
@@ -1961,7 +1961,7 @@ _handle_vendorcommand:
 	pop	ar4
 	pop	ar3
 	pop	ar2
-;	aes220_Firmware.c:436: len -= curWrite;
+;	aes220_Firmware.c:422: len -= curWrite;
 	mov	r6,#0x00
 	mov	a,_handle_vendorcommand_len_1_1
 	clr	c
@@ -1972,25 +1972,25 @@ _handle_vendorcommand:
 	mov	(_handle_vendorcommand_len_1_1 + 1),a
 	sjmp	00152$
 00154$:
-;	aes220_Firmware.c:438: if (index == 0) { 
+;	aes220_Firmware.c:424: if (index == 0) { 
 	mov	a,r3
 	orl	a,r4
 	jnz	00159$
-;	aes220_Firmware.c:439: rv = stopWriteI2C();
+;	aes220_Firmware.c:425: rv = stopWriteI2C();
 	lcall	_stopWriteI2C
 	mov	r5,dpl
 00159$:
-;	aes220_Firmware.c:442: return rv;
+;	aes220_Firmware.c:428: return rv;
 	mov	dpl,r5
 	ret
-;	aes220_Firmware.c:446: default:
+;	aes220_Firmware.c:432: default:
 00160$:
-;	aes220_Firmware.c:447: return FALSE; // bad type
+;	aes220_Firmware.c:433: return FALSE; // bad type
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:454: case VC_UC_MODE:
+;	aes220_Firmware.c:440: case VC_UC_MODE:
 00162$:
-;	aes220_Firmware.c:456: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:442: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2002,65 +2002,65 @@ _handle_vendorcommand:
 00369$:
 	ljmp	00174$
 00370$:
-;	aes220_Firmware.c:461: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:447: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00164$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00164$
-;	aes220_Firmware.c:462: EP0BUF[0] = fpgaStatus;
+;	aes220_Firmware.c:448: EP0BUF[0] = fpgaStatus;
 	mov	dptr,#_fpgaStatus
 	movx	a,@dptr
 	mov	dptr,#_EP0BUF
 	movx	@dptr,a
-;	aes220_Firmware.c:463: EP0BUF[1] = uCMode;
+;	aes220_Firmware.c:449: EP0BUF[1] = uCMode;
 	mov	dptr,#_uCMode
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0001)
 	movx	@dptr,a
-;	aes220_Firmware.c:464: EP0BUF[2] = prevMode;
+;	aes220_Firmware.c:450: EP0BUF[2] = prevMode;
 	mov	dptr,#_prevMode
 	movx	a,@dptr
 	mov	r2,a
 	mov	dptr,#(_EP0BUF + 0x0002)
 	movx	@dptr,a
-;	aes220_Firmware.c:465: EP0BCH=0;
+;	aes220_Firmware.c:451: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:466: SYNCDELAY();
+;	aes220_Firmware.c:452: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:467: EP0BCL=3;
+;	aes220_Firmware.c:453: EP0BCL=3;
 	mov	dptr,#_EP0BCL
 	mov	a,#0x03
 	movx	@dptr,a
-;	aes220_Firmware.c:468: return TRUE; 
+;	aes220_Firmware.c:454: return TRUE; 
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:472: case 0x40:    
+;	aes220_Firmware.c:458: case 0x40:    
 00167$:
-;	aes220_Firmware.c:474: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:460: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:475: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:461: while(EP0CS & bmEPBUSY); // wait
 00168$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00168$
-;	aes220_Firmware.c:476: uCMode = EP0BUF[0];
+;	aes220_Firmware.c:462: uCMode = EP0BUF[0];
 	mov	dptr,#_EP0BUF
 	movx	a,@dptr
 	mov	r2,a
 	mov	dptr,#_uCMode
 	movx	@dptr,a
-;	aes220_Firmware.c:477: switch (uCMode)
+;	aes220_Firmware.c:463: switch (uCMode)
 	cjne	r2,#0xA7,00173$
-;	aes220_Firmware.c:480: fpgaFileLen = MAKEDWORD(addr, index);
+;	aes220_Firmware.c:466: fpgaFileLen = MAKEDWORD(addr, index);
 	mov	r2,_handle_vendorcommand_addr_1_1
 	mov	r5,(_handle_vendorcommand_addr_1_1 + 1)
 	mov	r6,#0x00
@@ -2087,19 +2087,19 @@ _handle_vendorcommand:
 	orl	a,(_handle_vendorcommand_sloc0_1_0 + 3)
 	inc	dptr
 	movx	@dptr,a
-;	aes220_Firmware.c:485: }
+;	aes220_Firmware.c:471: }
 00173$:
-;	aes220_Firmware.c:486: return TRUE;
+;	aes220_Firmware.c:472: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:490: default:
+;	aes220_Firmware.c:476: default:
 00174$:
-;	aes220_Firmware.c:491: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:477: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:497: case VC_UPP_CMD:
+;	aes220_Firmware.c:483: case VC_UPP_CMD:
 00176$:
-;	aes220_Firmware.c:499: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:485: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2111,13 +2111,13 @@ _handle_vendorcommand:
 00376$:
 	sjmp	00189$
 00377$:
-;	aes220_Firmware.c:504: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:490: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00178$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00178$
-;	aes220_Firmware.c:505: EP0BUF[0] = (0x00 | (PD6 << 3) |(PD5 << 2) |(PD3 << 1) | PD2) ;
+;	aes220_Firmware.c:491: EP0BUF[0] = (0x00 | (PD6 << 3) |(PD5 << 2) |(PD3 << 1) | PD2) ;
 	mov	c,_PD6
 	clr	a
 	rlc	a
@@ -2144,44 +2144,44 @@ _handle_vendorcommand:
 	mov	dptr,#_EP0BUF
 	mov	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:506: EP0BCH=0;
+;	aes220_Firmware.c:492: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:507: SYNCDELAY();
+;	aes220_Firmware.c:493: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:508: EP0BCL=1;
+;	aes220_Firmware.c:494: EP0BCL=1;
 	mov	dptr,#_EP0BCL
 	mov	a,#0x01
 	movx	@dptr,a
-;	aes220_Firmware.c:509: return TRUE; 
+;	aes220_Firmware.c:495: return TRUE; 
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:513: case 0x40:    
+;	aes220_Firmware.c:499: case 0x40:    
 00181$:
-;	aes220_Firmware.c:515: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:501: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:516: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:502: while(EP0CS & bmEPBUSY); // wait
 00182$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00182$
-;	aes220_Firmware.c:517: switch (EP0BUF[0])
+;	aes220_Firmware.c:503: switch (EP0BUF[0])
 	mov	dptr,#_EP0BUF
 	movx	a,@dptr
 	mov	r2,a
 	jz	00185$
-;	aes220_Firmware.c:519: case UPP_PIN_DIR:
+;	aes220_Firmware.c:505: case UPP_PIN_DIR:
 	cjne	r2,#0x01,00188$
 	sjmp	00186$
 00185$:
-;	aes220_Firmware.c:520: setUserPinsDir(EP0BUF[1], EP0BUF[2]);
+;	aes220_Firmware.c:506: setUserPinsDir(EP0BUF[1], EP0BUF[2]);
 	mov	dptr,#(_EP0BUF + 0x0001)
 	movx	a,@dptr
 	mov	r2,a
@@ -2190,28 +2190,28 @@ _handle_vendorcommand:
 	mov	_setUserPinsDir_PARM_2,a
 	mov	dpl,r2
 	lcall	_setUserPinsDir
-;	aes220_Firmware.c:521: break;
-;	aes220_Firmware.c:522: case UPP_PIN_VAL:
+;	aes220_Firmware.c:507: break;
+;	aes220_Firmware.c:508: case UPP_PIN_VAL:
 	sjmp	00188$
 00186$:
-;	aes220_Firmware.c:523: setUserPins(EP0BUF[1]);
+;	aes220_Firmware.c:509: setUserPins(EP0BUF[1]);
 	mov	dptr,#(_EP0BUF + 0x0001)
 	movx	a,@dptr
 	mov	dpl,a
 	lcall	_setUserPins
-;	aes220_Firmware.c:527: }
+;	aes220_Firmware.c:513: }
 00188$:
-;	aes220_Firmware.c:528: return TRUE;
+;	aes220_Firmware.c:514: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:532: default:
+;	aes220_Firmware.c:518: default:
 00189$:
-;	aes220_Firmware.c:533: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:519: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:539: case VC_UC_CMD:
+;	aes220_Firmware.c:525: case VC_UC_CMD:
 00191$:
-;	aes220_Firmware.c:541: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:527: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2219,28 +2219,28 @@ _handle_vendorcommand:
 	sjmp	00196$
 00382$:
 	cjne	r2,#0xC0,00208$
-;	aes220_Firmware.c:546: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:532: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00193$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00193$
-;	aes220_Firmware.c:547: return TRUE; 
+;	aes220_Firmware.c:533: return TRUE; 
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:551: case 0x40:    
+;	aes220_Firmware.c:537: case 0x40:    
 00196$:
-;	aes220_Firmware.c:553: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:539: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:554: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:540: while(EP0CS & bmEPBUSY); // wait
 00197$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00197$
-;	aes220_Firmware.c:556: switch (EP0BUF[0]) 
+;	aes220_Firmware.c:542: switch (EP0BUF[0]) 
 	mov	dptr,#_EP0BUF
 	movx	a,@dptr
 	mov	r2,a
@@ -2259,70 +2259,70 @@ _handle_vendorcommand:
 	cjne	r2,#0x09,00391$
 	sjmp	00204$
 00391$:
-;	aes220_Firmware.c:558: case SLEEP_U:
+;	aes220_Firmware.c:544: case SLEEP_U:
 	cjne	r2,#0x10,00206$
 	sjmp	00205$
 00200$:
-;	aes220_Firmware.c:561: WAKEUPCS = bmWU | bmWUEN;
+;	aes220_Firmware.c:547: WAKEUPCS = bmWU | bmWUEN;
 	mov	dptr,#_WAKEUPCS
 	mov	a,#0x41
 	movx	@dptr,a
-;	aes220_Firmware.c:562: PCON = 0x01;
+;	aes220_Firmware.c:548: PCON = 0x01;
 	mov	_PCON,#0x01
-;	aes220_Firmware.c:563: break; // end of case SLEEP_U
-;	aes220_Firmware.c:565: case SLEEP_F:
+;	aes220_Firmware.c:549: break; // end of case SLEEP_U
+;	aes220_Firmware.c:551: case SLEEP_F:
 	sjmp	00207$
 00201$:
-;	aes220_Firmware.c:566: OED |= 0x80; // PD7 (suspend pin) as output
+;	aes220_Firmware.c:552: OED |= 0x80; // PD7 (suspend pin) as output
 	orl	_OED,#0x80
-;	aes220_Firmware.c:567: SUSPEND_F = 1;
+;	aes220_Firmware.c:553: SUSPEND_F = 1;
 	setb	_PD7
-;	aes220_Firmware.c:568: break; // end of case SLEEP_F
-;	aes220_Firmware.c:570: case WAKE_F:
+;	aes220_Firmware.c:554: break; // end of case SLEEP_F
+;	aes220_Firmware.c:556: case WAKE_F:
 	sjmp	00207$
 00202$:
-;	aes220_Firmware.c:571: OED |= 0x80; // PD7 (suspend pin) as output
+;	aes220_Firmware.c:557: OED |= 0x80; // PD7 (suspend pin) as output
 	orl	_OED,#0x80
-;	aes220_Firmware.c:572: SUSPEND_F = 0;
+;	aes220_Firmware.c:558: SUSPEND_F = 0;
 	clr	_PD7
-;	aes220_Firmware.c:573: break; // end of case WAKE_F
-;	aes220_Firmware.c:575: case FLASH_F:
+;	aes220_Firmware.c:559: break; // end of case WAKE_F
+;	aes220_Firmware.c:561: case FLASH_F:
 	sjmp	00207$
 00203$:
-;	aes220_Firmware.c:576: setupFpgaProg();
+;	aes220_Firmware.c:562: setupFpgaProg();
 	lcall	_setupFpgaProg
-;	aes220_Firmware.c:577: break; // end of case FLASH_F
-;	aes220_Firmware.c:579: case ASSERT_SOFT_RESET:
+;	aes220_Firmware.c:563: break; // end of case FLASH_F
+;	aes220_Firmware.c:565: case ASSERT_SOFT_RESET:
 	sjmp	00207$
 00204$:
-;	aes220_Firmware.c:580: assertSoftReset();
+;	aes220_Firmware.c:566: assertSoftReset();
 	lcall	_assertSoftReset
-;	aes220_Firmware.c:581: break; // end of case ASSERT_SOFT_RESET
-;	aes220_Firmware.c:583: case CLEAR_SOFT_RESET:
+;	aes220_Firmware.c:567: break; // end of case ASSERT_SOFT_RESET
+;	aes220_Firmware.c:569: case CLEAR_SOFT_RESET:
 	sjmp	00207$
 00205$:
-;	aes220_Firmware.c:584: clearSoftReset();
+;	aes220_Firmware.c:570: clearSoftReset();
 	lcall	_clearSoftReset
-;	aes220_Firmware.c:585: break; // end of case CLEAR_SOFT_RESET
-;	aes220_Firmware.c:587: default: 
+;	aes220_Firmware.c:571: break; // end of case CLEAR_SOFT_RESET
+;	aes220_Firmware.c:573: default: 
 	sjmp	00207$
 00206$:
-;	aes220_Firmware.c:588: return FALSE;
+;	aes220_Firmware.c:574: return FALSE;
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:590: }
+;	aes220_Firmware.c:576: }
 00207$:
-;	aes220_Firmware.c:591: return TRUE;
+;	aes220_Firmware.c:577: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:594: default:
+;	aes220_Firmware.c:580: default:
 00208$:
-;	aes220_Firmware.c:595: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:581: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:601: case VC_FIFO_DEBUG:
+;	aes220_Firmware.c:587: case VC_FIFO_DEBUG:
 00210$:
-;	aes220_Firmware.c:603: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:589: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2334,131 +2334,131 @@ _handle_vendorcommand:
 00394$:
 	ljmp	00219$
 00395$:
-;	aes220_Firmware.c:608: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:594: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00212$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00212$
-;	aes220_Firmware.c:609: EP0BUF[0] = IFCONFIG;
+;	aes220_Firmware.c:595: EP0BUF[0] = IFCONFIG;
 	mov	dptr,#_IFCONFIG
 	movx	a,@dptr
 	mov	dptr,#_EP0BUF
 	movx	@dptr,a
-;	aes220_Firmware.c:610: EP0BUF[1] = EP2468STAT;
+;	aes220_Firmware.c:596: EP0BUF[1] = EP2468STAT;
 	mov	dptr,#(_EP0BUF + 0x0001)
 	mov	a,_EP2468STAT
 	movx	@dptr,a
-;	aes220_Firmware.c:611: EP0BUF[2] = EP2CFG;
+;	aes220_Firmware.c:597: EP0BUF[2] = EP2CFG;
 	mov	dptr,#_EP2CFG
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0002)
 	movx	@dptr,a
-;	aes220_Firmware.c:612: EP0BUF[3] = EP2CS;
+;	aes220_Firmware.c:598: EP0BUF[3] = EP2CS;
 	mov	dptr,#_EP2CS
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0003)
 	movx	@dptr,a
-;	aes220_Firmware.c:613: EP0BUF[4] = EP2FIFOFLGS;
+;	aes220_Firmware.c:599: EP0BUF[4] = EP2FIFOFLGS;
 	mov	dptr,#_EP2FIFOFLGS
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0004)
 	movx	@dptr,a
-;	aes220_Firmware.c:614: EP0BUF[5] = EP2FIFOBCH;
+;	aes220_Firmware.c:600: EP0BUF[5] = EP2FIFOBCH;
 	mov	dptr,#_EP2FIFOBCH
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0005)
 	movx	@dptr,a
-;	aes220_Firmware.c:615: EP0BUF[6] = EP2FIFOBCL;
+;	aes220_Firmware.c:601: EP0BUF[6] = EP2FIFOBCL;
 	mov	dptr,#_EP2FIFOBCL
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0006)
 	movx	@dptr,a
-;	aes220_Firmware.c:616: EP0BUF[7] = EP2BCH;
+;	aes220_Firmware.c:602: EP0BUF[7] = EP2BCH;
 	mov	dptr,#_EP2BCH
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0007)
 	movx	@dptr,a
-;	aes220_Firmware.c:617: EP0BUF[8] = EP2BCL;
+;	aes220_Firmware.c:603: EP0BUF[8] = EP2BCL;
 	mov	dptr,#_EP2BCL
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0008)
 	movx	@dptr,a
-;	aes220_Firmware.c:618: EP0BUF[9] = EP6CFG;
+;	aes220_Firmware.c:604: EP0BUF[9] = EP6CFG;
 	mov	dptr,#_EP6CFG
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x0009)
 	movx	@dptr,a
-;	aes220_Firmware.c:619: EP0BUF[10] = EP6CS;
+;	aes220_Firmware.c:605: EP0BUF[10] = EP6CS;
 	mov	dptr,#_EP6CS
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x000a)
 	movx	@dptr,a
-;	aes220_Firmware.c:620: EP0BUF[11] = EP6FIFOFLGS;
+;	aes220_Firmware.c:606: EP0BUF[11] = EP6FIFOFLGS;
 	mov	dptr,#_EP6FIFOFLGS
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x000b)
 	movx	@dptr,a
-;	aes220_Firmware.c:621: EP0BUF[12] = EP6FIFOBCH;
+;	aes220_Firmware.c:607: EP0BUF[12] = EP6FIFOBCH;
 	mov	dptr,#_EP6FIFOBCH
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x000c)
 	movx	@dptr,a
-;	aes220_Firmware.c:622: EP0BUF[13] = EP6FIFOBCL;
+;	aes220_Firmware.c:608: EP0BUF[13] = EP6FIFOBCL;
 	mov	dptr,#_EP6FIFOBCL
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x000d)
 	movx	@dptr,a
-;	aes220_Firmware.c:623: EP0BUF[14] = EP6BCH;
+;	aes220_Firmware.c:609: EP0BUF[14] = EP6BCH;
 	mov	dptr,#_EP6BCH
 	movx	a,@dptr
 	mov	dptr,#(_EP0BUF + 0x000e)
 	movx	@dptr,a
-;	aes220_Firmware.c:624: EP0BUF[15] = EP6BCL;
+;	aes220_Firmware.c:610: EP0BUF[15] = EP6BCL;
 	mov	dptr,#_EP6BCL
 	movx	a,@dptr
 	mov	r2,a
 	mov	dptr,#(_EP0BUF + 0x000f)
 	movx	@dptr,a
-;	aes220_Firmware.c:625: EP0BCH=0;
+;	aes220_Firmware.c:611: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:626: SYNCDELAY();
+;	aes220_Firmware.c:612: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:627: EP0BCL=16;
+;	aes220_Firmware.c:613: EP0BCL=16;
 	mov	dptr,#_EP0BCL
 	mov	a,#0x10
 	movx	@dptr,a
-;	aes220_Firmware.c:628: return TRUE; 
+;	aes220_Firmware.c:614: return TRUE; 
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:632: case 0x40:    
+;	aes220_Firmware.c:618: case 0x40:    
 00215$:
-;	aes220_Firmware.c:634: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:620: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:635: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:621: while(EP0CS & bmEPBUSY); // wait
 00216$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00216$
-;	aes220_Firmware.c:637: return TRUE;
+;	aes220_Firmware.c:623: return TRUE;
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:641: default:
+;	aes220_Firmware.c:627: default:
 00219$:
-;	aes220_Firmware.c:642: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:628: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
 	ret
-;	aes220_Firmware.c:648: case VC_FLASH_CMD:
+;	aes220_Firmware.c:634: case VC_FLASH_CMD:
 00221$:
-;	aes220_Firmware.c:650: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:636: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2466,57 +2466,57 @@ _handle_vendorcommand:
 	sjmp	00226$
 00398$:
 	cjne	r2,#0xC0,00230$
-;	aes220_Firmware.c:655: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:641: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00223$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00223$
-;	aes220_Firmware.c:657: EP0BCH=0;
+;	aes220_Firmware.c:643: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:658: SYNCDELAY();
+;	aes220_Firmware.c:644: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:659: EP0BCL=len;
+;	aes220_Firmware.c:645: EP0BCL=len;
 	mov	dptr,#_EP0BCL
 	mov	a,_handle_vendorcommand_len_1_1
 	movx	@dptr,a
-;	aes220_Firmware.c:660: return TRUE; 
+;	aes220_Firmware.c:646: return TRUE; 
 	mov	dpl,#0x01
 	ret
-;	aes220_Firmware.c:664: case 0x40:    
+;	aes220_Firmware.c:650: case 0x40:    
 00226$:
-;	aes220_Firmware.c:666: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:652: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:667: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:653: while(EP0CS & bmEPBUSY); // wait
 00227$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00227$
-;	aes220_Firmware.c:670: execFlashCmd(addr, len);
+;	aes220_Firmware.c:654: execFlashCmd(addr, len);
 	mov	_execFlashCmd_PARM_2,_handle_vendorcommand_len_1_1
 	mov	(_execFlashCmd_PARM_2 + 1),(_handle_vendorcommand_len_1_1 + 1)
 	mov	dpl,_handle_vendorcommand_addr_1_1
 	mov	dph,(_handle_vendorcommand_addr_1_1 + 1)
 	lcall	_execFlashCmd
-;	aes220_Firmware.c:671: return TRUE;
+;	aes220_Firmware.c:655: return TRUE;
 	mov	dpl,#0x01
-;	aes220_Firmware.c:675: default:
+;	aes220_Firmware.c:659: default:
 	ret
 00230$:
-;	aes220_Firmware.c:676: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:660: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
-;	aes220_Firmware.c:682: case VC_SOFT_INFO:
+;	aes220_Firmware.c:666: case VC_SOFT_INFO:
 	ret
 00232$:
-;	aes220_Firmware.c:684: switch (SETUP_TYPE) 
+;	aes220_Firmware.c:668: switch (SETUP_TYPE) 
 	mov	dptr,#_SETUPDAT
 	movx	a,@dptr
 	mov	r2,a
@@ -2524,13 +2524,13 @@ _handle_vendorcommand:
 	sjmp	00237$
 00403$:
 	cjne	r2,#0xC0,00241$
-;	aes220_Firmware.c:688: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
+;	aes220_Firmware.c:672: while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 00234$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00234$
-;	aes220_Firmware.c:689: memcpy(EP0BUF, codeVersion, sizeof(codeVersion));
+;	aes220_Firmware.c:673: memcpy(EP0BUF, codeVersion, sizeof(codeVersion));
 	mov	_memcpy_PARM_2,#_codeVersion
 	mov	(_memcpy_PARM_2 + 1),#(_codeVersion >> 8)
 	mov	(_memcpy_PARM_2 + 2),#0x80
@@ -2540,48 +2540,48 @@ _handle_vendorcommand:
 	mov	dptr,#_EP0BUF
 	mov	b,#0x00
 	lcall	_memcpy
-;	aes220_Firmware.c:690: EP0BCH=0;
+;	aes220_Firmware.c:674: EP0BCH=0;
 	mov	dptr,#_EP0BCH
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:691: SYNCDELAY();
+;	aes220_Firmware.c:675: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:692: EP0BCL=len;
+;	aes220_Firmware.c:676: EP0BCL=len;
 	mov	dptr,#_EP0BCL
 	mov	a,_handle_vendorcommand_len_1_1
 	movx	@dptr,a
-;	aes220_Firmware.c:693: return TRUE; 
+;	aes220_Firmware.c:677: return TRUE; 
 	mov	dpl,#0x01
-;	aes220_Firmware.c:696: case 0x40:    
+;	aes220_Firmware.c:680: case 0x40:    
 	ret
 00237$:
-;	aes220_Firmware.c:698: EP0BCL = 0; // allow pc transfer in
+;	aes220_Firmware.c:682: EP0BCL = 0; // allow pc transfer in
 	mov	dptr,#_EP0BCL
 	clr	a
 	movx	@dptr,a
-;	aes220_Firmware.c:699: while(EP0CS & bmEPBUSY); // wait
+;	aes220_Firmware.c:683: while(EP0CS & bmEPBUSY); // wait
 00238$:
 	mov	dptr,#_EP0CS
 	movx	a,@dptr
 	mov	r2,a
 	jb	acc.1,00238$
-;	aes220_Firmware.c:700: return TRUE;
+;	aes220_Firmware.c:684: return TRUE;
 	mov	dpl,#0x01
-;	aes220_Firmware.c:704: default:
+;	aes220_Firmware.c:688: default:
 	ret
 00241$:
-;	aes220_Firmware.c:705: return FALSE; // bad SETUP_TYPE
+;	aes220_Firmware.c:689: return FALSE; // bad SETUP_TYPE
 	mov	dpl,#0x00
-;	aes220_Firmware.c:743: default:
+;	aes220_Firmware.c:727: default:
 	ret
 00243$:
-;	aes220_Firmware.c:744: return FALSE;
+;	aes220_Firmware.c:728: return FALSE;
 	mov	dpl,#0x00
-;	aes220_Firmware.c:746: } // end of case cmd
-;	aes220_Firmware.c:747: return FALSE;
+;	aes220_Firmware.c:730: } // end of case cmd
+;	aes220_Firmware.c:731: return FALSE;
 	ret
 00244$:
 	mov	dpl,#0x00
@@ -2592,12 +2592,12 @@ _handle_vendorcommand:
 ;alt_ifc                   Allocated with name '_handle_get_interface_PARM_2'
 ;ifc                       Allocated to registers r2 
 ;------------------------------------------------------------
-;	aes220_Firmware.c:753: BOOL handle_get_interface(BYTE ifc, BYTE* alt_ifc) {
+;	aes220_Firmware.c:737: BOOL handle_get_interface(BYTE ifc, BYTE* alt_ifc) {
 ;	-----------------------------------------
 ;	 function handle_get_interface
 ;	-----------------------------------------
 _handle_get_interface:
-;	aes220_Firmware.c:754: if (ifc==0) {*alt_ifc=0; return TRUE;} else { return FALSE;}
+;	aes220_Firmware.c:738: if (ifc==0) {*alt_ifc=0; return TRUE;} else { return FALSE;}
 	mov	a,dpl
 	mov	r2,a
 	jnz	00102$
@@ -2620,12 +2620,12 @@ _handle_get_interface:
 ;alt_ifc                   Allocated with name '_handle_set_interface_PARM_2'
 ;ifc                       Allocated to registers r2 
 ;------------------------------------------------------------
-;	aes220_Firmware.c:756: BOOL handle_set_interface(BYTE ifc, BYTE alt_ifc) {
+;	aes220_Firmware.c:740: BOOL handle_set_interface(BYTE ifc, BYTE alt_ifc) {
 ;	-----------------------------------------
 ;	 function handle_set_interface
 ;	-----------------------------------------
 _handle_set_interface:
-;	aes220_Firmware.c:757: if (ifc==0&&alt_ifc==0) {
+;	aes220_Firmware.c:741: if (ifc==0&&alt_ifc==0) {
 	mov	a,dpl
 	mov	r2,a
 	jz	00109$
@@ -2633,7 +2633,7 @@ _handle_set_interface:
 00109$:
 	mov	a,_handle_set_interface_PARM_2
 	jnz	00102$
-;	aes220_Firmware.c:760: RESETTOGGLE(0x02);
+;	aes220_Firmware.c:744: RESETTOGGLE(0x02);
 	mov	dptr,#_TOGCTL
 	mov	a,#0x02
 	movx	@dptr,a
@@ -2643,7 +2643,7 @@ _handle_set_interface:
 	mov	a,#0x20
 	orl	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:761: RESETTOGGLE(0x86);
+;	aes220_Firmware.c:745: RESETTOGGLE(0x86);
 	mov	dptr,#_TOGCTL
 	mov	a,#0x16
 	movx	@dptr,a
@@ -2653,7 +2653,7 @@ _handle_set_interface:
 	mov	a,#0x20
 	orl	a,r2
 	movx	@dptr,a
-;	aes220_Firmware.c:763: RESETFIFO(0x02);
+;	aes220_Firmware.c:747: RESETFIFO(0x02);
 	mov	dptr,#_FIFORESET
 	mov	a,#0x80
 	movx	@dptr,a
@@ -2675,25 +2675,25 @@ _handle_set_interface:
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:764: EP2BCL=0x80;
+;	aes220_Firmware.c:748: EP2BCL=0x80;
 	mov	dptr,#_EP2BCL
 	mov	a,#0x80
 	movx	@dptr,a
-;	aes220_Firmware.c:765: SYNCDELAY();
+;	aes220_Firmware.c:749: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:766: EP2BCL=0X80;
+;	aes220_Firmware.c:750: EP2BCL=0X80;
 	mov	dptr,#_EP2BCL
 	mov	a,#0x80
 	movx	@dptr,a
-;	aes220_Firmware.c:767: SYNCDELAY();
+;	aes220_Firmware.c:751: SYNCDELAY();
 	 nop 
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:768: RESETFIFO(0x86);
+;	aes220_Firmware.c:752: RESETFIFO(0x86);
 	mov	dptr,#_FIFORESET
 	mov	a,#0x80
 	movx	@dptr,a
@@ -2715,9 +2715,9 @@ _handle_set_interface:
 	 nop 
 	 nop 
 	 nop 
-;	aes220_Firmware.c:769: return TRUE;
+;	aes220_Firmware.c:753: return TRUE;
 	mov	dpl,#0x01
-;	aes220_Firmware.c:771: return FALSE;
+;	aes220_Firmware.c:755: return FALSE;
 	ret
 00102$:
 	mov	dpl,#0x00
@@ -2726,12 +2726,12 @@ _handle_set_interface:
 ;Allocation info for local variables in function 'handle_get_configuration'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:775: BYTE handle_get_configuration() {
+;	aes220_Firmware.c:759: BYTE handle_get_configuration() {
 ;	-----------------------------------------
 ;	 function handle_get_configuration
 ;	-----------------------------------------
 _handle_get_configuration:
-;	aes220_Firmware.c:776: return 1;
+;	aes220_Firmware.c:760: return 1;
 	mov	dpl,#0x01
 	ret
 ;------------------------------------------------------------
@@ -2739,13 +2739,13 @@ _handle_get_configuration:
 ;------------------------------------------------------------
 ;cfg                       Allocated to registers r2 
 ;------------------------------------------------------------
-;	aes220_Firmware.c:778: BOOL handle_set_configuration(BYTE cfg) {
+;	aes220_Firmware.c:762: BOOL handle_set_configuration(BYTE cfg) {
 ;	-----------------------------------------
 ;	 function handle_set_configuration
 ;	-----------------------------------------
 _handle_set_configuration:
 	mov	r2,dpl
-;	aes220_Firmware.c:779: return cfg==1 ? TRUE : FALSE; // we only handle cfg 1
+;	aes220_Firmware.c:763: return cfg==1 ? TRUE : FALSE; // we only handle cfg 1
 	cjne	r2,#0x01,00103$
 	mov	r2,#0x01
 	sjmp	00104$
@@ -2758,7 +2758,7 @@ _handle_set_configuration:
 ;Allocation info for local variables in function 'sudav_isr'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:784: void sudav_isr() interrupt SUDAV_ISR {
+;	aes220_Firmware.c:768: void sudav_isr() interrupt SUDAV_ISR {
 ;	-----------------------------------------
 ;	 function sudav_isr
 ;	-----------------------------------------
@@ -2766,9 +2766,9 @@ _sudav_isr:
 	push	acc
 	push	dpl
 	push	dph
-;	aes220_Firmware.c:785: got_sud=TRUE;
+;	aes220_Firmware.c:769: got_sud=TRUE;
 	setb	_got_sud
-;	aes220_Firmware.c:786: CLEAR_SUDAV();
+;	aes220_Firmware.c:770: CLEAR_SUDAV();
 	anl	_EXIF,#0xEF
 	mov	dptr,#_USBIRQ
 	mov	a,#0x01
@@ -2783,7 +2783,7 @@ _sudav_isr:
 ;Allocation info for local variables in function 'sof_isr'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:791: void sof_isr () interrupt SOF_ISR using 1 {
+;	aes220_Firmware.c:775: void sof_isr () interrupt SOF_ISR using 1 {
 ;	-----------------------------------------
 ;	 function sof_isr
 ;	-----------------------------------------
@@ -2801,7 +2801,7 @@ _sof_isr:
 	push	dph
 	push	psw
 	mov	psw,#0x08
-;	aes220_Firmware.c:792: ++sofct;
+;	aes220_Firmware.c:776: ++sofct;
 	mov	dptr,#_sofct
 	movx	a,@dptr
 	add	a,#0x01
@@ -2810,7 +2810,7 @@ _sof_isr:
 	movx	a,@dptr
 	addc	a,#0x00
 	movx	@dptr,a
-;	aes220_Firmware.c:793: if(sofct==8000) { // about 8000 sof interrupts per second at high speed
+;	aes220_Firmware.c:777: if(sofct==8000) { // about 8000 sof interrupts per second at high speed
 	mov	dptr,#_sofct
 	movx	a,@dptr
 	mov	r2,a
@@ -2819,16 +2819,16 @@ _sof_isr:
 	mov	r3,a
 	cjne	r2,#0x40,00102$
 	cjne	r3,#0x1F,00102$
-;	aes220_Firmware.c:794: on5=!on5;
+;	aes220_Firmware.c:778: on5=!on5;
 	cpl	_on5
-;	aes220_Firmware.c:795: sofct=0;
+;	aes220_Firmware.c:779: sofct=0;
 	mov	dptr,#_sofct
 	clr	a
 	movx	@dptr,a
 	inc	dptr
 	movx	@dptr,a
 00102$:
-;	aes220_Firmware.c:797: CLEAR_SOF();
+;	aes220_Firmware.c:781: CLEAR_SOF();
 	anl	_EXIF,#0xEF
 	mov	dptr,#_USBIRQ
 	mov	a,#0x02
@@ -2843,7 +2843,7 @@ _sof_isr:
 ;Allocation info for local variables in function 'usbreset_isr'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:800: void usbreset_isr() interrupt USBRESET_ISR {
+;	aes220_Firmware.c:784: void usbreset_isr() interrupt USBRESET_ISR {
 ;	-----------------------------------------
 ;	 function usbreset_isr
 ;	-----------------------------------------
@@ -2871,10 +2871,10 @@ _usbreset_isr:
 	push	(0+1)
 	push	psw
 	mov	psw,#0x00
-;	aes220_Firmware.c:801: handle_hispeed(FALSE);
+;	aes220_Firmware.c:785: handle_hispeed(FALSE);
 	mov	dpl,#0x00
 	lcall	_handle_hispeed
-;	aes220_Firmware.c:802: CLEAR_USBRESET();
+;	aes220_Firmware.c:786: CLEAR_USBRESET();
 	anl	_EXIF,#0xEF
 	mov	dptr,#_USBIRQ
 	mov	a,#0x10
@@ -2898,7 +2898,7 @@ _usbreset_isr:
 ;Allocation info for local variables in function 'hispeed_isr'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:804: void hispeed_isr() interrupt HISPEED_ISR {
+;	aes220_Firmware.c:788: void hispeed_isr() interrupt HISPEED_ISR {
 ;	-----------------------------------------
 ;	 function hispeed_isr
 ;	-----------------------------------------
@@ -2918,10 +2918,10 @@ _hispeed_isr:
 	push	(0+1)
 	push	psw
 	mov	psw,#0x00
-;	aes220_Firmware.c:805: handle_hispeed(TRUE);
+;	aes220_Firmware.c:789: handle_hispeed(TRUE);
 	mov	dpl,#0x01
 	lcall	_handle_hispeed
-;	aes220_Firmware.c:806: CLEAR_HISPEED();
+;	aes220_Firmware.c:790: CLEAR_HISPEED();
 	anl	_EXIF,#0xEF
 	mov	dptr,#_USBIRQ
 	mov	a,#0x20
@@ -2945,12 +2945,12 @@ _hispeed_isr:
 ;Allocation info for local variables in function 'timer0_isr'
 ;------------------------------------------------------------
 ;------------------------------------------------------------
-;	aes220_Firmware.c:809: void timer0_isr() interrupt TF0_ISR {
+;	aes220_Firmware.c:793: void timer0_isr() interrupt TF0_ISR {
 ;	-----------------------------------------
 ;	 function timer0_isr
 ;	-----------------------------------------
 _timer0_isr:
-;	aes220_Firmware.c:811: if (LED6) { LED6 = 0;} else {LED6 = 1;}
+;	aes220_Firmware.c:795: if (LED6) { LED6 = 0;} else {LED6 = 1;}
 	jbc	_PB0,00107$
 	sjmp	00102$
 00107$:
@@ -2969,7 +2969,7 @@ _timer0_isr:
 _codeVersion:
 	.db #0x01
 	.db #0x04
-	.db #0x01
+	.db #0x02
 	.area XINIT   (CODE)
 __xinit__programFpga:
 	.db #0x00
