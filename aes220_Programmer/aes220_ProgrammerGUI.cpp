@@ -16,6 +16,8 @@ V1.3.2: Added a check in OnIdxTimer and OnCmbIdx to ensure device information
 V1.4.0: Release version 
 V1.4.1: Adding switch to program either aes220a or b requires libaes220.1.5.0 or above
         although doesn't actually use the library but access the C++ files directly
+V1.4.2: Switching to using libaes220.so rather than accessing the cpp functions of the API
+        directly.
 
 ====================================================================================================
 NOTES
@@ -57,9 +59,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "wx/numdlg.h"
 #include "wx/notebook.h"
 
-#include "aes220ProgrammerCommands.h"
+#include "../API/aes220_API.h"
 
-#define SOFT_VER "aes220 Programmer Version 1.4.1"
+#define SOFT_VER "aes220 Programmer Version 1.4.2"
+#define VBS_LEVEL 6
+#define RESET_FILE "reset.ihx"
 
 using namespace std;
 
@@ -141,7 +145,7 @@ public:
 private:
 
   int rv;
-  int vid, pid, idx;
+  int vid, pid, idx, vbs;
   uint8_t boardInfo[8];
   uint8_t firmwareInfo[3];
   wxStaticText* serialNbText;
@@ -200,7 +204,7 @@ enum
 class ConfigFpgaThread : public wxThread
 {
 public:
-  ConfigFpgaThread(MainFrame *frame, int vid, int pid, int idx, wxString fpgaConfFileName);
+  ConfigFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs, wxString fpgaConfFileName);
 
   // thread execution starts here
   virtual void *Entry();
@@ -218,10 +222,11 @@ private:
   int m_vid;
   int m_pid;
   int m_idx;
+  int m_vbs;
   wxString m_fpgaConfFileName;
 };
 
-ConfigFpgaThread::ConfigFpgaThread(MainFrame *frame, int vid, int pid, int idx,
+ConfigFpgaThread::ConfigFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs,
 				   wxString fpgaConfFileName) : wxThread()
 {
   m_count = 0;
@@ -229,6 +234,7 @@ ConfigFpgaThread::ConfigFpgaThread(MainFrame *frame, int vid, int pid, int idx,
   m_vid = vid;
   m_pid = pid;
   m_idx = idx;
+  m_vbs = vbs;
   m_fpgaConfFileName = fpgaConfFileName;
 }
 
@@ -254,7 +260,10 @@ void *ConfigFpgaThread::Entry()
   // Use a mutex to ensure the device is not being used by another thread when trying to communicate
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    confFpga(m_vid, m_pid, m_idx, m_fpgaConfFileName.mb_str());
+    aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
+    aes220_Configure_FPGA(aes220_ptr, m_fpgaConfFileName.mb_str());
+    aes220_Close(aes220_ptr);
+    //confFpga(m_vid, m_pid, m_idx, m_fpgaConfFileName.mb_str());
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Can't unlock the device.\n");
     }
@@ -272,7 +281,8 @@ void *ConfigFpgaThread::Entry()
 class ProgramFpgaThread : public wxThread
 {
 public:
-  ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx, wxString fpgaProgFileName);
+  ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs, 
+		    wxString fpgaProgFileName);
 
   // thread execution starts here
   virtual void *Entry();
@@ -290,10 +300,11 @@ private:
   int m_vid;
   int m_pid;
   int m_idx;
+  int m_vbs;
   wxString m_fpgaProgFileName;
 };
 
-ProgramFpgaThread::ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx,
+ProgramFpgaThread::ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs,
 				     wxString fpgaProgFileName) : wxThread()
 {
   m_count = 0;
@@ -301,6 +312,7 @@ ProgramFpgaThread::ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx
   m_vid = vid;
   m_pid = pid;
   m_idx = idx;
+  m_vbs = vbs;
   m_fpgaProgFileName = fpgaProgFileName;
 }
 
@@ -328,7 +340,10 @@ void *ProgramFpgaThread::Entry()
   // Use a mutex to ensure the device is not being used by another thread when trying to communicate
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    progFpga(m_vid, m_pid, m_idx, m_fpgaProgFileName.mb_str());
+    aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
+    aes220_Program_FPGA(aes220_ptr, m_fpgaProgFileName.mb_str());
+    aes220_Close(aes220_ptr);
+    //progFpga(m_vid, m_pid, m_idx, m_fpgaProgFileName.mb_str());
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Can't unlock the device.\n");
     }
@@ -346,7 +361,7 @@ void *ProgramFpgaThread::Entry()
 class EraseFpgaThread : public wxThread
 {
 public:
-  EraseFpgaThread(MainFrame *frame, int vid, int pid, int idx);
+  EraseFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs);
 
   // thread execution starts here
   virtual void *Entry();
@@ -364,15 +379,17 @@ private:
   int m_vid;
   int m_pid;
   int m_idx;
+  int m_vbs;
 };
 
-EraseFpgaThread::EraseFpgaThread(MainFrame *frame, int vid, int pid, int idx) : wxThread()
+EraseFpgaThread::EraseFpgaThread(MainFrame *frame, int vid, int pid, int idx, int vbs) : wxThread()
 {
   m_count = 0;
   m_frame = frame;
   m_vid = vid;
   m_pid = pid;
   m_idx = idx;
+  m_vbs = vbs;
 }
 
 void EraseFpgaThread::OnExit()
@@ -399,7 +416,10 @@ void *EraseFpgaThread::Entry()
   // Use a mutex to ensure the device is not being used by another thread when trying to communicate
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    eraseFpga(m_vid, m_pid, m_idx);
+    aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
+    aes220_Erase_FPGA(aes220_ptr);
+    aes220_Close(aes220_ptr);
+    //eraseFpga(m_vid, m_pid, m_idx);
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Can't unlock the device.\n");
     }
@@ -496,6 +516,7 @@ MainFrame::MainFrame(const wxString& title)
 
   vid = 0x2443;
   pid = 0x00dc;
+  vbs = VBS_LEVEL;
 
   m_nRunning = m_nCount = 0;
   m_dlgProgress = (wxProgressDialog *)NULL;
@@ -592,10 +613,13 @@ MainFrame::MainFrame(const wxString& title)
   wxButton* clsbtn = new wxButton(panel, wxID_CloseApp, wxT("Close"),
 				  wxPoint(), wxSize(130,30));
 
-  // Combo box for chosing which device to speak to
+  // Combo box for choosing which device to speak to
   idx = 0;
   StartIdxTimer();
-  getBoardInfo(vid, pid, idx, boardInfo);
+  aes220_handle *aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs);
+  aes220_Get_Board_Info(aes220_ptr, boardInfo);
+  aes220_Close(aes220_ptr);
+  //getBoardInfo(vid, pid, idx, boardInfo);
   wxArrayString idxStrings;
   for (int i = 0; i < 10; i++) {
     idxStrings.Add(wxString::Format(_T("%d"), i));
@@ -612,13 +636,14 @@ MainFrame::MainFrame(const wxString& title)
     new wxStaticText(panel, wxID_ANY, _T("Module:               "));
   wxStaticText* firmDescText =
     new wxStaticText(panel, wxID_ANY, _T("Firmware Revision:    "));
+
   serialNbText = new wxStaticText(panel, wxID_ANY, _T(""));
   dateCodeText = new wxStaticText(panel, wxID_ANY, _T(""));
   boardText = new wxStaticText(panel, wxID_ANY, _T(""));
   firmText = new wxStaticText(panel, wxID_ANY, _T(""));
-  serialNbText = new wxStaticText(panel, wxID_ANY, _T(""));
-  cmbIdx->SetToolTip(_T("Select the device ID when more than one device is used.\nStarts at 0 and increase when more devices are plugged in."));
-  serialNbDescText->SetToolTip(_T("That is the serial number present on the board (reversed)."));
+
+  cmbIdx->SetToolTip(_T("Select the device ID when more than one device is used.\nStarts at 0 and increases when more devices are plugged in."));
+  serialNbDescText->SetToolTip(_T("That is the serial number present on the board bottom side."));
   serialNbText->SetLabel(_T("0"));
 
   // Add a log window
@@ -658,9 +683,7 @@ MainFrame::MainFrame(const wxString& title)
   vszModInfo->Add(boardText);
   vszModInfo->Add(firmText);
   // Create an horizontal sizer for the module information (static box)
-  wxBoxSizer* hszInfo = new wxStaticBoxSizer(
-					     new wxStaticBox(panel, wxID_ANY,
-							     _T("")),
+  wxBoxSizer* hszInfo = new wxStaticBoxSizer(new wxStaticBox(panel, wxID_ANY, _T("")),
 					     wxHORIZONTAL);
   hszInfo->Add(vszModInfoDesc);
   hszInfo->Add(vszModInfo);
@@ -677,9 +700,8 @@ MainFrame::MainFrame(const wxString& title)
   //hszIdx->Add(serialNbText, wxSizerFlags().Border(wxTOP, 10));
 
   // radio butttons, text and buttons for  uController
-  wxBoxSizer* vszuC = new wxStaticBoxSizer(
-					   new wxStaticBox(advancedPanel, wxID_ANY,
-							   wxT("uController")), wxVERTICAL);
+  wxBoxSizer* vszuC = new wxStaticBoxSizer(new wxStaticBox(advancedPanel, wxID_ANY,
+					   wxT("uController")), wxVERTICAL);
 #ifdef _WIN32
 #else
   vszuC->Add(aes220IDrbtn);
@@ -691,8 +713,7 @@ MainFrame::MainFrame(const wxString& title)
 
   // Second static box
   // Text and buttons for  FPGA
-  wxBoxSizer* vszFpga = new wxStaticBoxSizer(
-					     new wxStaticBox(fpgaPanel, wxID_ANY, wxT("")),
+  wxBoxSizer* vszFpga = new wxStaticBoxSizer(new wxStaticBox(fpgaPanel, wxID_ANY, wxT("")),
 					     wxVERTICAL);
   // Use sizer to layout the controls, stacked horizontally
   // Text and button for FPGA configuration
@@ -785,7 +806,7 @@ MainFrame::~MainFrame()
 
 ConfigFpgaThread *MainFrame::CreateConfigFpgaThread()
 {
-  ConfigFpgaThread *thread = new ConfigFpgaThread(this, vid, pid, idx, fpgaConfFileName);
+  ConfigFpgaThread *thread = new ConfigFpgaThread(this, vid, pid, idx, vbs, fpgaConfFileName);
 
   if ( thread->Create() != wxTHREAD_NO_ERROR )
     {
@@ -800,7 +821,7 @@ ConfigFpgaThread *MainFrame::CreateConfigFpgaThread()
 
 ProgramFpgaThread *MainFrame::CreateProgramFpgaThread()
 {
-  ProgramFpgaThread *thread = new ProgramFpgaThread(this, vid, pid, idx, fpgaProgFileName);
+  ProgramFpgaThread *thread = new ProgramFpgaThread(this, vid, pid, idx, vbs, fpgaProgFileName);
 
   if ( thread->Create() != wxTHREAD_NO_ERROR )
     {
@@ -815,7 +836,7 @@ ProgramFpgaThread *MainFrame::CreateProgramFpgaThread()
 
 EraseFpgaThread *MainFrame::CreateEraseFpgaThread()
 {
-  EraseFpgaThread *thread = new EraseFpgaThread(this, vid, pid, idx);
+  EraseFpgaThread *thread = new EraseFpgaThread(this, vid, pid, idx, vbs);
 
   if ( thread->Create() != wxTHREAD_NO_ERROR )
     {
@@ -866,12 +887,14 @@ void MainFrame::OnRadioButtonAes220ID(wxCommandEvent &event)
 {
   vid = 0x2443;
   pid = 0x00dc;
+  vbs = VBS_LEVEL;
 }
 
 void MainFrame::OnRadioButtonFx2lpID(wxCommandEvent &event)
 {
   vid = 0x04b4;
   pid = 0x8613;
+  vbs = VBS_LEVEL;
 }
 
 void MainFrame::OnBrowseBtn1(wxCommandEvent& WXUNUSED(event))
@@ -923,7 +946,10 @@ void MainFrame::OnProgRamBtn(wxCommandEvent& WXUNUSED(event))
 {
   //wxStreamToTextRedirector redirect(m_log);
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    progUCRam(vid, pid, idx, uCRamFileTxtCtrl->GetValue().mb_str());
+    aes220_handle *aes220_ptr =  aes220_Open_Device(vid, pid, idx, vbs);
+    aes220_Program_MC_RAM(aes220_ptr, uCRamFileTxtCtrl->GetValue().mb_str());
+    aes220_Close(aes220_ptr);
+    //progUCRam(vid, pid, idx, uCRamFileTxtCtrl->GetValue().mb_str());
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Cannot unlock the module.\n");
     }
@@ -938,7 +964,10 @@ void MainFrame::OnProgEEPBtn(wxCommandEvent& WXUNUSED(event))
   //wxStreamToTextRedirector redirect(m_log);
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     wxStopWatch sw;
-    progUCEep(vid, pid, idx, uCEepFileTxtCtrl->GetValue().mb_str());
+    aes220_handle *aes220_ptr =  aes220_Open_Device(vid, pid, idx, vbs);
+    aes220_Program_MC_EEPROM(aes220_ptr, uCEepFileTxtCtrl->GetValue().mb_str());
+    aes220_Close(aes220_ptr);
+    //progUCEep(vid, pid, idx, uCEepFileTxtCtrl->GetValue().mb_str());
     sw.Pause();
     *m_log << _T("Time to complete the EEPROM write: ") << (sw.Time()/1000) << _T("s\n");
     // cout << "Time to complete the EEPROM write: " << setprecision(2) << (sw.Time()/1000) << "s"
@@ -956,7 +985,10 @@ void MainFrame::OnRstEEPBtn(wxCommandEvent& WXUNUSED(event))
 {
   //wxStreamToTextRedirector redirect(m_log);
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    rstUCEep(vid, pid, idx);
+    aes220_handle *aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs);
+    aes220_Program_MC_RAM(aes220_ptr, RESET_FILE);
+    aes220_Close(aes220_ptr);
+    //rstUCEep(vid, pid, idx);
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Cannot unlock the module.\n");
     }
@@ -1070,8 +1102,13 @@ void MainFrame::OnIdxTimer(wxTimerEvent& event)
   // with it (as would be the case when configuring or programming the FPGA).
   // Important here as the timer will most likely trigger before the FPGA is programmed.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
-      getFirmwareInfo(vid, pid, idx, firmwareInfo);
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    int rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
+    //if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
+    if (rv == 0) {
+      //if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
+      //getFirmwareInfo(vid, pid, idx, firmwareInfo);
+      aes220_Get_Firmware_Info(aes220_ptr, firmwareInfo);
     }
     else {
       for (int i = 0 ; i < 8 ; i++) { // board info is 8 bytes long
@@ -1096,6 +1133,7 @@ void MainFrame::OnIdxTimer(wxTimerEvent& event)
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Can't unlock the device.\n");
     }
+    aes220_Close(aes220_ptr);
   }
 }
 
@@ -1116,7 +1154,10 @@ void MainFrame::OnCmbIdx(wxCommandEvent& WXUNUSED(event))
   // Academic in this case as this function is activated by the user.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     idx = cmbIdx->GetSelection();
-    if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    int rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
+    //if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
+    if (rv == 0) {
     }
     else {
       for (int i = 0 ; i < 8 ; i++) { // board info is 8 bytes long
@@ -1124,7 +1165,8 @@ void MainFrame::OnCmbIdx(wxCommandEvent& WXUNUSED(event))
 	if (i < 3) { firmwareInfo[i] = 0; };
       }
     }
-    getFirmwareInfo(vid, pid, idx, firmwareInfo);
+    aes220_Get_Firmware_Info(aes220_ptr, firmwareInfo);
+    //getFirmwareInfo(vid, pid, idx, firmwareInfo);
     boardText->SetLabel(wxString::Format(_T("aes220%c Rev%c.%d"),
 					 boardInfo[1],
 					 boardInfo[2],
@@ -1143,5 +1185,6 @@ void MainFrame::OnCmbIdx(wxCommandEvent& WXUNUSED(event))
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Can't unlock the device.\n");
     }
+    aes220_Close(aes220_ptr);
   }
 }
