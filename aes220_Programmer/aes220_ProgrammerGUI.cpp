@@ -18,6 +18,7 @@ V1.4.1: Adding switch to program either aes220a or b requires libaes220.1.5.0 or
         although doesn't actually use the library but access the C++ files directly
 V1.4.2: Switching to using libaes220.so rather than accessing the cpp functions of the API
         directly.
+v1.4.3: Modifying the Files menu to display only FPGA .bin and .*** files.
 
 ====================================================================================================
 NOTES
@@ -169,6 +170,10 @@ private:
   size_t m_nRunning, m_nCount;
   // the progress dialog which we show while worker thread is running
   wxProgressDialog *m_dlgProgress;
+
+  wxString lastFpgaDirectory;
+  wxString lastRamDirectory;
+  wxString lastEepDirectory;
 
   DECLARE_EVENT_TABLE();
 };
@@ -898,47 +903,52 @@ void MainFrame::OnRadioButtonFx2lpID(wxCommandEvent &event)
 }
 
 void MainFrame::OnBrowseBtn1(wxCommandEvent& WXUNUSED(event))
-{
+{ // RAM files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
+		   lastRamDirectory,
 		   wxEmptyString,
-		   wxEmptyString,
-		   wxT("All files (*.*)|*.*"),
+		   wxT("Binary files (*.ihx)|*.ihx|All files (*.*)|*.*"),
 		   wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
       uCRamFileTxtCtrl->SetValue(dlg.GetPath());
+      lastRamDirectory = dlg.GetDirectory();
     }
 }
 
 void MainFrame::OnBrowseBtn2(wxCommandEvent& WXUNUSED(event))
-{
+{ // EEPROM files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
+		   lastEepDirectory,
 		   wxEmptyString,
-		   wxEmptyString,
-		   wxT("All files (*.*)|*.*"),
+		   wxT("Binary files (*.iic)|*.iic|All files (*.*)|*.*"),
 		   wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
       uCEepFileTxtCtrl->SetValue(dlg.GetPath());
+      lastEepDirectory = dlg.GetDirectory();
     }
 }
 
 void MainFrame::OnBrowseBtn3(wxCommandEvent& WXUNUSED(event))
-{
+{ // FPGA files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
+		   lastFpgaDirectory,
 		   wxEmptyString,
-		   wxEmptyString,
-		   wxT("All files (*.*)|*.*"),
-		   wxFD_OPEN);
+		   wxT("Binary files (*.bin)|*.bin|All files (*.*)|*.*"),
+		   // bit files not supported for the time being:
+		   //wxT("Binary files (*.bin;*.bit)|*.bin;*.bit|All files (*.*)|*.*"),
+		   wxFD_CHANGE_DIR | wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
       fpgaConfFileTxtCtrl->SetValue(dlg.GetPath());
+      lastFpgaDirectory = dlg.GetDirectory();
     }
 }
 

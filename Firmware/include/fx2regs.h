@@ -566,7 +566,6 @@ sfr at 0xF8 EIP; // EIP Bit Values differ from Reg320
 /* Endpoint Config (EP[2468]CFG) */
 #define bmVALID     bmBIT7
 #define bmDIR       bmBIT6
-#define bmDIRIN     bmBIT6
 #define bmTYPE      (bmBIT5|bmBIT4)
 #define bmTYPE1     bmBIT5
 #define bmTYPE0     bmBIT4
