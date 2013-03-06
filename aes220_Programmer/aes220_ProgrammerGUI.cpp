@@ -18,7 +18,7 @@ V1.4.1: Adding switch to program either aes220a or b requires libaes220.1.5.0 or
         although doesn't actually use the library but access the C++ files directly
 V1.4.2: Switching to using libaes220.so rather than accessing the cpp functions of the API
         directly.
-v1.4.3: Modifying the Files menu to display only FPGA .bin and .*** files.
+        Modifying the Files menu to display only FPGA .bin and .*** files.
 
 ====================================================================================================
 NOTES

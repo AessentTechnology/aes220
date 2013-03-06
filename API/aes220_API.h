@@ -82,7 +82,7 @@ extern "C" {
   */
   aes220_handle* aes220_Open_Device(int vid, int pid, int idx, int vbs);
 
-  /* Function: aes220_handle* aes220_Open(int vid, int pid, int idx, int vbs)
+  /* Function: aes220_handle* aes220_Open(int idx, int vbs)
      Returns a handle to an aes220 USB device.
 
      Parameters:
@@ -391,7 +391,7 @@ extern "C" {
   int aes220_Program_FPGA(aes220_handle* aes220_ptr, const char * file_ptr);
 
   /* Function:  int aes220_Erase_FPGA(aes220_handle *aes220_ptr)
-     Erase the FPGA with the given file.
+     Erase the FPGA Flash (First page only to prevent the FPGA from booting up).
 
      Parameters:
 

@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------
--- File name: aes220_Loopback_Example_V1.2.0.vhd
+-- File name: aes220_Loopback_Example_V1.2.1.vhd
 ----------------------------------------------------------------------------------------------------
 -- Author: Sebastien Saury, Aessent Technology Ltd
 ----------------------------------------------------------------------------------------------------
@@ -14,10 +14,11 @@
 --
 -- V1.0.0: original version
 -- V1.2.0: updated to reflect new pipe interface (with pause signal)
+-- V1.2.1: now using renamed package aes220_Package_V1_2 rather than aes220_Package_V1_2_1
 --
 ----------------------------------------------------------------------------------------------------
 --
--- Copyright (C) 2012 Sebastien Saury, Aessent Technology Ltd
+-- Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -37,25 +38,25 @@ library ieee;
 
 use ieee.std_logic_1164.all;
 use ieee.std_logic_unsigned.all;
-use work.aes220_Package_V1_2_0.all;
+use work.aes220_Package_V1_2.all;
 
-entity aes220_Loopback_Example_V1_2_0_ent is
-	generic(
-		RESET_ACTIVE_LEVEL_c : std_logic := '1'
+entity aes220_Loopback_Example_V1_2_1_ent is
+  generic(
+    RESET_ACTIVE_LEVEL_c : std_logic := '1'
     );
-	Port(
+  Port(
     -- FX2 connections
-		RST_in : in    std_logic;      -- Allows to place the different processes into reset
+    RST_in : in    std_logic;      -- Allows to place the different processes into reset
     FI_in  : in    std_logic_vector(2 downto 0);
-		IF_out : out   std_logic_vector(7 downto 0);      
+    IF_out : out   std_logic_vector(7 downto 0);      
     FI_io  : inout std_logic_vector(7 downto 0);  -- FX2 data bus
     ---- On board peripherals
     LED_out            : out std_logic_vector(4 downto 1)
     );
-end aes220_Loopback_Example_V1_2_0_ent;
+end aes220_Loopback_Example_V1_2_1_ent;
 
-architecture aes220_Loopback_Example_V1_2_0_arch of
-  aes220_Loopback_Example_V1_2_0_ent is
+architecture aes220_Loopback_Example_V1_2_1_arch of
+  aes220_Loopback_Example_V1_2_1_ent is
 
   -- signals declarations
   -- FX2 interface
@@ -170,4 +171,4 @@ begin
   ldValue_s <= counterMSB_s & counterLSB_s;
   LED_out(4 downto 1) <= "0111"; -- D4 ON
 
-end aes220_Loopback_Example_V1_2_0_arch;
+end aes220_Loopback_Example_V1_2_1_arch;

@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220_LoopbackCmdLineExample_V1.4.2.cpp
+File name: aes220_LoopbackCmdLineExample_V1.4.3.cpp
 ===============================================================================
 DESCRIPTION
 
@@ -11,16 +11,15 @@ V1.4.1: updated title at the top of the file
         added end character to prevent terminal window closing dow prematurely
         on Windows
 V1.4.2: Made the end character only relevent for Windows compilations
+V1.4.3: Now using aes220_Open(...) function instead of aes220_Open_Device(...)
 
 ===============================================================================
 NOTES
 
 
 ===============================================================================
-PINOUT
 
-
-===============================================================================
+Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -53,8 +52,6 @@ int main() {
   unsigned char inBuf[PAYLOAD_OUT];
   unsigned char outBuf[PAYLOAD_OUT];
 
-  int vid = 0x2443; // Aessent Technology USB VID
-  int pid = 0x00dc; // aes220 USB PID
   int idx = 0;      // Module ID 0 if only aes220 module plugged in
   int vbs = 3;      // Messages verbosity, min = 0, max = 9
 
@@ -62,7 +59,7 @@ int main() {
   cout << endl;
 
   // Open the device and declare a handle pointing to it
-  aes220_handle *aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs);
+  aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
 
   for (int i = 0; i < PAYLOAD_OUT; i++) {
     inBuf[i] = 0xF0; // Initialise the input buffer to a constant value
@@ -150,7 +147,7 @@ int main() {
 #endif
 
  // Close the device when no longer required
-  aes220_Close_Device(aes220_ptr);
+  aes220_Close(aes220_ptr);
 
   return rv;
 }

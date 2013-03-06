@@ -1,5 +1,5 @@
 ----------------------------------------------------------------------------------------------------
--- File name: aes220_Loopback_Example_TestBench_V1.2.0.vhd
+-- File name: aes220_Loopback_Example_TestBench_V1.2.1.vhd
 ----------------------------------------------------------------------------------------------------
 -- Author: Sebastien Saury, Aessent Technology Ltd
 ----------------------------------------------------------------------------------------------------
@@ -12,10 +12,11 @@
 -- 
 -- V1.0.0: Original version
 -- V1.2.0: To exercise aes220_Loopback_Example_V1.2.0.vhd
+-- V1.2.1: To exercise aes220_Loopback_Example_V1.2.1.vhd
 --
 ----------------------------------------------------------------------------------------------------
 --
--- Copyright (C) 2012 Sebastien Saury, Aessent Technology Ltd
+-- Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the GNU General Public License as published by
@@ -33,7 +34,7 @@
 ----------------------------------------------------------------------------------------------------
 library ieee;
 library work;
-use work.aes220_SimulationPackage_V1_2_0.all;
+use work.aes220_SimulationPackage_V1_2_1.all;
 
 use std.textio.all;
 use ieee.std_logic_1164.all;
@@ -41,21 +42,21 @@ use ieee.std_logic_unsigned.all;
 use ieee.std_logic_arith.all;
 use ieee.numeric_std.all;
 
-entity aes220_Loopback_Example_TestBench_V1_2_0_ent is
+entity aes220_Loopback_Example_TestBench_V1_2_1_ent is
 	generic(
 		RESET_ACTIVE_LEVEL_c : std_logic := '1';
     NUMBER_OF_CYCLES_c   : integer := 20
     );
-end aes220_Loopback_Example_TestBench_V1_2_0_ent;
+end aes220_Loopback_Example_TestBench_V1_2_1_ent;
 
-architecture testbench_arch of aes220_Loopback_Example_TestBench_V1_2_0_ent is
+architecture testbench_arch of aes220_Loopback_Example_TestBench_V1_2_1_ent is
 
   -- signals declaration
   signal led_s   : std_logic_vector (4 downto 1);
   signal clock_s : std_logic := '0';
   
   -- components declarations
-  component aes220_Loopback_Example_V1_2_0_ent
+  component aes220_Loopback_Example_V1_2_1_ent
     Port(
       -- FX2 connections
       RST_in  : in    std_logic;      -- Allows to place the different processes into reset
@@ -70,7 +71,7 @@ architecture testbench_arch of aes220_Loopback_Example_TestBench_V1_2_0_ent is
 begin
 
   -- Components instantiations
-  myApp : aes220_Loopback_Example_V1_2_0_ent
+  myApp : aes220_Loopback_Example_V1_2_1_ent
     port map (
       -- FX2 connections (signals defined in the aes220_SimulationPackage.vhd)
       RST_in  => rst_s,

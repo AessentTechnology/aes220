@@ -8,7 +8,8 @@ Command line version of the aes220 Programmer (subsequently used by the GUI vers
 ====================================================================================================
 CHANGES
 
-V1.0.1: Original version
+V1.0.0: Original version
+V1.4.2: No change
 
 ====================================================================================================
 NOTES
@@ -73,7 +74,7 @@ static void printHelp()
 
 int main(int argc, char *argv[]) {
 
-  string softwareVersion ("aes220 Programmer Command Line Version V1.0.0");
+  string softwareVersion ("aes220 Programmer Command Line Version V1.4.2");
   cout << endl;
   cout << "************************************************************************************\n";
   cout << softwareVersion << endl;
