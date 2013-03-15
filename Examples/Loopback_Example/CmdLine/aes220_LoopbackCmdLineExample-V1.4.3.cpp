@@ -6,12 +6,15 @@ DESCRIPTION
 ===============================================================================
 CHANGES
 
-V1.4.1: updated title at the top of the file
-        added comments
-        added end character to prevent terminal window closing dow prematurely
-        on Windows
-V1.4.2: Made the end character only relevent for Windows compilations
-V1.4.3: Now using aes220_Open(...) function instead of aes220_Open_Device(...)
+V1.4.0: First release
+Post V1.4.0: Updated title at the top of the file
+             Added comments
+             Added end character to prevent terminal window closing dow prematurely
+             on Windows
+Post V1.4.1: Made the end character only relevent for Windows compilations
+Post V1.4.2: Now using aes220_Open(...) function instead of aes220_Open_Device(...)
+             Cleaned up data display (removed loop that was introduced for debugging)
+             Change include directive for aes220API.h to <aes220API.h>
 
 ===============================================================================
 NOTES
@@ -38,12 +41,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ******************************************************************************/
 
 #include <iostream>
-#include "../../../API/aes220_API.h"
+#include <aes220_API.h>
 
 using namespace std;
 
 #define PAYLOAD_OUT 256
-#define PAYLOAD_IN  16
+#define PAYLOAD_IN  256
 
 int main() {
 
@@ -55,7 +58,7 @@ int main() {
   int idx = 0;      // Module ID 0 if only aes220 module plugged in
   int vbs = 3;      // Messages verbosity, min = 0, max = 9
 
-  cout << endl << "aes220_LoopbackCmdLineExample Version 1.4.2" << endl;
+  cout << endl << "aes220_LoopbackCmdLineExample" << endl;
   cout << endl;
 
   // Open the device and declare a handle pointing to it
@@ -97,7 +100,8 @@ int main() {
   // Send out buffer's contents through pipe 3 with address 3
   // Address needs to match address in the vhdl file
   int outPipe3 = 0x03;
-  cout << "Sending buffer containing " << PAYLOAD_OUT << " bytes via pipe " << outPipe3 << "." << endl;
+  cout << "Sending buffer containing " << PAYLOAD_OUT << " bytes via pipe " << outPipe3 << "." 
+       << endl;
   rv = aes220_Pipe_Out(aes220_ptr, outBuf, PAYLOAD_OUT, outPipe3);
   if (rv == 0) {
     cout << "Bytes sent OK." << endl;
@@ -118,27 +122,25 @@ int main() {
     return rv;
   }
 
-  for (int j = 0; j < 10; j++) {
-    // Now receive the bytes back via pipe 4 with address 4
-    // Address needs to match address in the vhdl file
-    int inPipe4 = 0x04;
-    rv = aes220_Pipe_In(aes220_ptr, inBuf, PAYLOAD_IN, inPipe4);
-    if (rv == 0) {
-      cout << "Bytes received OK." << endl;
-    }
-    else {
-      cout << "Error while receiving bytes!" << endl;
-      return rv;
-    }
-
-    // Display the data received
-    cout << "Bytes received: " << endl;
-    cout << (int)inBuf[0];
-    for (int i = 1; i < PAYLOAD_IN; i++) {
-      cout << ", " << (int)inBuf[i];
-    }
-    cout << endl;
+  // Now receive the bytes back via pipe 4 with address 4
+  // Address needs to match address in the vhdl file
+  int inPipe4 = 0x04;
+  rv = aes220_Pipe_In(aes220_ptr, inBuf, PAYLOAD_IN, inPipe4);
+  if (rv == 0) {
+    cout << "Bytes received OK." << endl;
   }
+  else {
+    cout << "Error while receiving bytes!" << endl;
+    return rv;
+  }
+
+  // Display the data received
+  cout << "Bytes received: " << endl;
+  cout << (int)inBuf[0];
+  for (int i = 1; i < PAYLOAD_IN; i++) {
+    cout << ", " << (int)inBuf[i];
+  }
+  cout << endl;
 
 #ifdef _WIN32
   char endChar;

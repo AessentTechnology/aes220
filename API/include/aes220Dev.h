@@ -26,6 +26,10 @@ CHANGES
            USB interface
 110223-01: Adding EEPROM writing function
 
+Post release:
+
+V1.4.0: First release
+
 ===============================================================================
 NOTES
 
@@ -254,9 +258,9 @@ class aes220Dev: private aesFx2Dev
     RUN_ERROR,
     VND_COMM_ERROR,
   };
-	void set_Device_USB_Parameters(int vid, int pid, int idx, int vbs);
-	void get_Device_USB_Parameters(int values[4]);
-	int open_Device(int vid, int pid, int idx);
+  void set_Device_USB_Parameters(int vid, int pid, int idx, int vbs);
+  void get_Device_USB_Parameters(int values[4]);
+  int open_Device(int vid, int pid, int idx);
 
   int program_MC_RAM(const char *uFile);
   /* Function:   int program_MC_RAM(const char *uFile)

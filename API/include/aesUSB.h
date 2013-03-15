@@ -8,6 +8,8 @@ USB utilities
 ===============================================================================
 CHANGES
 
+Post V1.4.2: Changed libusb-1.0 to libusbx-1.0 for Windows only.
+             Removed unistd.h
 
 ===============================================================================
 NOTES
@@ -39,18 +41,18 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <iostream>
 #include <fstream>
-#include <libusb-1.0/libusb.h>
 #include <cstdio>
 #include <cassert>
 #include <string>
 #include "aesLog_V0.0.2.h"
 
 #ifdef _WIN32
+ #include <libusbx-1.0/libusb.h>
  # include <windows.h>
  # define msleep(x) Sleep(x)
 #else
- # include <unistd.h>
-#define msleep(x) usleep(x*1000)
+ #include <libusb-1.0/libusb.h>
+ #define msleep(x) usleep(x*1000)
 #endif
 
 #define MAX_EP0_DATA 64

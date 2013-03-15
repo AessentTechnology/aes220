@@ -34,10 +34,12 @@ Pre release
 
 Post release
 1.4.0: First release
-1.4.1: Change log function, now a separate class, added automatic recognition
-       of board model (aes220a or b) when selecting SPI programming binary for
-       configuring the FPGA prior to communicating with its flash
-1.x.x: 
+Post 1.4.0: Change log function, now a separate class, added automatic recognition
+            of board model (aes220a or b) when selecting SPI programming binary for
+            configuring the FPGA prior to communicating with its flash
+Post 1.4.2: Changed variable length array declaration of 
+            unsigned char dataOut[transferSize]; to
+            unsigned char *dataOut = new unsigned char[transferSize];
 
 ===============================================================================
 NOTES
@@ -360,7 +362,7 @@ int aes220Dev::configure_FPGA(string fFile) {
 
 
   // Start sending the configuration file through the USB interface
-  unsigned char dataOut[transferSize];
+  unsigned char *dataOut = new unsigned char[transferSize];
 
   log.add("Sending configuration file to FPGA... ", NOTE_VBS);
 

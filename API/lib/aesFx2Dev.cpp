@@ -16,7 +16,9 @@ Pre release
 
 Post release
 1.4.0: First release
-1.4.1: Change log function, now a separate class
+Post 1.4.0: Change log function, now a separate class
+Post 1.4.2: Changed variable length array unsigned char data[nbytes] to
+            fixed size one unsigned char data[256]
 
 ===============================================================================
 NOTES
@@ -123,7 +125,7 @@ int aesFx2Dev::programIHexLine(const char *buf,	const char *path,int line) {
     {
       //printf("  Writing nbytes=%d at addr=0x%04x\n",nbytes,addr);
       assert(nbytes>=0 && nbytes<256);
-      unsigned char data[nbytes];
+      unsigned char data[256];
       unsigned char cksum=nbytes+addr+(addr>>8)+type;
       for(unsigned int i=0; i<nbytes; i++)
 	{

@@ -9,6 +9,11 @@ USB utilities
 CHANGES
 110306-01: making the procedures now a derived aesUsb class
 
+Post release changes:
+
+V1.4.0: First release
+Post V1.4.2: Added stdint.h and removed unistd.h and sys/time.h
+
 ===============================================================================
 NOTES
 
@@ -40,12 +45,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <fstream>
 #include <string>
 #include <stdio.h>
+#include <stdint.h>
 #include <errno.h>
 #include <string.h>
 #include <assert.h>
-#include <unistd.h>
 #include <fcntl.h>
-#include <sys/time.h>
 
 #include "aesUSB.h"
 

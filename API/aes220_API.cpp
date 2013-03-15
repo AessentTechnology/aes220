@@ -10,6 +10,7 @@ controller)
 CHANGES
 
 V1.4.0: First release
+Post V1.4.2: Remove declaration of DLLEXPORT, now defined in aes220_API.h
 
 ===============================================================================
 
@@ -36,12 +37,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #define AES220_VID 0x2443
 #define AES220_PID 0x00DC
-
-#ifdef _WIN32
- #define DLLEXPORT extern "C" __declspec(dllexport)
-#else
- #define DLLEXPORT extern "C"
-#endif
 
 DLLEXPORT aes220_handle*  aes220_Open_Device(int vid, int pid, int idx, int vbs)
 {
