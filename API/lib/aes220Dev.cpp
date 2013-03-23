@@ -141,6 +141,16 @@ int aes220Dev::open_Device(int vid, int pid, int idx)
 	return rv;
 }
 
+// close_Device
+/*****************************************************************************/
+// Closes the device currently open
+int aes220Dev::close_Device()
+{
+	int rv = 99;
+	rv = closeDev();
+	return rv;
+}
+
 // programMC_RAM
 /*****************************************************************************/
 // Programs the uC RAM
@@ -331,12 +341,15 @@ int aes220Dev::configure_FPGA(string fFile) {
     log.add("Error! Input file not found", ERROR_VBS);
     return FILE_NOT_FOUND;
   }
+  else {log.add("Found input file.", NOISE_VBS);}
   // File used when verifying the data sent back from the fpga
+  log.add("Creating check file", NOISE_VBS);
   ofstream checkFile ("CheckFile.bin", ios::binary);
   if (checkFile == 0) {
     log.add("Error! Output file not created", ERROR_VBS);
     return FILE_NOT_CREATED;
   }
+  else {log.add("Check file created.", NOISE_VBS);}
 
   // Go to end of bitstream file to get the file size
   binFile.seekg(0, ios::end);
@@ -381,11 +394,9 @@ int aes220Dev::configure_FPGA(string fFile) {
 
   // send the whole thing out via the USB interface
   log.add("Sending data out...", NOISE_VBS);
-
   rv = bulkTransfer(dataOut, transferSize, EP2, TIME_OUT);
   if (rv) {
-    log.add("Bulk transfer error when sending data out: ", rv, 
-		 ERROR_VBS);
+    log.add("Bulk transfer error when sending data out: ", rv, ERROR_VBS);
     return BULK_TX_ERROR;
   }
   log.add("...sent", NOISE_VBS);
@@ -1033,14 +1044,14 @@ int aes220Dev::receive_Byte(unsigned char *btr_ptr)
 int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
 {
   int rv = 99;
-	uint32_t toBeTransferred = bufSize;
-	uint32_t framePayloadSize = 0;
-	const uint8_t headerSize = 3;
-	uint8_t header[headerSize];
-	uint8_t *data_ptr;
+  uint32_t toBeTransferred = bufSize;
+  uint32_t framePayloadSize = 0;
+  const uint8_t headerSize = 3;
+  uint8_t header[headerSize];
+  uint8_t *data_ptr;
 
-	// Make sure the uC is in Slave FIFO mode
-	log.add("Pipe out: ensuring micro-controller is in Slave FIFO mode", NOISE_VBS);
+  // Make sure the uC is in Slave FIFO mode
+  log.add("Pipe out: ensuring micro-controller is in Slave FIFO mode", NOISE_VBS);
   uint8_t orgMC_Mode;
   uint8_t *orgMC_Mode_ptr = &orgMC_Mode;
   uint8_t MC_Mode;
@@ -1068,15 +1079,17 @@ int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddre
     header[1] = (uint8_t)(framePayloadSize >> 8);
     header[2] = (uint8_t)framePayloadSize;
     // Transferring the header
+    log.add("Starting transferring header via bulk transfer...", NOTE_VBS);
     rv = bulkTransfer(header, headerSize, EP2, TIME_OUT);
     if (rv) {
       log.add("pipe out header transfer: bulk transfer failure.  Error: ", rv , ERROR_VBS);
       return BULK_TX_ERROR;
     }
-    log.add("...sent", NOTE_VBS);
+    log.add("...bulk transfer completed", NOTE_VBS);
     // Pointing to the data
     data_ptr = buf_ptr + (bufSize-toBeTransferred);
     // Transferring the data via EP2
+    log.add("Starting transferring data via bulk transfer...", NOTE_VBS);
     rv = bulkTransfer(data_ptr, framePayloadSize, EP2, TIME_OUT);
     if (rv) {
       log.add("pipe out data transfer: bulk transfer failure.  Error: ", rv , ERROR_VBS);
@@ -1130,6 +1143,7 @@ int aes220Dev::pipe_In(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddres
     header[1] = (uint8_t)(framePayloadSize >> 8);
     header[2] = (uint8_t)framePayloadSize;
     // Transferring the header
+    log.add("Starting transferring header via bulk transfer...", NOTE_VBS);
     rv = bulkTransfer(header, headerSize, EP2, TIME_OUT);
     if (rv) {
       log.add("pipe in header transfer: bulk transfer failure.  Error: ", rv , ERROR_VBS);
@@ -1139,6 +1153,7 @@ int aes220Dev::pipe_In(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddres
     // Pointing to the data
     data_ptr = buf_ptr + (bufSize-toBeReceived);
     // Receiving the data via EP6
+    log.add("Starting transferring data via bulk transfer...", NOTE_VBS);
     rv = bulkTransfer(data_ptr, framePayloadSize, EP6, TIME_OUT);
     if (rv) {
       log.add("pipe in data transfer: bulk transfer failure.  Error: ", rv , ERROR_VBS);
@@ -1165,7 +1180,7 @@ int aes220Dev::set_MC_Mode(uint8_t *MC_Mode_ptr)
     return VND_COMM_ERROR;
   }
   else {
-    log.add("...sent", NOTE_VBS);
+    log.add("... mode commmand sent", NOTE_VBS);
   }
   return rv;
 }

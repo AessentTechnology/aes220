@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220API.h
+File name: aes220_API.h
 ===============================================================================
 DESCRIPTION
 
@@ -14,6 +14,8 @@ Post release:
 V1.4.0: First release
 Post V1.4.2: Added DLLEXPORT definition (was in aes220_API.cpp previously)
              Added the definition to the structure aes220Dev and type aes220_handle
+             Corrected NaturalDocs documentation for Pipe_In and Pipe_Out: bufSize
+             is uint32_t not uint16_t allowing for 4GiB transfers.
 
 ===============================================================================
 
@@ -122,7 +124,7 @@ DLLEXPORT void aes220_Close_Device(aes220_handle *aes220_ptr);
 */
 DLLEXPORT void aes220_Close(aes220_handle *aes220_ptr);
   
-/* Function: int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint16_t bufSize, uint8_t channelAddress)
+/* Function: int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
    Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
    (aes220).
 
@@ -132,7 +134,7 @@ DLLEXPORT void aes220_Close(aes220_handle *aes220_ptr);
 
    buf_ptr: a pointer to a buffer of bytes.
    N
-   bufSize: the size of the afore mentioned buffer (max size is 64KB)
+   bufSize: the size of the afore mentioned buffer (max size is 4GiB)
 
    channelAddress: the channel to communicate with in the FPGA application
 
@@ -144,7 +146,7 @@ DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint3
 			      uint8_t channelAddress);
 
 
-/* Function:  int aes220_Pipe_In(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint16_t bufSize, uint8_t channelAddress)
+/* Function:  int aes220_Pipe_In(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
    Receives a buffer of data (bytes) over the USB link from the device (aes220) to the host (PC).
 
    Parameters:
@@ -153,7 +155,7 @@ DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint3
 
    buf_ptr: a pointer to a buffer of bytes.
 
-   bufSize: the size of the afore mentioned buffer (max size is 64KB)
+   bufSize: the size of the afore mentioned buffer (max size is 4GiB)
 
    channelAddress: the channel to communicate with in the FPGA application
 

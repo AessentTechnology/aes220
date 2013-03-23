@@ -110,13 +110,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #ifndef AES220DEV_H
 #define AES220DEV_H
 
-//#include <wx/wx.h>
-//#include <wx/string.h>
-//#include <wx/process.h> // Required for spawn function
 #include <iostream>
 #include <fstream>
 #include <stdint.h>
-//#include <sys/time.h>
 
 #include "aesFx2Dev.h"
 
@@ -261,6 +257,7 @@ class aes220Dev: private aesFx2Dev
   void set_Device_USB_Parameters(int vid, int pid, int idx, int vbs);
   void get_Device_USB_Parameters(int values[4]);
   int open_Device(int vid, int pid, int idx);
+  int close_Device();
 
   int program_MC_RAM(const char *uFile);
   /* Function:   int program_MC_RAM(const char *uFile)

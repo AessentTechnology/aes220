@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220API.cpp
+File name: aes220_API.cpp
 ===============================================================================
 DESCRIPTION
 
@@ -32,8 +32,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 ******************************************************************************/
 
-#include "aes220_API.h"
-#include "./include/aes220Dev.h"
+#include <aes220_API.h>
+#include <aes220Dev.h>
 
 #define AES220_VID 0x2443
 #define AES220_PID 0x00DC

@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220API.h
+File name: aes220_C++API.h
 ===============================================================================
 DESCRIPTION
 
@@ -11,9 +11,7 @@ CHANGES
 
 Post release:
 
-V1.4.0: First release
-Post V1.4.2: Added DLLEXPORT definition (was in aes220_API.cpp previously)
-             Added the definition to the structure aes220Dev and type aes220_handle
+Post V1.4.2: First release
 
 ===============================================================================
 
@@ -34,400 +32,366 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 ******************************************************************************/
-#ifndef AES220_API_H
-#define AES220_API_H
 
 #include <stdlib.h>
 #include <stdint.h>
+#include <string.h>
 
-#ifdef _WIN32
-#define DLLEXPORT extern "C" __declspec(dllexport)
-#else
-#define DLLEXPORT extern "C"
-#endif
+#ifdef API_EXPORTS
+#define APIEXPORT public ref class aes220_Dev
+#else 
+#define APIEXPORT class aes220_Dev
+#endif 
 
-/* Enumeration: aes220API_errorCode
+class aes220Dev;
 
-   API error codes.
+APIEXPORT
+{
 
-   aes220_API functions normally return 0 on success or one of the following code on failure.
+  /* Enumeration: aes220API_errorCode
 
-   Enumerator:
+     API error codes.
 
-   FILE_NOT_FOUND = 1 - File could not be found
-   FILE_NOT_CREATED - File could not be opened
-   DEVICE_NOT_OPENED - Cannot open device
-   BULK_TX_ERROR - Bulk transfer transmit error
-   BULK_RX_ERROR - Bulk transfer receive error
-   UC_PROG_ERROR - Error while programming the micro-controller
-   FPGA_CONF_ERROR - Error while configuring the FPGA
-   FPGA_PROG_ERROR - Error while programming the FPGA Flash memory
-   FPGA_UNKNOWN_STATE - FPGA is in an unknown state
-   FLASH_ERROR - Error while writing or reading to the FPGA Flash memory
-   FLASH_READY - FPGA Flash memory ready
-   FLASH_NOT_READY - FPGA Flash memory busy
-   EEPROM_ERROR - Error while communicating with the micro-controller EEPROM
+     aes220_C++API functions normally return 0 on success or one of the following code on failure.
 
-*/
+     Enumerator:
 
-// aes220Dev is an object defined in aes220Dev.h
-struct aes220Dev;
-typedef struct aes220Dev aes220_handle;
+     FILE_NOT_FOUND = 1 - File could not be found
+     FILE_NOT_CREATED - File could not be opened
+     DEVICE_NOT_OPENED - Cannot open device
+     BULK_TX_ERROR - Bulk transfer transmit error
+     BULK_RX_ERROR - Bulk transfer receive error
+     UC_PROG_ERROR - Error while programming the micro-controller
+     FPGA_CONF_ERROR - Error while configuring the FPGA
+     FPGA_PROG_ERROR - Error while programming the FPGA Flash memory
+     FPGA_UNKNOWN_STATE - FPGA is in an unknown state
+     FLASH_ERROR - Error while writing or reading to the FPGA Flash memory
+     FLASH_READY - FPGA Flash memory ready
+     FLASH_NOT_READY - FPGA Flash memory busy
+     EEPROM_ERROR - Error while communicating with the micro-controller EEPROM
 
-/* Function: aes220_Open_Device(int vid, int pid, int idx, int vbs)
-   Returns a handle to an aes220 USB device. However it issimpler to use aes_Open (...) below.
+  */
 
-   Parameters:
+ public:
+  aes220_Dev();
+  ~aes220_Dev();
 
-   vid: the USB vendor ID of the device (0x2443)
+  /* Function: Open(int idx, int vbs)
 
-   pid: the USB device ID (0x00DC)
+     Parameters:
 
-   idx: the device identification number (0 if only one such device on bus)
+     idx: the device identification number (0 if only one such device on bus)
 
-   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
-   6 = mundane messages, 9 = everything)
-*/
-DLLEXPORT aes220_handle* aes220_Open_Device(int vid, int pid, int idx, int vbs);
+     vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
+     6 = mundane messages, 9 = everything.
 
-/* Function: aes220_Open(int idx, int vbs)
-   Returns a handle to an aes220 USB device.
+     Returns: 
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int Open(int idx, int vbs);
 
-   idx: the device identification number (0 if only one such device on bus)
 
-   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
-   6 = mundane messages, 9 = everything)
-*/
-DLLEXPORT aes220_handle* aes220_Open(int idx, int vbs);
+  /* Function: Open(int vid, int pid, int idx, int vbs)
+     Overloaded function allowing to open the device with a different vid/pid pair. 
 
-/* Function: void aes220_Close_Device(aes220_handle *aes220_ptr)
-   Closes the device pointed by the handle. Necessary before the handle goes out of scope or
-   communication with the device will be broken.
+     Parameters:
 
-   Parameters:
+     vid: the USB vendor ID of the device (if different from default one)
 
-   aes220_ptr: the handle to the device to be closed
-*/
-DLLEXPORT void aes220_Close_Device(aes220_handle *aes220_ptr);
+     pid: the USB device ID (if different from default)
+
+     idx: the device identification number (0 if only one such device on bus)
+
+     vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
+     6 = mundane messages, 9 = everything)
+
+     Returns: 
+
+     Returns 0 on success.
+  */
+  int Open(int vid, int pid, int idx, int vbs);
+
+
+  /* Function: int Close()
+     Closes the device.
+
+     Parameters:
+
+     None
+
+     Returns: 
+
+     Returns 0 on success.
+  */
+  int Close();
   
-/* Function: void aes220_Close(aes220_handle *aes220_ptr)
-   Closes the device pointed by the handle. Necessary before the handle goes out of scope or
-   communication with the device will be broken. Same as aes220_Close_Device(...), introduced for name consistancy with aes_Open(...)
 
-   Parameters:
+  /* Function: int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
+     Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
+     (aes220).
 
-   aes220_ptr: the handle to the device to be closed
-*/
-DLLEXPORT void aes220_Close(aes220_handle *aes220_ptr);
-  
-/* Function: int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint16_t bufSize, uint8_t channelAddress)
-   Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
-   (aes220).
+     Parameters:
 
-   Parameters:
+     buf_ptr: a pointer to a buffer of bytes.
+   
+     bufSize: the size of the afore mentioned buffer (max size is 4GiB)
 
-   aes220_ptr: a handle to the USB device
+     channelAddress: the channel to communicate with in the FPGA application
 
-   buf_ptr: a pointer to a buffer of bytes.
-   N
-   bufSize: the size of the afore mentioned buffer (max size is 64KB)
+     Returns:
 
-   channelAddress: the channel to communicate with in the FPGA application
+     Returns 0 on success.
+  */
+  int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
 
-   Returns:
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize, 
-			      uint8_t channelAddress);
+  /* Function:  int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
+     Receives a buffer of data (bytes) over the USB link from the device (aes220) to the host (PC).
 
+     Parameters:
 
-/* Function:  int aes220_Pipe_In(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint16_t bufSize, uint8_t channelAddress)
-   Receives a buffer of data (bytes) over the USB link from the device (aes220) to the host (PC).
+     buf_ptr: a pointer to a buffer of bytes.
 
-   Parameters:
+     bufSize: the size of the afore mentioned buffer (max size is 4GiB)
 
-   aes220_ptr: a handle to the USB device
+     channelAddress: the channel to communicate with in the FPGA application
 
-   buf_ptr: a pointer to a buffer of bytes.
+     Returns:
 
-   bufSize: the size of the afore mentioned buffer (max size is 64KB)
+     Returns 0 on success.
+  */
+  int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
 
-   channelAddress: the channel to communicate with in the FPGA application
 
-   Returns:
+  /* Function: int AssertSoftReset()
+     Send a reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA.
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Pipe_In(aes220_handle* aes220_ptr, uint8_t *bts_ptr, uint32_t bufSize, 
-			     uint8_t channelAddress);
+     Note: The USB interface provided does take account of the Soft Reset signal.
 
+     Parameters:
 
-/* Function: int aes220_Assert_Soft_Reset(aes220_handle *aes220_ptr)
-   Send a reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA.
+     None
 
-   Note: The USB interface provided does take account of the Soft Reset signal.
+     Returns:
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int AssertSoftReset();
 
-   aes220_ptr: a handle to the USB device
 
-   Returns:
+  /* Function: int ClearSoftReset()
+     Clears the reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA. 
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Assert_Soft_Reset(aes220_handle* aes220_ptr);
+     Note: The USB interface provided does take account of the Soft Reset signal.
 
+     Parameters:
 
-/* Function: int aes220_Clear_Soft_Reset(aes220_handle *aes220_ptr)
-   Clears the reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA. 
+     None
 
-   Note: The USB interface provided does take account of the Soft Reset signal.
+     Returns:
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int ClearSoftReset();
 
-   aes220_ptr: a handle to the USB device
+  /* Function: int Turn3V3On()
+     Turns ON the 3.3V power supply to the banks and FPGA I/Os
 
-   Returns:
+     Note: 3.3V is turned ON by default but can also be turned OFF using Turn3V3Off (see below)
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Clear_Soft_Reset(aes220_handle* aes220_ptr);
+     Parameters:
 
-/* Function: int aes220_Turn3V3On(aes220_handle *aes220_ptr)
-   Turns ON the 3.3V power supply to the banks and FPGA I/Os
+     None
 
-   Note: 3.3V is turned ON by default but can also be turned OFF using aes220_Turn3V3Off (see below)
+     Returns:
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int Turn3V3On();
 
-   aes220_ptr: a handle to the USB device
+  /* Function: int Turn3V3Off()
+     Turns ON the 3.3V power supply to the banks and FPGA I/Os
 
-   Returns:
+     Note: 3.3V is turned ON by default but it can be necessary to turn it OFF if using an external 3.3V supply (if more current is required than can be provided on-board) or if stacking up two or more boards together.
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Turn3V3On(aes220_handle* aes220_ptr);
+     Parameters:
 
-/* Function: int aes220_Turn3V3Off(aes220_handle *aes220_ptr)
-   Turns ON the 3.3V power supply to the banks and FPGA I/Os
+     None
 
-   Note: 3.3V is turned ON by default but it can be necessary to turn it OFF if using an external 3.3V supply (if more current is required than can be provided on-board) or if stacking up two or more boards together.
+     Returns:
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int Turn3V3Off();
 
-   aes220_ptr: a handle to the USB device
+  /* Function: int ReadI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
+     Reads data from an I2C device
 
-   Returns:
+     Parameters:
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Turn3V3Off(aes220_handle* aes220_ptr);
+     deviceAddress: the address of the device on the I2C bus
 
-/* Function: int aes220_ReadI2C(aes220_handle *aes220_ptr, uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
-   Reads data from an I2C device
+     data: a data array (pointer to)
 
-   Parameters:
+     dataLength: the length of the data (max length 64KB)
 
-   aes220_ptr: a handle to the USB device
+     Returns:
 
-   deviceAddress: the address of the device on the I2C bus
+     Returns 0 on success.
+  */
+  int ReadI2C(uint8_t deviceAddress, uint8_t *data,
+	      uint16_t dataLength);
 
-   data: a data array (pointer to)
+  /* Function: int WriteI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
+     Writes data from an I2C device
 
-   dataLength: the length of the data (max length 64KB)
+     Parameters:
 
-   Returns:
+     deviceAddress: the address of the device on the I2C bus
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_ReadI2C(aes220_handle* aes220_ptr, uint8_t deviceAddress, uint8_t *data,
-			     uint16_t dataLength);
+     data: a data array (pointer to)
 
-/* Function: int aes220_WriteI2C(aes220_handle *aes220_ptr, uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
-   Writes data from an I2C device
+     dataLength: the length of the data (max length 64KB)
 
-   Parameters:
+     Returns:
 
-   aes220_ptr: a handle to the USB device
+     Returns 0 on success.
+  */
+  int WriteI2C(uint8_t deviceAddress, uint8_t *data,
+	       uint16_t dataLength);
 
-   deviceAddress: the address of the device on the I2C bus
+  /* Function: int CombinedI2C(uint8_t deviceAddress, uint8_t *dataToWrite, uint16_t dataToWriteLength, uint8_t *dataToRead, uint16_t dataToReadLength)
+     Executes a write followed by a read of data to and from an I2C device without inserting a stop bit in between. 
 
-   data: a data array (pointer to)
+     Parameters:
 
-   dataLength: the length of the data (max length 64KB)
+     deviceAddress: the address of the device on the I2C bus
 
-   Returns:
+     dataToWrite: a data array (pointer to)
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_WriteI2C(aes220_handle* aes220_ptr, uint8_t deviceAddress, uint8_t *data,
-			      uint16_t dataLength);
+     dataToWriteLength: the length of the data to write (max length 64KB)
 
-/* Function: int aes220_CombinedI2C(aes220_handle *aes220_ptr, uint8_t deviceAddress, uint8_t *dataToWrite, uint16_t dataToWriteLength, uint8_t *dataToRead, uint16_t dataToReadLength)
-   Executes a write followed by a read of data to and from an I2C device without inserting a stop bit in between. 
+     dataToRead: a data array (pointer to)
 
-   Parameters:
+     dataToReadLength: the length of the data to write (max length 64KB)
 
-   aes220_ptr: a handle to the USB device
+     Returns:
 
-   deviceAddress: the address of the device on the I2C bus
+     Returns 0 on success.
+  */
+  int CombinedI2C(uint8_t deviceAddress,
+		  uint8_t *dataToWrite, uint16_t dataToWriteLength,
+		  uint8_t *dataToRead, uint16_t dataToReadLength);
 
-   dataToWrite: a data array (pointer to)
+  /* Function: int SetBoardInfo(const uint8_t *boardInfo)
+     Sets the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number. This should be left alone unless the micro-controller EEPROM is erased and needs reprogramming.
 
-   dataToWriteLength: the length of the data to write (max length 64KB)
+     Parameters:
 
-   dataToRead: a data array (pointer to)
+     boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yyyy
 
-   dataToReadLength: the length of the data to write (max length 64KB)
+     Note: Do not use this function to turn the 3.3V ON or OFF, use the Turn3V3ON/OFF functions
 
-   Returns:
+     Returns:
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_CombinedI2C(aes220_handle* aes220_ptr, uint8_t deviceAddress,
-				 uint8_t *dataToWrite, uint16_t dataToWriteLength,
-				 uint8_t *dataToRead, uint16_t dataToReadLength);
+     Returns 0 on success.
+  */
+  int SetBoardInfo(const uint8_t *boardInfo);
 
-/* Function: int aes220_Set_Board_Info(aes220_handle *aes220_ptr, const uint8_t *boardInfo)
-   Sets the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number. This should be left alone unless the micro-controller EEPROM is erased and needs reprogramming.
+  /* Function: int GetBoardInfo(const uint8_t *boardInfo)
+     Reads the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number as well as whether the 3.3V rail is on or off.
 
-   Parameters:
+     Parameters:
 
-   aes220_ptr: a handle to the USB device
+     boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF, a/b, A, 1, SN, dd, mm, yyyy
 
-   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yyyy
+     Returns:
 
-   Note: Do not use this function to turn the 3.3V ON or OFF, use the aes220_Turn3V3ON/OFF functions
+     Returns 0 on success.
+  */
+  int GetBoardInfo(const uint8_t * boardInfo);
 
-   Returns:
+  /* Function: int GetFirmwareInfo(const uint8_t *firmwareInfo)
+     Reads the software version written into the code.
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Set_Board_Info(aes220_handle* aes220_ptr, const uint8_t *boardInfo);
+     Parameters:
 
-/* Function: int aes220_Get_Board_Info(aes220_handle *aes220_ptr, const uint8_t *boardInfo)
-   Reads the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number as well as whether the 3.3V rail is on or off.
+     boardInfo: an array of 3 unsigned char. Bytes: Major, Minor, and revision numbers e.g.: {1.4.0} 
 
-   Parameters:
+     Returns:
 
-   aes220_ptr: a handle to the USB device
+     Returns 0 on success.
+  */
+  int GetFirmwareInfo(uint8_t * firmwareInfo_ptr);
 
-   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF, a/b, A, 1, SN, dd, mm, yyyy
+  /* Function: int ProgramMCRAM(const uint8_t * file_ptr)
+     Programs the micro-controller RAM with the given file.
 
-   Returns:
+     Parameters:
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t * boardInfo);
+     file_ptr: pointer to the file to be downloaded in the micro-controller's RAM 
 
-/* Function: int aes220_Get_Firmware_Info(aes220_handle *aes220_ptr, const uint8_t *firmwareInfo)
-   Reads the software version written into the code.
+     Returns:
 
-   Parameters:
+     Returns 0 on success.
+  */
+  int ProgramMCRAM(const char * file_ptr);
 
-   aes220_ptr: a handle to the USB device
+  /* Function: int ProgramMCEEPROM(const uint8_t * file_ptr)
+     Programs the micro-controller EEPROM with the given file.
 
-   boardInfo: an array of 3 unsigned char. Bytes: Major, Minor, and revision numbers e.g.: {1.4.0} 
+     Parameters:
 
-   Returns:
+     file_ptr: pointer to the file to be downloaded in the micro-controller's EEPROM
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t * firmwareInfo_ptr);
+     Returns:
 
-/* Function: int aes220_Program_MC_RAM(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
-   Programs the micro-controller RAM with the given file.
+     Returns 0 on success.
+  */
+  int ProgramMCEEPROM(const char * file_ptr);
 
-   Parameters:
+  /* Function: int ConfigureFPGA(const string fileName)
+     Configure the FPGA with the given file.
 
-   aes220_ptr: a handle to the USB device
+     Parameters:
 
-   file_ptr: pointer to the file to be downloaded in the micro-controller's RAM 
+     file_ptr: pointer to the FPGA configuration file
 
-   Returns:
+     Returns:
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Program_MC_RAM(aes220_handle* aes220_ptr, const char * file_ptr);
+     Returns 0 on success.
+  */
+  int ConfigureFPGA(const char * file_ptr);
 
-/* Function: int aes220_Program_MC_EEPROM(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
-   Programs the micro-controller EEPROM with the given file.
+  /* Function: int ProgramFPGA(const char * file_ptr)
+     Program the FPGA flas with the given file.
 
-   Parameters:
+     Parameters:
 
-   aes220_ptr: a handle to the USB device
+     file_ptr: pointer to the FPGA configuration file
 
-   file_ptr: pointer to the file to be downloaded in the micro-controller's EEPROM
+     Returns:
 
-   Returns:
+     Returns 0 on success.
+  */
+  int ProgramFPGA(const char * file_ptr);
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Program_MC_EEPROM(aes220_handle* aes220_ptr, const char * file_ptr);
+  /* Function: int EraseFPGA()
+     Erase the FPGA Flash (First page only to prevent the FPGA from booting up).
 
-/* Function: int aes220_Configure_FPGA(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
-   Configure the FPGA with the given file.
+     Parameters:
 
-   Parameters:
+     None
 
-   aes220_ptr: a handle to the USB device
+     Returns:
 
-   file_ptr: pointer to the FPGA configuration file
+     Returns 0 on success.
+  */
+  int EraseFPGA();
 
-   Returns:
+ private:
+  aes220Dev *aes220_ptr;
 
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Configure_FPGA(aes220_handle* aes220_ptr, const char * file_ptr);
+}; 
 
-/* Function: int aes220_Program_FPGA(aes220_handle *aes220_ptr, const uint8_t * file_ptr)
-   Program the FPGA flash with the given file.
-
-   Parameters:
-
-   aes220_ptr: a handle to the USB device
-
-   file_ptr: pointer to the FPGA configuration file
-
-   Returns:
-
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Program_FPGA(aes220_handle* aes220_ptr, const char * file_ptr);
-
-/* Function: int aes220_Erase_FPGA(aes220_handle *aes220_ptr)
-   Erase the FPGA Flash (First page only to prevent the FPGA from booting up).
-
-   Parameters:
-
-   aes220_ptr: a handle to the USB device
-
-   Returns:
-
-   Returns 0 on success.
-*/
-DLLEXPORT int aes220_Erase_FPGA(aes220_handle* aes220_ptr);
-
-/*************************************************************************************************
-Development functions. Do not include in release version of library
-*************************************************************************************************/
-
-DLLEXPORT int aes220_Read_MC_Mode(aes220_handle* aes220_ptr, uint8_t *MC_Mode_ptr);
-DLLEXPORT int aes220_Read_MC_EEPROM(aes220_handle* aes220_ptr, uint16_t startAddress, 
-				    const uint8_t *data, uint16_t length);
-DLLEXPORT int aes220_Send_MC_Cmd(aes220_handle* aes220_ptr, uint8_t cmd);
-DLLEXPORT int aes220_Write_BRAM(aes220_handle* aes220_ptr, unsigned short addr,
-				unsigned char *bt_ptr, unsigned short bufSize);
-DLLEXPORT int aes220_Read_BRAM(aes220_handle* aes220_ptr, unsigned short addr,
-			       unsigned char *bt_ptr, unsigned short bufSize);
-DLLEXPORT int aes220_Test_SDRAM(aes220_handle* aes220_ptr);
-
-/*************************************************************************************************
-End of development functions.
-*************************************************************************************************/
-
-
-#endif

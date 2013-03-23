@@ -47,6 +47,7 @@ Format: 1.51
 
 
 File: aes220_API.h  (aes220_API.h)
+File: aes220_C++API.h  (aes220_C++API.h)
 
 Group: Index  {
 
