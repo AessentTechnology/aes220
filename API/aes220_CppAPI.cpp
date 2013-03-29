@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220_C++API.cpp
+File name: aes220_CppAPI.cpp
 ===============================================================================
 DESCRIPTION
 
@@ -36,7 +36,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdlib.h>
 #include <stdint.h>
 
-#include <aes220_C++API.h>
+#include <aes220_CppAPI.h>
 #include <aes220Dev.h>
 
 #define AES220_VID 0x2443

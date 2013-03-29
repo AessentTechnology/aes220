@@ -43,11 +43,13 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 using namespace std;
 
-#define PROG_MC_RAM      1
-#define PROG_MC_EEPROM   2
-#define CONF_FPGA        3
-#define PROG_FPGA        4
-#define ERASE_FPGA       5
+#define NO_ACTION        0
+#define BOARD_INFO       1
+#define PROG_MC_RAM      2
+#define PROG_MC_EEPROM   3
+#define CONF_FPGA        4
+#define PROG_FPGA        5
+#define ERASE_FPGA       6
 
 static void printHelp()
 {
@@ -74,7 +76,7 @@ static void printHelp()
 
 int main(int argc, char *argv[]) {
 
-  string softwareVersion ("aes220 Programmer Command Line Version V1.4.2");
+  string softwareVersion ("aes220 Programmer Command Line Version V1.4.x");
   cout << endl;
   cout << "************************************************************************************\n";
   cout << softwareVersion << endl;
@@ -83,14 +85,19 @@ int main(int argc, char *argv[]) {
 
   int rv = 99;
   int idx = 0;
-  int vbs = 6;
-  int action = 0;
+  int vbs = 3;
+  int action = NO_ACTION;
+  uint8_t boardInfo[8];
+  uint8_t firmwareInfo[3];
   string fileName;
 
   if (argc > 4) {cout << "Too many arguments!\n";printHelp(); return(1);}
   for(int i=1; i<argc; i++) {
     if(!strcmp(argv[i],"--help")) {printHelp(); return(0);}
-    else if(!strcmp(argv[i],"--about")) { cout << softwareVersion << endl; return(0); }
+    else if(!strcmp(argv[i],"--about")) { 
+      cout << softwareVersion << endl << endl; return(0);
+      action = NO_ACTION;}
+    else if(!strcmp(argv[i],"--info")) {action = BOARD_INFO;}
     else if(!strncmp(argv[i],"-id=",4)) {idx = atoi(argv[i]+4);}
     else if(!strncmp(argv[i],"-vbs=",5)) {vbs = atoi(argv[i]+5);}
     else if(!strncmp(argv[i],"-pr=",4)) {
@@ -116,46 +123,116 @@ int main(int argc, char *argv[]) {
     }
   }
 
-    switch (action) {
-    case PROG_MC_RAM: {
-      // launch micro-controller RAM programming
-      // Open the device and declare a handle pointing to it
-      aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-      rv = aes220_Program_MC_RAM(aes220_ptr, fileName.c_str());
-      // Close the device when no longer required
+  switch (action) {
+  case BOARD_INFO: {
+    // Fetch the board information
+    // Open the device and declare a handle pointing to it
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Requesting the board information" << endl;
+    rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
       aes220_Close(aes220_ptr);
-      break; }
-    case PROG_MC_EEPROM: {
-      // launch micro-controller EEPROM programming
-      aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-      rv = aes220_Program_MC_EEPROM(aes220_ptr, fileName.c_str());
-      // Close the device when no longer required
-      aes220_Close(aes220_ptr);
-      break; }
-    case CONF_FPGA: {
-      // launch FPGA configuration
-      aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-      rv = aes220_Configure_FPGA(aes220_ptr, fileName.c_str());
-      // Close the device when no longer required
-      aes220_Close(aes220_ptr);
-      break; }
-    case PROG_FPGA: {
-      // launch FPGA flash programming
-      aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-      rv = aes220_Program_FPGA(aes220_ptr, fileName.c_str());
-      // Close the device when no longer required
-      aes220_Close(aes220_ptr);
-      break; }
-    case ERASE_FPGA: {
-      // Erase FPGA flash
-      aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-      rv = aes220_Erase_FPGA(aes220_ptr);
-      // Close the device when no longer required
-      aes220_Close(aes220_ptr);
-      break; }
-    default:
-      break;
+      return rv;
     }
+    else {cout << "Done." << endl;}
+    cout << "Requesting the firmware information" << endl;
+    rv = aes220_Get_Firmware_Info(aes220_ptr, firmwareInfo);
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl;}
+    // Display the information received:
+    cout << "Module......................: aes220" 
+	 << boardInfo[1] << " Rev" << boardInfo[2] << '.' << (int)boardInfo[3] << endl;
+    cout << "Module Serial Number........: " << setfill('0') << setw(3) << (int)boardInfo[4] 
+	 << endl;
+    cout << "Module Date Code............: " 
+	 << setfill('0') << setw(2) << (int)boardInfo[5] << '/' 
+	 << setfill('0') << setw(2) << (int)boardInfo[6] << '/' 
+	 << "20" << (int)boardInfo[7] << endl;
+    cout << "Firmware Revision...........: v" 
+	 << (int)firmwareInfo[0] << '.' << (int)firmwareInfo[1] << '.' << (int)firmwareInfo[2] 
+	 << endl; 
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  case PROG_MC_RAM: {
+    // launch micro-controller RAM programming
+    // Open the device and declare a handle pointing to it
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Programming the Micro-Controller RAM with: " << fileName << endl;
+    rv = aes220_Program_MC_RAM(aes220_ptr, fileName.c_str());
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl << endl;}
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  case PROG_MC_EEPROM: {
+    // launch micro-controller EEPROM programming
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Programming the Micro-Controller EEPROM with: " << fileName << endl;
+    rv = aes220_Program_MC_EEPROM(aes220_ptr, fileName.c_str());
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl << endl;}
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  case CONF_FPGA: {
+    // launch FPGA configuration
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Configuring the FPGA with: " << fileName << endl;
+    rv = aes220_Configure_FPGA(aes220_ptr, fileName.c_str());
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl << endl;}
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  case PROG_FPGA: {
+    // launch FPGA flash programming
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Programming the FPGA Flash with: " << fileName << endl;
+    rv = aes220_Program_FPGA(aes220_ptr, fileName.c_str());
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl;}
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  case ERASE_FPGA: {
+    // Erase FPGA flash
+    aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
+    cout << "Erasing the FPGA Flash " << endl;
+    rv = aes220_Erase_FPGA(aes220_ptr);
+    if (rv) {
+      cout << "Encountered a problem. Error: " << rv << endl;
+      aes220_Close(aes220_ptr);
+      return rv;
+    }
+    else {cout << "Done." << endl << endl;}
+    // Close the device when no longer required
+    aes220_Close(aes220_ptr);
+    break; }
+  default:
+    break;
+  }
 
 #ifdef _WIN32
   char endChar;

@@ -142,6 +142,7 @@ BOOL startFpga()
   // Give time to the FPGA to boot up from flash 
   delay(200); // 200ms increased from 100ms or aes220b uC hangs
 
+  //fpgaProgd = TRUE; // Has to be TRUE or the micro-controller will hang when erasing the FPGA
   if (DONE == 1) { fpgaProgd = TRUE; }
   else { fpgaProgd = FALSE; } // Blank Flash or problem during config
   
@@ -316,9 +317,8 @@ BYTE progFpga()
 	EP6BCL=LSB(PAGE_SIZE);
 	break; // end of case READ_CMD
       case RESET_F:
-	if (startFpga()) {
-	  fpgaStatus = PROG_DONE;
-	}
+	startFpga();
+	fpgaStatus = PROG_DONE;
 	break; // end of case RESET_FPGA
       default:
 	LED6 = 1 ; // D6 OFF

@@ -257,10 +257,12 @@ int aes220Dev::set_Board_Info(const uint8_t *boardInfo)
 int aes220Dev::get_Board_Info(const uint8_t *boardInfo)
 {
   int rv = 99;
+  log.add("Requesting board info...", NOTE_VBS);
   rv = readEEPROM(BOARD_INFO_ADDR, boardInfo, BOARD_INFO_LEN);
   if (rv != 0) {
     log.add("Failed to get board info rv = ", rv, ERROR_VBS);
   }
+  else {log.add("...received", NOTE_VBS);}
   return rv;
 }
 
@@ -855,7 +857,7 @@ int aes220Dev::send_FPGA_Flash_Command(uint8_t cmdByte, uint8_t byte2, uint8_t b
   if (!rv) {
     log.add("Command completed.", NOISE_VBS);
   }
-  delete frameOut;
+  //delete frameOut;
   return rv;
 }
 
@@ -1425,8 +1427,7 @@ int aes220Dev::set_FPGA_Flash_Programming_Mode()
   log.add("Sending start byte...", NOTE_VBS);
   rv = do_usb_command(EP0_WRITE, VC_UC_MODE, 0, 0, startConfigBytePtr, len, TIME_OUT);
   if (rv != len) {
-    log.add("Vendor command failure at start prog. Error: ", rv, 
-		 ERROR_VBS);
+    log.add("Vendor command failure at start prog. Error: ", rv, ERROR_VBS);
     return VND_COMM_ERROR;
   }
   else {
@@ -1454,6 +1455,7 @@ int aes220Dev::get_Firmware_Info(const uint8_t* firmwareInfo_ptr)
   }
   else {
     log.add("...received", NOTE_VBS);
+    rv = 0;
   }
   return rv;
 }
