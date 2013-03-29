@@ -44,7 +44,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <cstdio>
 #include <cassert>
 #include <string>
-#include "aesLog_V0.0.2.h"
+#include <aesLog.h>
 
 #ifdef _WIN32
  #include <libusbx-1.0/libusb.h>
@@ -81,6 +81,7 @@ class usbDev {
 	void set_idx(int newIdx);
 	void set_vbs(int newVbs);
 	void set_log_file(string logFileName);
+	void set_log_file(string logFileName, int newVbs);
 
 // getters:
 	int get_vid();

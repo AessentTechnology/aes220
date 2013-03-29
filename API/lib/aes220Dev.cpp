@@ -328,7 +328,7 @@ DONE  PD1:__________________________________/
 
 ******************************************************************************/
 //int aes220Dev::configure_FPGA(const char *fFile) {
-int aes220Dev::configure_FPGA(string fFile) {
+int aes220Dev::configure_FPGA(const string fFile) {
 
   int rv = 99;
 
@@ -416,7 +416,7 @@ int aes220Dev::configure_FPGA(string fFile) {
 }
 
 
-// programFpga
+// program_Fpga
 /*****************************************************************************/
 // Programs the fpga spi flash
 //int aes220Dev::program_FPGA(const char *fFile)

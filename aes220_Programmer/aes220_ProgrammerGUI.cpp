@@ -60,10 +60,10 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include "wx/numdlg.h"
 #include "wx/notebook.h"
 
-#include "../API/aes220_API.h"
+#include <aes220_API.h>
 
-#define SOFT_VER "aes220 Programmer Version 1.4.2"
-#define VBS_LEVEL 6
+#define SOFT_VER "aes220 Programmer Version 1.4.x"
+#define VBS_LEVEL 9
 #define RESET_FILE "reset.ihx"
 
 using namespace std;
@@ -266,6 +266,7 @@ void *ConfigFpgaThread::Entry()
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
+    *m_log << _T("Configuring FPGA with: ") << m_fpgaConfFileName << _T("\n");
     aes220_Configure_FPGA(aes220_ptr, m_fpgaConfFileName.mb_str());
     aes220_Close(aes220_ptr);
     //confFpga(m_vid, m_pid, m_idx, m_fpgaConfFileName.mb_str());
@@ -324,10 +325,8 @@ ProgramFpgaThread::ProgramFpgaThread(MainFrame *frame, int vid, int pid, int idx
 void ProgramFpgaThread::OnExit()
 {
   wxCriticalSectionLocker locker(wxGetApp().m_critsect);
-
   wxArrayThread& threads = wxGetApp().m_threads;
   threads.Remove(this);
-
   if ( threads.IsEmpty() )
     {
       // signal the main thread that there are no more threads left if it is
@@ -346,6 +345,7 @@ void *ProgramFpgaThread::Entry()
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
+    *m_log << _T("Programming FPGA Flash with: ") << m_fpgaProgFileName << _T("\n");
     aes220_Program_FPGA(aes220_ptr, m_fpgaProgFileName.mb_str());
     aes220_Close(aes220_ptr);
     //progFpga(m_vid, m_pid, m_idx, m_fpgaProgFileName.mb_str());
@@ -572,6 +572,8 @@ MainFrame::MainFrame(const wxString& title)
   uCRamFileTxtCtrl->SetValue(config_ptr->Read(_T("uCRamFile"), _T("")));
   uCEepFileTxtCtrl->SetValue(config_ptr->Read(_T("uCEepFile"), _T("")));
   fpgaConfFileTxtCtrl->SetValue(config_ptr->Read(_T("fpgaConfFile"), _T("")));
+  //lastFpgaDirectory = config_ptr->Read(_T("lastFpgaDirectory"), _T("/home"));
+  //*m_log << _T("Last used directory: ");// << lastFpgaDirectory << _T('\n');
 
 
   // Create the application buttons
@@ -805,8 +807,8 @@ MainFrame::~MainFrame()
   // Save the files' path values to the config
   config_ptr->Write(_T("/paths/uCRamFile"), uCRamFileTxtCtrl->GetValue());
   config_ptr->Write(_T("/paths/uCEepFile"), uCEepFileTxtCtrl->GetValue());
-  config_ptr->Write(_T("/paths/fpgaConfFile"),
-		    fpgaConfFileTxtCtrl->GetValue());
+  config_ptr->Write(_T("/paths/fpgaConfFile"), fpgaConfFileTxtCtrl->GetValue());
+  //config_ptr->Write(_T("/paths/lastFpgaDirectory"), lastFpgaDirectory);
 }
 
 ConfigFpgaThread *MainFrame::CreateConfigFpgaThread()
@@ -938,17 +940,19 @@ void MainFrame::OnBrowseBtn3(wxCommandEvent& WXUNUSED(event))
 { // FPGA files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
-		   lastFpgaDirectory,
+		   //lastFpgaDirectory,
+		   wxEmptyString,
 		   wxEmptyString,
 		   wxT("Binary files (*.bin)|*.bin|All files (*.*)|*.*"),
 		   // bit files not supported for the time being:
 		   //wxT("Binary files (*.bin;*.bit)|*.bin;*.bit|All files (*.*)|*.*"),
-		   wxFD_CHANGE_DIR | wxFD_OPEN);
+		   wxFD_OPEN);
+  //wxFD_CHANGE_DIR | wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
       fpgaConfFileTxtCtrl->SetValue(dlg.GetPath());
-      lastFpgaDirectory = dlg.GetDirectory();
+      //lastFpgaDirectory = dlg.GetDirectory();
     }
 }
 

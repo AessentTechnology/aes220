@@ -1,11 +1,46 @@
-﻿using System;
+﻿/******************************************************************************
+File name: aes220_C#API.h
+===============================================================================
+DESCRIPTION
+
+Commands relevant to the programming of the aes220 assembly (fpga and micro-
+controller) using the C# language.
+
+===============================================================================
+CHANGES
+
+Post release:
+
+Post V1.4.2: First release
+
+===============================================================================
+
+Copyrights (C) 2011-2013 Aessent Technology Ltd
+
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
+
+******************************************************************************/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 
-namespace aes220ClassLibrary_1
+namespace aes220ClassLibrary
 {
     unsafe public class aes220Dev
     {

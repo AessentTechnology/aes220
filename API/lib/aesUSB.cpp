@@ -41,8 +41,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include "../include/aesUSB.h"
 
-usbDev::usbDev():log(AESUSB_LOG, 0), dev_handle(NULL),
-		 vid(0), pid(0), idx(0), vbs(0)
+usbDev::usbDev():log(AESUSB_LOG, 0), dev_handle(NULL), vid(0), pid(0), idx(0), vbs(0)
 {
   int libusb_vbs = 0;
   int rv = 99;
@@ -140,6 +139,9 @@ void usbDev::set_pid(int newPid) {pid = newPid;}
 void usbDev::set_idx(int newIdx) {idx = newIdx;}
 void usbDev::set_vbs(int newVbs) {log.setVerbosity(newVbs);}
 void usbDev::set_log_file(string logFileName) {log.to(logFileName);}
+void usbDev::set_log_file(string logFileName, int newVbs) {
+  log.to(logFileName);
+  log.setVerbosity(newVbs);}
 
 // getters:
 int usbDev::get_vid() {return vid;}
