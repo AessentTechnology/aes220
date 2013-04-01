@@ -63,7 +63,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <aes220_API.h>
 
 #define SOFT_VER "aes220 Programmer Version 1.4.x"
-#define VBS_LEVEL 9
+#define VBS_LEVEL 6
 #define RESET_FILE "reset.ihx"
 
 using namespace std;
@@ -938,19 +938,19 @@ void MainFrame::OnBrowseBtn3(wxCommandEvent& WXUNUSED(event))
 { // FPGA files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
-		   //lastFpgaDirectory,
-		   wxEmptyString,
+		   lastFpgaDirectory,
+		   //wxEmptyString,
 		   wxEmptyString,
 		   wxT("Binary files (*.bin)|*.bin|All files (*.*)|*.*"),
 		   // bit files not supported for the time being:
 		   //wxT("Binary files (*.bin;*.bit)|*.bin;*.bit|All files (*.*)|*.*"),
-		   wxFD_OPEN);
-  //wxFD_CHANGE_DIR | wxFD_OPEN);
+		   //wxFD_OPEN);
+		   wxFD_CHANGE_DIR | wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
       fpgaConfFileTxtCtrl->SetValue(dlg.GetPath());
-      //lastFpgaDirectory = dlg.GetDirectory();
+      lastFpgaDirectory = dlg.GetDirectory();
     }
 }
 
