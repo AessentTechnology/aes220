@@ -266,7 +266,6 @@ void *ConfigFpgaThread::Entry()
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
-    *m_log << _T("Configuring FPGA with: ") << m_fpgaConfFileName << _T("\n");
     aes220_Configure_FPGA(aes220_ptr, m_fpgaConfFileName.mb_str());
     aes220_Close(aes220_ptr);
     //confFpga(m_vid, m_pid, m_idx, m_fpgaConfFileName.mb_str());
@@ -345,7 +344,6 @@ void *ProgramFpgaThread::Entry()
   // with it.
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     aes220_handle *aes220_ptr = aes220_Open_Device(m_vid, m_pid, m_idx, m_vbs);
-    *m_log << _T("Programming FPGA Flash with: ") << m_fpgaProgFileName << _T("\n");
     aes220_Program_FPGA(aes220_ptr, m_fpgaProgFileName.mb_str());
     aes220_Close(aes220_ptr);
     //progFpga(m_vid, m_pid, m_idx, m_fpgaProgFileName.mb_str());
@@ -1018,6 +1016,7 @@ void MainFrame::OnConfFPGABtn(wxCommandEvent& WXUNUSED(event))
   StartGaugeTimer();
   CreateGauge();
   fpgaConfFileName = fpgaConfFileTxtCtrl->GetValue();
+  *m_log << _T("Configuring FPGA with: ") << fpgaConfFileName << _T("\n");
   ConfigFpgaThread *thread = CreateConfigFpgaThread();
   if ( thread->Run() != wxTHREAD_NO_ERROR )
     {
@@ -1032,7 +1031,7 @@ void MainFrame::OnProgFPGABtn(wxCommandEvent& WXUNUSED(event))
   CreateGauge();
 
   fpgaProgFileName = fpgaConfFileTxtCtrl->GetValue();
-
+  *m_log << _T("Programming FPGA Flash with: ") << fpgaProgFileName << _T("\n");
   ProgramFpgaThread *thread = CreateProgramFpgaThread();
   if ( thread->Run() != wxTHREAD_NO_ERROR )
     {
@@ -1153,7 +1152,7 @@ void MainFrame::OnIdxTimer(wxTimerEvent& event)
 
 bool MainFrame::StartIdxTimer()
 {
-  const int IDX_INTERVAL = 2000; // 2s interval
+  const int IDX_INTERVAL = 2000; // 2 seconds interval
 
   m_idx_timer = new wxTimer(this, wxID_OnIdxTimer);
   m_idx_timer->Start(IDX_INTERVAL);
