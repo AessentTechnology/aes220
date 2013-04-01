@@ -570,9 +570,9 @@ MainFrame::MainFrame(const wxString& title)
   uCRamFileTxtCtrl->SetValue(config_ptr->Read(_T("uCRamFile"), _T("")));
   uCEepFileTxtCtrl->SetValue(config_ptr->Read(_T("uCEepFile"), _T("")));
   fpgaConfFileTxtCtrl->SetValue(config_ptr->Read(_T("fpgaConfFile"), _T("")));
-  //lastFpgaDirectory = config_ptr->Read(_T("lastFpgaDirectory"), _T("/home"));
-  //*m_log << _T("Last used directory: ");// << lastFpgaDirectory << _T('\n');
-
+  lastRamDirectory = config_ptr->Read(_T("lastRamDirectory"), _T("/home"));
+  lastEepDirectory = config_ptr->Read(_T("lastEepDirectory"), _T("/home"));
+  lastFpgaDirectory = config_ptr->Read(_T("lastFpgaDirectory"), _T("/home"));
 
   // Create the application buttons
   // Radio buttons for chosing the device vid/pid
@@ -806,7 +806,9 @@ MainFrame::~MainFrame()
   config_ptr->Write(_T("/paths/uCRamFile"), uCRamFileTxtCtrl->GetValue());
   config_ptr->Write(_T("/paths/uCEepFile"), uCEepFileTxtCtrl->GetValue());
   config_ptr->Write(_T("/paths/fpgaConfFile"), fpgaConfFileTxtCtrl->GetValue());
-  //config_ptr->Write(_T("/paths/lastFpgaDirectory"), lastFpgaDirectory);
+  config_ptr->Write(_T("/paths/lastRamDirectory"), lastRamDirectory);
+  config_ptr->Write(_T("/paths/lastEepDirectory"), lastEepDirectory);
+  config_ptr->Write(_T("/paths/lastFpgaDirectory"), lastFpgaDirectory);
 }
 
 ConfigFpgaThread *MainFrame::CreateConfigFpgaThread()
@@ -937,15 +939,13 @@ void MainFrame::OnBrowseBtn2(wxCommandEvent& WXUNUSED(event))
 void MainFrame::OnBrowseBtn3(wxCommandEvent& WXUNUSED(event))
 { // FPGA files browse button
   wxFileDialog dlg(this,
-		   wxT("Choose File"),
+		   wxT("Load binary File:"),
 		   lastFpgaDirectory,
-		   //wxEmptyString,
 		   wxEmptyString,
 		   wxT("Binary files (*.bin)|*.bin|All files (*.*)|*.*"),
 		   // bit files not supported for the time being:
 		   //wxT("Binary files (*.bin;*.bit)|*.bin;*.bit|All files (*.*)|*.*"),
-		   //wxFD_OPEN);
-		   wxFD_CHANGE_DIR | wxFD_OPEN);
+		   wxFD_OPEN);
 
   if ( dlg.ShowModal() == wxID_OK )
     {
