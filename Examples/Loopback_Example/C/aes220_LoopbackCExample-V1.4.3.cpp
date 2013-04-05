@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220_LoopbackCmdLineExample_V1.4.3.cpp
+File name: aes220_LoopbackCExample_V1.4.3.cpp
 ===============================================================================
 DESCRIPTION
 
@@ -15,6 +15,7 @@ Post V1.4.1: Made the end character only relevent for Windows compilations
 Post V1.4.2: Now using aes220_Open(...) function instead of aes220_Open_Device(...)
              Cleaned up data display (removed loop that was introduced for debugging)
              Change include directive for aes220API.h to <aes220API.h>
+             Renamed file from aes220_LoobackCmdLineExample.
 
 ===============================================================================
 NOTES

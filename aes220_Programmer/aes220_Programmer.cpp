@@ -10,6 +10,7 @@ CHANGES
 
 V1.0.0: Original version
 V1.4.2: No change
+V1.4.3: Added missing --info implementation
 
 ====================================================================================================
 NOTES
@@ -39,7 +40,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <iomanip>
 #include <string.h>  // for strcmp
 #include <stdlib.h>  // for atoi
-#include "../API/aes220_API.h"
+#include <aes220_API.h>
 
 using namespace std;
 
@@ -76,7 +77,7 @@ static void printHelp()
 
 int main(int argc, char *argv[]) {
 
-  string softwareVersion ("aes220 Programmer Command Line Version V1.4.x");
+  string softwareVersion ("aes220 Programmer Command Line Version V1.4.3");
   cout << endl;
   cout << "************************************************************************************\n";
   cout << softwareVersion << endl;

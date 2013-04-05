@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220_C++API.h
+File name: aes220_CppAPI.h
 ===============================================================================
 DESCRIPTION
 
@@ -37,10 +37,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdint.h>
 #include <string.h>
 
-#ifdef API_EXPORTS
+#ifdef CLI_EXPORTS
 #define APIEXPORT public ref class aes220_Dev
+#define DLLEXPORT
+#elif API_EXPORTS
+#define APIEXPORT class aes220_Dev
+#define DLLEXPORT __declspec(dllexport) 
 #else 
 #define APIEXPORT class aes220_Dev
+#define DLLEXPORT
 #endif 
 
 class aes220Dev;
@@ -73,10 +78,10 @@ APIEXPORT
   */
 
  public:
-  aes220_Dev();
-  ~aes220_Dev();
+  DLLEXPORT aes220_Dev();
+  DLLEXPORT ~aes220_Dev();
 
-  /* Function: Open(int idx, int vbs)
+  /* Function: int Open(int idx, int vbs)
 
      Parameters:
 
@@ -89,10 +94,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int Open(int idx, int vbs);
+  DLLEXPORT int Open(int idx, int vbs);
 
 
-  /* Function: Open(int vid, int pid, int idx, int vbs)
+  /* Function: int Open(int vid, int pid, int idx, int vbs)
      Overloaded function allowing to open the device with a different vid/pid pair. 
 
      Parameters:
@@ -110,10 +115,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int Open(int vid, int pid, int idx, int vbs);
+  DLLEXPORT int Open(int vid, int pid, int idx, int vbs);
 
 
-  /* Function: int Close()
+  /* Function:  int Close()
      Closes the device.
 
      Parameters:
@@ -124,10 +129,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int Close();
+  DLLEXPORT int Close();
   
 
-  /* Function: int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
+  /* Function:  int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
      Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
      (aes220).
 
@@ -143,10 +148,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
+  DLLEXPORT int PipeOut(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
 
 
-  /* Function:  int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
+  /* Function: int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
      Receives a buffer of data (bytes) over the USB link from the device (aes220) to the host (PC).
 
      Parameters:
@@ -161,10 +166,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
+  DLLEXPORT int PipeIn(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress);
 
 
-  /* Function: int AssertSoftReset()
+  /* Function:  int AssertSoftReset()
      Send a reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA.
 
      Note: The USB interface provided does take account of the Soft Reset signal.
@@ -177,10 +182,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int AssertSoftReset();
+  DLLEXPORT int AssertSoftReset();
 
 
-  /* Function: int ClearSoftReset()
+  /* Function:  int ClearSoftReset()
      Clears the reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA. 
 
      Note: The USB interface provided does take account of the Soft Reset signal.
@@ -193,7 +198,7 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ClearSoftReset();
+  DLLEXPORT int ClearSoftReset();
 
   /* Function: int Turn3V3On()
      Turns ON the 3.3V power supply to the banks and FPGA I/Os
@@ -208,7 +213,7 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int Turn3V3On();
+  DLLEXPORT int Turn3V3On();
 
   /* Function: int Turn3V3Off()
      Turns ON the 3.3V power supply to the banks and FPGA I/Os
@@ -223,9 +228,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int Turn3V3Off();
+  DLLEXPORT int Turn3V3Off();
 
-  /* Function: int ReadI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
+  /* Function:  int ReadI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
      Reads data from an I2C device
 
      Parameters:
@@ -240,10 +245,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ReadI2C(uint8_t deviceAddress, uint8_t *data,
+  DLLEXPORT int ReadI2C(uint8_t deviceAddress, uint8_t *data,
 	      uint16_t dataLength);
 
-  /* Function: int WriteI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
+  /* Function:  int WriteI2C(uint8_t deviceAddress, uint8_t *data, uint16_t dataLength)
      Writes data from an I2C device
 
      Parameters:
@@ -258,10 +263,10 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int WriteI2C(uint8_t deviceAddress, uint8_t *data,
+  DLLEXPORT int WriteI2C(uint8_t deviceAddress, uint8_t *data,
 	       uint16_t dataLength);
 
-  /* Function: int CombinedI2C(uint8_t deviceAddress, uint8_t *dataToWrite, uint16_t dataToWriteLength, uint8_t *dataToRead, uint16_t dataToReadLength)
+  /* Function:  int CombinedI2C(uint8_t deviceAddress, uint8_t *dataToWrite, uint16_t dataToWriteLength, uint8_t *dataToRead, uint16_t dataToReadLength)
      Executes a write followed by a read of data to and from an I2C device without inserting a stop bit in between. 
 
      Parameters:
@@ -280,11 +285,11 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int CombinedI2C(uint8_t deviceAddress,
+  DLLEXPORT int CombinedI2C(uint8_t deviceAddress,
 		  uint8_t *dataToWrite, uint16_t dataToWriteLength,
 		  uint8_t *dataToRead, uint16_t dataToReadLength);
 
-  /* Function: int SetBoardInfo(const uint8_t *boardInfo)
+  /* Function:  int SetBoardInfo(const uint8_t *boardInfo)
      Sets the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number. This should be left alone unless the micro-controller EEPROM is erased and needs reprogramming.
 
      Parameters:
@@ -297,9 +302,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int SetBoardInfo(const uint8_t *boardInfo);
+  DLLEXPORT int SetBoardInfo(const uint8_t *boardInfo);
 
-  /* Function: int GetBoardInfo(const uint8_t *boardInfo)
+  /* Function:  int GetBoardInfo(const uint8_t *boardInfo)
      Reads the information relevant to the module such as Serial Number, Module Type (aes220a or b) and its revision number as well as whether the 3.3V rail is on or off.
 
      Parameters:
@@ -310,9 +315,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int GetBoardInfo(const uint8_t * boardInfo);
+  DLLEXPORT int GetBoardInfo(const uint8_t * boardInfo);
 
-  /* Function: int GetFirmwareInfo(const uint8_t *firmwareInfo)
+  /* Function:  int GetFirmwareInfo(const uint8_t *firmwareInfo)
      Reads the software version written into the code.
 
      Parameters:
@@ -323,9 +328,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int GetFirmwareInfo(uint8_t * firmwareInfo_ptr);
+  DLLEXPORT int GetFirmwareInfo(uint8_t * firmwareInfo_ptr);
 
-  /* Function: int ProgramMCRAM(const uint8_t * file_ptr)
+  /* Function:  int ProgramMCRAM(const uint8_t * file_ptr)
      Programs the micro-controller RAM with the given file.
 
      Parameters:
@@ -336,9 +341,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ProgramMCRAM(const char * file_ptr);
+  DLLEXPORT int ProgramMCRAM(const char * file_ptr);
 
-  /* Function: int ProgramMCEEPROM(const uint8_t * file_ptr)
+  /* Function:  int ProgramMCEEPROM(const uint8_t * file_ptr)
      Programs the micro-controller EEPROM with the given file.
 
      Parameters:
@@ -349,9 +354,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ProgramMCEEPROM(const char * file_ptr);
+  DLLEXPORT int ProgramMCEEPROM(const char * file_ptr);
 
-  /* Function: int ConfigureFPGA(const string fileName)
+  /* Function:  int ConfigureFPGA(const string fileName)
      Configure the FPGA with the given file.
 
      Parameters:
@@ -362,9 +367,9 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ConfigureFPGA(const char * file_ptr);
+  DLLEXPORT int ConfigureFPGA(const char * file_ptr);
 
-  /* Function: int ProgramFPGA(const char * file_ptr)
+  /* Function:  int ProgramFPGA(const char * file_ptr)
      Program the FPGA flas with the given file.
 
      Parameters:
@@ -375,7 +380,7 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int ProgramFPGA(const char * file_ptr);
+  DLLEXPORT int ProgramFPGA(const char * file_ptr);
 
   /* Function: int EraseFPGA()
      Erase the FPGA Flash (First page only to prevent the FPGA from booting up).
@@ -388,7 +393,7 @@ APIEXPORT
 
      Returns 0 on success.
   */
-  int EraseFPGA();
+  DLLEXPORT int EraseFPGA();
 
  private:
   aes220Dev *aes220_ptr;

@@ -31,9 +31,10 @@ License along with this library; if not, write to the Free Software
 Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 ******************************************************************************/
+#using "libaes220_C++CLI-1.4.3.dll"
 
 #include <iostream>
-#include <aes220_C++API.h>
+#include <aes220_CppAPI.h>
 
 using namespace std;
 

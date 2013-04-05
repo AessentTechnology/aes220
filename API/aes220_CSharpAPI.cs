@@ -1,5 +1,5 @@
 ﻿/******************************************************************************
-File name: aes220_C#API.h
+File name: aes220_CSharpAPI.h
 ===============================================================================
 DESCRIPTION
 
@@ -44,7 +44,7 @@ namespace aes220ClassLibrary
 {
   unsafe public class aes220Dev
   {
-    aes220_Dev aes220 = new aes220_Dev();
+    private aes220_Dev aes220 = new aes220_Dev();
 
 
     /* Function: Open(int idx, int vbs)
@@ -115,7 +115,7 @@ namespace aes220ClassLibrary
     }
 
 
-    /* Function: int PipeOut(byte[] buf, uint bufSize, byte channel)
+    /* Function: int PipeOut(byte[] payload, uint payloadSize, byte channel)
        Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
        (aes220).
 
@@ -139,7 +139,7 @@ namespace aes220ClassLibrary
     }
 
 
-    /* Function:  int PipeIn(byte[] buf, uint bufSize, byte channel)
+    /* Function:  int PipeIn(byte[] payload, uint payloadSize, byte channel)
        Receives a buffer of data (bytes) over the USB link from the device (aes220) to the host (PC).
 
        Parameters:
@@ -388,12 +388,12 @@ namespace aes220ClassLibrary
     }
 
 
-    /* Function: int ProgramMCRAM(const byte[]  file)
+    /* Function: int ProgramMCRAM(string  fileName)
        Programs the micro-controller RAM with the given file.
 
        Parameters:
 
-       file: pointer to the file to be downloaded in the micro-controller's RAM 
+       fileName: file (path/name) to be downloaded in the micro-controller's RAM 
 
        Returns:
 
@@ -413,12 +413,12 @@ namespace aes220ClassLibrary
     }
 
 
-    /* Function: int ProgramMCEEPROM(const byte[]  file)
+    /* Function: int ProgramMCEEPROM(string  fileName)
        Programs the micro-controller EEPROM with the given file.
 
        Parameters:
 
-       file: pointer to the file to be downloaded in the micro-controller's EEPROM
+       fileName: file (path/name) to be downloaded in the micro-controller's EEPROM
 
        Returns:
 
@@ -438,12 +438,12 @@ namespace aes220ClassLibrary
     }
 
 
-    /* Function: int ConfigureFPGA(const byte[]  file)
+    /* Function: int ConfigureFPGA(string  fileName)
        Configure the FPGA with the given file.
 
        Parameters:
 
-       file: pointer to the FPGA configuration file
+       fileName: the FPGA configuration file (paht/name)
 
        Returns:
 
@@ -462,12 +462,12 @@ namespace aes220ClassLibrary
       return rv;
     }
 
-    /* Function: int ProgramFPGA(const byte[]  file)
-       Program the FPGA flas with the given file.
+    /* Function: int ProgramFPGA(string  fileName)
+       Program the FPGA flash with the given file.
 
        Parameters:
 
-       file: pointer to the FPGA configuration file
+       fileName: the FPGA configuration file (path/name)
 
        Returns:
 

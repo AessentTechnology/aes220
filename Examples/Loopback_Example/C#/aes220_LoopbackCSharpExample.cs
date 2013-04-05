@@ -11,6 +11,8 @@ Post V1.4.2: First release, example is using C# library
 ===============================================================================
 NOTES
 
+The path to the aes220a_Loopback_Example_V1_2_1_ent.bin file will need to be 
+adjusted of the file is not with the executable.
 
 ===============================================================================
 

@@ -19,14 +19,18 @@ V1.4.1: Adding switch to program either aes220a or b requires libaes220.1.5.0 or
 V1.4.2: Switching to using libaes220.so rather than accessing the cpp functions of the API
         directly.
         Modifying the Files menu to display only FPGA .bin and .*** files.
+V1.4.3: Changed browse buttons initial variable to open with the last path browsed and added keys
+        to the config repository to save the last paths visited with the different browse buttons.
+        Reverted to using the source files rather than the dynamic library to make distribution
+        easier.
 
 ====================================================================================================
 NOTES
 
 Compile command:
-g++ aes220Programmer-x.x.cpp `wx-config --libs` `wx-config --cxxflags` -lusb-1.0
- aes220ProgrammerCommands-x.x.cpp ../API/lib/aes220Dev-x.x.cpp ../API/lib/aesFx2Dev-x.x.cpp
- ../API/lib/aesUSB-x.x.cpp -o aes220Programmer
+g++ aes220_ProgrammerGUI.cpp `wx-config --libs` `wx-config --cxxflags` -lusb-1.0
+ ../API/lib/aes220Dev.cpp ../API/lib/aesFx2Dev.cpp
+ ../API/lib/aesUSB.cpp -o aes220_ProgrammerGUI
 
 For more information on child processes look at wxWidgets exec.cpp example
 
@@ -62,8 +66,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220_API.h>
 
-#define SOFT_VER "aes220 Programmer Version 1.4.x"
-#define VBS_LEVEL 6
+#define SOFT_VER "aes220 Programmer Version 1.4.3"
+#define VBS_LEVEL 3
 #define RESET_FILE "reset.ihx"
 
 using namespace std;
