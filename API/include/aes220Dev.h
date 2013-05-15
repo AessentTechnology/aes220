@@ -131,7 +131,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define PAGE_SIZE          264
 #define TIME_OUT           5000
 #define TIME_OUT_RETRY     5
-#define MAX_FRAME_PAYLOAD  65536
+#define MAX_FRAME_PAYLOAD  65535
 
 // Micro-controller mode (aes220 specific)
 // Configuration/Programming commands
