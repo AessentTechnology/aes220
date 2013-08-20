@@ -101,7 +101,7 @@ int main() {
   // Send out buffer's contents through pipe 3 with address 3
   // Address needs to match address in the vhdl file
   int outPipe3 = 0x03;
-  cout << "Sending buffer containing " << PAYLOAD_OUT << " bytes via pipe " << outPipe3 << "." 
+  cout << "Sending buffer containing " << PAYLOAD_OUT << " bytes via pipe " << outPipe3 << "."
        << endl;
   rv = aes220_Pipe_Out(aes220_ptr, outBuf, PAYLOAD_OUT, outPipe3);
   if (rv == 0) {

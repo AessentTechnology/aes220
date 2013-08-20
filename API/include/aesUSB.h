@@ -47,9 +47,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <aesLog.h>
 
 #ifdef _WIN32
- #include <libusbx-1.0/libusb.h>
- # include <windows.h>
- # define msleep(x) Sleep(x)
+ #include <windows.h>
+ #define msleep(x) Sleep(x)
 #else
  #include <libusb-1.0/libusb.h>
  #define msleep(x) usleep(x*1000)

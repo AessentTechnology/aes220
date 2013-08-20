@@ -1109,15 +1109,17 @@ int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddre
 // Receives a buffer from aes220  using slave FIFO mode of the FX2
 int aes220Dev::pipe_In(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
 {
+  
   int rv = 99; 
-	uint32_t toBeReceived = bufSize;
-	uint32_t framePayloadSize = 0;
-	const uint8_t headerSize = 3;
-	uint8_t header[headerSize];
-	uint8_t *data_ptr;
-
-	// Make sure the uC is in Slave FIFO mode
-	log.add("Pipe in: ensuring micro-controller is in Slave FIFO mode", NOISE_VBS);
+  
+  uint32_t toBeReceived = bufSize;
+  uint32_t framePayloadSize = 0;
+  const uint8_t headerSize = 3;
+  uint8_t header[headerSize];
+  uint8_t *data_ptr;
+  
+  // Make sure the uC is in Slave FIFO mode
+  log.add("Pipe in: ensuring micro-controller is in Slave FIFO mode", NOISE_VBS);
   uint8_t orgMC_Mode;
   uint8_t *orgMC_Mode_ptr = &orgMC_Mode;
   uint8_t MC_Mode;
@@ -1165,6 +1167,7 @@ int aes220Dev::pipe_In(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddres
     // Decrement the amount of data still to be received
     toBeReceived -= framePayloadSize;
   }
+  
   return rv;
 }
 

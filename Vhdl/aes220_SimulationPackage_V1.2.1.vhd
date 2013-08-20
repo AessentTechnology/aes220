@@ -210,12 +210,12 @@ package body aes220_SimulationPackage_V1_2_1 is
           if (if_s(1)) = '1' then  -- slwr
             if if_s(7) = '1' then  -- ifclk
               arrayIndex_v := arrayIndex_v + 1;
-              --if arrayIndex_v = 8 then     -- Simulates fifo full
-              --  fi_s(1) <= '1';            -- Comment or uncomment 
-              --elsif arrayIndex_v = 9 then  -- as required
-              --  wait for 200ns;            --
-              --  fi_s(1) <= '0';            --
-              --end if;                      -- 
+              if arrayIndex_v = 8 then     -- Simulates fifo full
+                fi_s(1) <= '1';            -- Comment or uncomment 
+              elsif arrayIndex_v = 9 then  -- as required
+                wait for 200ns;            --
+                fi_s(1) <= '0';            --
+              end if;                      -- 
             end if;
             if arrayIndex_v < dataSize_v then
               dataIn_ar(arrayIndex_v) := ifData_s;
