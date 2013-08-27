@@ -47,6 +47,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <aesLog.h>
 
 #ifdef _WIN32
+ #include <libusbx-1.0/libusb.h>
  #include <windows.h>
  #define msleep(x) Sleep(x)
 #else
@@ -95,7 +96,7 @@ class usbDev {
   int closeDev();
   int claim_interface();
   int check_kernel_status();
-  int set_interface(int interface, int alt_setting);
+  int set_interface(int iface, int alt);
   bool is_open();
   void set_debug_level(int n); // level 0 to 3
   int do_usb_command(unsigned char type, unsigned char request, 
