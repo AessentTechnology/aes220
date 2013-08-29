@@ -300,9 +300,9 @@ DLLEXPORT int aes220_CombinedI2C(aes220_handle* aes220_ptr, uint8_t deviceAddres
 
    aes220_ptr: a handle to the USB device
 
-   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yyyy
+   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yy
 
-   Note: Do not use this function to turn the 3.3V ON or OFF, use the aes220_Turn3V3ON/OFF functions
+   Note: (1) Do not use this function to turn the 3.3V ON or OFF, use the aes220_Turn3V3ON/OFF functions
 
    Returns:
 
@@ -317,7 +317,9 @@ DLLEXPORT int aes220_Set_Board_Info(aes220_handle* aes220_ptr, const uint8_t *bo
 
    aes220_ptr: a handle to the USB device
 
-   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF, a/b, A, 1, SN, dd, mm, yyyy
+   boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yy
+ 
+   Note: (1) 0: 3.3V OFF; 1: 3.3V ON 
 
    Returns:
 

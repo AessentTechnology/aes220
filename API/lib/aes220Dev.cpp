@@ -1340,10 +1340,20 @@ int aes220Dev::combinedI2C(uint8_t deviceAddress,
 // Turns the 3.3V supply on the FPGA IOs on
 int aes220Dev::turn3p3vOn() 
 {
-	// BKLDOEN is the LN3906 register for enabling/disabling the bucks and LDOs
+	// BKLDOEN is the LP3906 register for enabling/disabling the bucks and LDOs
   int rv = 99;
-	uint8_t cmd[2] = {BKLDOEN, 0x75};
+  uint8_t cmd[2] = {BKLDOEN, 0x75};
+  uint8_t boardInfo = P3V3_ON;
   rv = writeI2C(0x60, cmd, 2);
+  if (rv != 2) {
+    log.add("Failed to turn 3.3V ON, rv = ", rv, ERROR_VBS);
+  }
+  else {
+    rv = writeEEPROM1(BOARD_INFO_ADDR, &boardInfo, 1);
+    if (rv != 0) {
+      log.add("Failed to set board info rv = ", rv, ERROR_VBS);
+    }
+  }
   return rv;
 }
 
@@ -1352,10 +1362,20 @@ int aes220Dev::turn3p3vOn()
 // Turns the 3.3V supply on the FPGA IOs off
 int aes220Dev::turn3p3vOff() 
 {
-	// BKLDOEN is the LN3906 register for enabling/disabling the bucks and LDOs
+	// BKLDOEN is the LP3906 register for enabling/disabling the bucks and LDOs
   int rv = 99;
-	uint8_t cmd[2] = {BKLDOEN, 0x71};
+  uint8_t cmd[2] = {BKLDOEN, 0x71};
+  uint8_t boardInfo = P3V3_OFF;
   rv = writeI2C(0x60, cmd, 2);
+  if (rv != 2) {
+    log.add("Failed to turn 3.3V OFF, rv = ", rv, ERROR_VBS);
+  }
+  else {
+    rv = writeEEPROM1(BOARD_INFO_ADDR, &boardInfo, 1);
+    if (rv != 0) {
+      log.add("Failed to set board info rv = ", rv, ERROR_VBS);
+    }
+  }
   return rv;
 }
 

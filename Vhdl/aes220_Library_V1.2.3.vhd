@@ -18,7 +18,7 @@
 --        Modified ae220_PipeOut_ent (split process in two)
 -- V1.2.2 Disabled the PKT_END signal in aes220_FX2_Interface_ent when the packet written to the
 --        FX2 fifo (from the FPGA) is a multiple of the FX2 buffer size (512 bytes).
--- V1.2.3 Removed redundant register loop in aes220_PipeOut_ent entity
+-- V1.2.3 Removed redundant register loop in aes220_PipeIn_ent entity
 --
 ----------------------------------------------------------------------------------------------------
 --

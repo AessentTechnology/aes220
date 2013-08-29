@@ -199,6 +199,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 // Board information
 #define BOARD_INFO_ADDR 0x3DF8
 #define BOARD_INFO_LEN  8
+#define P3V3_OFF 0
+#define P3V3_ON  1
 
 #define AES220_LOG "aes220.log"
 
