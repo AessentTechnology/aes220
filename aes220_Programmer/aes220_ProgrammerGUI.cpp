@@ -1,5 +1,5 @@
 /***************************************************************************************************
-File name: aes220Programmer.cpp
+File name: aes220ProgrammerGUI.cpp
 ====================================================================================================
 DESCRIPTION
 
@@ -23,19 +23,16 @@ V1.4.3: Changed browse buttons initial variable to open with the last path brows
         to the config repository to save the last paths visited with the different browse buttons.
         Reverted to using the source files rather than the dynamic library to make distribution
         easier.
+V1.4.4: Added the ability to turn the 3.3V rail ON or OFF. This is done via radio buttons which
+        update themselves if a different board is subsequently plugged in.
 
 ====================================================================================================
 NOTES
 
-Compile command:
-g++ aes220_ProgrammerGUI.cpp `wx-config --libs` `wx-config --cxxflags` -lusb-1.0
- ../API/lib/aes220Dev.cpp ../API/lib/aesFx2Dev.cpp
- ../API/lib/aesUSB.cpp -o aes220_ProgrammerGUI
-
 For more information on child processes look at wxWidgets exec.cpp example
 
 ====================================================================================================
-Copyright (C) 2012 Sebastien Saury, Aessent Technology Ltd
+Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -66,9 +63,12 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220_API.h>
 
-#define SOFT_VER "aes220 Programmer Version 1.4.3"
+#define SOFT_VER "aes220 Programmer Version 1.4.4"
 #define VBS_LEVEL 3
 #define RESET_FILE "reset.ihx"
+
+#define P3V3_OFF 0
+#define P3V3_ON  1
 
 using namespace std;
 
@@ -121,11 +121,13 @@ public:
   void OnNewProject(wxCommandEvent& event);
   void OnQuit(wxCommandEvent& event);
   void OnAbout(wxCommandEvent& event);
+  void OnRadioButton3v3OnID(wxCommandEvent &event);
+  void OnRadioButton3v3OffID(wxCommandEvent &event);
   void OnRadioButtonAes220ID(wxCommandEvent &event);
   void OnRadioButtonFx2lpID(wxCommandEvent &event);
-  void OnBrowseBtn1(wxCommandEvent& WXUNUSED(event));
-  void OnBrowseBtn2(wxCommandEvent& WXUNUSED(event));
-  void OnBrowseBtn3(wxCommandEvent& WXUNUSED(event));
+  void OnBrowseRamBtn(wxCommandEvent& WXUNUSED(event));
+  void OnBrowseEEPBtn(wxCommandEvent& WXUNUSED(event));
+  void OnBrowseFpgaBtn(wxCommandEvent& WXUNUSED(event));
   void OnProgRamBtn(wxCommandEvent& WXUNUSED(event));
   void OnProgEEPBtn(wxCommandEvent& WXUNUSED(event));
   void OnRstEEPBtn(wxCommandEvent& WXUNUSED(event));
@@ -165,6 +167,8 @@ private:
   wxString fpgaConfFileName;
   wxString fpgaProgFileName;
   wxComboBox* cmbIdx;
+  wxRadioButton* p3v3OnIDrbtn ;
+  wxRadioButton* p3v3OffIDrbtn;
   static const int INTERVAL = 300; // milliseconds
   // helper function - creates a new thread (but doesn't run it)
   ConfigFpgaThread *CreateConfigFpgaThread();
@@ -188,11 +192,13 @@ enum
     ID_NewProject,
     ID_About,
     wxID_CloseApp,
+    wxID_3v3OnIDrBtn,
+    wxID_3v3OffIDrBtn,
     wxID_Aes220IDrBtn,
     wxID_Fx2lpIDrBtn,
-    wxID_BrowseBtn1,
-    wxID_BrowseBtn2,
-    wxID_BrowseBtn3,
+    wxID_BrowseRAMBtn,
+    wxID_BrowseEEPBtn,
+    wxID_BrowseFPGABtn,
     wxID_ProgRamBtn,
     wxID_ProgEEPBtn,
     wxID_RstEEPBtn,
@@ -449,12 +455,14 @@ EVT_MENU(ID_NewProject, MainFrame::OnNewProject)
 EVT_MENU(ID_Quit,       MainFrame::OnQuit)
 EVT_MENU(ID_About,      MainFrame::OnAbout)
 
+EVT_RADIOBUTTON(wxID_3v3OnIDrBtn, MainFrame::OnRadioButton3v3OnID)
+EVT_RADIOBUTTON(wxID_3v3OffIDrBtn, MainFrame::OnRadioButton3v3OffID)
 EVT_RADIOBUTTON(wxID_Aes220IDrBtn, MainFrame::OnRadioButtonAes220ID)
 EVT_RADIOBUTTON(wxID_Fx2lpIDrBtn,  MainFrame::OnRadioButtonFx2lpID)
 
-EVT_BUTTON(wxID_BrowseBtn1,   MainFrame::OnBrowseBtn1)
-EVT_BUTTON(wxID_BrowseBtn2,   MainFrame::OnBrowseBtn2)
-EVT_BUTTON(wxID_BrowseBtn3,   MainFrame::OnBrowseBtn3)
+EVT_BUTTON(wxID_BrowseRAMBtn,   MainFrame::OnBrowseRamBtn)
+EVT_BUTTON(wxID_BrowseEEPBtn,   MainFrame::OnBrowseEEPBtn)
+EVT_BUTTON(wxID_BrowseFPGABtn,   MainFrame::OnBrowseFpgaBtn)
 EVT_BUTTON(wxID_ProgRamBtn,   MainFrame::OnProgRamBtn)
 EVT_BUTTON(wxID_ProgEEPBtn,   MainFrame::OnProgEEPBtn)
 EVT_BUTTON(wxID_RstEEPBtn,    MainFrame::OnRstEEPBtn)
@@ -487,7 +495,7 @@ bool MyApp::OnInit()
   // of the config file/registry key and must be set before the first call
   // to Get() if you want to override the default values (the application
   // name is the name of the executable and the vendor name is the same)
-  SetVendorName(_T("aessentTecnology"));
+  SetVendorName(_T("aessentTechnology"));
   SetAppName(_T("aes220Programmer")); // not needed, it's the default value
 
   wxConfigBase* config_ptr = wxConfigBase::Get();
@@ -551,92 +559,24 @@ MainFrame::MainFrame(const wxString& title)
 
   // Create a panel to put the controls on
   wxPanel* panel = new wxPanel(this, wxID_ANY);
-  // Create a notebook
-  wxNotebook* notebook = new wxNotebook(panel, wxID_Book);
-  // Create panels for the notebook
-  wxPanel* fpgaPanel = new wxPanel(notebook, wxID_ANY);
-  wxPanel* advancedPanel = new wxPanel(notebook, wxID_ANY);
-  // Add the panels to the notebook
-  notebook->AddPage(fpgaPanel, _T("FPGA"), true);
-  notebook->AddPage(advancedPanel, _T("Advanced"), false);
-
-
-  // Create some text
-  wxStaticText* swVer = new wxStaticText(panel, wxID_ANY, _T(SOFT_VER));
-  uCRamFileTxtCtrl = new wxTextCtrl(advancedPanel, wxID_uCRamFile, _T(""),
-				    wxPoint(), wxSize(300,30));
-  uCEepFileTxtCtrl = new wxTextCtrl(advancedPanel, wxID_uCEepFile, _T(""),
-				    wxPoint(), wxSize(300,30));
-  fpgaConfFileTxtCtrl = new wxTextCtrl(fpgaPanel, wxID_fpgaConfFile, _T(""),
-				       wxPoint(), wxSize(300,30));
-  config_ptr = wxConfigBase::Get();
-  config_ptr->SetPath(_T("/paths"));
-  uCRamFileTxtCtrl->SetValue(config_ptr->Read(_T("uCRamFile"), _T("")));
-  uCEepFileTxtCtrl->SetValue(config_ptr->Read(_T("uCEepFile"), _T("")));
-  fpgaConfFileTxtCtrl->SetValue(config_ptr->Read(_T("fpgaConfFile"), _T("")));
-  lastRamDirectory = config_ptr->Read(_T("lastRamDirectory"), _T("/home"));
-  lastEepDirectory = config_ptr->Read(_T("lastEepDirectory"), _T("/home"));
-  lastFpgaDirectory = config_ptr->Read(_T("lastFpgaDirectory"), _T("/home"));
-
-  // Create the application buttons
-  // Radio buttons for chosing the device vid/pid
-#ifdef _WIN32
-#else
-  wxRadioButton* aes220IDrbtn = new wxRadioButton(advancedPanel, wxID_Aes220IDrBtn,
-						  _("aes220 VID/PID"), wxDefaultPosition,
-						  wxDefaultSize, 0,
-						  wxDefaultValidator, _T("wxID_rBtn1"));
-  wxRadioButton* fx2lpIDrbtn = new wxRadioButton(advancedPanel, wxID_Fx2lpIDrBtn,
-						 _("blank device VID/PID"), wxDefaultPosition,
-						 wxDefaultSize, 0,
-						 wxDefaultValidator, _T("wxID_rBtn2"));
-#endif
-  // Other Buttons
-  wxButton* browsebtn1 = new wxButton(advancedPanel, wxID_BrowseBtn1,
-				      wxT("Browse"),
-				      wxPoint(), wxSize(60,30));
-  wxButton* browsebtn2 = new wxButton(advancedPanel, wxID_BrowseBtn2,
-				      wxT("Browse"),
-				      wxPoint(), wxSize(60,30));
-  wxButton* browsebtn3 = new wxButton(fpgaPanel, wxID_BrowseBtn3,
-				      wxT("Browse"),
-				      wxPoint(), wxSize(60,30));
-  wxButton* confRambtn = new wxButton(advancedPanel, wxID_ProgRamBtn,
-				      wxT("Program RAM"),
-				      wxPoint(), wxSize(130,30));
-  wxButton* progEepbtn = new wxButton(advancedPanel, wxID_ProgEEPBtn,
-				      wxT("Program EEPROM"),
-				      wxPoint(), wxSize(130,30));
-  wxButton* rstEepbtn = new wxButton(advancedPanel, wxID_RstEEPBtn,
-				     wxT("Reset EEPROM"),
-				     wxPoint(), wxSize(130,30));
-  wxButton* confFpgabtn = new wxButton(fpgaPanel, wxID_ConfFPGABtn,
-				       wxT("Configure FPGA"),
-				       wxPoint(), wxSize(130,30));
-  wxButton* progFpgabtn = new wxButton(fpgaPanel, wxID_ProgFPGABtn,
-				       wxT("Program FPGA"),
-				       wxPoint(), wxSize(130,30));
-  wxButton* eraseFpgabtn = new wxButton(fpgaPanel, wxID_EraseFPGABtn,
-					wxT("Erase FPGA"),
-					wxPoint(), wxSize(130,30));
-  wxButton* clsbtn = new wxButton(panel, wxID_CloseApp, wxT("Close"),
-				  wxPoint(), wxSize(130,30));
 
   // Combo box for choosing which device to speak to
   idx = 0;
   StartIdxTimer();
   aes220_handle *aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs);
-  aes220_Get_Board_Info(aes220_ptr, boardInfo);
-  aes220_Close(aes220_ptr);
-  //getBoardInfo(vid, pid, idx, boardInfo);
+ if (aes220_ptr != NULL)
+ {
+    aes220_Get_Board_Info(aes220_ptr, boardInfo);
+    aes220_Close(aes220_ptr);
+  }
+  wxStaticText* idxText =
+    new wxStaticText(panel, wxID_ANY, _T("Module ID: "));
   wxArrayString idxStrings;
   for (int i = 0; i < 10; i++) {
     idxStrings.Add(wxString::Format(_T("%d"), i));
   }
   cmbIdx = new wxComboBox(panel, wxID_CmbIdx, wxT("0"), wxDefaultPosition,
 			  wxSize(60,24), idxStrings, wxCB_DROPDOWN);
-  wxStaticText* idxText =
-    new wxStaticText(panel, wxID_ANY, _T("Module ID: "));
   wxStaticText* serialNbDescText =
     new wxStaticText(panel, wxID_ANY, _T("Module Serial Number: "));
   wxStaticText* dateCodeDescText =
@@ -651,33 +591,10 @@ MainFrame::MainFrame(const wxString& title)
   boardText = new wxStaticText(panel, wxID_ANY, _T(""));
   firmText = new wxStaticText(panel, wxID_ANY, _T(""));
 
+
   cmbIdx->SetToolTip(_T("Select the device ID when more than one device is used.\nStarts at 0 and increases when more devices are plugged in."));
   serialNbDescText->SetToolTip(_T("That is the serial number present on the board bottom side."));
   serialNbText->SetLabel(_T("0"));
-
-  // Add a log window
-  m_log = new wxTextCtrl( panel, wxID_ANY, _T("Thank you for using aes220 Programmer.\n"),
-			  wxPoint(5,5), wxSize(50,50),
-			  wxTE_MULTILINE | wxTE_READONLY /* | wxTE_RICH */);
-
-  // Create a stream to the log window
-  //ostream stream(m_log);
-
-  // uController RAM programming sizer
-  // Use sizer to layout the controls, stacked horizontally
-  // Text and buttons for uController RAM programming
-  wxBoxSizer* hszuCRam = new wxBoxSizer(wxHORIZONTAL);
-  hszuCRam->Add(uCRamFileTxtCtrl, wxSizerFlags(1));
-  hszuCRam->Add(browsebtn1);
-  hszuCRam->Add(confRambtn);
-
-  // uController EEPROM programming sizer
-  // Use sizer to layout the controls, stacked horizontally
-  // Text and buttons for uController EEPROM programming
-  wxBoxSizer* hszuCEep = new wxBoxSizer(wxHORIZONTAL);
-  hszuCEep->Add(uCEepFileTxtCtrl, wxSizerFlags(1));
-  hszuCEep->Add(browsebtn2);
-  hszuCEep->Add(progEepbtn);
 
   //Create a vertical sizer for the module info description
   wxBoxSizer* vszModInfoDesc = new wxBoxSizer(wxVERTICAL);
@@ -692,21 +609,144 @@ MainFrame::MainFrame(const wxString& title)
   vszModInfo->Add(boardText);
   vszModInfo->Add(firmText);
   // Create an horizontal sizer for the module information (static box)
-  wxBoxSizer* hszInfo = new wxStaticBoxSizer(new wxStaticBox(panel, wxID_ANY, _T("")),
-					     wxHORIZONTAL);
+  wxBoxSizer* hszInfo = new wxStaticBoxSizer
+    (new wxStaticBox(panel, wxID_ANY, _T("")), wxHORIZONTAL);
   hszInfo->Add(vszModInfoDesc);
   hszInfo->Add(vszModInfo);
+
+  // Create an horizontal sizer for the 3.3V power rail
+  // Radio buttons for selecting 3.3V ON or OFF
+  p3v3OnIDrbtn = new wxRadioButton(panel, wxID_3v3OnIDrBtn,
+				   _("3.3V ON"), wxDefaultPosition,
+				   wxDefaultSize, 0,
+				   wxDefaultValidator, _T("wxID_rBtn1"));
+  p3v3OffIDrbtn = new wxRadioButton(panel, wxID_3v3OffIDrBtn,
+				    _("3.3V OFF"), wxDefaultPosition,
+				    wxDefaultSize, 0,
+				    wxDefaultValidator, _T("wxID_rBtn2"));
+  // Read the board information power supply byte to check if the 3.3V rail is turned ON or OFF
+  // and set the radio buttons accordingly
+  if (boardInfo[0] == P3V3_OFF) {p3v3OffIDrbtn->SetValue(true);}
+  else {p3v3OnIDrbtn->SetValue(true);}
+
+  wxBoxSizer* hsz3v3 = new wxStaticBoxSizer(new wxStaticBox(panel, wxID_ANY, _T("")), wxHORIZONTAL);
+  hsz3v3->Add(p3v3OnIDrbtn);
+  hsz3v3->Add(p3v3OffIDrbtn);
+  
+  // Create a vertical sizer for the Module information
+  wxBoxSizer* vszMI = new wxBoxSizer(wxVERTICAL);
+  vszMI->Add(hszInfo);
+  vszMI->Add(hsz3v3, wxSizerFlags().Right().Expand());
+  
   // Create an horizontal sizer for the Idx combo box
-  hszIdx = new wxStaticBoxSizer(new wxStaticBox(panel, wxID_ANY, _T("")), wxHORIZONTAL);
+  hszIdx = new wxStaticBoxSizer
+    (new wxStaticBox(panel, wxID_ANY, _T("Module Information")), wxHORIZONTAL);
   hszIdx->Add(idxText, wxSizerFlags().Border(wxTOP, 10));
   hszIdx->Add(cmbIdx, wxSizerFlags().Border(wxTOP, 7));
   hszIdx->AddStretchSpacer();
   //hszIdx->AddSpacer(30);
-  hszIdx->Add(hszInfo, wxSizerFlags().Border(wxBOTTOM, 5));
+  hszIdx->Add(vszMI, wxSizerFlags().Border(wxBOTTOM, 5));
 
-  //hszIdx->Add(serialNbDescText, wxSizerFlags().Centre());
-  //hszIdx->Add(serialNbText, wxSizerFlags().Centre());
-  //hszIdx->Add(serialNbText, wxSizerFlags().Border(wxTOP, 10));
+ // Create a notebook
+  wxNotebook* notebook = new wxNotebook(panel, wxID_Book);
+  // Use a config file to remember the various paths
+  config_ptr = wxConfigBase::Get();
+  config_ptr->SetPath(_T("/paths"));
+
+  // Create panels for the notebook
+  // FPGA panel
+  wxPanel* fpgaPanel = new wxPanel(notebook, wxID_ANY);
+  // Add the panel to the notebook
+  notebook->AddPage(fpgaPanel, _T("FPGA"), true);
+  // Add some text control boxes
+  fpgaConfFileTxtCtrl = new wxTextCtrl(fpgaPanel, wxID_fpgaConfFile, _T(""),
+				       wxPoint(), wxSize(300,30));
+  fpgaConfFileTxtCtrl->SetValue(config_ptr->Read(_T("fpgaConfFile"), _T("")));
+  lastFpgaDirectory = config_ptr->Read(_T("lastFpgaDirectory"), _T("/home"));
+  // Add buttons
+  wxButton* browseFpgaBtn = new wxButton(fpgaPanel, wxID_BrowseFPGABtn, wxT("Browse"),
+				      wxPoint(), wxSize(60,30));
+  wxButton* confFpgabtn = new wxButton(fpgaPanel, wxID_ConfFPGABtn, wxT("Configure FPGA"),
+				       wxPoint(), wxSize(130,30));
+  wxButton* progFpgabtn = new wxButton(fpgaPanel, wxID_ProgFPGABtn, wxT("Program FPGA"),
+				       wxPoint(), wxSize(130,30));
+  wxButton* eraseFpgabtn = new wxButton(fpgaPanel, wxID_EraseFPGABtn, wxT("Erase FPGA"),
+					wxPoint(), wxSize(130,30));
+  // Create and fill the static box sizer for the FPGA
+  wxBoxSizer* vszFpga = new wxStaticBoxSizer(new wxStaticBox(fpgaPanel, wxID_ANY, wxT("")),
+					     wxVERTICAL);
+  // Use sizer to layout the controls, stacked horizontally
+  // Text and button for FPGA configuration
+  wxBoxSizer* hszFpgaConf = new wxBoxSizer(wxHORIZONTAL);
+  hszFpgaConf->Add(fpgaConfFileTxtCtrl, wxSizerFlags(1));
+  hszFpgaConf->Add(browseFpgaBtn);
+  hszFpgaConf->Add(confFpgabtn);
+  // Stack the text control box and button vertically with the other Fpga buttons
+  vszFpga->Add(hszFpgaConf, wxSizerFlags().Right().Expand());
+  vszFpga->Add(progFpgabtn, wxSizerFlags().Right());
+  vszFpga->Add(eraseFpgabtn, wxSizerFlags().Right());
+  wxBoxSizer* fpgaSizer = new wxBoxSizer(wxVERTICAL);
+  fpgaSizer->Add(vszFpga, wxSizerFlags().Right().Expand().Border(wxALL, 5));
+  fpgaPanel->SetSizer(fpgaSizer);
+
+
+  // Advanced Panel (micro-controller settings)
+  wxPanel* advancedPanel = new wxPanel(notebook, wxID_ANY);
+  notebook->AddPage(advancedPanel, _T("Advanced"), false);
+
+
+  // Create some text
+  wxStaticText* swVer = new wxStaticText(panel, wxID_ANY, _T(SOFT_VER));
+  uCRamFileTxtCtrl = new wxTextCtrl(advancedPanel, wxID_uCRamFile, _T(""),
+				    wxPoint(), wxSize(300,30));
+  uCEepFileTxtCtrl = new wxTextCtrl(advancedPanel, wxID_uCEepFile, _T(""),
+				    wxPoint(), wxSize(300,30));
+  uCRamFileTxtCtrl->SetValue(config_ptr->Read(_T("uCRamFile"), _T("")));
+  uCEepFileTxtCtrl->SetValue(config_ptr->Read(_T("uCEepFile"), _T("")));
+  lastRamDirectory = config_ptr->Read(_T("lastRamDirectory"), _T("/home"));
+  lastEepDirectory = config_ptr->Read(_T("lastEepDirectory"), _T("/home"));
+
+  // Create the application buttons
+  // Radio buttons for choosing the device vid/pid (only under linux)
+#ifdef _WIN32
+#else
+  wxRadioButton* aes220IDrbtn = new wxRadioButton(advancedPanel, wxID_Aes220IDrBtn,
+						  _("aes220 VID/PID"), wxDefaultPosition,
+						  wxDefaultSize, 0,
+						  wxDefaultValidator, _T("wxID_rBtn3"));
+  wxRadioButton* fx2lpIDrbtn = new wxRadioButton(advancedPanel, wxID_Fx2lpIDrBtn,
+						 _("blank device VID/PID"), wxDefaultPosition,
+						 wxDefaultSize, 0,
+						 wxDefaultValidator, _T("wxID_rBtn4"));
+  aes220IDrbtn->SetValue(true);
+#endif
+  // Other Buttons
+  wxButton* browseRamBtn = new wxButton(advancedPanel, wxID_BrowseRAMBtn, wxT("Browse"),
+				      wxPoint(), wxSize(60,30));
+  wxButton* browseEEPBtn = new wxButton(advancedPanel, wxID_BrowseEEPBtn, wxT("Browse"),
+				      wxPoint(), wxSize(60,30));
+  wxButton* confRambtn = new wxButton(advancedPanel, wxID_ProgRamBtn, wxT("Program RAM"),
+				      wxPoint(), wxSize(130,30));
+  wxButton* progEepbtn = new wxButton(advancedPanel, wxID_ProgEEPBtn, wxT("Program EEPROM"),
+				      wxPoint(), wxSize(130,30));
+  wxButton* rstEepbtn = new wxButton(advancedPanel, wxID_RstEEPBtn, wxT("Reset EEPROM"),
+				     wxPoint(), wxSize(130,30));
+
+  // uController RAM programming sizer
+  // Use sizer to layout the controls, stacked horizontally
+  // Text and buttons for uController RAM programming
+  wxBoxSizer* hszuCRam = new wxBoxSizer(wxHORIZONTAL);
+  hszuCRam->Add(uCRamFileTxtCtrl, wxSizerFlags(1));
+  hszuCRam->Add(browseRamBtn);
+  hszuCRam->Add(confRambtn);
+
+  // uController EEPROM programming sizer
+  // Use sizer to layout the controls, stacked horizontally
+  // Text and buttons for uController EEPROM programming
+  wxBoxSizer* hszuCEep = new wxBoxSizer(wxHORIZONTAL);
+  hszuCEep->Add(uCEepFileTxtCtrl, wxSizerFlags(1));
+  hszuCEep->Add(browseEEPBtn);
+  hszuCEep->Add(progEepbtn);
 
   // radio butttons, text and buttons for  uController
   wxBoxSizer* vszuC = new wxStaticBoxSizer(new wxStaticBox(advancedPanel, wxID_ANY,
@@ -720,37 +760,27 @@ MainFrame::MainFrame(const wxString& title)
   vszuC->Add(hszuCEep, wxSizerFlags().Expand());
   vszuC->Add(rstEepbtn, wxSizerFlags().Right());
 
-  // Second static box
-  // Text and buttons for  FPGA
-  wxBoxSizer* vszFpga = new wxStaticBoxSizer(new wxStaticBox(fpgaPanel, wxID_ANY, wxT("")),
-					     wxVERTICAL);
-  // Use sizer to layout the controls, stacked horizontally
-  // Text and button for FPGA configuration
-  wxBoxSizer* hszFpgaConf = new wxBoxSizer(wxHORIZONTAL);
-  hszFpgaConf->Add(fpgaConfFileTxtCtrl, wxSizerFlags(1));
-  hszFpgaConf->Add(browsebtn3);
-  hszFpgaConf->Add(confFpgabtn);
-  // Stack the text control box and button vertically with the other Fpga buttons
-  vszFpga->Add(hszFpgaConf, wxSizerFlags().Right().Expand());
-  vszFpga->Add(progFpgabtn, wxSizerFlags().Right());
-  vszFpga->Add(eraseFpgabtn, wxSizerFlags().Right());
-
-  wxBoxSizer* fpgaSizer = new wxBoxSizer(wxVERTICAL);
-  fpgaSizer->Add(vszFpga, wxSizerFlags().Right().Expand().Border(wxALL, 5));
-  fpgaPanel->SetSizer(fpgaSizer);
   wxBoxSizer* advancedSizer = new wxBoxSizer(wxVERTICAL);
   advancedSizer->Add(vszuC, wxSizerFlags().Right().Expand().Border(wxALL, 5));
   advancedPanel->SetSizer(advancedSizer);
 
-  // Use sizer to layout the controls, stacked horizontally
-  // Third row: application buttons
+  // Add a close button to the main panel
+  wxButton* clsbtn = new wxButton(panel, wxID_CloseApp, wxT("Close"),
+				  wxPoint(), wxSize(130,30));
+
   wxBoxSizer* vszCtrl = new wxBoxSizer( wxVERTICAL );
   vszCtrl->Add(clsbtn, wxSizerFlags(1));
+
+  // Add a log window
+  m_log = new wxTextCtrl( panel, wxID_ANY, _T("Thank you for using aes220 Programmer.\n"),
+			  wxPoint(5,5), wxSize(50,50),
+			  wxTE_MULTILINE | wxTE_READONLY /* | wxTE_RICH */);
 
   // Use sizer to layout the controls, stacked vertically
   wxBoxSizer* topSizer = new wxBoxSizer(wxVERTICAL);
   topSizer->Add(swVer, wxSizerFlags().Right().Border(wxALL, 10));
   topSizer->Add(hszIdx, wxSizerFlags().Expand().Border(wxALL, 5));
+  //  topSizer->Add(hsz3v3, wxSizerFlags().Expand().Border(wxALL, 5));
   topSizer->Add(notebook, wxSizerFlags().Expand().Border(wxALL, 5));
   topSizer->Add(vszCtrl, wxSizerFlags().Right().Border(wxALL, 10));
   topSizer->Add(m_log, 1, wxALL | wxEXPAND, 10);
@@ -894,6 +924,20 @@ void MainFrame::OnAbout(wxCommandEvent& WXUNUSED(event))
 		wxOK | wxICON_INFORMATION, this);
 }
 
+void MainFrame::OnRadioButton3v3OnID(wxCommandEvent &event)
+{
+    aes220_handle *aes220_ptr =  aes220_Open_Device(vid, pid, idx, vbs);
+    aes220_Turn3V3On(aes220_ptr);
+    aes220_Close(aes220_ptr);
+}
+
+void MainFrame::OnRadioButton3v3OffID(wxCommandEvent &event)
+{
+    aes220_handle *aes220_ptr =  aes220_Open_Device(vid, pid, idx, vbs);
+    aes220_Turn3V3Off(aes220_ptr);
+    aes220_Close(aes220_ptr);
+}
+
 void MainFrame::OnRadioButtonAes220ID(wxCommandEvent &event)
 {
   vid = 0x2443;
@@ -908,7 +952,7 @@ void MainFrame::OnRadioButtonFx2lpID(wxCommandEvent &event)
   vbs = VBS_LEVEL;
 }
 
-void MainFrame::OnBrowseBtn1(wxCommandEvent& WXUNUSED(event))
+void MainFrame::OnBrowseRamBtn(wxCommandEvent& WXUNUSED(event))
 { // RAM files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
@@ -924,7 +968,7 @@ void MainFrame::OnBrowseBtn1(wxCommandEvent& WXUNUSED(event))
     }
 }
 
-void MainFrame::OnBrowseBtn2(wxCommandEvent& WXUNUSED(event))
+void MainFrame::OnBrowseEEPBtn(wxCommandEvent& WXUNUSED(event))
 { // EEPROM files browse button
   wxFileDialog dlg(this,
 		   wxT("Choose File"),
@@ -940,7 +984,7 @@ void MainFrame::OnBrowseBtn2(wxCommandEvent& WXUNUSED(event))
     }
 }
 
-void MainFrame::OnBrowseBtn3(wxCommandEvent& WXUNUSED(event))
+void MainFrame::OnBrowseFpgaBtn(wxCommandEvent& WXUNUSED(event))
 { // FPGA files browse button
   wxFileDialog dlg(this,
 		   wxT("Load binary File:"),
@@ -1121,10 +1165,11 @@ void MainFrame::OnIdxTimer(wxTimerEvent& event)
   if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
     aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
     int rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
-    //if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
+  // Read the board information power supply byte to check if the 3.3V rail is turned ON or OFF
+  // and set the radio buttons accordingly
+    if (boardInfo[0] == P3V3_OFF) {p3v3OffIDrbtn->SetValue(true);}
+    else {p3v3OnIDrbtn->SetValue(true);}
     if (rv == 0) {
-      //if (getBoardInfo(vid, pid, idx, boardInfo) == 0) {
-      //getFirmwareInfo(vid, pid, idx, firmwareInfo);
       aes220_Get_Firmware_Info(aes220_ptr, firmwareInfo);
     }
     else {

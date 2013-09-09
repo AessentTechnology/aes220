@@ -57,7 +57,7 @@ int main() {
   unsigned char outBuf[PAYLOAD_OUT];
 
   int idx = 0;      // Module ID 0 if only aes220 module plugged in
-  int vbs = 3;      // Messages verbosity, min = 0, max = 9
+  int vbs = 9;      // Messages verbosity, min = 0, max = 9
 
   cout << endl << "aes220_LoopbackCmdLineExample" << endl;
   cout << endl;
