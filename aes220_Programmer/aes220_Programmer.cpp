@@ -12,6 +12,7 @@ V1.0.0: Original version
 V1.4.2: No change
 V1.4.3: Added missing --info implementation
 V1.4.4: Added 3.3V rail ON/OFF switch. Modified for loop so more than one action can be carried out.
+V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
 
 ====================================================================================================
 NOTES
@@ -19,7 +20,7 @@ NOTES
 
 
 ====================================================================================================
-Aessent Technology copyright (c) 2013
+Copyright (C) 2013 Sebastien Saury, Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -84,7 +85,7 @@ static void printHelp()
 
 int main(int argc, char *argv[]) {
 
-  string softwareVersion ("aes220 Programmer Command Line Version V1.4.4");
+  string softwareVersion ("aes220 Programmer Command Line Version V1.6.0");
   cout << endl;
   cout << "************************************************************************************\n";
   cout << softwareVersion << endl;

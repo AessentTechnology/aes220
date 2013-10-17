@@ -8,8 +8,8 @@ USB utilities
 ===============================================================================
 CHANGES
 
-Post V1.4.2: Changed libusb-1.0 to libusbx-1.0 for Windows only.
-             Removed unistd.h
+V1.4.3: Changed libusb-1.0 to libusbx-1.0 for Windows only.
+V1.4.4: Removed unistd.h
 
 ===============================================================================
 NOTES

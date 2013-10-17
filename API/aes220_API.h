@@ -42,10 +42,14 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdlib.h>
 #include <stdint.h>
 
-#ifdef _WIN32
-#define DLLEXPORT extern "C" __declspec(dllexport)
+#ifdef BUILD_LIB
+  #ifdef _WIN32
+    #define DLLEXPORT extern "C" __declspec(dllexport)
+  #else
+    #define DLLEXPORT extern "C"
+  #endif
 #else
-#define DLLEXPORT extern "C"
+  #define DLLEXPORT
 #endif
 
 /* Enumeration: aes220API_errorCode
@@ -87,7 +91,7 @@ typedef struct aes220Dev aes220_handle;
 
    idx: the device identification number (0 if only one such device on bus)
 
-   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
+   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages,
    6 = mundane messages, 9 = everything)
 */
 DLLEXPORT aes220_handle* aes220_Open_Device(int vid, int pid, int idx, int vbs);
@@ -99,7 +103,7 @@ DLLEXPORT aes220_handle* aes220_Open_Device(int vid, int pid, int idx, int vbs);
 
    idx: the device identification number (0 if only one such device on bus)
 
-   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages, 
+   vbs: level of verbosity used to write the log file (0 = none, 3 = error messages,
    6 = mundane messages, 9 = everything)
 */
 DLLEXPORT aes220_handle* aes220_Open(int idx, int vbs);
@@ -113,7 +117,7 @@ DLLEXPORT aes220_handle* aes220_Open(int idx, int vbs);
    aes220_ptr: the handle to the device to be closed
 */
 DLLEXPORT void aes220_Close_Device(aes220_handle *aes220_ptr);
-  
+
 /* Function: void aes220_Close(aes220_handle *aes220_ptr)
    Closes the device pointed by the handle. Necessary before the handle goes out of scope or
    communication with the device will be broken. Same as aes220_Close_Device(...), introduced for name consistancy with aes_Open(...)
@@ -123,9 +127,9 @@ DLLEXPORT void aes220_Close_Device(aes220_handle *aes220_ptr);
    aes220_ptr: the handle to the device to be closed
 */
 DLLEXPORT void aes220_Close(aes220_handle *aes220_ptr);
-  
+
 /* Function: int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddress)
-   Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device 
+   Transmits a buffer of data (bytes) over the USB link from the host (PC) to the device
    (aes220).
 
    Parameters:
@@ -142,7 +146,7 @@ DLLEXPORT void aes220_Close(aes220_handle *aes220_ptr);
 
    Returns 0 on success.
 */
-DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize, 
+DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint32_t bufSize,
 			      uint8_t channelAddress);
 
 
@@ -163,7 +167,7 @@ DLLEXPORT int aes220_Pipe_Out(aes220_handle *aes220_ptr, uint8_t *buf_ptr, uint3
 
    Returns 0 on success.
 */
-DLLEXPORT int aes220_Pipe_In(aes220_handle* aes220_ptr, uint8_t *bts_ptr, uint32_t bufSize, 
+DLLEXPORT int aes220_Pipe_In(aes220_handle* aes220_ptr, uint8_t *bts_ptr, uint32_t bufSize,
 			     uint8_t channelAddress);
 
 
@@ -184,7 +188,7 @@ DLLEXPORT int aes220_Assert_Soft_Reset(aes220_handle* aes220_ptr);
 
 
 /* Function: int aes220_Clear_Soft_Reset(aes220_handle *aes220_ptr)
-   Clears the reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA. 
+   Clears the reset signal to the FPGA. It is not a hard reset so the result depends on the code implememted in the FPGA.
 
    Note: The USB interface provided does take account of the Soft Reset signal.
 
@@ -269,7 +273,7 @@ DLLEXPORT int aes220_WriteI2C(aes220_handle* aes220_ptr, uint8_t deviceAddress, 
 			      uint16_t dataLength);
 
 /* Function: int aes220_CombinedI2C(aes220_handle *aes220_ptr, uint8_t deviceAddress, uint8_t *dataToWrite, uint16_t dataToWriteLength, uint8_t *dataToRead, uint16_t dataToReadLength)
-   Executes a write followed by a read of data to and from an I2C device without inserting a stop bit in between. 
+   Executes a write followed by a read of data to and from an I2C device without inserting a stop bit in between.
 
    Parameters:
 
@@ -318,8 +322,8 @@ DLLEXPORT int aes220_Set_Board_Info(aes220_handle* aes220_ptr, const uint8_t *bo
    aes220_ptr: a handle to the USB device
 
    boardInfo: an array of 8 unsigned char. Bytes: 3.3V ON/OFF(1), a/b, A, 1, SN, dd, mm, yy
- 
-   Note: (1) 0: 3.3V OFF; 1: 3.3V ON 
+
+   Note: (1) 0: 3.3V OFF; 1: 3.3V ON
 
    Returns:
 
@@ -334,7 +338,7 @@ DLLEXPORT int aes220_Get_Board_Info(aes220_handle* aes220_ptr, const uint8_t * b
 
    aes220_ptr: a handle to the USB device
 
-   boardInfo: an array of 3 unsigned char. Bytes: Major, Minor, and revision numbers e.g.: {1.4.0} 
+   boardInfo: an array of 3 unsigned char. Bytes: Major, Minor, and revision numbers e.g.: {1.4.0}
 
    Returns:
 
@@ -349,7 +353,7 @@ DLLEXPORT int aes220_Get_Firmware_Info(aes220_handle* aes220_ptr, uint8_t * firm
 
    aes220_ptr: a handle to the USB device
 
-   file_ptr: pointer to the file to be downloaded in the micro-controller's RAM 
+   file_ptr: pointer to the file to be downloaded in the micro-controller's RAM
 
    Returns:
 
@@ -420,7 +424,7 @@ Development functions. Do not include in release version of library
 *************************************************************************************************/
 
 DLLEXPORT int aes220_Read_MC_Mode(aes220_handle* aes220_ptr, uint8_t *MC_Mode_ptr);
-DLLEXPORT int aes220_Read_MC_EEPROM(aes220_handle* aes220_ptr, uint16_t startAddress, 
+DLLEXPORT int aes220_Read_MC_EEPROM(aes220_handle* aes220_ptr, uint16_t startAddress,
 				    const uint8_t *data, uint16_t length);
 DLLEXPORT int aes220_Send_MC_Cmd(aes220_handle* aes220_ptr, uint8_t cmd);
 DLLEXPORT int aes220_Write_BRAM(aes220_handle* aes220_ptr, unsigned short addr,

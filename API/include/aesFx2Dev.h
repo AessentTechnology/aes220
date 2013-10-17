@@ -12,7 +12,7 @@ CHANGES
 Post release changes:
 
 V1.4.0: First release
-Post V1.4.2: Added stdint.h and removed unistd.h and sys/time.h
+V1.4.3: Added stdint.h and removed unistd.h and sys/time.h
 
 ===============================================================================
 NOTES

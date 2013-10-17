@@ -13,7 +13,7 @@ V1.3.2: Lower the time between retries when opening an USB device in openDev
         from 1s to 0.2s. 
 Post release
 V1.4.0: First release
-Post V1.4.0: Changing log reporting (now using aesLog_V0.0.2)
+V1.4.2: Changing log reporting (now using aesLog_V0.0.2)
 
 ===============================================================================
 NOTES

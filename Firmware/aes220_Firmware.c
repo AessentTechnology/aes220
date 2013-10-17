@@ -12,8 +12,8 @@ CHANGES
 V1.4.0: First release
 V1.4.1: Increased delay in startFpga() (aes220.c) to 200ms or aes220b uC hangs
 V1.4.2: Getting rid of "magic numbers" and using defined bit names (see fx2regs.h) 
-Post V1.4.3: Remove the conditional on startFpga() in progFPGA RESET_F case as the micro-controller
-             would hang after erasing the Flash and resetting the device.
+V1.4.3: Remove the conditional on startFpga() in progFPGA RESET_F case as the micro-controller
+        would hang after erasing the Flash and resetting the device.
 
 ====================================================================================================
 NOTES

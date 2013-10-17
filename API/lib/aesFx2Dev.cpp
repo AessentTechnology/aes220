@@ -16,9 +16,9 @@ Pre release
 
 Post release
 1.4.0: First release
-Post 1.4.0: Change log function, now a separate class
-Post 1.4.2: Changed variable length array unsigned char data[nbytes] to
-            fixed size one unsigned char data[256]
+1.4.2: Change log function, now a separate class
+1.4.3: Changed variable length array unsigned char data[nbytes] to
+       fixed size one unsigned char data[256]
 
 ===============================================================================
 NOTES

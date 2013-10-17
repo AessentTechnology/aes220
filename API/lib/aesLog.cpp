@@ -10,7 +10,7 @@ CHANGES
 
 V0.0.1: Original file
 V0.0.2: Changing name from aes_Log to aesLog and moving to C++
-Post V1.4.2: Now open/create file with append option
+V1.4.3: Now open/create file with append option
 
 ===============================================================================
 NOTES

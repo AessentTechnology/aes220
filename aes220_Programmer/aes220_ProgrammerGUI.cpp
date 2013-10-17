@@ -25,6 +25,7 @@ V1.4.3: Changed browse buttons initial variable to open with the last path brows
         easier.
 V1.4.4: Added the ability to turn the 3.3V rail ON or OFF. This is done via radio buttons which
         update themselves if a different board is subsequently plugged in.
+V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
 
 ====================================================================================================
 NOTES
@@ -63,7 +64,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220_API.h>
 
-#define SOFT_VER "aes220 Programmer Version 1.4.4"
+#define SOFT_VER "aes220 Programmer Version 1.6.0"
 #define VBS_LEVEL 3
 #define RESET_FILE "reset.ihx"
 

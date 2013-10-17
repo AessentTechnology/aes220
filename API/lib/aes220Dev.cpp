@@ -34,12 +34,14 @@ Pre release
 
 Post release
 1.4.0: First release
-Post 1.4.0: Change log function, now a separate class, added automatic recognition
-            of board model (aes220a or b) when selecting SPI programming binary for
-            configuring the FPGA prior to communicating with its flash
-Post 1.4.2: Changed variable length array declaration of 
-            unsigned char dataOut[transferSize]; to
-            unsigned char *dataOut = new unsigned char[transferSize];
+1.4.2: Change log function, now a separate class, added automatic recognition
+       of board model (aes220a or b) when selecting SPI programming binary for
+       configuring the FPGA prior to communicating with its flash
+1.4.3: Changed variable length array declaration of 
+       unsigned char dataOut[transferSize]; to
+       unsigned char *dataOut = new unsigned char[transferSize];
+1.4.4: Modified the turn3v3On/Off functions so they write the status of the 3.3V 
+       rail to the EEPROM on the board.
 
 ===============================================================================
 NOTES

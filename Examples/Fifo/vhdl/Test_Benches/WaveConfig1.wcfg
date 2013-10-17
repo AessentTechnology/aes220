@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="/media/Data/Workspace/vhdl/Fifo/aes220_Fifo_Example_TestBench_ent_isim_beh.wdb" id="1" type="auto">
+         <top_modules>
+            <top_module name="aes220_fifo_example_testbench_ent" />
+            <top_module name="aes220_package_v1_3" />
+            <top_module name="aes220_simulationpackage_v1_3_0" />
+            <top_module name="numeric_std" />
+            <top_module name="std_logic_1164" />
+            <top_module name="textio" />
+            <top_module name="vcomponents" />
+            <top_module name="vital_primitives" />
+            <top_module name="vital_timing" />
+            <top_module name="vpkg" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <WVObjectSize size="20" />
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/ifclk_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">ifclk_s</obj_property>
+      <obj_property name="ObjectShortName">ifclk_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe3vld_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe3vld_s</obj_property>
+      <obj_property name="ObjectShortName">pipe3vld_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe3rdy_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe3rdy_s</obj_property>
+      <obj_property name="ObjectShortName">pipe3rdy_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe3data_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe3data_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pipe3data_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/RamBuffer/addra_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addra_in[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addra_in[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe4rqst_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe4rqst_s</obj_property>
+      <obj_property name="ObjectShortName">pipe4rqst_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe4vld_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe4vld_s</obj_property>
+      <obj_property name="ObjectShortName">pipe4vld_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/pipe4data_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pipe4data_s[7:0]</obj_property>
+      <obj_property name="ObjectShortName">pipe4data_s[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/RamBuffer/enb_in" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">enb_in</obj_property>
+      <obj_property name="ObjectShortName">enb_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/RamBuffer/addrb_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">addrb_in[10:0]</obj_property>
+      <obj_property name="ObjectShortName">addrb_in[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">if_out[7:0]</obj_property>
+      <obj_property name="ObjectShortName">if_out[7:0]</obj_property>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">if_out[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[6]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">if_out[6]</obj_property>
+         <obj_property name="label">fifo_ad1</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[5]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">if_out[5]</obj_property>
+         <obj_property name="label">fifo_ad0</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[4]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">if_out[4]</obj_property>
+         <obj_property name="label">slcs</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[3]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">if_out[3]</obj_property>
+         <obj_property name="label">oe</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[2]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">if_out[2]</obj_property>
+         <obj_property name="label">slrd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">if_out[1]</obj_property>
+         <obj_property name="label">slwr</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/if_out[0]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">if_out[0]</obj_property>
+         <obj_property name="label">pktend</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/fi_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fi_in[2:0]</obj_property>
+      <obj_property name="ObjectShortName">fi_in[2:0]</obj_property>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/fi_in[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">fi_in[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/fi_in[1]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">fi_in[1]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/fi_in[0]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">fi_in[0]</obj_property>
+         <obj_property name="label">data_av</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/fi_io" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">fi_io[7:0]</obj_property>
+      <obj_property name="ObjectShortName">fi_io[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/fx2_Interface/currentstate" type="other" db_ref_id="1">
+      <obj_property name="ElementShortName">currentstate</obj_property>
+      <obj_property name="ObjectShortName">currentstate</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">ip_in[18:0]</obj_property>
+      <obj_property name="ObjectShortName">ip_in[18:0]</obj_property>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[18]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[18]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[18]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[17]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[17]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[17]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[16]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[16]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[16]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[15]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[15]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[15]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[14]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[14]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[14]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[13]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[13]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[13]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[12]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[12]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[12]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[11]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[11]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[11]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[10]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[10]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[10]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[2]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[2]</obj_property>
+         <obj_property name="label">data_av</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[1]</obj_property>
+         <obj_property name="label">data_rq</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/ip_in[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">ip_in[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">pi_out[9:0]</obj_property>
+      <obj_property name="ObjectShortName">pi_out[9:0]</obj_property>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[9]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[9]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[9]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[8]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[8]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[8]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[7]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[7]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[7]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[6]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[6]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[6]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[5]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[5]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[5]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[4]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[4]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[4]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[3]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[3]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[3]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[2]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[2]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[2]</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[1]" type="logic" db_ref_id="1">
+         <obj_property name="DisplayName">label</obj_property>
+         <obj_property name="ElementShortName">[1]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[1]</obj_property>
+         <obj_property name="label">fifo_rd</obj_property>
+      </wvobject>
+      <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Pipe_3_Data/pi_out[0]" type="logic" db_ref_id="1">
+         <obj_property name="ElementShortName">[0]</obj_property>
+         <obj_property name="ObjectShortName">pi_out[0]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/FifoController/wptr_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">wptr_s[10:0]</obj_property>
+      <obj_property name="ObjectShortName">wptr_s[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/FifoController/rptr_s" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">rptr_s[10:0]</obj_property>
+      <obj_property name="ObjectShortName">rptr_s[10:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/FifoController/fifoemptyminus1_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifoemptyminus1_s</obj_property>
+      <obj_property name="ObjectShortName">fifoemptyminus1_s</obj_property>
+   </wvobject>
+   <wvobject fp_name="/aes220_fifo_example_testbench_ent/myApp/Fifo/FifoController/fifoempty_s" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">fifoempty_s</obj_property>
+      <obj_property name="ObjectShortName">fifoempty_s</obj_property>
+   </wvobject>
+</wave_config>
