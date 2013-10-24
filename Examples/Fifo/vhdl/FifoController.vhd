@@ -52,7 +52,7 @@ entity fifo_controller_ent is
   port(
     WCLK_in        : in  std_logic;
     RCLK_in        : in  std_logic;
-    REQUEST_in     : in  std_logic;
+    READY_in     : in  std_logic;
     VALID_in       : in  std_logic;
     READY_out      : out std_logic;
     VALID_out      : out std_logic;
@@ -80,7 +80,7 @@ begin
   read_prc : process (RCLK_in)
   begin
     if rising_edge(RCLK_in) then
-      if (REQUEST_in = '1') and (fifoEmpty_s = not FIFO_EMPTY_c) then
+      if (READY_in = '1') and (fifoEmpty_s = not FIFO_EMPTY_c) then
         if (fifoEmptyMinus1_s = FIFO_EMPTY_c) then
           -- Last byte has been read
           fifoEmptyMinus1_s <= not FIFO_EMPTY_c;

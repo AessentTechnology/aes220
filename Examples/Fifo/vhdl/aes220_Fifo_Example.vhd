@@ -64,7 +64,7 @@ architecture aes220_Fifo_Example_arch of
   signal pipe1Data_s : unsigned(7 downto 0);  -- Data to the app
   -- pipe_2
   signal pi2_s       : unsigned(9 downto 0);
-  signal pipe2Rqst_s  : std_logic;        -- Data required from app
+  signal pipe2Rdy_s  : std_logic;        -- Data required from app
   signal pipe2Vld_s  : std_logic;         -- Valid data from app
   signal pipe2Data_s : unsigned(7 downto 0);  -- Data from the app
 
@@ -84,7 +84,7 @@ begin
   -- pipe_2 is arbitrarily put on address 4
   pipe_2_Data : aes220_PipeOut_ent
     port map (IP_in => ip_s, PI_out => pi2_s, P_ADDR_in => "0000010",  
-              REQUEST_out => pipe2Rqst_s, VALID_in => pipe2Vld_s, DATA_in => pipe2Data_s); 
+              READY_out => pipe2Rdy_s, VALID_in => pipe2Vld_s, DATA_in => pipe2Data_s); 
 
   -- Add (instantiate) more pipes here (remember to chose a unique address)
   -- Pipe_5 : aes220_PipeXxx_VX_X_X_ent
@@ -103,7 +103,7 @@ begin
       RCLK_in    => ifClk_s,
       VALID_in   => pipe1Vld_s,
       READY_out  => pipe1Rdy_s,
-      REQUEST_in => pipe2Rqst_s,
+      READY_in   => pipe2Rdy_s,
       VALID_out  => pipe2Vld_s,
       DATA_in    => pipe1Data_s,
       DATA_out   => pipe2Data_s);

@@ -1,22 +1,8 @@
-################################################################################
-
-# Add inputs and outputs from these tool invocations to the build variables 
-C_SRCS += \
-./aes220_FifoExample.c
-
-OBJS += \
-./aes220_FifoExample.o 
-
-CPP_DEPS += \
-#./aes220_FifoExample.d 
-
-
-# Each subdirectory must supply rules for building sources it contributes
-%.o: ./%.c
-	@echo 'Building file: $<'
-	@echo 'Invoking: GCC C++ Compiler'
-	gcc -Wall -fexceptions -std=gnu99 -I$(SUBDIRS) -g -c -o "$@" "$<"
-	@echo 'Finished building: $<'
-	@echo ' '
-
-
+6L/8AglpCLL4BXu9MRf2nINqjp8qiv1AhlByigBUAx7j1+tOs+VmnLdor
+TyJHll+XBzXMaw0oYrbhZHIyNzbQfxrJbXHPR2PL/ibHc3Pg6+ttLZYNQMDtbyYx+9xxn2z1
+r8z/ABlNrF5pukR65IkusRWpW6aMfKXznIPevRy7WqeJmjtRkcTHGZRh23Oozg9yOlX4JzFd
+IxLBWGBkd+5r6mCvofIVIpLQtMG3F92VXqAP1pvlfaCAX2HPDE1p1Odx5ie0LMjJIMYz8uMc
+CpyFgAkjxu9qcZNBJRitRqsFBdE3heDnuasIzIdwjDLjjb+tbPXUwUtbDxEHdsYWQL97HY9q
+bIpC5DtleoqtGzOU9LLqSeem3cFIZhzViKNWyehPRTRJ32JhCy5mTy5KCMEED9auIscUQAOC
+B2HJ9RS6WBxV3cdDErbSASoOM/3frUm0cq46np2z/hQ3ZWKpwuztPCnw/vPFUEjWUasqOFO4
+/cyO1ej2f7P2uNuR2toQmGQqM8fTNcFfGR

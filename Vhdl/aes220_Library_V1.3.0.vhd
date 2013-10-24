@@ -497,7 +497,7 @@ end aes220_PipeIn_arch;
 --                      |                         |
 --                      |                         |
 --     PIPE_  ADDRESS > | P_ADDR                  |
---                      |             REQUEST_out | > app data required
+--                      |               READY_out | > app data required
 --                      |                         |
 --                      |                         |
 --                      |                VALID_in | < app data valid
@@ -526,7 +526,7 @@ entity aes220_PipeOut_ent is
     PI_out   : out unsigned(9 downto 0);
     -- User application connections
     P_ADDR_in    : in  unsigned(6 downto 0);  -- The pipe address set by user app
-    REQUEST_out    : out std_logic;     -- Data required from user app
+    READY_out    : out std_logic;     -- Data required from user app
     VALID_in     : in  std_logic;     -- Pause data transfer required from user app
     DATA_in      : in  unsigned(7 downto 0)  -- data from user app
     );
@@ -549,11 +549,11 @@ begin
   output_logic : process (IP_in(9 downto 1), ADDR_in, P_ADDR_in, DATA_RQ_in, VALID_in, DATA_in)
   begin 
       if (ADDR_in = P_ADDR_in) then
-        REQUEST_out <= DATA_RQ_in;        
+        READY_out <= DATA_RQ_in;        
         FIFO_WR_out <= VALID_in;
         DATA_out <= DATA_in;    
       else
-        REQUEST_out <= '0';        
+        READY_out <= '0';        
         FIFO_WR_out <= '0';
         DATA_out <= (others => '0');
       end if;

@@ -89,7 +89,7 @@ package aes220_Package_V1_3 is
       PI_out   : out unsigned(9 downto 0);
       -- User application connections
       P_ADDR_in   : in unsigned(6 downto 0);  -- The pipe address
-      REQUEST_out : out std_logic;     -- Data available flag
+      READY_out   : out std_logic;     -- Data available flag
       VALID_in    : in std_logic;
       DATA_in     : in  unsigned(7 downto 0)  -- data to user app
       );

@@ -1,133 +1,59 @@
-/******************************************************************************
-File name: aes220_FifoExample.c
-===============================================================================
-DESCRIPTION
 
-Sends a number of payloads out and reads a number of payloads back in.
-
-===============================================================================
-CHANGES
-
-
-===============================================================================
-NOTES
-
-
-===============================================================================
-
-Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
-
-This library is free software; you can redistribute it and/or
-modify it under the terms of the GNU Lesser General Public
-License as published by the Free Software Foundation; either
-version 2.1 of the License, or (at your option) any later version.
-
-This library is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-Lesser General Public License for more details.
-
-You should have received a copy of the GNU Lesser General Public
-License along with this library; if not, write to the Free Software
-Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
-
-******************************************************************************/
-
-#include <stdio.h>
-#include <aes220_API.h>
-
-#define PAYLOAD_OUT      512
-#define PAYLOAD_IN       512
-#define NB_OF_PLD_OUT    4
-#define NB_OF_PLD_IN     4
-int main() {
-
-  int rv = 99;
-
-  unsigned char inBuf[NB_OF_PLD_IN][PAYLOAD_IN];
-  unsigned char outBuf[NB_OF_PLD_OUT][PAYLOAD_OUT];
-  unsigned char *inBuf_ptr;
-  unsigned char *outBuf_ptr;
-
-  inBuf_ptr = &inBuf[0][0];
-  outBuf_ptr = &outBuf[0][0];
-
-  int idx = 0;      // Module ID 0 if only aes220 module plugged in
-  int vbs = 3;      // Messages verbosity, min = 0, max = 9
-
-  printf("\naes220 C FIFO example\n");
-
-  // Open the device and declare a handle pointing to it
-  aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
-
-  for (int i = 0; i < PAYLOAD_OUT*NB_OF_PLD_OUT; i++) {
-    *outBuf_ptr = i+1;  // Initialise the output buffer with increasing numbers
-    ++outBuf_ptr;
-  }
-
-  for (int i = 0; i < PAYLOAD_IN*NB_OF_PLD_IN; i++) {
-    *inBuf_ptr = 0xF0; // Initialise the input buffer to a constant value
-    ++inBuf_ptr;
-  }
-
-  // Sending x payloads (x being NB_OF_PLD_OUT)
-  for (int payload = 0; payload < NB_OF_PLD_OUT; payload++) {
-    // Send out buffer's contents through pipe 1 with address 1
-    // Address needs to match address in the vhdl file
-    int outPipe1 = 0x01;
-    printf("Sending buffer containing %d bytes via pipe %d.\n ", PAYLOAD_OUT, outPipe1);
-    outBuf_ptr = &outBuf[payload][0];
-    rv = aes220_Pipe_Out(aes220_ptr, outBuf_ptr, PAYLOAD_OUT, outPipe1);
-    if (rv == 0) {
-      printf("Bytes sent OK.\n");
-      // Display the data sent
-      printf("Bytes sent for payload %d : \n%d", payload+1, outBuf[payload][0]);
-      for (int i = 1; i < PAYLOAD_OUT; i++) {
-	printf(", %d", outBuf[payload][i]);
-      }
-      printf("\n");
-
-    }
-    else {
-      printf("Error while sending bytes!\n");
-      return rv;
-    }
-  }
-
-  // Receiving x payloads (x being NB_OF_PLD_in)
-  for (int payload = 0; payload < NB_OF_PLD_IN; payload++) {
-    // Now receive the bytes back via pipe 2 with address 2
-    // Address needs to match address in the vhdl file
-    if (PAYLOAD_IN != 0) {
-      int inPipe2 = 0x02;
-      printf("Receiving buffer containing %d bytes via pipe %d.\n", PAYLOAD_IN, inPipe2);
-      inBuf_ptr = &inBuf[payload][0];
-      rv = aes220_Pipe_In(aes220_ptr, inBuf_ptr, PAYLOAD_IN, inPipe2);
-      if (rv == 0) {
-	printf("Bytes received OK.\n");
-      }
-      else {
-	printf("Error while receiving bytes!\n");
-	return rv;
-      }
-
-      // Display the data received
-      printf("Bytes received for payload %d : \n%d", payload+1, inBuf[payload][0]);
-      for (int i = 1; i < PAYLOAD_IN; i++) {
-	printf(", %d", inBuf[payload][i]);
-      }
-      printf("\n");
-    }
-  }
-
-#ifdef _WIN32
-  printf("Enter a character to finish: ");
-  getchar();
-#endif
-
- // Close the device when no longer required
-  aes220_Close(aes220_ptr);
-
-  return rv;
-}
-
+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

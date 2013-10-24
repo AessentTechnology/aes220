@@ -52,7 +52,7 @@ entity Fifo_ent is
     RCLK_in    : in  std_logic;
     VALID_in   : in  std_logic;
     READY_out  : out std_logic;
-    REQUEST_in : in  std_logic;
+    READY_in : in  std_logic;
     VALID_out  : out std_logic;
     DATA_in    : in  unsigned(WDATA_WIDTH_c - 1 downto 0); 
     DATA_out   : out unsigned(RDATA_WIDTH_c - 1 downto 0));
@@ -110,7 +110,7 @@ begin
     port map (
       WCLK_in        => WCLK_in,
       RCLK_in        => RCLK_in,
-      REQUEST_in     => REQUEST_in,
+      READY_in       => READY_in,
       VALID_in       => VALID_in,
       READY_ouT      => readyOut_s,
       VALID_out      => validOut_s,
@@ -132,8 +132,8 @@ begin
       DOA_out   => open,
       DOB_out   => DATA_out);
 
-  writeA_s <= VALID_in and readyOut_s;
-  enableB_s <= REQUEST_in;
+  writeA_s  <= VALID_in and readyOut_s;
+  enableB_s <= READY_in;
   READY_out <= readyOut_s;
   VALID_out <= validOut_s;
 
