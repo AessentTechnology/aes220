@@ -14,7 +14,6 @@ V1.4.3: Added missing --info implementation
 V1.4.4: Added 3.3V rail ON/OFF switch. Modified for loop so more than one action can be carried out.
 V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
 V1.6.1: Added ability to write board information
-Test 2
 
 ====================================================================================================
 NOTES
