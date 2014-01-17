@@ -2,13 +2,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-./aes220_FifoExample_V1.0.c
+./aes220_Programmer.cpp
 
 OBJS := $(C_SRCS:.c=.o)
 
 C_DEPS := $(C_SRCS:.c=.d)
 #CPP_DEPS += \
-#./aes220_FifoExample.d 
 
 # Libraries required (remove the lib prefix and .so extension)
 LIBS := aes220 usb-1.0
@@ -33,10 +32,10 @@ vpath %.c $(SRC_DIRS)
 
 
 # Each subdirectory must supply rules for building sources it contributes
-%.o: ./%.c
+%.o: ./%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	gcc -Wall -fexceptions -std=gnu99 $(INC_STR) -g -c -o "$@" "$<"
+	g++ -Wall -fexceptions $(INC_STR) -g -c -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

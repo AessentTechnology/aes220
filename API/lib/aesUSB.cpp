@@ -39,7 +39,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 ******************************************************************************/
 
-#include "../include/aesUSB.h"
+#include <aesUSB.h>
 
 usbDev::usbDev():log(AESUSB_LOG, 0), dev_handle(NULL), vid(0), pid(0), idx(0), vbs(0)
 {

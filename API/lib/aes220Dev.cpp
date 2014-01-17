@@ -97,7 +97,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ******************************************************************************/
 
 
-#include "../include/aes220Dev.h"
+#include <aes220Dev.h>
 
 aes220Dev::aes220Dev():aesFx2Dev(AES220_LOG) {}
 

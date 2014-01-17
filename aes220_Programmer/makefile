@@ -36,19 +36,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: aes220_FifoExample
+all: aes220_Programmer
 
 # Tool invocations
-aes220_FifoExample: $(OBJS) $(USER_OBJS)
+aes220_Programmer: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC Linker'
-	gcc $(LIB_DIRS_PATH) -o "aes220_FifoExample" $(OBJS) $(USER_OBJS) $(LIB_STR)
+	g++ $(LIB_DIRS_PATH) -o "aes220_Programmer" $(OBJS) $(USER_OBJS) $(LIB_STR)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS) $(C_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) aes220_FifoExample
+	-$(RM) $(OBJS) $(C_DEPS) $(CPP_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) aes220_Programmer
 	-@echo ' '
 
 .PHONY: all clean dependents

@@ -114,7 +114,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <fstream>
 #include <stdint.h>
 
-#include "aesFx2Dev.h"
+#include <aesFx2Dev.h>
 
 // Vendor commands bytes
 #define VC_UC_MODE    0xC1

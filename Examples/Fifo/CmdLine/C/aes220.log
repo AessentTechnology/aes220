@@ -1,0 +1,2 @@
+t: 10:51:13; c: error ; v: 1; m: Failed to transfer bulk load; r: 99
+t: 10:51:13; c: error ; v: 1; m: pipe out header transfer: bulk transfer failure.  Error: ; r: 99

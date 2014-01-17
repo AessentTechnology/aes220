@@ -1,5 +1,5 @@
 /***************************************************************************************************
-File name: aes220_Programmer.cpp
+File name: aes220_ProgrammerCmdLine.cpp
 ====================================================================================================
 DESCRIPTION
 
@@ -13,8 +13,6 @@ V1.4.2: No change
 V1.4.3: Added missing --info implementation
 V1.4.4: Added 3.3V rail ON/OFF switch. Modified for loop so more than one action can be carried out.
 V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
-V1.6.1: Added ability to write board information
-Test 2
 
 ====================================================================================================
 NOTES
@@ -181,11 +179,11 @@ int main(int argc, char *argv[]) {
 
     case SET_BTYP: {
       // First check type validity
-      if (newBoardInfo[1] != ('a' or 'A' or 'b' or 'B')){
+      if newBoarInfo[1] != ('a' or 'A' or 'b' or 'B'){
 	cout << "Sorry board type not recognised." << endl;
 	cout << "Board type should be 'a' if FPGA device is xc3s200an" << endl;
 	cout << "or 'b' if FPGA device is xc3s400an" << endl;
-	exit (1);
+	exit 1;
       }
       // Fetch the board information
       // Open the device and declare a handle pointing to it
@@ -230,7 +228,6 @@ int main(int argc, char *argv[]) {
       cout << endl;
       break; }
 
-      /*
     case SET_B: {
       // Fetch the board information
       // Open the device and declare a handle pointing to it
@@ -259,7 +256,7 @@ int main(int argc, char *argv[]) {
       else if (boardInfo[0] == P3V3_OFF) {cout << "3.3V rail...................: OFF" << endl;}
       else {cout << "3.3V rail...................: STATUS UNKNOWN!" << endl;}
       break; }
-      */
+
     case TOGGLE_3V3: {
       // Turns the 3.3V power supply ON or OFF. Useful if stacking up boards or if providing an 
       // external 3.3V supply. When stacking up boards only one should provide the 3.3V to the 

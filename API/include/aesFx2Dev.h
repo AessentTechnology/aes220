@@ -51,7 +51,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <assert.h>
 #include <fcntl.h>
 
-#include "aesUSB.h"
+#include <aesUSB.h>
 
 // Vendor commands bytes
 #define VC_EPSTAT  0xB0
