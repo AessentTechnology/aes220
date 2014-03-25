@@ -10,6 +10,7 @@ CHANGES
 
 V1.4.3: Changed libusb-1.0 to libusbx-1.0 for Windows only.
 V1.4.4: Removed unistd.h
+V1.4.5: Re-added unistd.h but for Linux only
 
 ===============================================================================
 NOTES
@@ -51,6 +52,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
  #include <windows.h>
  #define msleep(x) Sleep(x)
 #else
+ #include <unistd.h>
  #include <libusb-1.0/libusb.h>
  #define msleep(x) usleep(x*1000)
 #endif

@@ -1,12 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2013-10-17T11:35:36</DateModified>
+  <DateModified>2014-01-24T15:28:48</DateModified>
   <ModuleName>aes220_Fifo_Example_ent</ModuleName>
   <SummaryTimeStamp>2013-10-17T11:05:06</SummaryTimeStamp>
-  <SavedFilePath>/media/ssaury1/BUF/Work/Aessent/Modules/aes220/Progs/Experimental/Sources/Examples/Fifo/vhdl/ISE/iseconfig/aes220_Fifo_Example_ent.xreport</SavedFilePath>
+  <SavedFilePath>/media/ssaury1/BUF/Work/Aessent/Modules/aes220/Progs/Release/Sources/Examples/Fifo/vhdl/ISE/iseconfig/aes220_Fifo_Example_ent.xreport</SavedFilePath>
   <ImplementationReportsDirectory>/media/Data/Workspace/vhdl/Fifo/</ImplementationReportsDirectory>
-  <DateInitialized>2013-07-04T18:58:11</DateInitialized>
+  <DateInitialized>2014-01-24T13:30:22</DateInitialized>
   <EnableMessageFiltering>false</EnableMessageFiltering>
  </header>
  <body>

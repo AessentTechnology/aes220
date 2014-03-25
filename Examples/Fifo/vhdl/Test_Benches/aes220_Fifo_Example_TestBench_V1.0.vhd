@@ -43,7 +43,7 @@ use ieee.numeric_std.all;
 entity aes220_Fifo_Example_TestBench_ent is
 	generic(
 		RESET_ACTIVE_LEVEL_c : std_logic := '1';
-    NUMBER_OF_CYCLES_c   : integer := 20
+                NUMBER_OF_CYCLES_c   : integer := 20
     );
 end aes220_Fifo_Example_TestBench_ent;
 

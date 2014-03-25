@@ -42,7 +42,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdlib.h>
 #include <stdint.h>
 
-#ifdef BUILD_LIB
+#ifdef __cplusplus
   #ifdef _WIN32
     #define DLLEXPORT extern "C" __declspec(dllexport)
   #else
