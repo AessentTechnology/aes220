@@ -42,6 +42,10 @@ Post release
        unsigned char *dataOut = new unsigned char[transferSize];
 1.4.4: Modified the turn3v3On/Off functions so they write the status of the 3.3V 
        rail to the EEPROM on the board.
+1.4.5: Modified the aes220Dev destructor to check if the device is opened before
+       closing it. Otherwise if the device is closed within the user software
+       an error message is generated when the destructor is called and tries to
+       close an already closed device.
 
 ===============================================================================
 NOTES
@@ -109,7 +113,7 @@ aes220Dev::aes220Dev(int init_vid, int init_pid, int init_idx):
 aes220Dev::aes220Dev(int init_vid, int init_pid, int init_idx, int init_vbs):
   aesFx2Dev(init_vid, init_pid, init_idx, init_vbs, AES220_LOG) {}
 
-aes220Dev::~aes220Dev() {closeDev();}
+aes220Dev::~aes220Dev() {if (is_open()) {closeDev();}}
 
 // set_Device_USB_Parameters
 /*****************************************************************************/

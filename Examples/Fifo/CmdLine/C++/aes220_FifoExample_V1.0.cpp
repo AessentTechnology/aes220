@@ -47,10 +47,10 @@ int main() {
 
   int rv = 99;
 
-  unsigned char inBuf[NB_OF_PLD_IN][PAYLOAD_IN];
-  unsigned char outBuf[NB_OF_PLD_OUT][PAYLOAD_OUT];
-  unsigned char *inBuf_ptr;
-  unsigned char *outBuf_ptr;
+  uint8_t inBuf[NB_OF_PLD_IN][PAYLOAD_IN];
+  uint8_t outBuf[NB_OF_PLD_OUT][PAYLOAD_OUT];
+  uint8_t *inBuf_ptr;
+  uint8_t *outBuf_ptr;
 
   inBuf_ptr = &inBuf[0][0];
   outBuf_ptr = &outBuf[0][0];
