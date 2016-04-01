@@ -8,6 +8,7 @@ Sends a number of payloads out and reads a number of payloads back in.
 ===============================================================================
 CHANGES
 
+V1.1: Changed inPipe4 to inPipe2 to match C example
 
 ===============================================================================
 NOTES
@@ -15,7 +16,7 @@ NOTES
 
 ===============================================================================
 
-Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
+Copyright (C) 2012-2014 Sebastien Saury, Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public

@@ -64,8 +64,8 @@ begin
     else
       if rising_edge(CLK_in) then
         count_v := count_v + 1;
-        if count_v = 2 then             -- use this value for simulation
-        --if count_v = 16777215 then      -- use this value for implementation
+        --if count_v = 2 then             -- use this value for simulation
+        if count_v = 16777215 then      -- use this value for implementation
           if direction_flag_v = '0' then
             -- counter clock wise LED pattern
             LED_s(1) <= LED_s(3);

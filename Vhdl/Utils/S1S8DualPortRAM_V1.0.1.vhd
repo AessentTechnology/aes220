@@ -1,27 +1,27 @@
 ----------------------------------------------------------------------------------------------------
--- File name: AsymmetricS16S8DualPortRAM_V1.0.1.vhd
+-- File name: AsymmetricS1S8DualPortRAM_V1.0.1.vhd
 ----------------------------------------------------------------------------------------------------
 -- Author: Sebastien Saury, Aessent Technology Ltd
 ----------------------------------------------------------------------------------------------------
 -- DESCRIPTION
 --
--- Instantiates a BRAM with a 8 bit port on one side and 16 bit port on the other
+-- Instantiates a BRAM with a 1 bit port on one side and 8 bit port on the other
 -- No parity signal used. 
 --
 ----------------------------------------------------------------------------------------------------
 --CHANGES
 --
 -- V1.0.0: original version
--- V1.0.1: renamed entity from asymmetric_S16S8... to S8S16...
+-- V1.0.1: renamed entity from asymmetric_S1S8... to S1S8...
 -- 
 ----------------------------------------------------------------------------------------------------
 --NOTES
 --
--- Original template comes from Xilinx own documentation
+-- Template for RAMB16_S1_S9 comes from Xilinx own documentation
 --
 ----------------------------------------------------------------------------------------------------
 --
--- Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
+-- Copyright (C) 2012-2015 Sebastien Saury, Aessent Technology Ltd
 --
 -- This program is free software: you can redistribute it and/or modify
 -- it under the terms of the Lesser GNU General Public License as published by
@@ -45,46 +45,46 @@ use ieee.numeric_std.all;
 library unisim;
 use unisim.vcomponents.all;             -- Required for BRAM instantiation
 
-entity S8S16_dual_port_RAM_ent is
+entity S1S8_dual_port_RAM_ent is
 
   port (
-    CLKS16_in  : in  std_logic;
+    CLKS1_in   : in  std_logic;
     CLKS8_in   : in  std_logic;
-    ENS16_in   : in  std_logic;
+    ENS1_in    : in  std_logic;
     ENS8_in    : in  std_logic;
-    WES16_in   : in  unsigned(1 downto 0);
+    WES1_in    : in  std_logic;
     WES8_in    : in  std_logic;
-    ADDRS16_in : in  unsigned(9 downto 0);
+    ADDRS1_in  : in  unsigned(13 downto 0);
     ADDRS8_in  : in  unsigned(10 downto 0);
-    DIS16_in   : in  unsigned(15 downto 0);
+    DIS1_in    : in  unsigned(0 downto 0);
     DIS8_in    : in  unsigned(7 downto 0);
-    DOS16_out  : out unsigned(15 downto 0);
+    DOS1_out   : out unsigned(0 downto 0);
     DOS8_out   : out unsigned(7 downto 0));
 
-end S8S16_dual_port_RAM_ent;
+end S1S8_dual_port_RAM_ent;
 
-architecture instantiation_arch of S8S16_dual_port_RAM_ent is
+architecture instantiation_arch of S1S8_dual_port_RAM_ent is
 
-  signal doS16_s : std_logic_vector(15 downto 0);
-  signal doS8_s  : std_logic_vector(7 downto 0);
+  signal doS1_s : std_logic_vector(0 downto 0);
+  signal doS8_s : std_logic_vector(7 downto 0);
 
 begin
 
-   -- RAMB16_S18_S9: 1k/2k x 16/8 + 2/1 Parity bit Dual-Port RAM
+   -- RAMB16_S1_S9: 16k/2k x 1/8 + 0/1 Parity bit Dual-Port RAM
    --               Spartan-3A
    -- Xilinx HDL Language Template, version 14.2
 
-   RAMB16_S16S8_inst : RAMB16BWE_S18_S9
+   RAMB16_S1_S9_inst : RAMB16_S1_S9
    generic map (
-      INIT_A => x"00000", --  Value of output RAM registers on Port A at startup
-      INIT_B => x"000", --  Value of output RAM registers on Port B at startup
-      SRVAL_A => x"00000", --  Port A output value upon SSR assertion
-      SRVAL_B => x"000", --  Port B output value upon SSR assertion
+      INIT_A => "0", --  Value of output RAM registers on Port A at startup
+      INIT_B => X"000", --  Value of output RAM registers on Port B at startup
+      SRVAL_A => "0", --  Port A output value upon SSR assertion
+      SRVAL_B => X"000", --  Port B output value upon SSR assertion
       WRITE_MODE_A => "READ_FIRST", --  WRITE_FIRST, READ_FIRST or NO_CHANGE
       WRITE_MODE_B => "READ_FIRST", --  WRITE_FIRST, READ_FIRST or NO_CHANGE
       SIM_COLLISION_CHECK => "ALL", -- "NONE", "WARNING", "GENERATE_X_ONLY", "ALL"
       -- The following INIT_xx declarations specify the initial contents of the RAM
-      -- Port A Address 0 to 255, Port B Address 0 to 511
+      -- Port A Address 0 to 4095, Port B Address 0 to 511
       INIT_00 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_01 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_02 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -101,7 +101,7 @@ begin
       INIT_0D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_0E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_0F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      -- Port A Address 256 to 511, Port B Address 512 to 1023
+      -- Port A Address 4096 to 8191, Port B Address 512 to 1023
       INIT_10 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_11 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_12 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -118,7 +118,7 @@ begin
       INIT_1D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_1E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_1F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      -- Port A Address 512 to 767, Port B Address 1024 to 1535
+      -- Port A Address 8192 to 12287, Port B Address 1024 to 1535
       INIT_20 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_21 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_22 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -135,7 +135,7 @@ begin
       INIT_2D => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_2E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_2F => X"0000000000000000000000000000000000000000000000000000000000000000",
-      -- Port A Address 768 to 1023, Port B Address 1535 to 2047
+      -- Port A Address 12288 to 16383, Port B Address 1535 to 2047
       INIT_30 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_31 => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_32 => X"0000000000000000000000000000000000000000000000000000000000000000",
@@ -153,24 +153,23 @@ begin
       INIT_3E => X"0000000000000000000000000000000000000000000000000000000000000000",
       INIT_3F => X"0000000000000000000000000000000000000000000000000000000000000000")
    port map (
-      CLKA => CLKS16_in,    -- Port A Clock
+      CLKA => CLKS1_in,    -- Port A Clock
       CLKB => CLKS8_in,    -- Port B Clock
-      ENA => ENS16_in,      -- Port A RAM Enable Input
+      ENA => ENS1_in,      -- Port A RAM Enable Input
       ENB => ENS8_in,      -- PortB RAM Enable Input
       SSRA => '0',        -- Port A Synchronous Set/Reset Input
       SSRB => '0',        -- Port B Synchronous Set/Reset Input
-      WEA => std_logic_vector(WES16_in),      -- Port A 2-bit Write Enable Input
+      WEA => WES1_in,      -- Port A Write Enable Input
       WEB => WES8_in,       -- Port B Write Enable Input
-      ADDRA => std_logic_vector(ADDRS16_in),  -- Port A 14-bit Address Input
-      ADDRB => std_logic_vector(ADDRS8_in),   -- Port B 11-bit Address Input
-      DIA => std_logic_vector(DIS16_in),      -- Port A 1-bit Data Input
-      DIB => std_logic_vector(DIS8_in),       -- Port B 8-bit Data Input
-      DIPA => "00",        -- Port A 2-bit parity
+      ADDRA => std_logic_vector(ADDRS1_in),  -- Port A 14-bit Address Input
+      ADDRB => std_logic_vector(ADDRS8_in),  -- Port B 11-bit Address Input
+      DIA => std_logic_vector(DIS1_in),      -- Port A 1-bit Data Input
+      DIB => std_logic_vector(DIS8_in),      -- Port B 8-bit Data Input
       DIPB => "0",        -- Port B 1-bit parity
-      DOA => doS16_s,     -- Port A 16-bit Data Output
-      DOB => doS8_s);    -- Port B 8-bit Data Output
+      DOA => dos1_s,     -- Port A 1-bit Data Output
+      DOB => dos8_s);    -- Port B 8-bit Data Output
 
-   DOS16_out <= unsigned(doS16_s);
-   DOS8_out <= unsigned(doS8_s);
+   DOS1_out <= unsigned(dos1_s);
+   DOS8_out <= unsigned(dos8_s);
   
 end instantiation_arch;

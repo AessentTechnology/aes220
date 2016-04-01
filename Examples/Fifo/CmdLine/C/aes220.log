@@ -1,2 +1,53 @@
 t: 10:51:13; c: error ; v: 1; m: Failed to transfer bulk load; r: 99
 t: 10:51:13; c: error ; v: 1; m: pipe out header transfer: bulk transfer failure.  Error: ; r: 99
+t: 21:45:46; c: error ; v: 1; m: Transfer Timeout. Bytes transferred ->; r: 0
+t: 21:45:46; c: error ; v: 1; m: Failed to transfer bulk load; r: 3
+t: 21:45:46; c: error ; v: 1; m: pipe out header transfer: bulk transfer failure.  Error: ; r: 3
+t: 21:47:38; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:38; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:38; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:38; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:38; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:39; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:39; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 21:47:39; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 21:47:39; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 21:47:39; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 21:47:39; c: error ; v: 1; m: Error while closing device; r: 1
+t: 21:47:40; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:40; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:40; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:40; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:40; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:41; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:41; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 21:47:41; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 21:47:41; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 21:47:41; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 21:47:41; c: error ; v: 1; m: Error while closing device; r: 1
+t: 21:47:42; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:42; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:42; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:42; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:42; c: error ; v: 1; m: Returned value from libusb_claim_interface ; r: -6
+t: 21:47:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:43; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 21:47:48; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:48; c: error ; v: 1; m: Device not opened; r: 0
+t: 21:47:48; c: error ; v: 1; m: Device not opened; r: 0

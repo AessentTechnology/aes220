@@ -81,7 +81,7 @@ begin
     port map (IP_in => ip_s, PI_out => pi1_s, P_ADDR_in => "0000001",  
               VALID_out => pipe1Vld_s, READY_in => pipe1Rdy_s, DATA_out => pipe1Data_s); 
 
-  -- pipe_2 is arbitrarily put on address 4
+  -- pipe_2 is arbitrarily put on address 2
   pipe_2_Data : aes220_PipeOut_ent
     port map (IP_in => ip_s, PI_out => pi2_s, P_ADDR_in => "0000010",  
               READY_out => pipe2Rdy_s, VALID_in => pipe2Vld_s, DATA_in => pipe2Data_s); 
