@@ -103,6 +103,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220Dev.h>
 
+
 aes220Dev::aes220Dev():aesFx2Dev(AES220_LOG) {}
 
 aes220Dev::aes220Dev(int init_vid, int init_pid):aesFx2Dev(init_vid, init_pid, AES220_LOG) {}
@@ -114,6 +115,7 @@ aes220Dev::aes220Dev(int init_vid, int init_pid, int init_idx, int init_vbs):
   aesFx2Dev(init_vid, init_pid, init_idx, init_vbs, AES220_LOG) {}
 
 aes220Dev::~aes220Dev() {if (is_open()) {closeDev();}}
+
 
 // set_Device_USB_Parameters
 /*****************************************************************************/
@@ -142,9 +144,9 @@ void aes220Dev::get_Device_USB_Parameters(int values[4])
 // Opens the device with vid, pid, idx and vbs parameters
 int aes220Dev::open_Device(int vid, int pid, int idx)
 {
-	int rv = 99;
-	rv = openDev(vid, pid, idx);
-	return rv;
+  int rv = 99;
+  rv = openDev(vid, pid, idx);
+  return rv;
 }
 
 // close_Device
@@ -152,9 +154,13 @@ int aes220Dev::open_Device(int vid, int pid, int idx)
 // Closes the device currently open
 int aes220Dev::close_Device()
 {
-	int rv = 99;
-	rv = closeDev();
-	return rv;
+  int rv = 99;
+
+    uint8_t MC_Mode = PORT_MODE;
+    rv = set_MC_Mode(&MC_Mode);
+
+  rv = closeDev();
+  return rv;
 }
 
 // programMC_RAM
@@ -339,6 +345,7 @@ DONE  PD1:__________________________________/
 int aes220Dev::configure_FPGA(const string fFile) {
 
   int rv = 99;
+  uint8_t fpga_status;
 
   log.add("Starting FPGA configuration process with file: ", fFile, NOTE_VBS);
 
@@ -369,31 +376,30 @@ int aes220Dev::configure_FPGA(const string fFile) {
   uint8_t startConfigByte = CONF_F_MODE;
   uint8_t allZeroBufSize = 64;
   uint32_t transferSize = fileSize + allZeroBufSize;
+  uint32_t toBeTransferred, framePayloadSize;
   uint16_t index = (uint16_t)transferSize;
   uint16_t value = (uint16_t)(transferSize >> 16);
   uint16_t bs = 1;
 
   log.add("Sending start byte...", NOTE_VBS);
+
+
   rv = do_usb_command(EP0_WRITE, VC_UC_MODE, value, index, &startConfigByte, bs, TIME_OUT);
   if (rv != bs) {
     log.add("Vendor command failure at start config. Error: ", rv, ERROR_VBS);
     return VND_COMM_ERROR;
   }
   else {log.add("...sent", NOTE_VBS);}
-
-
   // Start sending the configuration file through the USB interface
   unsigned char *dataOut = new unsigned char[transferSize];
-
-  log.add("Sending configuration file to FPGA... ", NOTE_VBS);
-
-  // Read data from the binary file taking into account the lenght of the
-  // file
+  unsigned char *data_ptr = dataOut;
+  log.add("Reading configuration file FPGA... ", NOTE_VBS);
+  // Read data from the binary file taking into account the lenght of the file
   binFile.read(reinterpret_cast<char*>(dataOut), fileSize);
   if (!binFile.good()) {
     log.add("File reading problem before end of file reached.", ERROR_VBS);
   }
-
+  else log.add("... done. ", NOTE_VBS);
   // add zeros to the end of the file to help the FPGA start
   for (int i = 0; i < allZeroBufSize; i++) {
     dataOut[fileSize + i] = 0x00;
@@ -401,21 +407,42 @@ int aes220Dev::configure_FPGA(const string fFile) {
 
 
   // send the whole thing out via the USB interface
-  log.add("Sending data out...", NOISE_VBS);
-  rv = bulkTransfer(dataOut, transferSize, EP2, TIME_OUT);
-  if (rv) {
-    log.add("Bulk transfer error when sending data out: ", rv, ERROR_VBS);
-    return BULK_TX_ERROR;
+  log.add("Sending configuration file to FPGA... ", NOTE_VBS);
+  toBeTransferred = transferSize;
+  int packetNb = 0;
+
+  while (toBeTransferred > 0) {
+    packetNb++;
+    // Break up the size of data to be transferred if required
+    if (toBeTransferred > MAX_PORT_MODE_PAYLOAD) {
+      framePayloadSize = MAX_PORT_MODE_PAYLOAD;
+    }
+    else framePayloadSize = toBeTransferred;
+    log.add("Sending out packet:", packetNb, NOISE_VBS);
+    rv = bulkTransfer(data_ptr, framePayloadSize, EP2, TIME_OUT);
+    if (rv) {
+      log.add("Bulk transfer error when sending data out: ", rv, ERROR_VBS);
+      return BULK_TX_ERROR;
+    }
+    // Decrement the amount of data still to be transferred
+    // and move the pointer along
+    toBeTransferred -= framePayloadSize;
+    data_ptr += framePayloadSize;
+    log.add("...sent", NOISE_VBS);
   }
-  log.add("...sent", NOISE_VBS);
   log.add("Data transfer done.", NOTE_VBS);
 
-  rv = check_FPGA_Status();
-  if (rv == 0) {
+  do {
+    fpga_status = check_FPGA_Status();
+  } while (fpga_status == F_BUSY);
+
+  if (fpga_status == PROG_DONE) {
     log.add("FPGA status OK, setting micro-controller to port mode", NOTE_VBS);
     uint8_t MC_Mode = PORT_MODE;
     set_MC_Mode(&MC_Mode);
+    rv = 0;
   }
+  else {rv = FPGA_CONF_ERROR;}
 
   // Close the various files
   binFile.close();
@@ -1058,7 +1085,7 @@ int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddre
   uint8_t header[headerSize];
   uint8_t *data_ptr;
 
-  // Make sure the uC is in Slave FIFO mode
+    // Make sure the uC is in Slave FIFO mode
   log.add("Pipe out: ensuring micro-controller is in Slave FIFO mode", NOISE_VBS);
   uint8_t orgMC_Mode;
   uint8_t *orgMC_Mode_ptr = &orgMC_Mode;
@@ -1075,7 +1102,7 @@ int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddre
   else {
     log.add("Pipe out: micro-controller in Slave_FIFO mode", NOISE_VBS);
   }
-	
+  
   while (toBeTransferred > 0) {
     // Break up the size of data to be transferred if required
     if (toBeTransferred > MAX_FRAME_PAYLOAD) {
@@ -1387,61 +1414,52 @@ int aes220Dev::turn3p3vOff()
 
 // check_FPGA_status
 /*****************************************************************************/
-// Checks the fpga configuration status
- int aes220Dev::check_FPGA_Status() 
+// Checks the fpga configuration status and returns it
+ uint8_t aes220Dev::check_FPGA_Status() 
  {
    const uint8_t bs = 3;
    uint8_t inByte[bs] = {99, 99, 99};
-   uint8_t *inBytePtr = inByte;
    int rv = 99;
 
-   log.add("Waiting for FPGA status", NOTE_VBS);
-   while (inByte[0] != PROG_DONE) {
-     rv = do_usb_command(EP0_READ, VC_UC_MODE, 0, 0, inBytePtr, bs, TIME_OUT);
-     log.add("USB vendor command reply received.", NOISE_VBS);
-     if (rv != bs) {
-       log.add("Vendor command failure at FPGA status. Error: ", rv, ERROR_VBS);
-       return VND_COMM_ERROR;
-     }
-     else {
-       log.add("Received status byte.", NOTE_VBS);
-     }
-     // Status byte received, now interpret it
-     switch (inByte[0]) { 
-     case PROG_DONE:
-       log.add("FPGA configured!", NOTE_VBS);
-       rv = 0;
-       break;
-     case F_BUSY: 
-       log.add("FPGA busy", NOTE_VBS);
-       break;
-     case INIT_B_LOW: 
-       log.add("FPGA configuration failed, INIT_B unexpectedly low.", ERROR_VBS);
-       return FPGA_PROG_ERROR;
-       break;
-     case INIT_B_HIGH:
-       log.add("FPGA configuration failed, despite INIT_B high", ERROR_VBS);
-       return FPGA_PROG_ERROR;
-       break;
-     case DONE_LOW:
-       log.add("FPGA configuration failed, DONE pin stayed low.", ERROR_VBS);
-       return FPGA_PROG_ERROR;
-       break;
-     case PROG_ERROR: 
-       log.add("FPGA configuration failed, unknown error.", ERROR_VBS);
-       return FPGA_PROG_ERROR;
-       break;
-     case F_NOT_READY: 
-       log.add("FPGA configuration failed, FPGA not ready for configuration.", ERROR_VBS);
-       return FPGA_PROG_ERROR;
-       break;
-     default: 
-       log.add("FPGA status uncomfirmed!", (int)inByte[0], ERROR_VBS);
-       return FPGA_UNKNOWN_STATE;
-       break;
-     }
+   log.add("Querying FPGA status", NOTE_VBS);
+   rv = do_usb_command(EP0_READ, VC_UC_MODE, 0, 0, inByte, bs, TIME_OUT);
+   log.add("USB vendor command reply received.", NOISE_VBS);
+   if (rv != bs) {
+     log.add("Vendor command failure at FPGA status. Error: ", rv, ERROR_VBS);
+     return VND_COMM_ERROR;
    }
-   return rv;
+   else {
+     log.add("Received status byte.", NOTE_VBS);
+   }
+   // Status byte received, now interpret it
+   switch (inByte[0]) { 
+   case F_BUSY: 
+     log.add("FPGA busy", NOTE_VBS);
+     break;
+   case PROG_DONE:
+     log.add("FPGA configured!", NOTE_VBS);
+     break;
+   case INIT_B_LOW: 
+     log.add("FPGA configuration failed, INIT_B unexpectedly low.", ERROR_VBS);
+     break;
+   case INIT_B_HIGH:
+     log.add("FPGA configuration failed, despite INIT_B high", ERROR_VBS);
+     break;
+   case DONE_LOW:
+     log.add("FPGA configuration failed, DONE pin stayed low.", ERROR_VBS);
+     break;
+   case PROG_ERROR: 
+     log.add("FPGA configuration failed, unknown error.", ERROR_VBS);
+     break;
+   case F_NOT_READY: 
+     log.add("FPGA configuration failed, FPGA not ready for configuration.", ERROR_VBS);
+     break;
+   default: 
+     log.add("FPGA status uncomfirmed!", (int)inByte[0], ERROR_VBS);
+     break;
+   }
+
+   return inByte[0];
  }
 
 // set_FPGA_Flash_Programming_Mode

@@ -1,0 +1,9 @@
+t: 16:15:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:54; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:54; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:54; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:54; c: error ; v: 1; m: Device not opened; r: 0
+t: 16:15:54; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 16:15:54; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 16:15:54; c: error ; v: 1; m: Failed to get board info rv = ; r: 1

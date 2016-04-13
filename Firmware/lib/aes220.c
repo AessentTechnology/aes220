@@ -95,7 +95,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <serial.h>
 #include <delay.h>
 #include <autovector.h>
-#include <lights.h>
+//#include <lights.h>
 #include <setupdat.h>
 #include <eputils.h>
 #include <i2c.h>
@@ -194,36 +194,34 @@ BYTE setupFpgaConf()
 BYTE configureFpga(DWORD dataLen)
 {
   BYTE fpgaStatus = PROG_ERROR;
-  volatile WORD bytes;
-
+  
   fpgaStatus = setupFpgaConf();
-
+  
   if (fpgaStatus == F_READY) {
+    fpgaStatus = F_BUSY;
     while(dataLen > 0) { 
       if ( !(EP2468STAT & bmEP2EMPTY) ) { // EP2 received data
-
+	volatile WORD bytes;
 	WORD i;
-
 	bytes = MAKEWORD(EP2BCH,EP2BCL);
-
 	for (i=0;i<bytes;++i) {
 	  IOA = EP2FIFOBUF[i]; // output the byte on port A
-	  CCLK = 0;     // tick the clock (low)
-	  LED6 = 1;     // flash the LED, why not?
-	  CCLK = 1;     // tick the clock (high)
-	  LED6 = 0;     // keep flashing this LED
+	  CCLK = 0;       // tick the clock (low)
+	  LED6 = LED_OFF; // flash the LED, why not?
+	  CCLK = 1;       // tick the clock (high)
+	  LED6 = LED_ON;  // keep flashing this LED
 	}
 	dataLen -= bytes;
 	if ( (INIT_B == 0) & (DONE == 0) ) {
 	  fpgaStatus = INIT_B_LOW; // Init_B unexpectedly low
-	  LED6 = 1; // turn LED off
+	  LED6 = LED_OFF;
 	  return fpgaStatus;
 	}
 	//Re-arm ep2
-	REARM();
+	SYNCDELAY; REARM();
       }
     }
-    //    }
+
     if (DONE == 1) {
       // Keep the SOFT_RESET active for the time being
       OEA = 0x00; // Port A as input
@@ -239,12 +237,13 @@ BYTE configureFpga(DWORD dataLen)
     }
     else fpgaStatus = DONE_LOW;
   }
+  
   return fpgaStatus;
 }
 
 void setupFpgaProg() 
 {
-  extern BYTE xdata fpgaStatus;
+  extern BYTE __xdata fpgaStatus;
   // Configure ports
   // Ports ands signals initialisation:
   OEA = 0x00; // set port A as inputs
@@ -260,7 +259,7 @@ void setupFpgaProg()
 
 BYTE progFpga()
 {
-  extern BYTE xdata fpgaStatus;
+  extern BYTE __xdata fpgaStatus;
   volatile WORD bytes;
   setupFpgaProg();
   if (fpgaStatus != PROG_F_MODE) return 1;
@@ -285,7 +284,7 @@ BYTE progFpga()
 	CS_B = 1;
 	// ARM ep6 out
 	EP6BCH=0;
-	SYNCDELAY();
+	SYNCDELAY;
 	EP6BCL=1;
 	break; // end of case STATUS_CHECK
       case WRITE_CMD:
@@ -313,7 +312,7 @@ BYTE progFpga()
 	CS_B = 1;
 	// ARM ep6 out
 	EP6BCH=MSB(PAGE_SIZE);
-	SYNCDELAY();
+	SYNCDELAY;
 	EP6BCL=LSB(PAGE_SIZE);
 	break; // end of case READ_CMD
       case RESET_F:
@@ -330,7 +329,7 @@ BYTE progFpga()
   return 0;
 }
 
-
+/*
 void setUserPinsDir(BYTE uppLDirByte, BYTE uppHDirByte) 
 {
   const BYTE bmOED = 0b10010011;
@@ -355,29 +354,47 @@ void setUserPins(BYTE userPinsByte)
   UPP5 = bmBIT5 & userPinsByte;
 
 }
-
+*/
 void setMode(BYTE uCMode)
 {
   switch (uCMode) {
 
   case PORT_MODE:
+    
+    REVCTL=0x00; // not using advanced endpoint controls
+   
+    SYNCDELAY; PORTACFG = 0x00; // otherwise PA7 = SLCS -> is maintained at '1' by the FPGA
 
-    PORTACFG = 0x00; // otherwise PA7 = SLCS -> is maintained at '1' by the
-    SYNCDELAY();     // FPGA 
+    // Set ports in port mode otherwise they will remain in slave FIFO 
+    // mode after a CPU reset (like after downloading the program into
+    // RAM if previously in slave FIFO mode).
+    SYNCDELAY; IFCONFIG = (bmIFCLKSRC | bm3048MHZ); // intern. clk, 48MHz, not provided to FPGA, not
+                                                    // inverted, port mode
 
-    //IFCONFIG = 0b11100000; // intern. clk, 48MHz, provided to FPGA, not
-    IFCONFIG = 0b11000000; // intern. clk, 48MHz, not provided to FPGA, not
-    SYNCDELAY();           // inverted, port mode
+    // Configuring USB domain side of FIFO
+    // Note: the following endpoints configurations need to match what is set
+    // in dscr.a51 file
+    SYNCDELAY; EP2CFG = (bmVALID | bmTYPE1); // valid, OUT, bulk, 512 bytes, quad buffered
+    SYNCDELAY; EP6CFG = (bmVALID | bmTYPE1 | bmDIR); // valid, IN, bulk, 512 bytes, quad buffered
+
+    // Disable unused endpoints
+    SYNCDELAY; EP1INCFG &= ~bmVALID;
+    SYNCDELAY; EP1OUTCFG &= ~bmVALID;
+    SYNCDELAY; EP4CFG &= ~bmVALID;
+    SYNCDELAY; EP8CFG &= ~bmVALID;
+
+    SYNCDELAY; EP2FIFOCFG = 0x00;
+    SYNCDELAY; EP6FIFOCFG = 0x00;
 
     // arm ep2
-    EP2BCL = 0x80; // write once
-    SYNCDELAY();
-    EP2BCL = 0x80; // do it again
+    SYNCDELAY; REARM(); // Rearm 4 times for the four buffers
+    SYNCDELAY; REARM(); 
+    SYNCDELAY; REARM(); 
+    SYNCDELAY; REARM(); 
 
     // arm ep6
-    EP6BCL = 0x00; // write once
-    SYNCDELAY();
-    EP6BCL = 0x00; // do it again
+    SYNCDELAY; EP6BCL = 0x00; // write once
+    SYNCDELAY; EP6BCL = 0x00; // do it again
 
     // Set ports as input to avoid conflicts
     OEA = 0x00; // Port A as input
@@ -394,62 +411,65 @@ void setMode(BYTE uCMode)
     SUSPEND_F = 0;
 
     PORTACFG = 0x40; // PA7 = SLCS -> needs to be maintained at '1' by the
-    SYNCDELAY();     // FPGA otherwise port D outputs set to '0' resetting
+    SYNCDELAY;       // FPGA otherwise port D outputs set to '0' resetting
     // the FPGA when setting IFCONFIG below. Is set to '0'
     // by the FPGA once out of idle state.
 
-    //IFCONFIG = 0b11100011; // extern. clk, 48MHz, provided to FPGA, 
-    IFCONFIG = 0b01000011; // extern. clk, 48MHz, provided by FPGA, 
-    SYNCDELAY();           // not inverted clock, slave FIFO mode
+    // Setting the flags polarity and pin allocation
+    // PKTEND, SLRD, SLWR, SLOE AND FIFO FULL active high
+    FIFOPINPOLAR = (bmBIT5 | bmBIT4 | bmBIT3 | bmBIT2 | bmBIT0); 
+    PINFLAGSAB = (bmBIT7 | bmBIT6 | bmBIT5); // Flag B is EP6 FIFO full flag
+    SYNCDELAY;
+    PINFLAGSCD = bmBIT4; // Flag C is EP2 FIFO empty flag
+    SYNCDELAY;
 
-    OED = 0x81;
-    SUSPEND_F = 0;
+
+    //IFCONFIG = (bmIFCLKSRC | bm3048MHZ | bmIFCLKOE | bmIFCFGMASK); // extern. clk, 48MHz, provided to FPGA, 
+    SYNCDELAY; IFCONFIG = (bm3048MHZ | bmIFCFGMASK); // extern. clk, 48MHz, provided by FPGA, 
+                                                     // not inverted clock, slave FIFO mode
+
+    // All the FIFO have to be set as 8 bit wide bus otherwise PortD is not available
+    SYNCDELAY; EP4FIFOCFG = 0x00; // 8 bit wide bus (Port B) 
+    SYNCDELAY; EP8FIFOCFG = 0x00; // 8 bit wide bus (Port B) 
+
+    SYNCDELAY; REVCTL = (bmBIT1 | bmBIT0); 
+    
+    // Configuring USB domain side of FIFO
+    // Note: the following endpoints configurations need to match what is set
+    // in dscr.a51 file
+    SYNCDELAY; EP2CFG = (bmVALID | bmTYPE1); // valid, OUT, bulk, 512 bytes, quad buffered
+    SYNCDELAY;EP6CFG = (bmVALID | bmTYPE1 | bmDIR ); // valid, IN, bulk, 512 bytes, quad buffered
 
     // Resetting the FIFO
-    FIFORESET = bmNAKALL; SYNCDELAY();
-    FIFORESET = bmNAKALL | 2; SYNCDELAY();
-    FIFORESET = bmNAKALL | 6; SYNCDELAY();
-    FIFORESET = 0x00; SYNCDELAY();
+    SYNCDELAY; FIFORESET = bmNAKALL; 
+    SYNCDELAY; FIFORESET = bmNAKALL | 2; // reset EP2OUT
+    SYNCDELAY; FIFORESET = bmNAKALL | 6; // reset EP6IN
+    SYNCDELAY; FIFORESET = 0x00; 
+
+    // Arm the EP2OUT buffers. Done four times because it's quad-buffered
+    SYNCDELAY; OUTPKTEND = bmBIT7 | 2;  // EP2OUT
+    SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
+    SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
+    SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
 
     // Configuring peripheral domain side of FIFO
-    EP2FIFOCFG = 0x00; SYNCDELAY(); // autoout=0, 8 bits wide bus (Port B)
-                                    // Note: do not use Empty Plus One option as no data available
-                                    // signal is generated when transmitting a single byte.
-    EP6FIFOCFG = 0x48; SYNCDELAY(); // Full minus one, autoIN=1, 8 bits wide bus (Port B)  
-                                    // Note: do not allow zero length packets
+    SYNCDELAY; EP2FIFOCFG = bmAUTOOUT; // autoout=1, 8 bits wide bus (Port B)
+                                       // Note: do not use Empty Plus One option as no data available
+                                       // signal is generated when transmitting a single byte.
+    SYNCDELAY; EP6FIFOCFG = (bmINFM | bmAUTOIN); // Full minus one, autoIN=1, 8 bits wide bus (Port B)  
+    // Note: do not allow zero length packets
     // as this create a problem when transferring 513 bytes
     // (buffer size + 1). The PKTEND signal also needs to be 
     // delayed by one clock period (signal from FPGA)
     // otherwise again sending 513 bytes fails.
+ 
+    SYNCDELAY; EP6AUTOINLENH = 0x02; // Send data in 512 byte chunks
+    SYNCDELAY; EP6AUTOINLENL = 0x00;
 
-    EP6AUTOINLENH = 0x02; // Send data in 512 byte chunks
-    SYNCDELAY();
-    EP6AUTOINLENL = 0x00;
-    SYNCDELAY();
-
-    RESETFIFO(0x06);
-    SYNCDELAY();
-
-    // All the FIFO have to be set as 8 bit wide bus otherwise PortD is not available
-    EP4FIFOCFG &= ~0b00000001; // 8 bit wide bus (Port B) 
-    SYNCDELAY(); 
-    EP8FIFOCFG &= ~0b00000001; // 8 bit wide bus (Port B) 
-    SYNCDELAY(); 
-
-    // Setting the flags polarity and pin allocation
-    FIFOPINPOLAR = 0x3D; // PKTEND, SLRD, SLWR, SLOE AND FIFO FULL active high
-    PINFLAGSAB = 0xE0; // Flag B is EP6 FIFO full flag
-    SYNCDELAY();
-    PINFLAGSCD = 0x08; // Flag C is EP2 FIFO empty flag
-    SYNCDELAY();
+    SYNCDELAY; RESETFIFO(0x06);
 
     OED = 0x81;
     SUSPEND_F = 0;
-
-
-    // Trigger 0 to 1 transition on autoout to arm the buffers
-    /*   EP2FIFOCFG &= bmAUTOOUT; // autoout=1, 8 bits wide bus (Port B) */
-    /*   SYNCDELAY(); */
 
     break; // end of case SLAVE_FIFO_MODE
   } // end of uCMode switch

@@ -413,7 +413,6 @@ int main(int argc, char *argv[]) {
     case CONF_FPGA: {
       // launch FPGA configuration
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
-      // aes220_handle *aes220_ptr = aes220_Open(idx, vbs);
       cout << "Configuring the FPGA with: " << fileName << endl;
       rv = aes220_Configure_FPGA(aes220_ptr, fileName.c_str());
       if (rv) {

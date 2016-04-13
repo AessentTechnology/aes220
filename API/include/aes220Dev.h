@@ -128,10 +128,11 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define VC_TST_SDRAM  0xD2
 
 // USB transfer constants
-#define PAGE_SIZE          264
-#define TIME_OUT           5000
-#define TIME_OUT_RETRY     5
-#define MAX_FRAME_PAYLOAD  65535
+#define PAGE_SIZE               264
+#define TIME_OUT               5000
+#define TIME_OUT_RETRY            5
+#define MAX_FRAME_PAYLOAD     65535
+#define MAX_PORT_MODE_PAYLOAD   512
 
 // Micro-controller mode (aes220 specific)
 // Configuration/Programming commands
@@ -223,26 +224,25 @@ class aes220Dev: private aesFx2Dev
 
   Enumerator:
 
-  FILE_NOT_FOUND = 1 - File could not be found
-  FILE_NOT_CREATED - File could not be opened
-  DEVICE_NOT_OPENED - Cannot open device
-  BULK_TX_ERROR - Bulk transfer transmit error
-  BULK_RX_ERROR - Bulk transfer receive error
-  UC_PROG_ERROR - Error while programming the micro-controller
-  FPGA_CONF_ERROR - Error while configuring the FPGA
-  FPGA_PROG_ERROR - Error while programming the FPGA Flash memory
-  FPGA_UNKNOWN_STATE - FPGA is in an unknown state
-  FLASH_ERROR - Error while writing or reading to the FPGA Flash memory
-  FLASH_READY - FPGA Flash memory ready
-  FLASH_NOT_READY - FPGA Flash memory busy
-  EEPROM_ERROR - Error while communicating with the micro-controller EEPROM
-
+  FILE_NOT_FOUND     =  1 - File could not be found
+  FILE_NOT_CREATED   =  2 - File could not be opened
+  DEVICE_NOT_OPENED  =  3 - Cannot open device
+  BULK_TX_ERROR      =  4 - Bulk transfer transmit error	
+  BULK_RX_ERROR      =  5 - Bulk transfer receive error				      
+  UC_PROG_ERROR      =  6 - Error while programming the micro-controller	      
+  FPGA_CONF_ERROR    =  7 - Error while configuring the FPGA			      
+  FPGA_PROG_ERROR    =  8 - Error while programming the FPGA Flash memory	      
+  FPGA_UNKNOWN_STATE =  9 - FPGA is in an unknown state				      
+  FLASH_ERROR        = 10 - Error while writing or reading to the FPGA Flash memory   
+  FLASH_READY        = 11 - FPGA Flash memory ready				      
+  FLASH_NOT_READY    = 12 - FPGA Flash memory busy				      
+  EEPROM_ERROR       = 13 - Error while communicating with the micro-controller EEPROM
+  	                    
   */
   enum aes220Dev_errorCode {
     FILE_NOT_FOUND = 1,
     FILE_NOT_CREATED,
     DEVICE_NOT_OPENED,
-    USB_ERROR,
     BULK_TX_ERROR,
     BULK_RX_ERROR,
     UC_PROG_ERROR,
@@ -256,6 +256,7 @@ class aes220Dev: private aesFx2Dev
     RUN_ERROR,
     VND_COMM_ERROR,
   };
+
   void set_Device_USB_Parameters(int vid, int pid, int idx, int vbs);
   void get_Device_USB_Parameters(int values[4]);
   int open_Device(int vid, int pid, int idx);
@@ -428,7 +429,7 @@ class aes220Dev: private aesFx2Dev
   int force_Read_FIFO();
   int set_MC_Mode(uint8_t *uCMode);
   int read_MC_Mode(uint8_t *uCMode);
-  int read_FIFO_Regs(unsigned char *regs_ptr);
+  int read_FIFO_Regs(uint8_t *regs_ptr);
   int send_FPGA_Flash_Command(uint8_t cmdByte, uint8_t byte2, uint8_t byte3, 
 			      uint8_t byte4, uint8_t * data, uint16_t dataSize);
 
@@ -449,7 +450,7 @@ class aes220Dev: private aesFx2Dev
   int wait_For_Flash();
   int flash_Ready();
   int read_FPGA_Flash_Status(unsigned char *flashStatus);
-  int check_FPGA_Status();
+  uint8_t check_FPGA_Status();
 
 };
 #endif

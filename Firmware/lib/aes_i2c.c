@@ -45,7 +45,7 @@ Aessent Technology Ltd
 #endif
 
 
-volatile xdata BOOL cancel_i2c_trans;
+//volatile __xdata BOOL cancel_i2c_trans; // Already defined in fx2lib i2c.c
 #define CHECK_I2C_CANCEL() if (cancel_i2c_trans) return FALSE
 
 

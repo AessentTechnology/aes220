@@ -423,6 +423,7 @@ DLLEXPORT int aes220_Erase_FPGA(aes220_handle* aes220_ptr);
 Development functions. Do not include in release version of library
 *************************************************************************************************/
 
+DLLEXPORT int aes220_Read_FIFO_Regs(aes220_handle* aes220_ptr, uint8_t *MC_Regs_ptr);
 DLLEXPORT int aes220_Read_MC_Mode(aes220_handle* aes220_ptr, uint8_t *MC_Mode_ptr);
 DLLEXPORT int aes220_Read_MC_EEPROM(aes220_handle* aes220_ptr, uint16_t startAddress,
 				    const uint8_t *data, uint16_t length);

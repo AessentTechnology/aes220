@@ -14,6 +14,8 @@ V1.4.1: Increased delay in startFpga() (aes220.c) to 200ms or aes220b uC hangs
 V1.4.2: Getting rid of "magic numbers" and using defined bit names (see fx2regs.h) 
 V1.4.3: Remove the conditional on startFpga() in progFPGA RESET_F case as the micro-controller
         would hang after erasing the Flash and resetting the device.
+V1.4.4: No change but now compiled with SDCC version >3.2
+v1.4.5: Now quad buffer and using REVCTL=0x03 (advanced endpoints control) allowing faster transfer
 
 ====================================================================================================
 NOTES
@@ -113,7 +115,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220.h>
 
-#define SYNCDELAY() SYNCDELAY4
 #define REARMVAL 0x80
 #define REARM() EP2BCL=REARMVAL
 
@@ -129,28 +130,29 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define LAST_I2C_TRF  3
 
 volatile WORD bytes;
-volatile bit gotbuf;
+volatile __bit gotbuf;
 volatile BYTE icount;
-volatile bit got_sud;
+volatile __bit got_sud;
 
-DWORD xdata lcount;
-DWORD xdata fpgaFileLen;
-bit on;
-BOOL xdata programFpga = FALSE;
-BOOL xdata fpgaProgrammed = FALSE;
-BYTE xdata fpgaStatus = WAIT_MODE;
-BYTE xdata uCMode = WAIT_MODE;
-BYTE xdata prevMode = WAIT_MODE;
+DWORD __xdata lcount;
+DWORD __xdata fpgaFileLen;
+__bit on;
+
+//BOOL __xdata programFpga = FALSE;
+//BOOL __xdata fpgaProgrammed = FALSE;
+BYTE __xdata fpgaStatus = WAIT_MODE;
+BYTE __xdata uCMode = WAIT_MODE;
+BYTE __xdata prevMode = WAIT_MODE;
+
 
 //BYTE rcvdCmd = 0;
 
-BYTE code codeVersion[3] = {1, 4, 3}; // Software version 1.4.x
+BYTE __code codeVersion[3] = {1, 4, 5}; // Software version 1.4.x
 
-BYTE xdata TURN3V3OFF[] = {0x10, 0x71};
+BYTE __xdata TURN3V3OFF[] = {0x10, 0x71};
 
 void main() 
 {
-  REVCTL=0x00; // not using advanced endpoint controls
 
   on=0; 
   lcount=0;
@@ -159,15 +161,14 @@ void main()
   gotbuf=FALSE;
   bytes=0;
 
+  // Setting up interrupts 
+  USE_USB_INTS();
+  ENABLE_SUDAV();
+  ENABLE_SOF();
+  ENABLE_HISPEED();
+  ENABLE_USBRESET();
+  
   SETCPUFREQ(CLK_48M);
-  SETIF48MHZ();
-
-  // Set ports in port mode otherwise they will remain in slave FIFO 
-  // mode after a CPU reset (like after downloading the program into
-  // RAM if previously in slave FIFO mode).
-  //IFCONFIG = (bmIFCLKSRC | bm3048MHZ | bmIFCLKOE); // intern. clk, 48MHz, provided to FPGA, not
-  IFCONFIG = (bmIFCLKSRC | bm3048MHZ); // intern. clk, 48MHz, not provided to FPGA, not
-  SYNCDELAY();                         // inverted, port mode
 
   // Initialise the ports directions
   OEA = 0x00;
@@ -180,14 +181,14 @@ void main()
 
   // Start the FPGA by resetting it and wait for it to finish its 
   // configuration process.
-  fpgaProgrammed = startFpga(); 
+  //fpgaProgrammed = startFpga(); 
+  startFpga(); 
 
   // Check for the presence of an external 3.3V 
   // By default the device will leave the 3.3V ON unless it is told by the FPGA to turn it OFF
   // via the CHK3V3 signal (FPGA setting it to 1).
   OEB |= bmBIT0;
   OEA = bmBIT0;
-
   if (readBoardStatusRegister() == 0x00) { 
     LED6 = LED_OFF;   // Blue LED OFF
     // Turn 3.3V off
@@ -195,39 +196,13 @@ void main()
     stopWriteI2C();
   }
 
-  assertSoftReset(); // Maintain the FPGA in soft reset so FPGA state machine is not enabled
-
-  // Configuring USB domain side of FIFO
-  // Note: the following endpoints configurations need to match what is set
-  // in dscr.a51 file
-  EP2CFG = (bmVALID | bmTYPE1 | bmBUF1); // valid, OUT, bulk, 512 bytes, double buffered
-  SYNCDELAY();
-  EP6CFG = (bmVALID | bmDIR | bmTYPE1); // valid, IN, bulk, 512 bytes, quad buffered
-  SYNCDELAY();
-
-  EP1INCFG &= ~bmVALID;
-  SYNCDELAY();
-  EP1OUTCFG &= ~bmVALID;
-  SYNCDELAY();
-  EP4CFG &= ~bmVALID;
-  SYNCDELAY();
-  EP8CFG &= ~bmVALID;
-  SYNCDELAY();
-
-  // Setting up interrupts 
-  USE_USB_INTS();
-  ENABLE_SUDAV();
-  ENABLE_SOF();
-  ENABLE_HISPEED();
-  ENABLE_USBRESET();
+  // Maintain the FPGA in soft reset so FPGA state machine is not enabled
+  assertSoftReset(); 
 
   // Enable suspend mode (micro-controller)
   SUSPEND = 10; 
 
   EA=1; // global interrupt enable
-
-  // renumerate
-  RENUMERATE();
 
   // Set Port Mode as default (prevMode = Wait Mode)
   uCMode = PORT_MODE;
@@ -246,19 +221,23 @@ void main()
 	setMode(uCMode);
 	clearSoftReset();
       }
+      /* This can be used with bmAUTOOUT=0 but transfer rate drops to 4MB/s
       if ( !(EP2FIFOFLGS & bmEP2EMPTY) ) {
-	EP2BCH = EP2FIFOBCH; SYNCDELAY();
-	EP2BCL = EP2FIFOBCL; SYNCDELAY();
-      }
+	EP2BCH = EP2FIFOBCH; SYNCDELAY;
+	EP2BCL = EP2FIFOBCL; SYNCDELAY;
+	}*/
+
       break; // end of case SLAVE_FIFO_MODE
 
     case PORT_MODE:
+      
       if (uCMode != prevMode) { // Newly entering the mode
 	prevMode = uCMode;
 	assertSoftReset();
 	setMode(uCMode);
 	clearSoftReset();
       }
+      
       break; // end of case PORT_MODE
 
     case WAIT_MODE:
@@ -275,25 +254,30 @@ void main()
 	setMode(PORT_MODE);
       }
       fpgaStatus = configureFpga(fpgaFileLen);
+      /*
       if (fpgaStatus == PROG_DONE) {
 	fpgaProgrammed = TRUE;
       }
       else {
 	fpgaProgrammed = FALSE;
       }
+      */
       uCMode = WAIT_MODE; // Exit the configuration mode and wait for a new one
       prevMode = CONF_F_MODE; // Reset previous mode
       break; // end of case CONF_F_MODE
 
     case PROG_F_MODE: 
-      //if (prevMode != PORT_MODE) {
+      if (prevMode != PORT_MODE) {
       setMode(PORT_MODE);
-      //}
+      setMode(PORT_MODE);
+      }
       progFpga();
+      /*
       if (fpgaStatus == PROG_DONE) {
 	fpgaProgrammed = TRUE;
       }
       else fpgaProgrammed = FALSE;
+      */
       uCMode = WAIT_MODE; // Exit the program mode and wait for a new one
       prevMode = PROG_F_MODE; // Reset previous mode
       break; // end of case PROG_F_MODE
@@ -312,7 +296,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 
     case VC_EPSTAT:
       {
-	xdata BYTE* pep= ep_addr(SETUPDAT[2]);
+	__xdata BYTE* pep= ep_addr(SETUPDAT[2]);
 	if (pep) {
 	  EP0BUF[0] = *pep;
 	  EP0BCH=0;
@@ -335,7 +319,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 	      eeprom_read(EEP_ADDR, addr, cur_read, EP0BUF);
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=cur_read;
 	      len -= cur_read;
 	      addr += cur_read;
@@ -380,7 +364,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      startReadI2C((BYTE)addr, len, EP0BUF);
 	      stopReadI2C(len, EP0BUF);
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=len;
 	    }
 	    else { // Longer I2C transfer (up to 2^16 in total (64kB))
@@ -397,7 +381,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 		  readI2C(curRead, EP0BUF);
 		}
 		EP0BCH=0;
-		SYNCDELAY();
+		SYNCDELAY;
 		EP0BCL=curRead;
 		len -= curRead;
 	      }
@@ -451,7 +435,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      EP0BUF[1] = uCMode;
 	      EP0BUF[2] = prevMode;
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=3;
 	      return TRUE; 
 	    }
@@ -492,7 +476,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 	      EP0BUF[0] = (0x00 | (PD6 << 3) |(PD5 << 2) |(PD3 << 1) | PD2) ;
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=1;
 	      return TRUE; 
 	    }
@@ -505,10 +489,12 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      switch (EP0BUF[0])
 		{
 		case UPP_PIN_DIR:
-		  setUserPinsDir(EP0BUF[1], EP0BUF[2]);
+		  NOP;
+		  //setUserPinsDir(EP0BUF[1], EP0BUF[2]);
 		  break;
 		case UPP_PIN_VAL:
-		  setUserPins(EP0BUF[1]);
+		  NOP;
+		  //setUserPins(EP0BUF[1]);
 		  break;
 		default:
 		  break;
@@ -611,7 +597,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      EP0BUF[14] = EP6BCH;
 	      EP0BUF[15] = EP6BCL;
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=16;
 	      return TRUE; 
 	    }
@@ -643,7 +629,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 	      //execFlashCmd(addr, len);
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=len;
 	      return TRUE; 
 	    }
@@ -674,7 +660,7 @@ BOOL handle_vendorcommand(BYTE cmd)
 	      while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready
 	      memcpy(EP0BUF, codeVersion, sizeof(codeVersion));
 	      EP0BCH=0;
-	      SYNCDELAY();
+	      SYNCDELAY;
 	      EP0BCL=len;
 	      return TRUE; 
 	    }
@@ -704,7 +690,7 @@ BOOL handle_vendorcommand(BYTE cmd)
       /* 					while (EP0CS&bmEPBUSY); // can't do this until EP0 is ready */
       /* 					eeprom_read(0x51, BOARD_INFO_ADDR, BOARD_INFO_LEN, EP0BUF); */
       /* 					EP0BCH=0; */
-      /* 					SYNCDELAY(); */
+      /* 					SYNCDELAY; */
       /* 					EP0BCL=B0ARD_INFO_LEN; */
       /* 					return TRUE;  */
       /* 				} */
@@ -745,16 +731,33 @@ BOOL handle_set_interface(BYTE ifc, BYTE alt_ifc) {
     // reset toggles
     RESETTOGGLE(0x02);
     RESETTOGGLE(0x86);
-    // restore endpoints to default condition
-    RESETFIFO(0x02);
-    EP2BCL=0x80;
-    SYNCDELAY();
-    EP2BCL=0X80;
-    SYNCDELAY();
-    RESETFIFO(0x86);
+    if (uCMode == SLAVE_FIFO_MODE) {
+      // Arm the EP2OUT buffers. Done four times because it's quad-buffered
+      SYNCDELAY; OUTPKTEND = bmBIT7 | 2;  // EP2OUT
+      SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
+      SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
+      SYNCDELAY; OUTPKTEND = bmBIT7 | 2;
+
+      // Trigger 0 to 1 transition on autoout to arm the buffers
+      SYNCDELAY; EP2FIFOCFG |= bmAUTOOUT;
+    } 
+    else {
+      // restore endpoints to default condition
+      SYNCDELAY; RESETFIFO(0x02);
+      SYNCDELAY; REARM(); // Rearm 4 times for the four buffers
+      SYNCDELAY; REARM();
+      SYNCDELAY; REARM();
+      SYNCDELAY; REARM();
+      SYNCDELAY; RESETFIFO(0x86);
+    }
     return TRUE;
   } else
     return FALSE;
+}
+
+// copied routines from setupdat.h
+BOOL handle_get_descriptor() {
+  return FALSE;
 }
 
 // get/set configuration
@@ -767,14 +770,14 @@ BOOL handle_set_configuration(BYTE cfg) {
 
 
 // copied usb jt routines from usbjt.h
-void sudav_isr() interrupt SUDAV_ISR {
+void sudav_isr() __interrupt SUDAV_ISR {
   got_sud=TRUE;
   CLEAR_SUDAV();
 }
 
-bit on5;
-xdata WORD sofct=0;
-void sof_isr () interrupt SOF_ISR using 1 {
+__bit on5;
+__xdata WORD sofct=0;
+void sof_isr () __interrupt SOF_ISR __using 1 {
   ++sofct;
   if(sofct==8000) { // about 8000 sof interrupts per second at high speed
     on5=!on5;
@@ -783,16 +786,16 @@ void sof_isr () interrupt SOF_ISR using 1 {
   CLEAR_SOF();
 }
 
-void usbreset_isr() interrupt USBRESET_ISR {
+void usbreset_isr() __interrupt USBRESET_ISR {
   handle_hispeed(FALSE);
   CLEAR_USBRESET();
 }
-void hispeed_isr() interrupt HISPEED_ISR {
+void hispeed_isr() __interrupt HISPEED_ISR {
   handle_hispeed(TRUE);
   CLEAR_HISPEED();
 }
 
-void timer0_isr() interrupt TF0_ISR {
+void timer0_isr() __interrupt TF0_ISR {
   //d2 = !d2;
   if (LED6) { LED6 = 0;} else {LED6 = 1;}
 }

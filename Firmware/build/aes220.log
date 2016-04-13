@@ -1,0 +1,19 @@
+t: 14:26:38; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:26:38; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:26:38; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:26:38; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:26:38; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:26:38; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 14:26:38; c: error ; v: 1; m: Failed to open file.; r: 2
+t: 14:26:38; c: error ; v: 1; m: configureFX2, cannot configure device; r: 2
+t: 14:26:38; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:26:38; c: noise ; v: 9; m: Device not opened (no handle).; r: 0

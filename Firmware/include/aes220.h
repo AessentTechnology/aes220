@@ -1,5 +1,5 @@
 /******************************************************************************
-File name: aes220.c
+File name: aes220.h
 ===============================================================================
 DESCRIPTION
 
@@ -97,7 +97,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <setupdat.h>
 #include <eputils.h>
 
-#define SYNCDELAY() SYNCDELAY4
+#define SYNCDELAY SYNCDELAY4
 #define REARMVAL 0x80
 #define REARM() EP2BCL=REARMVAL
 
@@ -155,6 +155,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define PROG_F_MODE     0xA8
 #define READ_FIFO       0xA9
 
+
 // Micro-controller commands
 // FPGA configuration
 #define START_CONFIG 0xAA
@@ -210,8 +211,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define LED_ON        0
 #define LED_OFF       1
 
-BOOL START_CONFIG_PROC = TRUE;
-BOOL CONFIGURE_FPGA = FALSE;
 
 /* Function: assertSoftReset
 Sends a reset signal to the FPGA application, does not actually reset the FPGA itself.
@@ -242,8 +241,8 @@ BYTE setupFpgaConf();
 BYTE configureFpga(DWORD dataLen);
 void setupFpgaProg();
 BYTE progFpga();
-void setUserPinsDir(BYTE uppLDirByte, BYTE uppHDirByte);
-void setUserPins(BYTE userPinsByte);
+//void setUserPinsDir(BYTE uppLDirByte, BYTE uppHDirByte);
+//void setUserPins(BYTE userPinsByte);
 void setMode(BYTE uCMode);
 BOOL writeEeprom(BYTE prom_addr, WORD addr, WORD length, BYTE* buf);
 BYTE readBoardStatusRegister();
@@ -274,6 +273,6 @@ micro-controller. The byte is then loaded toggling LOAD_B input from 0 to 1.
 
 Parameter: the byte data to be transferred 
 */
-BYTE transferSpiByte(BYTE data);
+BYTE transferSpiByte(BYTE spiByte);
 
 #endif

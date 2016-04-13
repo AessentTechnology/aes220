@@ -1,0 +1,2169 @@
+t: 18:48:55; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:48:55; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:48:55; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:48:55; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:48:55; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:48:55; c: note  ; v: 5; m: Kernel driver active, detaching it: ; r: 1
+t: 18:48:55; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:48:55; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 18:48:55; c: error ; v: 1; m: Failed to open file.; r: 2
+t: 18:48:55; c: error ; v: 1; m: configureFX2, cannot configure device; r: 2
+t: 18:48:55; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:48:55; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:49:12; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:49:12; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:49:12; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:49:12; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:49:12; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 18:49:12; c: error ; v: 1; m: Failed to open file.; r: 2
+t: 18:49:12; c: error ; v: 1; m: configureFX2, cannot configure device; r: 2
+t: 18:49:12; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:49:12; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:49:29; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:49:29; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:49:29; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:49:29; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:49:29; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:49:29; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:49:29; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:49:29; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:49:29; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:49:29; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:49:29; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:50:30; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:50:30; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:50:30; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:50:30; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:50:30; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 18:50:30; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 18:50:31; c: error ; v: 1; m: Error when writing to EEPROM: ; r: -7
+t: 18:50:32; c: error ; v: 1; m: Error when reading from EEPROM: ; r: -7
+t: 18:50:32; c: error ; v: 1; m: Failed to program micro-controller EEPROM, returned value = ; r: -7
+t: 18:50:32; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:50:32; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:50:32; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:51:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:51:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:51:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:00; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:00; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:00; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:00; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:00; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:00; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:00; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:00; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:02; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:02; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:02; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:02; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:02; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:02; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:02; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:02; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:04; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:04; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:04; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:04; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:04; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:04; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:04; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:04; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:06; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:06; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:06; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:06; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:06; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:06; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:06; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:06; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:08; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:08; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:08; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:08; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:08; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:08; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:08; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:08; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:10; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:10; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:10; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:10; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:10; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:10; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:10; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:10; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:11; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:11; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:11; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:12; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:12; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:12; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:12; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:12; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:12; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:12; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:12; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:14; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:15; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:15; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:15; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:15; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:15; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:16; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:17; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:17; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:17; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:17; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:17; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:18; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:19; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:19; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:19; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:19; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:19; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:21; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:21; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:21; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:21; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:21; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:22; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:23; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:23; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:23; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:23; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:23; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:24; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:25; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:25; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:25; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:25; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:25; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:26; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:27; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:27; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:27; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:27; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:27; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:28; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:29; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:29; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:29; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:29; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:29; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:30; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:31; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:31; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:31; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:31; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:31; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:32; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:33; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:33; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:33; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:33; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:33; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:34; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:35; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:35; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:35; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:35; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:35; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:36; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:36; c: error ; v: 1; m: configureFX2: device not opened; r: 1
+t: 18:52:36; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:36; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:37; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:37; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:37; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:37; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:37; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:38; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:39; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:39; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:39; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:39; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:39; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:41; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:41; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:41; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:41; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:41; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:43; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:43; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:43; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:43; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:43; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:44; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:45; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:45; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:45; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:45; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:45; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:46; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:47; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:47; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:47; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:47; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:47; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:48; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:49; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:49; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:49; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:49; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:49; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:50; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:51; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:51; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:51; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:51; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:51; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:52; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:53; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:53; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:53; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:53; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:53; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:54; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:55; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:55; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:55; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:55; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:55; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:56; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:57; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:57; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:57; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:57; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:57; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:52:58; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:52:59; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:52:59; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:52:59; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:52:59; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:52:59; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:00; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:01; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:01; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:01; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:01; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:01; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:02; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:03; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:03; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:03; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:03; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:03; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:04; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:05; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:05; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:05; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:05; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:05; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:06; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:07; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:07; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:07; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:07; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:07; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:08; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:09; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:09; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:09; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:09; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:09; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:21; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:21; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:21; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:21; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:21; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:53:43; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:53:43; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:53:43; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:53:43; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:53:43; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:53:43; c: note  ; v: 5; m: Kernel driver active, detaching it: ; r: 1
+t: 18:53:43; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:53:43; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:53:43; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:53:43; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:53:43; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:53:43; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:53:43; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:53:43; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:53:48; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:53:49; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:53:49; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:53:49; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:53:49; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:53:49; c: error ; v: 1; m: Error while closing device; r: 1
+t: 18:57:19; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:57:19; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:57:19; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:57:19; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:57:19; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:57:19; c: note  ; v: 5; m: Kernel driver active, detaching it: ; r: 1
+t: 18:57:19; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:57:19; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 18:57:19; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 18:57:19; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 18:57:19; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 18:57:19; c: noise ; v: 9; m: Device identified.; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Matching idx; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 18:57:19; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Device closed; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Destructor called; r: 0
+t: 18:57:19; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 18:57:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:29; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:30; c: error ; v: 1; m: Device not opened; r: 0
+t: 18:57:30; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 18:57:30; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 18:57:30; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 18:57:30; c: error ; v: 1; m: Device not opened when trying to close device; r: 1
+t: 18:57:30; c: error ; v: 1; m: Error while closing device; r: 1
+t: 20:52:15; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 20:52:15; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 20:52:15; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 20:52:15; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 20:52:15; c: noise ; v: 9; m: Device identified.; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Matching idx; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 20:52:15; c: note  ; v: 5; m: Kernel driver active, detaching it: ; r: 1
+t: 20:52:15; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 20:52:15; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Device closed; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 20:52:15; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 20:52:15; c: noise ; v: 9; m: Opening device with vid: ; r: 1204
+t: 20:52:15; c: noise ; v: 9; m: Opening device with pid: ; r: 34323
+t: 20:52:15; c: noise ; v: 9; m: Device identified.; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Matching idx; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 20:52:15; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Device closed; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Destructor called; r: 0
+t: 20:52:15; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 12:42:22; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:36; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:37; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:42:37; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 12:42:37; c: error ; v: 1; m: configureFX2: device not opened; r: 1
+t: 12:13:41; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:13:41; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:13:47; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:13:47; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:13:52; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:13:52; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:13:57; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:13:57; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:14:02; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:14:02; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:14:07; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 12:14:07; c: error ; v: 1; m: Device not opened; r: 0
+t: 12:14:07; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 12:14:07; c: error ; v: 1; m: programBinFile: device not opened; r: 1
+t: 12:14:07; c: error ; v: 1; m: Failed to program micro-controller EEPROM, returned value = ; r: 1
+t: 09:46:24; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 09:46:24; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:25; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 09:46:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:26; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:26; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:26; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:46:26; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 09:46:26; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 09:46:26; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 09:48:24; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:24; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:24; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:25; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:48:25; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 09:48:25; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 09:48:25; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 09:50:16; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 09:50:16; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:20; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 09:50:20; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:21; c: error ; v: 1; m: Device not opened; r: 0
+t: 09:50:21; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 09:50:21; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 09:50:21; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 10:51:42; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 10:51:42; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:44; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 10:51:44; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:44; c: error ; v: 1; m: Unable to open device idx: ; r: 0
+t: 10:51:44; c: error ; v: 1; m: Error returned from libusb_open: ; r: -4
+t: 10:51:44; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:44; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:45; c: error ; v: 1; m: Device not opened; r: 0
+t: 10:51:45; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 10:51:45; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 10:51:45; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 11:06:14; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 11:06:14; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:16; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 11:06:16; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:16; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:17; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:06:17; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 11:06:17; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 11:06:17; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 11:10:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:40; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 11:10:40; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 11:10:40; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 11:10:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:49; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:50; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:50; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:50; c: error ; v: 1; m: Device not opened; r: 0
+t: 11:10:50; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 11:10:50; c: error ; v: 1; m: readEEPROM: Not connected!; r: 1
+t: 11:10:50; c: error ; v: 1; m: Failed to get board info rv = ; r: 1
+t: 14:27:25; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:27:25; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:27:25; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:25; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:25; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:27:25; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:27:30; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 14:27:30; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:27:30; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:30; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:30; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:27:30; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:27:35; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 14:27:35; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:27:35; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:35; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:35; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:27:35; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:27:39; c: error ; v: 1; m: Error setting alternative interface; r: -99
+t: 14:27:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Number of devices found: ; r: 14
+t: 14:27:39; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:39; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Number of devices found: ; r: 14
+t: 14:27:39; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:39; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Number of devices found: ; r: 14
+t: 14:27:39; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:39; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:39; c: error ; v: 1; m: Device not opened; r: 0
+t: 14:27:39; c: error ; v: 1; m: Cannot open the device after attempt ; r: 5
+t: 14:27:39; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:27:39; c: error ; v: 1; m: configureFX2: device not opened; r: 1
+t: 14:27:39; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:27:39; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:27:46; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:27:46; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:46; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:46; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:27:46; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:27:46; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:27:46; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:27:46; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:27:46; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:27:46; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:27:46; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:28:59; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:28:59; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:28:59; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:28:59; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:28:59; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 14:28:59; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:28:59; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:00; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:01; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:02; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 41
+t: 14:29:02; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 41
+t: 14:29:02; c: note  ; v: 5; m: Micro-controller EEPROM succesfully programmed!; r: 0
+t: 14:29:02; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:29:02; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:29:02; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:29:32; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:29:32; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:29:32; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:29:32; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:29:32; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:32; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:33; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:29:34; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 41
+t: 14:29:34; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 41
+t: 14:29:34; c: note  ; v: 5; m: Micro-controller EEPROM succesfully programmed!; r: 0
+t: 14:29:34; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:29:34; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:29:34; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:31:29; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:31:29; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:31:29; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:31:29; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:31:29; c: note  ; v: 5; m: Programming the micro-controller RAM; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:31:29; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:31:29; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:31:29; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:31:29; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:31:29; c: note  ; v: 5; m: Micro-controller RAM successfully programmed!; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:31:29; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:31:51; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:31:51; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:31:51; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:31:51; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:31:51; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:51; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:52; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:31:53; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 41
+t: 14:31:53; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 41
+t: 14:31:53; c: note  ; v: 5; m: Micro-controller EEPROM succesfully programmed!; r: 0
+t: 14:31:53; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:31:53; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:31:53; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:32:35; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:32:35; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:32:35; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:32:35; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:32:35; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:35; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:36; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:32:37; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 41
+t: 14:32:37; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 41
+t: 14:32:37; c: note  ; v: 5; m: Micro-controller EEPROM succesfully programmed!; r: 0
+t: 14:32:37; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:32:37; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:32:37; c: noise ; v: 9; m: Device not opened (no handle).; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Opening device, attempt number: ; r: 1
+t: 14:33:04; c: noise ; v: 9; m: Getting device list. ; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Number of devices found: ; r: 15
+t: 14:33:04; c: noise ; v: 9; m: Opening device with vid: ; r: 9283
+t: 14:33:04; c: noise ; v: 9; m: Opening device with pid: ; r: 220
+t: 14:33:04; c: noise ; v: 9; m: Device identified.; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Matching idx; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Returned value from libusb_open: ; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Checking kernel driver is free; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Claiming interface; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Setting alternative interface; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Freeing device list; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Attempts to successfully open device: ; r: 1
+t: 14:33:04; c: note  ; v: 5; m: Programming the micro-controller EEPROM; r: 0
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:04; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:05; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 64
+t: 14:33:06; c: noise ; v: 9; m: Writing to EEPROM, number of bytes: ; r: 41
+t: 14:33:06; c: noise ; v: 9; m: Wrote to EEPROM, number of bytes: ; r: 41
+t: 14:33:06; c: note  ; v: 5; m: Micro-controller EEPROM succesfully programmed!; r: 0
+t: 14:33:06; c: noise ; v: 9; m: Device closed; r: 0
+t: 14:33:06; c: noise ; v: 9; m: Destructor called; r: 0
+t: 14:33:06; c: noise ; v: 9; m: Device not opened (no handle).; r: 0

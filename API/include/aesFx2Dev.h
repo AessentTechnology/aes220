@@ -65,9 +65,15 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define EP8 0x88
 
 #define MAX_EP0_DATA  64
-#define MAX_EP2_DATA 512
+
+#define MAX_EP2_DATA 65536
+//#define MAX_EP2_DATA 512
+
 #define MAX_EP4_DATA 512
-#define MAX_EP6_DATA 512
+
+#define MAX_EP6_DATA 65536
+//#define MAX_EP6_DATA 512
+
 #define MAX_EP8_DATA 512
 
 // Micro-controller modes (FX2 specific)
@@ -78,6 +84,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define PIPE_OUT_MODE   0xA5
 #define PIPE_MODE       0xA6
 #define READ_FIFO       0xA9
+#define SPEED_TEST_MODE 0xAA
 
 #define AESFX2_LOG   "aesFx2.log"
 

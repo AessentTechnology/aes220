@@ -32,7 +32,7 @@
  * long or not returning, firmware can set this to TRUE to cause the
  * routine to abort.  (Usually done via an interrupt).
  **/
-extern volatile xdata BOOL cancel_i2c_trans;
+extern volatile __xdata BOOL cancel_i2c_trans;
 
 
 /**
