@@ -13,6 +13,7 @@ Post release changes:
 
 V1.4.0: First release
 V1.4.3: Added stdint.h and removed unistd.h and sys/time.h
+V1.4.5: Changed max sizes for EP2 and EP6 to 65536 bytes to increase USB throughput.
 
 ===============================================================================
 NOTES
@@ -67,14 +68,9 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #define MAX_EP0_DATA  64
 
 #define MAX_EP2_DATA 65536
-//#define MAX_EP2_DATA 512
-
-#define MAX_EP4_DATA 512
-
+#define MAX_EP4_DATA 65536
 #define MAX_EP6_DATA 65536
-//#define MAX_EP6_DATA 512
-
-#define MAX_EP8_DATA 512
+#define MAX_EP8_DATA 65536
 
 // Micro-controller modes (FX2 specific)
 #define WAIT_MODE       0xA1
