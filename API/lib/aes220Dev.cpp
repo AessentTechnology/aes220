@@ -155,10 +155,6 @@ int aes220Dev::open_Device(int vid, int pid, int idx)
 int aes220Dev::close_Device()
 {
   int rv = 99;
-
-    uint8_t MC_Mode = PORT_MODE;
-    rv = set_MC_Mode(&MC_Mode);
-
   rv = closeDev();
   return rv;
 }
@@ -358,6 +354,7 @@ int aes220Dev::configure_FPGA(const string fFile) {
   }
   else {log.add("Found input file.", NOISE_VBS);}
   // File used when verifying the data sent back from the fpga
+  /*
   log.add("Creating check file", NOISE_VBS);
   ofstream checkFile ("CheckFile.bin", ios::binary);
   if (checkFile == 0) {
@@ -365,7 +362,7 @@ int aes220Dev::configure_FPGA(const string fFile) {
     return FILE_NOT_CREATED;
   }
   else {log.add("Check file created.", NOISE_VBS);}
-
+  */
   // Go to end of bitstream file to get the file size
   binFile.seekg(0, ios::end);
   uint32_t fileSize = binFile.tellg();
@@ -446,7 +443,7 @@ int aes220Dev::configure_FPGA(const string fFile) {
 
   // Close the various files
   binFile.close();
-  checkFile.close();
+  //checkFile.close();
   return rv;
 }
 
@@ -526,10 +523,12 @@ int aes220Dev::program_FPGA(const string fFile)
 
   // Start sending the configuration file through the USB interface
   unsigned char dataRead[PAGE_SIZE];
+  /*
   unsigned char dataCheck[PAGE_SIZE];
   for (int a=0; a < PAGE_SIZE; a++) {
     dataCheck[a] = 0x55;
   }
+  */
 
   int payloadCount = 0;
   int payloadSize = 0;
@@ -1096,7 +1095,7 @@ int aes220Dev::pipe_Out(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddre
   if (orgMC_Mode != SLAVE_FIFO_MODE) {
     // Change the mode to Slave FIFO mode
     MC_Mode = SLAVE_FIFO_MODE;
-    log.add("Pipe out: micro-controller in port mode, selecting Slave_FIFO mode", NOISE_VBS);
+    log.add("Pipe out: micro-controller in a different mode, selecting Slave_FIFO mode", NOISE_VBS);
     set_MC_Mode(MC_Mode_ptr);
   }
   else {
@@ -1161,7 +1160,7 @@ int aes220Dev::pipe_In(uint8_t *buf_ptr, uint32_t bufSize, uint8_t channelAddres
   read_MC_Mode(orgMC_Mode_ptr);
   if (orgMC_Mode != SLAVE_FIFO_MODE) {
     // Change the mode to Slave FIFO mode
-    log.add("Pipe in: micro-controller in port mode, selecting Slave_FIFO mode", NOISE_VBS);
+    log.add("Pipe in: micro-controller in a different mode, selecting Slave_FIFO mode", NOISE_VBS);
     MC_Mode = SLAVE_FIFO_MODE;
     set_MC_Mode(MC_Mode_ptr);
   }
@@ -1426,6 +1425,9 @@ int aes220Dev::turn3p3vOff()
    log.add("USB vendor command reply received.", NOISE_VBS);
    if (rv != bs) {
      log.add("Vendor command failure at FPGA status. Error: ", rv, ERROR_VBS);
+     if (rv == -7) {
+       log.add("Vendor command timed out. Error: ", rv, ERROR_VBS);
+     }
      return VND_COMM_ERROR;
    }
    else {
