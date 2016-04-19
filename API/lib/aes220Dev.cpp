@@ -46,6 +46,7 @@ Post release
        closing it. Otherwise if the device is closed within the user software
        an error message is generated when the destructor is called and tries to
        close an already closed device.
+1.4.6: Introduced the progFpga_ent arrays instead of using external files
 
 ===============================================================================
 NOTES
@@ -448,6 +449,85 @@ int aes220Dev::configure_FPGA(const string fFile) {
 }
 
 
+/******************************************************************************/
+int aes220Dev::configure_FPGA_from_array(const uint8_t *progArray, uint32_t arraySize) {
+
+  int rv = 99;
+  uint8_t fpga_status;
+
+  log.add("Starting FPGA configuration process from array.", NOTE_VBS);
+
+  // Send start of configuration byte and file size using Vendor Command
+  uint8_t startConfigByte = CONF_F_MODE;
+  uint8_t allZeroBufSize = 64;
+  uint32_t transferSize = arraySize + allZeroBufSize;
+  uint32_t toBeTransferred, framePayloadSize;
+  uint16_t index = (uint16_t)transferSize;
+  uint16_t value = (uint16_t)(transferSize >> 16);
+  uint16_t bs = 1;
+
+  log.add("Sending start byte...", NOTE_VBS);
+
+
+  rv = do_usb_command(EP0_WRITE, VC_UC_MODE, value, index, &startConfigByte, bs, TIME_OUT);
+  if (rv != bs) {
+    log.add("Vendor command failure at start config. Error: ", rv, ERROR_VBS);
+    return VND_COMM_ERROR;
+  }
+  else {log.add("...sent", NOTE_VBS);}
+  // Start sending the configuration array through the USB interface
+  unsigned char *dataOut = new unsigned char[transferSize];
+  unsigned char *data_ptr = dataOut;
+  for (int i=0; i < arraySize; i++) {
+    dataOut[i] = progArray[i];
+  }
+  // add zeros to the end of the array to help the FPGA start
+  for (int i = 0; i < allZeroBufSize; i++) {
+    dataOut[arraySize + i] = 0x00;
+  }
+
+  // send the whole thing out via the USB interface
+  log.add("Sending configuration data to FPGA... ", NOTE_VBS);
+  toBeTransferred = transferSize;
+  int packetNb = 0;
+
+  while (toBeTransferred > 0) {
+    packetNb++;
+    // Break up the size of data to be transferred if required
+    if (toBeTransferred > MAX_PORT_MODE_PAYLOAD) {
+      framePayloadSize = MAX_PORT_MODE_PAYLOAD;
+    }
+    else framePayloadSize = toBeTransferred;
+    log.add("Sending out packet:", packetNb, NOISE_VBS);
+    rv = bulkTransfer(data_ptr, framePayloadSize, EP2, TIME_OUT);
+    if (rv) {
+      log.add("Bulk transfer error when sending data out: ", rv, ERROR_VBS);
+      return BULK_TX_ERROR;
+    }
+    // Decrement the amount of data still to be transferred
+    // and move the pointer along
+    toBeTransferred -= framePayloadSize;
+    data_ptr += framePayloadSize;
+    log.add("...sent", NOISE_VBS);
+  }
+  log.add("Data transfer done.", NOTE_VBS);
+
+  do {
+    fpga_status = check_FPGA_Status();
+  } while (fpga_status == F_BUSY);
+
+  if (fpga_status == PROG_DONE) {
+    log.add("FPGA status OK, setting micro-controller to port mode", NOTE_VBS);
+    uint8_t MC_Mode = PORT_MODE;
+    set_MC_Mode(&MC_Mode);
+    rv = 0;
+  }
+  else {rv = FPGA_CONF_ERROR;}
+
+  return rv;
+}
+
+
 // program_Fpga
 /*****************************************************************************/
 // Programs the fpga spi flash
@@ -463,9 +543,6 @@ int aes220Dev::program_FPGA(const string fFile)
 
 
   // First configure the FPGA with the flash SPI interface
-  const string aes220a_fpgaSpiFile = "aes220a_progFpga_ent.bin";
-  const string aes220b_fpgaSpiFile = "aes220b_progFpga_ent.bin";
-  string fpgaSpiFile;
   uint8_t orgMC_Mode;
   uint8_t *orgMC_Mode_ptr = &orgMC_Mode;
   uint8_t MC_Mode;
@@ -475,24 +552,24 @@ int aes220Dev::program_FPGA(const string fFile)
   // Change the mode to port mode
   MC_Mode = PORT_MODE;
   set_MC_Mode(MC_Mode_ptr);
-  // Configure the FPGA to write to the Flash with the file that relates to the module model
+  // Configure the FPGA to write to the Flash with the data that relates to the module model
   uint8_t boardInfo[8];
   uint8_t model = 'z';
   get_Board_Info(boardInfo);
   model = boardInfo[1];
   switch(model) {
   case 'a' | 'A':
-    log.add("Configuring FPGA with aes220a progFpga file", NOTE_VBS);
-    fpgaSpiFile.assign(aes220a_fpgaSpiFile);
+    log.add("Configuring FPGA with aes220a progFpga data", NOTE_VBS);
+    rv = configure_FPGA_from_array(aes220a_progFpga_ent_bin, aes220a_progFpga_ent_bin_len);
     break;
   case 'b' | 'B':
-    log.add("Configuring FPGA with aes220b progFpga file", NOTE_VBS);
-    fpgaSpiFile.assign(aes220b_fpgaSpiFile);
+    log.add("Configuring FPGA with aes220b progFpga data", NOTE_VBS);
+    rv = configure_FPGA_from_array(aes220b_progFpga_ent_bin, aes220b_progFpga_ent_bin_len);
     break;
   default:
     break;
   }
-  rv = configure_FPGA(fpgaSpiFile);
+
   if (rv != 0) return FPGA_CONF_ERROR;
 
 

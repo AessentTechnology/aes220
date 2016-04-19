@@ -115,6 +115,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <stdint.h>
 
 #include <aesFx2Dev.h>
+#include <aes220a_progFpga_ent.h>
+#include <aes220b_progFpga_ent.h>
 
 // Vendor commands bytes
 #define VC_UC_MODE    0xC1
@@ -451,6 +453,6 @@ class aes220Dev: private aesFx2Dev
   int flash_Ready();
   int read_FPGA_Flash_Status(unsigned char *flashStatus);
   uint8_t check_FPGA_Status();
-
+  int configure_FPGA_from_array(const uint8_t *progArray, uint32_t arraySize);
 };
 #endif
