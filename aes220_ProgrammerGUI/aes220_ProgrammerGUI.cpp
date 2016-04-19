@@ -27,6 +27,7 @@ V1.4.4: Added the ability to turn the 3.3V rail ON or OFF. This is done via radi
         update themselves if a different board is subsequently plugged in.
 V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
 V1.6.1: No changes but now built by linking to dynamic libraries.
+v1.6.2: Removed the reset eeprom button. No use for the function.
 
 ====================================================================================================
 NOTES
@@ -34,7 +35,7 @@ NOTES
 For more information on child processes look at wxWidgets exec.cpp example
 
 ====================================================================================================
-Copyright (C) 2012-2013 Sebastien Saury, Aessent Technology Ltd
+Copyright (C) 2012-2016 Sebastien Saury, Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -65,9 +66,8 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 
 #include <aes220_API.h>
 
-#define SOFT_VER "aes220 Programmer Version 1.6.1"
+#define SOFT_VER "aes220 Programmer Version 1.6.2"
 #define VBS_LEVEL 3
-#define RESET_FILE "reset.ihx"
 
 #define P3V3_OFF 0
 #define P3V3_ON  1
@@ -132,7 +132,6 @@ public:
   void OnBrowseFpgaBtn(wxCommandEvent& WXUNUSED(event));
   void OnProgRamBtn(wxCommandEvent& WXUNUSED(event));
   void OnProgEEPBtn(wxCommandEvent& WXUNUSED(event));
-  void OnRstEEPBtn(wxCommandEvent& WXUNUSED(event));
   void OnConfFPGABtn(wxCommandEvent& WXUNUSED(event));
   void ConfFPGA();
   void OnProgFPGABtn(wxCommandEvent& WXUNUSED(event));
@@ -203,7 +202,6 @@ enum
     wxID_BrowseFPGABtn,
     wxID_ProgRamBtn,
     wxID_ProgEEPBtn,
-    wxID_RstEEPBtn,
     wxID_ConfFPGABtn,
     wxID_ProgFPGABtn,
     wxID_EraseFPGABtn,
@@ -467,7 +465,6 @@ EVT_BUTTON(wxID_BrowseEEPBtn,   MainFrame::OnBrowseEEPBtn)
 EVT_BUTTON(wxID_BrowseFPGABtn,   MainFrame::OnBrowseFpgaBtn)
 EVT_BUTTON(wxID_ProgRamBtn,   MainFrame::OnProgRamBtn)
 EVT_BUTTON(wxID_ProgEEPBtn,   MainFrame::OnProgEEPBtn)
-EVT_BUTTON(wxID_RstEEPBtn,    MainFrame::OnRstEEPBtn)
 EVT_BUTTON(wxID_ConfFPGABtn,  MainFrame::OnConfFPGABtn)
 EVT_BUTTON(wxID_ProgFPGABtn,  MainFrame::OnProgFPGABtn)
 EVT_BUTTON(wxID_EraseFPGABtn, MainFrame::OnEraseFPGABtn)
@@ -731,8 +728,6 @@ MainFrame::MainFrame(const wxString& title)
 				      wxPoint(), wxSize(130,30));
   wxButton* progEepbtn = new wxButton(advancedPanel, wxID_ProgEEPBtn, wxT("Program EEPROM"),
 				      wxPoint(), wxSize(130,30));
-  wxButton* rstEepbtn = new wxButton(advancedPanel, wxID_RstEEPBtn, wxT("Reset EEPROM"),
-				     wxPoint(), wxSize(130,30));
 
   // uController RAM programming sizer
   // Use sizer to layout the controls, stacked horizontally
@@ -760,7 +755,6 @@ MainFrame::MainFrame(const wxString& title)
 #endif
   vszuC->Add(hszuCRam, wxSizerFlags().Expand());
   vszuC->Add(hszuCEep, wxSizerFlags().Expand());
-  vszuC->Add(rstEepbtn, wxSizerFlags().Right());
 
   wxBoxSizer* advancedSizer = new wxBoxSizer(wxVERTICAL);
   advancedSizer->Add(vszuC, wxSizerFlags().Right().Expand().Border(wxALL, 5));
@@ -1034,23 +1028,6 @@ void MainFrame::OnProgEEPBtn(wxCommandEvent& WXUNUSED(event))
     *m_log << _T("Time to complete the EEPROM write: ") << (sw.Time()/1000) << _T("s\n");
     // cout << "Time to complete the EEPROM write: " << setprecision(2) << (sw.Time()/1000) << "s"
     // 		 << endl;
-    if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
-      *m_log << _T("Cannot unlock the module.\n");
-    }
-  }
-  else {
-    *m_log << _T("Module busy, please try again.\n");
-  }
-}
-
-void MainFrame::OnRstEEPBtn(wxCommandEvent& WXUNUSED(event))
-{
-  //wxStreamToTextRedirector redirect(m_log);
-  if (moduleInUse.TryLock() == wxMUTEX_NO_ERROR) {
-    aes220_handle *aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs);
-    aes220_Program_MC_RAM(aes220_ptr, RESET_FILE);
-    aes220_Close(aes220_ptr);
-    //rstUCEep(vid, pid, idx);
     if (moduleInUse.Unlock() != wxMUTEX_NO_ERROR) {
       *m_log << _T("Cannot unlock the module.\n");
     }
