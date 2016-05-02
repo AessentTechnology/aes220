@@ -11,6 +11,7 @@ CHANGES
 V1.4.3: Changed libusb-1.0 to libusbx-1.0 for Windows only.
 V1.4.4: Removed unistd.h
 V1.4.5: Re-added unistd.h but for Linux only
+v1.4.6: libusbx-1.0 is back to libusb-1.0
 
 ===============================================================================
 NOTES
@@ -18,7 +19,7 @@ NOTES
 
 ===============================================================================
 
-Copyrights (C) 2011-2013 Aessent Technology Ltd
+Copyrights (C) 2011-2016 Aessent Technology Ltd
 
 This library is free software; you can redistribute it and/or
 modify it under the terms of the GNU Lesser General Public
@@ -48,7 +49,7 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #include <aesLog.h>
 
 #ifdef _WIN32
- #include <libusbx-1.0/libusb.h>
+ #include <libusb-1.0/libusb.h>
  #include <windows.h>
  #define msleep(x) Sleep(x)
 #else

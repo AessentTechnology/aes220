@@ -12,7 +12,8 @@ V1.0.0: Original version
 V1.4.2: No change
 V1.4.3: Added missing --info implementation
 V1.4.4: Added 3.3V rail ON/OFF switch. Modified for loop so more than one action can be carried out.
-V1.6.0: No changes other than the version number to decouple it from the libaes220 version number.
+V1.6.0: No changes other than the version numbe
+r to decouple it from the libaes220 version number.
 V1.6.1: Added ability to write board information
 
 ====================================================================================================
@@ -139,7 +140,7 @@ int main(int argc, char *argv[]) {
     else if(!strncmp(argv[i], "-vid=", 5)) {vid_c[3] = *(argv[i]+5); vid_c[2] = *(argv[i]+6);
       vid_c[1] = *(argv[i]+7); vid_c[0] = *(argv[i]+8);
       action = NEW_VID;}
-    else if(!strncmp(argv[i], "-pid=", 5)) {pid_c[3] = *(argv[i]+5); pid_c[2] = *(argv[i]+6); 
+    else if(!strncmp(argv[i], "-pid=", 5)) {pid_c[3] = *(argv[i]+5); pid_c[2] = *(argv[i]+6);
       pid_c[1] = *(argv[i]+7); pid_c[0] = *(argv[i]+8);
       action = NEW_PID;}
     else if(!strncmp(argv[i], "-id=", 4))  {idx = atoi(argv[i]+4); action = NO_ACTION;}
@@ -164,8 +165,8 @@ int main(int argc, char *argv[]) {
 
     case NEW_VID: {
       for (int i = 0; i < 4; i++) {
-	if ( getHexNibble(vid_c[i], &vid_h[i]) ) { 
-	  cerr << "Error, not an hexadecimal digit!"; 
+	if ( getHexNibble(vid_c[i], &vid_h[i]) ) {
+	  cerr << "Error, not an hexadecimal digit!";
 	  return 1;
 	}
       }
@@ -177,8 +178,8 @@ int main(int argc, char *argv[]) {
 
     case NEW_PID: {
       for (int i = 0; i < 4; i++) {
-	if ( getHexNibble(pid_c[i], &pid_h[i]) ) { 
-	  cerr << "Error, not an hexadecimal digit!"; 
+	if ( getHexNibble(pid_c[i], &pid_h[i]) ) {
+	  cerr << "Error, not an hexadecimal digit!";
 	  return 1;
 	}
       }
@@ -200,7 +201,7 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       // First check type validity
       cout << "New board type desired = " << newBoardInfo[1] << endl;
-      if ((newBoardInfo[1] != 'a') && 
+      if ((newBoardInfo[1] != 'a') &&
 	  (newBoardInfo[1] != 'A') &&
 	  (newBoardInfo[1] != 'b') &&
 	  (newBoardInfo[1] != 'B')) {
@@ -213,16 +214,16 @@ int main(int argc, char *argv[]) {
       // Fetch the board information
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
       }
       // Display the information received:
-      cout << "Module......................: aes220" 
+      cout << "Module......................: aes220"
 	   << boardInfo[1] << " to be changed to aes220" << newBoardInfo[1] << '.' << endl;
       if (boardInfo[1] == (('a' or 'A' or 'b' or 'B')) and (boardInfo[1] != newBoardInfo[1])) {
-        cout << "Warning about to change board type from " << (int)boardInfo[1] << " to " 
+        cout << "Warning about to change board type from " << (int)boardInfo[1] << " to "
 	     << newBoardInfo[1] << endl;
       }
       boardInfo[1] = newBoardInfo[1];
@@ -237,14 +238,14 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
       }
       // Display the information received:
-      cout << "Module......................: aes220" 
-	   << boardInfo[1] << " with serial number " << (int)boardInfo[4] 
+      cout << "Module......................: aes220"
+	   << boardInfo[1] << " with serial number " << (int)boardInfo[4]
 	   << " to be changed to " << (int)newBoardInfo[4] << '.' << endl;
       boardInfo[4] = newBoardInfo[4];
       rv = aes220_Set_Board_Info(aes220_ptr, boardInfo);
@@ -257,13 +258,13 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
       }
       // Display the information received:
-      cout << "Module Major revision letter : "  << boardInfo[2] 
+      cout << "Module Major revision letter : "  << boardInfo[2]
 	   << " to be changed to " << newBoardInfo[2] << '.' << endl;
       boardInfo[2] = newBoardInfo[2];
       rv = aes220_Set_Board_Info(aes220_ptr, boardInfo);
@@ -276,13 +277,13 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
       }
       // Display the information received:
-      cout << "Module Minor revision number : "  << (int)boardInfo[3] 
+      cout << "Module Minor revision number : "  << (int)boardInfo[3]
 	   << " to be changed to " << (int)newBoardInfo[3] << '.' << endl;
       boardInfo[3] = newBoardInfo[3];
       rv = aes220_Set_Board_Info(aes220_ptr, boardInfo);
@@ -297,7 +298,7 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
@@ -318,7 +319,7 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
@@ -331,7 +332,7 @@ int main(int argc, char *argv[]) {
       // Display the new board information:
       cout << "New board information:" << endl << endl;
       displayBoardInfo(aes220_ptr);
-      break; 
+      break;
     }
 
     case SET_BYY: {
@@ -339,7 +340,7 @@ int main(int argc, char *argv[]) {
       if (aes220_ptr == NULL) {	aes220_ptr = aes220_Open_Device(vid, pid, idx, vbs); }
       rv = aes220_Get_Board_Info(aes220_ptr, boardInfo);
       if (rv) {
-	cout << "Encountered a problem while retrieving the board information. Error: " << rv 
+	cout << "Encountered a problem while retrieving the board information. Error: " << rv
 	     << endl;
 	aes220_Close(aes220_ptr);
 	return rv;
@@ -356,8 +357,8 @@ int main(int argc, char *argv[]) {
     }
 
     case TOGGLE_3V3: {
-      // Turns the 3.3V power supply ON or OFF. Useful if stacking up boards or if providing an 
-      // external 3.3V supply. When stacking up boards only one should provide the 3.3V to the 
+      // Turns the 3.3V power supply ON or OFF. Useful if stacking up boards or if providing an
+      // external 3.3V supply. When stacking up boards only one should provide the 3.3V to the
       // others. If the power required exceeds the max power of the 3.3V on-board 3.3V regulator
       // (that is if the current drawn exceeds 1.5A) then the 3.3V needs to be turned OFF on all
       // boards and be provided by an external power supply.
@@ -393,7 +394,7 @@ int main(int argc, char *argv[]) {
 	return rv;
       }
       else {cout << "Done." << endl << endl;}
-      break; 
+      break;
     }
 
     case PROG_MC_EEPROM: {
@@ -407,7 +408,7 @@ int main(int argc, char *argv[]) {
 	return rv;
       }
       else {cout << "Done." << endl << endl;}
-      break; 
+      break;
     }
 
     case CONF_FPGA: {
@@ -421,7 +422,7 @@ int main(int argc, char *argv[]) {
 	return rv;
       }
       else {cout << "Done." << endl << endl;}
-      break; 
+      break;
     }
 
     case PROG_FPGA: {
@@ -435,7 +436,7 @@ int main(int argc, char *argv[]) {
 	return rv;
       }
       else {cout << "Done." << endl;}
-      break; 
+      break;
     }
 
     case ERASE_FPGA: {
@@ -449,27 +450,21 @@ int main(int argc, char *argv[]) {
 	return rv;
       }
       else {cout << "Done." << endl << endl;}
-      break; 
+      break;
     }
 
-    case NO_ACTION: 
+    case NO_ACTION:
       //return (0);
       break;
 
-    default: 
-      break; 
+    default:
+      break;
     }
 
   }
 
   // Close the device when no longer required
   aes220_Close(aes220_ptr);
-
-#ifdef _WIN32
-  char endChar;
-  cout << "Enter a character to finish. ";
-  cin >> endChar;
-#endif
 
   return rv;
 }
@@ -497,17 +492,17 @@ int displayBoardInfo(aes220_handle *aes220_ptr)
   cout << "====================================================================================\n";
   cout << " Module information" << endl;
   cout << "====================================================================================\n";
-  cout << " Module......................: aes220" 
+  cout << " Module......................: aes220"
        << boardInfo[1] << " Rev" << boardInfo[2] << '.' << (int)boardInfo[3] << endl;
-  cout << " Module Serial Number........: " << setfill('0') << setw(3) << (int)boardInfo[4] 
+  cout << " Module Serial Number........: " << setfill('0') << setw(3) << (int)boardInfo[4]
        << endl;
-  cout << " Module Date Code............: " 
-       << setfill('0') << setw(2) << (int)boardInfo[5] << '/' 
-       << setfill('0') << setw(2) << (int)boardInfo[6] << '/' 
+  cout << " Module Date Code............: "
+       << setfill('0') << setw(2) << (int)boardInfo[5] << '/'
+       << setfill('0') << setw(2) << (int)boardInfo[6] << '/'
        << "20" << (int)boardInfo[7] << endl;
-  cout << " Firmware Revision...........: v" 
-       << (int)firmwareInfo[0] << '.' << (int)firmwareInfo[1] << '.' << (int)firmwareInfo[2] 
-       << endl; 
+  cout << " Firmware Revision...........: v"
+       << (int)firmwareInfo[0] << '.' << (int)firmwareInfo[1] << '.' << (int)firmwareInfo[2]
+       << endl;
   if (boardInfo[0] == P3V3_ON) {cout << " 3.3V rail...................: ON" << endl;}
   else if (boardInfo[0] == P3V3_OFF) {cout << " 3.3V rail...................: OFF" << endl;}
   else {cout << " 3.3V rail...................: STATUS UNKNOWN!" << endl;}

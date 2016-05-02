@@ -6,7 +6,7 @@
 // xxd -i aes220b_progFpga_ent.bin > aes220b_progFpga_ent.h 
 // The precompiler definition has to be added by hand (don't forget the 
 // #endif at the end) as does the const specifier (also added to the 
-// array length declaration at the bottom of the file.
+// array length declaration at the bottom of the file).
 
 const unsigned char aes220b_progFpga_ent_bin[] = {
   0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff, 0xff,
