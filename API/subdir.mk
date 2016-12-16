@@ -15,7 +15,7 @@ C_DEPS := $(C_SRCS:.cpp=.d)
 # Libraries required (remove the lib prefix and .so extension)
 LIBS := usb-1.0
 # and their paths
-LIB_DIRS := ./ /lib /usr/lib /lib/arm-linux-gnueabihf /home/pi/workspace/libaes220/libaes220_eabi
+LIB_DIRS := ./ /lib /usr/lib 
 
 # Add the -l switch to the libraries
 LIB_STR := $(foreach LIBS,$(LIBS),-l$(LIBS))

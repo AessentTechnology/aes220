@@ -13,7 +13,7 @@ C_DEPS := $(C_SRCS:.cpp=.d)
 # Libraries required (remove the lib prefix and .so extension)
 LIBS := aes220 usb-1.0
 # and their paths
-LIB_DIRS := ./ /lib /usr/lib /lib/arm-linux-gnueabihf/
+LIB_DIRS := ./ /lib /usr/lib 
 
 # Add the -l switch to the libraries
 LIB_STR := $(foreach LIBS,$(LIBS),-l$(LIBS))
