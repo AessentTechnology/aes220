@@ -1,19 +1,21 @@
 ################################################################################
-# aes220_Programmer subdir.mk
-
+# subdir makefile for libaes220
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-./aes220_Programmer.cpp
+./aes220_API.cpp \
+./lib/aes220Dev.cpp \
+./lib/aesFx2Dev.cpp \
+./lib/aesLog.cpp \
+./lib/aesUSB.cpp 
 
 OBJS := $(C_SRCS:.cpp=.o)
 
 C_DEPS := $(C_SRCS:.cpp=.d)
-#CPP_DEPS += \
 
 # Libraries required (remove the lib prefix and .so extension)
-LIBS := aes220 usb-1.0
+LIBS := usb-1.0
 # and their paths
-LIB_DIRS := ./ /lib /usr/lib /lib/arm-linux-gnueabihf/
+LIB_DIRS := ./ /lib /usr/lib /lib/arm-linux-gnueabihf /home/pi/workspace/libaes220/libaes220_eabi
 
 # Add the -l switch to the libraries
 LIB_STR := $(foreach LIBS,$(LIBS),-l$(LIBS))
@@ -22,8 +24,8 @@ LIB_STR := $(foreach LIBS,$(LIBS),-l$(LIBS))
 LIB_DIRS_PATH := $(foreach LIB_DIRS,$(LIB_DIRS),-L$(LIB_DIRS))
 
 # Every subdirectory with header files must be described here
-INC_DIRS := ./ ../../../../API ../API # or /PathToAPI/
-SRC_DIRS := ./ ../
+INC_DIRS := ./ ./include ../../../../API # or /PathToAPI/
+SRC_DIRS := ./ ./lib ../
 
 # Add the -I switch to the various paths containing header files
 INC_STR := $(foreach INC_DIRS,$(INC_DIRS),-I$(INC_DIRS))
@@ -36,7 +38,7 @@ vpath %.c $(SRC_DIRS)
 %.o: ./%.cpp
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C++ Compiler'
-	g++ -Wall -fexceptions $(INC_STR) -g -c -o "$@" "$<"
+	g++ -Wall -fexceptions $(INC_STR) -O0 -g3 -Wall -c -fmessage-length=0 -fPIC -MMD -MP -MF"$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -o "$@" "$<"
 	@echo 'Finished building: $<'
 	@echo ' '
 

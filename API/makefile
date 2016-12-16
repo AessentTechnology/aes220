@@ -1,7 +1,8 @@
 ################################################################################
-# aes220 example makefile
-
-BINNAME=aes220_FifoExample
+# libaes220 makefile
+LIBPRE = libaes220.so
+LIBVER = 1.4.6
+LIBNAME = $(LIBPRE).$(LIBVER)
 RM := rm -rf
 
 # All of the sources participating in the build are defined here
@@ -31,20 +32,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: $(BINNAME)
+all: $(LIBNAME)
 
 # Tool invocations
-$(BINNAME): $(OBJS) $(USER_OBJS)
+$(LIBNAME): $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC Linker'
-	gcc $(LIB_DIRS_PATH) -o "$(BINNAME)" $(OBJS) $(USER_OBJS) $(LIB_STR)
+	g++ $(LIB_DIRS_PATH) -shared -o "$(LIBNAME)" $(OBJS) $(USER_OBJS) $(LIB_STR)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS) $(EXECUTABLES) $(BINNAME)
+	-$(RM) $(OBJS) $(C_DEPS) $(EXECUTABLES)
 	-@echo ' '
 
 .PHONY: all clean dependents
-

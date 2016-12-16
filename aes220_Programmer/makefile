@@ -1,14 +1,11 @@
 ################################################################################
+# aes220_Programmer makefile
 
-
-#-include ../makefile.init
-
+BINNAME = aes220_Programmer
 RM := rm -rf
 
 # All of the sources participating in the build are defined here
-#-include sources.mk
 -include subdir.mk
-#-include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)
@@ -31,27 +28,23 @@ ifneq ($(strip $(C_UPPER_DEPS)),)
 endif
 endif
 
-#-include ../makefile.defs
-
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: aes220_Programmer
+all: $(BINNAME)
 
 # Tool invocations
-aes220_Programmer: $(OBJS) $(USER_OBJS)
+$(BINNAME): $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC Linker'
-	g++ $(LIB_DIRS_PATH) -o "aes220_Programmer" $(OBJS) $(USER_OBJS) $(LIB_STR)
+	g++ $(LIB_DIRS_PATH) -o "$(BINNAME)" $(OBJS) $(USER_OBJS) $(LIB_STR)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS) $(C_DEPS) $(CPP_DEPS) $(EXECUTABLES) $(C_UPPER_DEPS) aes220_Programmer
+	-$(RM) $(OBJS) $(C_DEPS)
 	-@echo ' '
 
 .PHONY: all clean dependents
-.SECONDARY:
 
-#-include ../makefile.targets

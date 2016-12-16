@@ -7,8 +7,6 @@ C_SRCS += \
 OBJS := $(C_SRCS:.c=.o)
 
 C_DEPS := $(C_SRCS:.c=.d)
-#CPP_DEPS += \
-#./aes220_FifoExample.d 
 
 # Libraries required (remove the lib prefix and .so extension)
 LIBS := aes220 usb-1.0
